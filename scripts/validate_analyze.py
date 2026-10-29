@@ -153,7 +153,9 @@ def main():
             text = item.get("label") or item.get("text") or item.get("title")
         elif ov and a["ctx"].endswith(".total"):
             # running total: by ~1.2 s after the spoken total the panel must show exactly that number
-            want = f"{ov['props']['total']['value']:,}"
+            # (or, for a summary panel, its total line)
+            tot = ov["props"]["total"]
+            want = f"{tot['value']:,}" if "value" in tot else tot["text"]
             target = round(a["cue"] + 1.2, 1)
             smp = next((x for x in dense if abs(x["t"] - target) < 0.051), None)
             shown = smp and any(it["o"] == owner and it["s"] == want and it["a"] >= 0.9 for it in smp["items"])

@@ -133,13 +133,21 @@ export function createHud(canvas, tokens, timeline, assets) {
         const tw = Math.max(P.measure(it.text, { size: 26, weight: 800, family: 'Montserrat', spacing: 1 }), P.measure(it.sub, { size: 24, weight: 500 }));
         const w = tw + 40, h = 70;
         let bx = clamp(an.x - w / 2, SA.x0, SA.x1 - w), by = clamp(an.y - 90 * k - h, SA.y0 + 84, 800 - h);
-        for (const p of placed) if (bx < p.x1 && bx + w > p.x0 && by < p.y1 && by + h > p.y0) by = p.y0 - h - 10;
+        // first free spot near the anchor that stays inside the safe area and clear of earlier callouts
+        const free = (x, y) => !placed.some((p) => x < p.x1 + 8 && x + w > p.x0 - 8 && y < p.y1 + 8 && y + h > p.y0 - 8);
+        search: for (const dy of [0, -80, 80, -160, 160, -240, 240]) {
+          for (const dx of [0, -(w / 2 + 24), w / 2 + 24, -(w + 24), w + 24]) {
+            const x = clamp(bx + dx, SA.x0, SA.x1 - w), y = clamp(by + dy, SA.y0 + 84, 800 - h);
+            if (free(x, y)) { bx = x; by = y; break search; }
+          }
+        }
         placed.push({ x0: bx, y0: by, x1: bx + w, y1: by + h });
+        const lx = clamp(an.x, bx + 12, bx + w - 12), ly = an.y < by ? by : by + h;
         P.group(a, () => {
           const ph = (t * 1.2 + i * 0.27) % 1;
           P.circle(an.x, an.y, 6, col);
           P.circle(an.x, an.y, 7 + 16 * ph, null, 1 - ph, col, 2);
-          P.line([[an.x, an.y], [an.x, by + h]], col, 2, 0.9);
+          P.line([[an.x, an.y], [lx, ly]], col, 2, 0.9);
           P.panel(bx, by, w, h, { radius: 10 });
           P.rect(bx, by + 10, 5, h - 20, col);
           P.text(it.text, bx + 20, by + 31, { size: 26, weight: 800, family: 'Montserrat', spacing: 1, color: '#FFFFFF' });

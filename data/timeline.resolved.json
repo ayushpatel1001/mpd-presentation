@@ -166,7 +166,7 @@
     {
       "id": "a1_orbit",
       "start": 8.0,
-      "end": 12.6,
+      "end": 13.8,
       "target": [
         [
           -3,
@@ -204,8 +204,8 @@
     },
     {
       "id": "a1_push",
-      "start": 12.6,
-      "end": 16.0,
+      "start": 13.8,
+      "end": 16.4,
       "target": [
         [
           -6,
@@ -241,11 +241,11 @@
       "ease": "inOutCubic",
       "blendIn": 0.5,
       "whoosh": true,
-      "whooshAt": 12.8
+      "whooshAt": 14.0
     },
     {
       "id": "a2_wh",
-      "start": 16.0,
+      "start": 16.4,
       "end": 21.4,
       "target": [
         [
@@ -1662,7 +1662,7 @@
       "id": "logo_card",
       "type": "logoCard",
       "in": 0.35,
-      "out": 3.35,
+      "out": 4.4,
       "sfx": "sting",
       "props": {
         "eyebrow": "UJJAIN PLANT · JOBWORK CAPABILITIES",
@@ -1672,7 +1672,7 @@
     {
       "id": "logo_bug",
       "type": "logoBug",
-      "in": 3.4,
+      "in": 4.45,
       "out": 167.0,
       "sfx": null
     },
@@ -1680,7 +1680,7 @@
       "id": "act1_title",
       "type": "actTitle",
       "act": "act1",
-      "in": 4.6,
+      "in": 4.8,
       "out": 11.0,
       "sfx": "click"
     },
@@ -1744,7 +1744,7 @@
       "id": "a1_sites",
       "type": "statChip",
       "in": 6.911,
-      "out": 12.3,
+      "out": 11.8,
       "sfx": "click",
       "props": {
         "slot": "leftTop",
@@ -1755,7 +1755,7 @@
       "id": "a1_reactors",
       "type": "counter",
       "in": 7.701,
-      "out": 12.3,
+      "out": 11.8,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1772,7 +1772,7 @@
       "id": "a1_capacity",
       "type": "counter",
       "in": 9.251,
-      "out": 12.3,
+      "out": 11.8,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1788,8 +1788,8 @@
     {
       "id": "a1_zones",
       "type": "zoneCallouts",
-      "in": 12.4,
-      "out": 15.2,
+      "in": 11.9,
+      "out": 15.0,
       "sfx": "click",
       "props": {
         "stagger": 0.14,
@@ -2242,7 +2242,7 @@
       "id": "a6_totals",
       "type": "storageTotals",
       "in": 111.278,
-      "out": 119.6,
+      "out": 120.4,
       "sfx": "click",
       "props": {
         "title": "TOTAL STORAGE ON SITE",
@@ -3976,7 +3976,7 @@
     },
     {
       "type": "click",
-      "at": 4.6,
+      "at": 4.8,
       "src": "act1_title"
     },
     {
@@ -4008,18 +4008,18 @@
     },
     {
       "type": "click",
-      "at": 12.4,
+      "at": 11.9,
       "src": "a1_zones"
-    },
-    {
-      "type": "whoosh",
-      "at": 12.8,
-      "src": "a1_push"
     },
     {
       "type": "riser",
       "at": 13.125,
       "dur": 1.875
+    },
+    {
+      "type": "whoosh",
+      "at": 14.0,
+      "src": "a1_push"
     },
     {
       "type": "impact",

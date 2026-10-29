@@ -10,6 +10,9 @@ build/frames/
 build/validation/
 # render / validation logs
 build/logs/
+# encoder outputs over GitHub's 100 MB limit (the committed master is re-encoded below it)
+out/*_music_only.mp4
+out/*_crf20.mp4
 
 # Scratch
 *.tmp
