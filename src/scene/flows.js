@@ -34,7 +34,8 @@ void main(){
   float s = x * uLen;
   float d = fract((s - uTime * 7.0) / 7.0);
   float pulse = smoothstep(0.0, 0.1, d) * smoothstep(0.55, 0.1, d);
-  float head = exp(-pow((uReveal - x) * uLen / 2.5, 2.0)) * step(uReveal, 0.999);
+  float hd = (uReveal - x) * uLen / 2.5;
+  float head = exp(-hd * hd) * step(uReveal, 0.999);
   float a = (0.32 + 1.25 * pulse + 3.0 * head) * uIntensity;
   gl_FragColor = vec4(uColor * a, 1.0);
 }`;

@@ -108,6 +108,9 @@ async function boot() {
     const camera = world.camera;
     camera.position.copy(cam.position);
     camera.fov = cam.fov;
+    // near plane scales with orbit radius: ~10x more depth precision on the high aerials (no z-fighting on
+    // road markings and pads) while close interior shots keep a 0.3 m near plane
+    camera.near = Math.min(4, Math.max(0.3, cam.radius / 110));
     camera.updateProjectionMatrix();
     camera.lookAt(cam.target);
     camera.updateMatrixWorld();

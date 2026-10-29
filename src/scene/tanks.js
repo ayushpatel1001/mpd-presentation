@@ -25,7 +25,8 @@ varying vec2 vUv; varying vec3 vWorld;
 void main(){
   vec2 g = abs(fract(vWorld.xz / 2.5) - 0.5);
   float line = 1.0 - smoothstep(0.0, 0.05, min(g.x, g.y));
-  float scan = exp(-pow((vUv.x - fract(uTime*0.22)) * 18.0, 2.0));
+  float sd = (vUv.x - fract(uTime*0.22)) * 18.0;
+  float scan = exp(-sd * sd);
   vec3 c = uPad * (1.0 - 0.6*uXray) + uGrid * (line * (0.05 + 1.5*uXray) + scan * uXray * 0.9);
   float a = mix(1.0, 0.22 + 0.35*line, uXray);
   gl_FragColor = vec4(c, a);

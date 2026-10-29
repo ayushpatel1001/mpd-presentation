@@ -2421,19 +2421,14 @@
       }
     },
     {
-      "id": "a8_contact",
-      "type": "contactCard",
+      "id": "a8_endcard",
+      "type": "logoCard",
       "in": 167.2,
       "out": 181.0,
-      "sfx": "thump",
-      "major": true,
+      "sfx": "sting",
       "props": {
-        "name": "Ayush Patel",
-        "role": "Director",
-        "phone": "+91 91317 97159",
-        "email": "ayush@mpdyechem.com",
-        "company": "MPD Industries P Ltd · Ujjain Plant",
-        "cta": "PARTNER WITH US"
+        "eyebrow": "UJJAIN PLANT · PARTNER WITH US",
+        "tagline": "WE INNOVATE. WE SERVE."
       }
     },
     {
@@ -4492,12 +4487,12 @@
     {
       "type": "swoosh",
       "at": 167.07999999999998,
-      "src": "a8_contact"
+      "src": "a8_endcard"
     },
     {
-      "type": "thump",
+      "type": "sting",
       "at": 167.2,
-      "src": "a8_contact"
+      "src": "a8_endcard"
     }
   ],
   "music": {

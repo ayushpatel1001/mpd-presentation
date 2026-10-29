@@ -330,6 +330,7 @@ function heroReactor(root, M, r) {
 
   const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), s1 = new THREE.Vector3(1, 1, 1), v = new THREE.Vector3();
   return {
+    group: g,
     anchors: {
       heroReactor: new THREE.Vector3(r.x + Math.sin(deg(CUT_AZ + 30)) * R, BODY_BOTTOM + hs * 0.55, r.z + Math.cos(deg(CUT_AZ + 30)) * R),
       heroJacket: new THREE.Vector3(r.x + Math.sin(deg(-78)) * R * 1.08, BODY_BOTTOM + hs * 0.25, r.z + Math.cos(deg(-78)) * R * 1.08),
@@ -472,8 +473,9 @@ export function buildPlants(world, M, OB) {
 
   // P2 feed from the south powder-polyester reactor down to the flaker head
   const feedMat = makeMat({ color: '#78350F', emissive: '#F59E0B', emissiveIntensity: 1.2 });
-  root.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
-    new THREE.Vector3(25.6, 2.0, -20.5), new THREE.Vector3(25.6, 2.0, -18.0), new THREE.Vector3(26.0, 3.1, -15.6), new THREE.Vector3(26.0, 2.55, -14.4)], false, 'catmullrom', 0.2), 32, 0.11, 8), feedMat));
+  const feed = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+    new THREE.Vector3(25.6, 2.0, -20.5), new THREE.Vector3(25.6, 2.0, -18.0), new THREE.Vector3(26.0, 3.1, -15.6), new THREE.Vector3(26.0, 2.55, -14.4)], false, 'catmullrom', 0.2), 32, 0.11, 8), feedMat);
+  root.add(feed);
 
   const top = (P) => new THREE.Vector3(P.x, LV.ridge + 1.5, P.z);
   return {
@@ -492,6 +494,9 @@ export function buildPlants(world, M, OB) {
       feedMat.emissiveIntensity = 0.4 + 1.2 * s.finishingRun;
       inner1.visible = s.plant1Cutaway > 0.01;
       inner2.visible = s.plant2Cutaway > 0.01;
+      // interior pieces outside the batched groups only show while their building is opened up
+      hero.group.visible = inner1.visible;
+      feed.visible = inner2.visible;
       const c1 = env1.setCutaway(s.plant1Cutaway);
       const c2 = env2.setCutaway(s.plant2Cutaway);
       return c1 || c2;

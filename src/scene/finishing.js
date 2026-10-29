@@ -156,6 +156,7 @@ export function buildFinishing(world, M) {
   return {
     anchors,
     update(t, s) {
+      root.visible = s.plant2Cutaway > 0.01;   // inside Plant 2: only seen while it is opened up
       const run = s.finishingRun;
       const travel = t * BELT_SPEED * run;
       beltTex.offset.y = travel / 1.2;

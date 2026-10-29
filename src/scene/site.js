@@ -34,7 +34,8 @@ varying vec2 vUv;
 void main(){
   float l = texture2D(tPlan, vUv).r;
   float line = smoothstep(0.92, 0.35, l);
-  float scan = exp(-pow((vUv.y - uScan) * 40.0, 2.0));
+  float sd = (vUv.y - uScan) * 40.0;
+  float scan = exp(-sd * sd);
   float a = clamp(line * 0.85 + scan * 0.35 * line + scan * 0.06, 0.0, 1.0);
   gl_FragColor = vec4(uColor * (1.0 + scan * 0.8), a * uOpacity);
 }`;

@@ -11,8 +11,10 @@ uniform float uRise;
 float riseScale(){
   if (aRise < 0.0) return 1.0;
   float s = clamp((uRise - aRise) / 0.26, 0.0, 1.0);
-  float c1 = 1.70158; float c3 = c1 + 1.0;
-  return s <= 0.0 ? 0.0 : 1.0 + c3*pow(s-1.0, 3.0) + c1*pow(s-1.0, 2.0);
+  // easeOutBack; written without pow() because pow() of a negative base is undefined in GLSL
+  // (SwiftShader returned |x|^y, so buildings shot up to ~5x height before settling)
+  float c1 = 1.70158; float c3 = c1 + 1.0; float u = s - 1.0;
+  return s <= 0.0 ? 0.0 : 1.0 + c3*u*u*u + c1*u*u;
 }`;
 
 // Scales geometry height by a per-vertex delay so buildings pop up out of the site plan.
@@ -23,7 +25,9 @@ export function patchRise(material) {
     shader.uniforms.uRise = riseUniform;
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', '#include <common>\n' + RISE_GLSL)
-      .replace('#include <begin_vertex>', '#include <begin_vertex>\n transformed.y *= riseScale();');
+      // geometry that has not started rising collapses to a degenerate point instead of lying flat on the
+      // site pad, where it would z-fight with the ground and flicker as the camera moves
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\n float rs = riseScale();\n transformed.y *= rs;\n if (rs < 0.02) transformed = vec3(0.0, -500.0, 0.0);');
   };
   material.customProgramCacheKey = () => 'rise';
   return material;

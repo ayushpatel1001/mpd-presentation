@@ -29,7 +29,7 @@ on the narrated word they illustrate (resolved from word timestamps).
 | 05 | QC & application labs | 1:24–1:41 | QA/QC building cut away floor by floor | QC lab, application lab, weathering/physical tests, central control room |
 | 06 | Blending & finished goods | 1:41–2:00 | blender house, FG tank farm, storage wide | 380 KL blending, ~1,045 KL FG, **total storage: 1,500 t packed + 1,645 KL bulk** |
 | 07 | Green utilities & EHS | 2:00–2:30 | thermic heaters, covered agro-waste fuel shed, 50 KLD ETP, rooftop solar wide | heaters, fuel shed, 2,200 TR cooling, N₂, 50 KLD ETP, 0.70 MWp solar |
-| 08 | Partnership & contact | 2:30–3:00 | isometric orbit | toll / full-service / dedicated cards, contact card |
+| 08 | Partnership | 2:30–3:00 | isometric orbit | toll / full-service / dedicated cards, closing logo card |
 
 ## Pipeline
 
