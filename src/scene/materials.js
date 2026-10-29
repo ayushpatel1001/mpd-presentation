@@ -82,15 +82,15 @@ export function createMaterials(tokens) {
     pad: std({ color: S.sitePad, roughness: 0.9, metalness: 0 }),
     road: std({ color: S.road, roughness: 0.85, metalness: 0 }),
     marking: std({ color: S.roadMarking, emissive: S.roadMarking, emissiveIntensity: 0.35, roughness: 0.6 }),
-    curb: std({ color: '#33475E', roughness: 0.8 }),
+    curb: std({ color: '#A8AFB8', roughness: 0.8 }),
     wall: std({ color: S.buildingWall, roughness: 0.78, metalness: 0.05 }),
     wallDark: std({ color: '#8C9DB0', roughness: 0.75, metalness: 0.1 }),
     roof: std({ color: '#3E5670', roughness: 0.6, metalness: 0.3 }),
     roofP1: std({ color: B.mpdDeepBlue, roughness: 0.5, metalness: 0.25 }),
     roofP2: std({ color: B.ecoGreen, roughness: 0.5, metalness: 0.25 }),
     glass: std({ color: '#0B2A44', emissive: B.greenfieldCyan, emissiveIntensity: 0.55, roughness: 0.2, metalness: 0.4 }),
-    concrete: std({ color: '#2B3D52', roughness: 0.9 }),
-    concreteLight: std({ color: '#55697F', roughness: 0.9 }),
+    concrete: std({ color: '#A3ABB4', roughness: 0.9 }),
+    concreteLight: std({ color: '#BCC3CB', roughness: 0.9 }),
     steel: std({ color: S.tankShell, roughness: 0.3, metalness: 0.75 }),
     steelDark: std({ color: '#5B6B7D', roughness: 0.45, metalness: 0.6 }),
     msPaint: std({ color: '#6E86A0', roughness: 0.55, metalness: 0.35 }),
@@ -100,7 +100,7 @@ export function createMaterials(tokens) {
     tree: std({ color: S.tree, roughness: 0.9, flatShading: true }),
     treeDark: std({ color: '#1F5E2A', roughness: 0.9, flatShading: true }),
     trunk: std({ color: '#4A3B2A', roughness: 0.9 }),
-    grass: std({ color: '#123323', roughness: 1.0 }),
+    grass: std({ color: '#6B8A3E', roughness: 1.0 }),
     biomass: std({ color: '#6B5A2E', roughness: 1.0, flatShading: true }),
     biomassGreen: std({ color: '#4E6B2C', roughness: 1.0, flatShading: true }),
     water: std({ color: '#0C3F52', emissive: '#0E7490', emissiveIntensity: 0.35, roughness: 0.12, metalness: 0.3 }),
@@ -108,12 +108,13 @@ export function createMaterials(tokens) {
     carDark: std({ color: '#334155', roughness: 0.35, metalness: 0.5 }),
     bag: std({ color: '#E8EEF5', roughness: 0.8 }),
     bagBlue: std({ color: B.mpdDeepBlue, roughness: 0.8 }),
+    wood: std({ color: '#A57F4F', roughness: 0.9 }),
     statusGreen: std({ color: '#16A34A', emissive: '#22C55E', emissiveIntensity: 2.2 }),
     statusCyan: std({ color: B.greenfieldCyan, emissive: B.greenfieldCyan, emissiveIntensity: 2.0 }),
     glowCyan: new THREE.MeshBasicMaterial({ color: new THREE.Color(B.greenfieldCyan).multiplyScalar(2.2), toneMapped: false }),
     flame: std({ color: '#7C2D12', emissive: F.thermicOil, emissiveIntensity: 2.4 }),
   };
-  for (const k of ['wall', 'wallDark', 'roof', 'roofP1', 'roofP2', 'glass', 'concrete', 'concreteLight', 'steel', 'steelDark', 'msPaint', 'pipe', 'yellow', 'tree', 'treeDark', 'trunk', 'biomass', 'biomassGreen', 'car', 'carDark', 'water', 'statusGreen', 'statusCyan', 'flame', 'bag', 'bagBlue'])
+  for (const k of ['wall', 'wallDark', 'roof', 'roofP1', 'roofP2', 'glass', 'concrete', 'concreteLight', 'steel', 'steelDark', 'msPaint', 'pipe', 'yellow', 'tree', 'treeDark', 'trunk', 'biomass', 'biomassGreen', 'car', 'carDark', 'water', 'statusGreen', 'statusCyan', 'flame', 'bag', 'bagBlue', 'wood'])
     patchRise(m[k]);
   return m;
 }

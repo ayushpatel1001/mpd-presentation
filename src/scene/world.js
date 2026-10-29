@@ -125,15 +125,15 @@ export function createWorld(canvas, tokens, { renderScale = 1600 / 1920 } = {}) 
   // sky dome
   const sky = new THREE.Mesh(new THREE.SphereGeometry(3000, 32, 16), new THREE.ShaderMaterial({
     vertexShader: SKY_VERT, fragmentShader: SKY_FRAG, side: THREE.BackSide, depthWrite: false, fog: false,
-    uniforms: { uTop: { value: new THREE.Color(C.skyTop) }, uHorizon: { value: new THREE.Color(C.skyHorizon) }, uGlow: { value: new THREE.Color('#1B5E8C') } },
+    uniforms: { uTop: { value: new THREE.Color(C.skyTop) }, uHorizon: { value: new THREE.Color(C.skyHorizon) }, uGlow: { value: new THREE.Color('#FFF3DC') } },
   }));
   sky.renderOrder = -10;
   sky.frustumCulled = false;
   scene.add(sky);
 
-  // lights: cool sky fill, warm key from the south-east, cool rim from the north-west
-  scene.add(new THREE.HemisphereLight(0xb4d4f5, 0x26303d, 1.7));
-  const sun = new THREE.DirectionalLight(0xfff1dc, 2.6);
+  // sunny day: bright sky fill with warm ground bounce, strong warm sun from the south-east, soft sky rim
+  scene.add(new THREE.HemisphereLight(0xcfe5ff, 0x9a8a68, 1.35));
+  const sun = new THREE.DirectionalLight(0xfff4e2, 3.1);
   const sunDir = new THREE.Vector3(0.612, 0.707, 0.354).normalize();
   sun.position.copy(sunDir).multiplyScalar(320);
   sun.target.position.set(0, 0, 0);
@@ -143,7 +143,7 @@ export function createWorld(canvas, tokens, { renderScale = 1600 / 1920 } = {}) 
   sun.shadow.bias = -0.0004;
   sun.shadow.normalBias = 0.35;
   scene.add(sun, sun.target);
-  const rim = new THREE.DirectionalLight(0x7fb4ff, 0.55);
+  const rim = new THREE.DirectionalLight(0xbcd8ff, 0.45);
   rim.position.set(-200, 160, -220);
   scene.add(rim);
 
@@ -154,13 +154,13 @@ export function createWorld(canvas, tokens, { renderScale = 1600 / 1920 } = {}) 
   const rtBloomA = new THREE.WebGLRenderTarget(bw, bh, { type: THREE.HalfFloatType, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
   const rtBloomB = rtBloomA.clone();
 
-  const bright = fsPass(BRIGHT_FRAG, { tColor: { value: rtScene.texture }, uTexel: { value: new THREE.Vector2(1 / W, 1 / H) }, uThreshold: { value: 0.85 } });
+  const bright = fsPass(BRIGHT_FRAG, { tColor: { value: rtScene.texture }, uTexel: { value: new THREE.Vector2(1 / W, 1 / H) }, uThreshold: { value: 2.4 } });
   const blur = fsPass(BLUR_FRAG, { tInput: { value: null }, uDir: { value: new THREE.Vector2() } });
   const comp = fsPass(COMPOSITE_FRAG, {
     tColor: { value: rtScene.texture }, tDepth: { value: rtScene.depthTexture }, tBloom: { value: rtBloomA.texture },
     uRes: { value: new THREE.Vector2(W, H) }, uNear: { value: camera.near }, uFar: { value: camera.far },
     uFocus: { value: 50 }, uAperture: { value: 0 }, uBloom: { value: 0.9 }, uExposure: { value: 1.0 },
-    uDim: { value: 0 }, uDimColor: { value: new THREE.Color('#050D18') }, uFade: { value: 0 }, uTime: { value: 0 }, uVignette: { value: 0.32 },
+    uDim: { value: 0 }, uDimColor: { value: new THREE.Color('#050D18') }, uFade: { value: 0 }, uTime: { value: 0 }, uVignette: { value: 0.16 },
   });
   const fxaa = fsPass(FXAAShader.fragmentShader, THREE.UniformsUtils.clone(FXAAShader.uniforms));
   fxaa.mat.vertexShader = FS_VERT;

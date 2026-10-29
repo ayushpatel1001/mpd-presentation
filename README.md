@@ -76,9 +76,18 @@ Hugging Face and the Whisper model host are not reachable from the build environ
 | QA & QC / control room (`src/scene/qaqc.js`) | PP-A-DR-QC-101/102/103 (GF/FF/SF plans), QC-201 elevations, QC-301 sections — grids A–D × 01–03, floors 0/+4.5/+9.0, terrace +13.5, stair cabin +16.6 with glass curtain wall, emergency stair, every room's partitions, benches and equipment |
 | Plant 1 (`src/scene/process.js`, `layout.js`) | PP-A-DR-PB1-102 (MEZZ-1 +3.40), PB1-104 (MEZZ-2 +7.50), PB1-301 sections — P1-R-101…110, P1-CLT-101…110, P1-REC-101…110, P1-SILO-101…110 at drawing positions, decks +3.40/+7.50/+11.50, reactor lugs +5.00, 3 t EOT crane +14.00, PEB gable + monitor roof (eaves +16.0) |
 | Plant 2 | same PEB envelope and deck levels as Plant 1 (no Plant 2 drawings yet) |
+| Warehouse-1 (`src/scene/warehouse.js`) | PP-A-WH-101-2525 **R0** (older issue, adopted for now): 30.0 × 61.35 m PEB, eaves +10.0, turbo vents + 300 mm polycarbonate strips per bay, 4 west truck docks, lean-phase powder transfer room, +4.0 platform with tanks, toilets. Storage as drawn: 7 double-faced mobile units (8 bays × 6 levels × 2 pallets per face, 500 kg) + static north row (10 bays × 6 levels × 2, 1 t) = **1,464 pallets ≈ 792 t**. The drawing is 5 m wider than the site plan, so the shed grows west towards road R2 |
+| Depalletiser → jumbo bag → crane (assumed) | WH-1 bay 05–06: pallet infeed, gantry layer depalletiser, bag-emptying station with dust collector, screw conveyor, FIBC filling station on load cells, new east shutter; bags go by forklift over road R3 to Plant 1's west shutter, where the 3 t EOT crane hoists them through the cut-out to a bag discharger on MEZZ-2 feeding P1-R-101 (36 s animated cycle). The top deck's hoisting opening is extended east so the rope can travel |
+| Warehouse-2 (assumed) | no drawing yet: PEB on the site-plan footprint, 6 mobile units × 10 bays × 6 levels × 2 pallets per face = **1,440 pallets ≈ 720 t** |
+| Rooftop solar (`src/scene/solar.js`, assumed) | 545 Wp modules flush on every PEB slope (between the lighting strips) and tilted 12° south on the flat roofs and canopies; trimmed to **1,285 modules = 700 kWp (0.70 MWp)**, inverter skid beside the substation |
 
 `node scripts/model_views.mjs` renders closed and cut-away views of these buildings to `build/preview/model_*.jpg`
-(`renderFrame(t, { cam, states, noHud })` accepts any camera and scene-state override).
+(`renderFrame(t, { cam, states, noHud })` accepts any camera and scene-state override). Extra states for model
+reviews (not keyed in the film yet): `wh1Cutaway`, `wh2Cutaway`, `modelLabels` (storage / solar / depalletiser /
+crane call-outs) and `solarPanels`.
+
+The scene is lit as a sunny day (bright sky, warm sun, light site pad and roads); colours live in
+`data/style_tokens.json` → `color.scene`.
 
 ## Content notes
 

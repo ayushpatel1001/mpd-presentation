@@ -15,13 +15,13 @@
       "solarYellow": "#F59E0B"
     },
     "scene": {
-      "skyTop": "#040B16",
-      "skyHorizon": "#0B2A44",
-      "fog": "#071A2C",
-      "ground": "#0A1522",
-      "groundGrid": "#123A5C",
-      "sitePad": "#1A2A3D",
-      "road": "#0E1826",
+      "skyTop": "#3F8FD8",
+      "skyHorizon": "#D6E9F7",
+      "fog": "#CFE2F2",
+      "ground": "#B3B58A",
+      "groundGrid": "#A3A67C",
+      "sitePad": "#D3D5CF",
+      "road": "#59616B",
       "roadMarking": "#F59E0B",
       "buildingWall": "#D9E2EC",
       "buildingRoof": "#00529B",
@@ -29,7 +29,7 @@
       "tankShell": "#C3CED9",
       "steel": "#94A3B8",
       "tree": "#2E7D32",
-      "blueprint": "#38BDF8"
+      "blueprint": "#0B5CAD"
     },
     "flow": {
       "thermicOil": "#F59E0B",

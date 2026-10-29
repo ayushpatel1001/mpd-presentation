@@ -10,8 +10,6 @@ export const BOUNDARY = [
 
 // x, z = centre; w = size along X (east), d = along Z (south); h = height
 export const BUILDINGS = [
-  { id: 'wh1', label: 'Warehouse-1', no: '11', x: -23.7, z: -17.6, w: 25.23, d: 61.58, h: 11, roof: 'roof', style: 'shed' },
-  { id: 'wh2', label: 'Warehouse-2', no: '19', x: -25.2, z: 35.8, w: 39.5, d: 23.5, h: 11, roof: 'roof', style: 'shed' },
   { id: 'elec', label: 'Electrical substation', no: '16', x: 48.6, z: -22.6, w: 6.55, d: 11.5, h: 5.5, roof: 'roof', style: 'plain' },
   { id: 'canteen', label: 'Canteen', no: '24', x: -70.8, z: -49.8, w: 16.5, d: 8.0, h: 5, roof: 'roof', style: 'office' },
   { id: 'admin', label: 'Admin', no: '04', x: 37.7, z: -62.4, w: 12.23, d: 8.73, h: 8, roof: 'roofP1', style: 'office' },
@@ -20,6 +18,15 @@ export const BUILDINGS = [
   { id: 'locker', label: 'Locker room', no: '28', x: -76.0, z: -58.5, w: 4.35, d: 10.59, h: 3.6, roof: 'roof', style: 'plain' },
   { id: 'filling', label: 'Filling station', no: '21', x: -60.5, z: 3.6, w: 9.5, d: 10.0, h: 6, roof: 'roof', style: 'canopy' },
 ];
+
+// Warehouse-1 (11) from PP-A-WH-101-2525 R0 (older issue, adopted for now): grids A→E 30.0 c/c (30.23 o/o),
+// 01→11 61.35 c/c (61.58 o/o). The drawing is 5 m wider than the site plan's 25.23 m, so the shed keeps its
+// east wall on the plan line and grows west towards road R2 (docks stop 0.1 m short of the road edge).
+export const WAREHOUSE1 = { id: 'wh1', x: -26.2, z: -17.6, w: 30.23, d: 61.58 };
+// Warehouse-2 (19): no drawing yet — assumed PEB shed on the site-plan footprint, ridge running east–west
+// (w = span along Z, d = length along X).
+export const WAREHOUSE2 = { id: 'wh2', x: -25.2, z: 35.8, w: 23.5, d: 39.5 };
+export const WAREHOUSE_KEEPOUT = [{ x: -32.3, z: -17.6, w: 42.6, d: 62.4 }, { x: -25.2, z: 35.8, w: 40.5, d: 25.5 }];
 
 // Plant 1 from PP-A-DR-PB1-102/104/301 (R0): grids 04→01 across (15.23 c/c), A→H along (33.0 c/c)
 export const PLANT1 = { id: 'p1', x: 6.1, z: -17.6, w: 15.46, d: 33.23, h: 17.6 };   // 08: eaves +16.0, ridge ≈ +17.6

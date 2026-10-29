@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { Batcher, withRise, patchRise, riseDepthMaterial } from './materials.js';
 import { BOUNDARY, BUILDINGS, ROADS, PESO, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER, FUTURE, insideBoundary,
-  PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, QAQC_KEEPOUT } from './layout.js';
+  PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, QAQC_KEEPOUT, WAREHOUSE_KEEPOUT } from './layout.js';
 import { rng } from '../lib/util.js';
 
 const SITE_C = new THREE.Vector2(-3, 2);
@@ -35,8 +35,8 @@ void main(){
   float l = texture2D(tPlan, vUv).r;
   float line = smoothstep(0.92, 0.35, l);
   float scan = exp(-pow((vUv.y - uScan) * 40.0, 2.0));
-  vec3 c = uColor * (line * 1.6 + scan * 0.6 * line + scan * 0.08);
-  gl_FragColor = vec4(c * uOpacity, 1.0);
+  float a = clamp(line * 0.85 + scan * 0.35 * line + scan * 0.06, 0.0, 1.0);
+  gl_FragColor = vec4(uColor * (1.0 + scan * 0.8), a * uOpacity);
 }`;
 
 export function buildSite(world, M, tokens, planTexture) {
@@ -70,7 +70,7 @@ export function buildSite(world, M, tokens, planTexture) {
   // ---- blueprint overlay (site plan drawing)
   const blueprint = new THREE.Mesh(new THREE.PlaneGeometry(213.74, 205.67), new THREE.ShaderMaterial({
     vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
-    fragmentShader: BLUEPRINT_FRAG, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    fragmentShader: BLUEPRINT_FRAG, transparent: true, depthWrite: false,
     uniforms: { tPlan: { value: planTexture }, uOpacity: { value: 1 }, uColor: { value: new THREE.Color(tokens.color.scene.blueprint) }, uScan: { value: 0 } },
   }));
   blueprint.rotation.x = -Math.PI / 2;
@@ -134,7 +134,7 @@ export function buildSite(world, M, tokens, planTexture) {
 
   // ---- trees: green belt along the boundary + clusters
   const keepOut = [
-    ...BUILDINGS, QAQC_KEEPOUT, PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, FUTURE,
+    ...BUILDINGS, ...WAREHOUSE_KEEPOUT, QAQC_KEEPOUT, PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, FUTURE,
     { x: PESO.x, z: PESO.z, w: PESO.w, d: PESO.d }, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER,
   ];
   const roadBoxes = ROADS.map(([x0, z0, x1, z1, w]) => ({ x: (x0 + x1) / 2, z: (z0 + z1) / 2, w: Math.abs(x1 - x0) + w, d: Math.abs(z1 - z0) + w }));

@@ -9,6 +9,9 @@ import { buildTanks } from './scene/tanks.js';
 import { buildUtilities } from './scene/utilities.js';
 import { buildFlows } from './scene/flows.js';
 import { buildQaqc } from './scene/qaqc.js';
+import { buildWarehouses } from './scene/warehouse.js';
+import { buildSolar, siteRoofs, MODULE } from './scene/solar.js';
+import { drawModelLabels } from './hud/modelLabels.js';
 import { createRig } from './scene/camera.js';
 import { createHud } from './hud/hud.js';
 import { keyframes } from './lib/util.js';
@@ -54,10 +57,31 @@ async function boot() {
   const utilities = buildUtilities(world, M, B);
   const flows = buildFlows(world, M, B, tokens);
   const qaqc = buildQaqc(world, M);
+  const warehouses = buildWarehouses(world, M);
+  const solar = buildSolar(world, M, siteRoofs({ ...plants.envs, ...warehouses.envs }), B);
+  window.__model = { solar: { modules: solar.count, kwp: solar.kwp, candidates: solar.available, perRoof: solar.perRoof }, storage: warehouses.storage };
   const statics = new THREE.Group();
   world.scene.add(statics);
   B.build(statics);
-  const anchors = { ...plants.anchors, ...finishing.anchors, ...tanks.anchors, ...utilities.anchors, ...qaqc.anchors };
+  const anchors = { ...plants.anchors, ...finishing.anchors, ...tanks.anchors, ...utilities.anchors, ...qaqc.anchors, ...warehouses.anchors };
+  anchors.solarWh1 = anchors.wh1.clone().add(new THREE.Vector3(-7, 0, -12));
+  const st = warehouses.storage, fmt = (n) => n.toLocaleString('en-IN');
+  const labels = [];
+  labels.push(
+    { anchor: 'wh1', offset: [70, -170], title: 'WAREHOUSE-1 · MOBILE COMPACT RACKING',
+      lines: [`${fmt(st.wh1.pallets)} pallet positions ≈ ${fmt(st.wh1.tonnes)} t`, `7 mobile units: ${fmt(st.wh1.byKg[500])} × 500 kg · static row: ${fmt(st.wh1.byKg[1000])} × 1 t`] },
+    { anchor: 'wh2', offset: [70, -150], title: 'WAREHOUSE-2 · MOBILE COMPACT RACKING (ASSUMED)',
+      lines: [`${fmt(st.wh2.pallets)} pallet positions ≈ ${fmt(st.wh2.tonnes)} t`, `6 mobile units × 10 bays × 6 levels · 500 kg`] },
+    { anchor: 'solarWh1', offset: [-80, -150], color: '#F59E0B', title: `${(solar.kwp / 1000).toFixed(2)} MWp ROOFTOP SOLAR`,
+      lines: [`${fmt(solar.count)} × ${MODULE.wp} Wp modules on every roof`] },
+    { anchor: 'depalletiser', offset: [-70, -150], title: 'DEPALLETISER → JUMBO-BAG FILLING',
+      lines: ['25 kg bags → 1 t FIBC for fast reactor charging'] },
+    { anchor: 'p1Hoist', offset: [70, -120], title: 'EOT CRANE · JUMBO BAG TO REACTOR',
+      lines: ['hoist through the cut-out → discharger on MEZZ-2 → P1-R-101'] },
+  );
+  // the same storage call-outs anchored on the racks for cut-away views
+  for (const k of ['wh1', 'wh2']) labels.push({ ...labels.find((l) => l.anchor === k), anchor: `${k}Racks` });
+  const hudCtx = document.getElementById('hud').getContext('2d');
   const rig = createRig(timeline.camera);
   const hud = createHud(document.getElementById('hud'), tokens, timeline, { logo });
   const states = timeline.sceneStates;
@@ -76,6 +100,8 @@ async function boot() {
     const c1 = plants.update(t, S);
     const c2 = tanks.update(t, S);
     const c3 = qaqc.update(t, S.qaCutaway ?? 0);
+    const c4 = warehouses.update(t, S);
+    solar.update(t, S);
 
     // opts.cam overrides the timeline camera for model previews: { target, radius, elev, azim, fov, aperture }
     const cam = opts.cam ? orbitCam(opts.cam) : rig(t);
@@ -85,10 +111,10 @@ async function boot() {
     camera.updateProjectionMatrix();
     camera.lookAt(cam.target);
     camera.updateMatrixWorld();
-    world.scene.fog.density = 0.6 / (cam.radius + 150);
+    world.scene.fog.density = 0.45 / (cam.radius + 150);
 
     const rising = S.buildingsRise > 0.0005 && S.buildingsRise < 0.9995;
-    if (!shadowsReady || rising || c1 || c2 || c3 || opts.states) world.renderer.shadowMap.needsUpdate = true;
+    if (!shadowsReady || rising || c1 || c2 || c3 || c4 || opts.states) world.renderer.shadowMap.needsUpdate = true;
     shadowsReady = true;
 
     if (!opts.hudOnly) world.render({
@@ -103,6 +129,7 @@ async function boot() {
     }
     hud.setHideText(!!opts.hideText);
     const manifest = opts.noHud ? hud.clear() : hud.draw(t, { anchors: screen, fade: S.fadeToBlack });
+    if ((S.modelLabels ?? 0) > 0.5) drawModelLabels(hudCtx, labels.filter((l) => !opts.labels || opts.labels.includes(l.anchor)), screen, tokens);
     return { manifest, shot: cam.shot };
   };
   window.__debug = { world, hud, THREE };

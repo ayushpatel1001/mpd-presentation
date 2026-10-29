@@ -5,8 +5,10 @@
 // charging silos above each reactor, vapour columns to horizontal condensers at the top deck and a
 // 3 t EOT crane on runway girders at +14.00. Plant 2 shares the envelope and deck levels.
 import * as THREE from 'three';
-import { Batcher, patchRise, makeMat } from './materials.js';
+import { Batcher, makeMat } from './materials.js';
+import { pebEnvelope } from './peb.js';
 import { riseDelay } from './site.js';
+import { forklift, fibc, pallet, placeAt, tube, polyline } from './props.js';
 import { PLANT1, PLANT2, P1_REACTORS, P2_REACTORS, P1_CLT, P1_REC, P1_CORES, PLANT_LEVELS as LV } from './layout.js';
 import { deg, hash } from '../lib/util.js';
 
@@ -28,31 +30,6 @@ function reactorProfile(R, hs, head) {
 }
 
 // ---------------------------------------------------------------------------- textures
-function ribTexture(base, rib, vertical) {
-  const c = document.createElement('canvas');
-  c.width = c.height = 32;
-  const g = c.getContext('2d');
-  g.fillStyle = base; g.fillRect(0, 0, 32, 32);
-  g.fillStyle = rib;
-  if (vertical) { g.fillRect(0, 0, 5, 32); g.fillRect(16, 0, 2, 32); } else { g.fillRect(0, 0, 32, 5); g.fillRect(0, 16, 32, 2); }
-  const t = new THREE.CanvasTexture(c);
-  t.wrapS = t.wrapT = THREE.RepeatWrapping;
-  t.colorSpace = THREE.SRGBColorSpace;
-  return t;
-}
-
-// Box whose UVs are in metres / pitch so ribbed textures keep a constant rib spacing on any size.
-function ribbedBox(w, h, d, pitch = 0.8) {
-  const g = new THREE.BoxGeometry(w, h, d);
-  const uv = g.attributes.uv;
-  const scale = [[d, h], [d, h], [w, d], [w, d], [w, h], [w, h]];
-  for (let f = 0; f < 6; f++) for (let k = 0; k < 4; k++) {
-    const i = f * 4 + k;
-    uv.setXY(i, uv.getX(i) * scale[f][0] / pitch, uv.getY(i) * scale[f][1] / pitch);
-  }
-  return g;
-}
-
 function stripeTexture() {
   const c = document.createElement('canvas');
   c.width = 4; c.height = 64;
@@ -67,159 +44,13 @@ function stripeTexture() {
 }
 
 // ---------------------------------------------------------------------------- PEB envelope
-// Local frame for a plant: x across (west→east, 0 at the west grid line), y along (south→north, 0 at the south grid line).
-function frameOf(P) {
-  const W = P.w - 0.23, D = P.d - 0.23;
-  const X0 = P.x - W / 2, Z0 = P.z + D / 2;
-  return {
-    W, D,
-    box(B, mat, x0, y0, x1, y1, h0, h1, rise, opts) {
-      const xa = Math.min(x0, x1), xb = Math.max(x0, x1), ya = Math.min(y0, y1), yb = Math.max(y0, y1);
-      B.box(mat, X0 + (xa + xb) / 2, (h0 + h1) / 2, Z0 - (ya + yb) / 2, xb - xa, h1 - h0, yb - ya, rise, opts);
-    },
-    mesh(B, geo, mat, x, h, y, rot = [0, 0, 0], rise = -1, opts) { B.mesh(geo, mat, [X0 + x, h, Z0 - y], rot, [1, 1, 1], rise, opts); },
-    world: (x, h, y) => new THREE.Vector3(X0 + x, h, Z0 - y),
-    local: (x, z) => [x - X0, Z0 - z],
-  };
-}
-
-function plantEnvelope(root, M, P, opts) {
-  const F = frameOf(P);
-  const { W, D } = F;
-  const rise = riseDelay(P.x, P.z);
-  const half = W / 2, pitch = Math.atan2(LV.ridge - LV.eave, half);
-  const mk = (m) => patchRise(m);
-  const ribV = ribTexture('#DCE3EA', '#B9C4D0', true);
-  const ribR = ribTexture(opts.roofColor, opts.roofRib, false);
-  const mats = {
-    base: mk(makeMat({ color: '#C9D2DC', roughness: 0.9 })),
-    clad: mk(makeMat({ color: '#FFFFFF', map: ribV, roughness: 0.6 })),
-    roof: mk(makeMat({ color: '#FFFFFF', map: ribR, roughness: 0.5, metalness: 0.3 })),
-    frame: mk(makeMat({ color: '#5B6B7D', roughness: 0.5, metalness: 0.5 })),
-    trim: mk(makeMat({ color: '#94A3B8', roughness: 0.5, metalness: 0.4 })),
-    glass: mk(makeMat({ color: '#4C87B2', emissive: '#0E3A5A', emissiveIntensity: 0.45, roughness: 0.15, metalness: 0.3 })),
-    louver: mk(makeMat({ color: '#334155', roughness: 0.6, metalness: 0.3 })),
-    door: mk(makeMat({ color: '#64748B', roughness: 0.5, metalness: 0.5 })),
-    stripe: mk(makeMat({ color: opts.stripe, emissive: opts.stripe, emissiveIntensity: 1.3 })),
-    stair: mk(makeMat({ color: '#94A3B8', roughness: 0.6, metalness: 0.4 })),
-  };
-  const SB = new Batcher();
-  const t = 0.23;
-  // masonry base up to the first deck, ribbed cladding above, trim band between them
-  for (const [x0, y0, x1, y1] of [[-t / 2, -t / 2, W + t / 2, t / 2], [-t / 2, D - t / 2, W + t / 2, D + t / 2], [-t / 2, -t / 2, t / 2, D + t / 2], [W - t / 2, -t / 2, W + t / 2, D + t / 2]]) {
-    F.box(SB, mats.base, x0, y0, x1, y1, 0, LV.mezz1, rise);
-    const w = x1 - x0, d = y1 - y0, h = LV.eave - LV.mezz1;
-    F.mesh(SB, ribbedBox(w, h, d), mats.clad, (x0 + x1) / 2, LV.mezz1 + h / 2, (y0 + y1) / 2, [0, 0, 0], rise);
-    F.box(SB, mats.trim, x0 - 0.05, y0 - 0.05, x1 + 0.05, y1 + 0.05, LV.mezz1 - 0.08, LV.mezz1 + 0.08, rise, { cast: false });
-  }
-  // brand stripe under the eaves on the long walls
-  for (const x of [-t / 2 - 0.04, W + t / 2]) F.box(SB, mats.stripe, x, 0, x + 0.04, D, LV.eave - 0.9, LV.eave - 0.45, rise, { cast: false });
-  // gable triangles at both ends
-  const tri = new THREE.Shape([new THREE.Vector2(-half - t / 2, 0), new THREE.Vector2(half + t / 2, 0), new THREE.Vector2(0, LV.ridge - LV.eave)]);
-  const gable = new THREE.ExtrudeGeometry(tri, { depth: t, bevelEnabled: false });
-  gable.translate(0, 0, -t / 2);
-  for (const y of [0, D]) F.mesh(SB, gable, mats.base, half, LV.eave, y, [0, 0, 0], rise);
-  // roof: two ribbed slopes with overhang, monitor ventilator on the ridge, M.S. gutters
-  const slope = Math.hypot(half, LV.ridge - LV.eave) + 0.55;
-  for (const s of [-1, 1]) {
-    const cx = half + s * (half / 2 - 0.25), cy = (LV.eave + LV.ridge) / 2 + 0.12;
-    F.mesh(SB, ribbedBox(slope, 0.14, D + 0.9, 0.6), mats.roof, cx, cy, D / 2, [0, 0, -s * pitch], rise);
-    F.box(SB, mats.trim, s < 0 ? -0.75 : W + 0.45, -0.45, s < 0 ? -0.45 : W + 0.75, D + 0.45, LV.eave - 0.25, LV.eave + 0.05, rise);
-  }
-  const mL = D * 0.82;
-  F.box(SB, mats.louver, half - 0.85, D / 2 - mL / 2, half + 0.85, D / 2 + mL / 2, LV.ridge - 0.05, LV.ridge + 0.65, rise);
-  for (const s of [-1, 1]) F.mesh(SB, ribbedBox(1.4, 0.1, mL + 0.3, 0.6), mats.roof, half + s * 0.62, LV.ridge + 0.82, D / 2, [0, 0, -s * 0.3], rise);
-  // portal frames: columns on both long walls + rafters under the roof, downpipes outside
-  const frames = opts.frameLines;
-  for (const y of frames) {
-    for (const x of [0.25, W - 0.25]) F.box(SB, mats.frame, x - 0.2, y - 0.15, x + 0.2, y + 0.15, 0, LV.eave, rise);
-    for (const s of [-1, 1]) {
-      const geo = new THREE.BoxGeometry(half / Math.cos(pitch), 0.55, 0.22);
-      F.mesh(SB, geo, mats.frame, half + s * half / 2, (LV.eave + LV.ridge) / 2 - 0.45, y, [0, 0, -s * pitch], rise);
-    }
-    for (const x of [-t / 2 - 0.05, W + t / 2 - 0.02]) F.box(SB, mats.trim, x, y - 0.06, x + 0.07, y + 0.06, 0.2, LV.eave - 0.3, rise, { cast: false });
-  }
-  // windows and vents per bay on the long walls (section 1-1): W at +1.0 / +5.3 / +11.9, V at +3.8 / +9.7
-  const win = (x, y0w, y1w, h0, h1, mat) => {
-    const out = x < W / 2 ? -1 : 1, xf = x < W / 2 ? -t / 2 : W + t / 2;
-    F.box(SB, mats.trim, xf, y0w - 0.07, xf + out * 0.05, y1w + 0.07, h0 - 0.07, h1 + 0.07, rise, { cast: false });
-    F.box(SB, mat, xf, y0w, xf + out * 0.08, y1w, h0, h1, rise, { cast: false });
-    if (mat === mats.glass) F.box(SB, mats.trim, xf, (y0w + y1w) / 2 - 0.025, xf + out * 0.1, (y0w + y1w) / 2 + 0.025, h0, h1, rise, { cast: false });
-  };
-  for (let i = 0; i < frames.length - 1; i++) {
-    const yc = (frames[i] + frames[i + 1]) / 2;
-    for (const x of [0, W]) {
-      for (const [h0, h1] of [[1.0, 2.5], [5.3, 6.8], [11.9, 13.4]]) win(x, yc - 0.75, yc + 0.75, h0, h1, mats.glass);
-      for (const [h0, h1] of [[3.8, 4.4], [9.7, 10.3]]) win(x, yc - 0.6, yc + 0.6, h0, h1, mats.louver);
-    }
-  }
-  // end walls: D1 double doors (1500×2500), gable windows and vents, optional rolling shutters
-  for (const y of [0, D]) {
-    const out = y === 0 ? -1 : 1, yf = y === 0 ? -t / 2 : D + t / 2;
-    F.box(SB, mats.door, half - 0.8, yf, half + 0.8, yf + out * 0.06, 0, 2.5, rise, { cast: false });
-    F.box(SB, mats.trim, half - 0.02, yf, half + 0.02, yf + out * 0.08, 0, 2.5, rise, { cast: false });
-    for (const xc of [half - 2.6, half + 2.6]) {
-      F.box(SB, mats.glass, xc - 0.75, yf, xc + 0.75, yf + out * 0.08, 11.9, 13.4, rise, { cast: false });
-      F.box(SB, mats.louver, xc - 0.6, yf, xc + 0.6, yf + out * 0.08, 9.7, 10.3, rise, { cast: false });
-    }
-  }
-  for (const rs of opts.shutters || []) {
-    const [x0, y0, x1, y1, h0, h1] = rs;
-    F.box(SB, mats.door, x0, y0, x1, y1, h0, h1, rise, { cast: false });
-    for (let h = h0 + 0.3; h < h1; h += 0.3) F.box(SB, mats.trim, x0 - 0.01, y0 - 0.01, x1 + 0.01, y1 + 0.01, h, h + 0.04, rise, { cast: false });
-  }
-  // stair towers and goods lift fade with the envelope so interior shots stay clean
-  for (const [x0, y0, x1, y1] of opts.stairs || []) {
-    const nW = x1 - x0;
-    for (const [h0, h1] of [[0, LV.mezz1], [LV.mezz1, LV.mezz2], [LV.mezz2, LV.top]]) {
-      const h2 = (h1 - h0) / 2, run = y1 - y0 - 1.2;
-      const len = Math.hypot(run, h2), ang = Math.atan2(h2, run);
-      F.mesh(SB, new THREE.BoxGeometry(nW / 2 - 0.1, 0.12, len), mats.stair, x0 + nW / 4, h0 + h2 / 2, y0 + run / 2, [ang, 0, 0], rise);
-      F.box(SB, mats.stair, x0, y1 - 1.2, x1, y1, h0 + h2 - 0.1, h0 + h2, rise);
-      F.mesh(SB, new THREE.BoxGeometry(nW / 2 - 0.1, 0.12, len), mats.stair, x0 + 3 * nW / 4, h0 + h2 * 1.5, y0 + run / 2, [-ang, 0, 0], rise);
-    }
-    for (const [x, y] of [[x0, y0], [x1, y0], [x0, y1], [x1, y1]]) F.box(SB, mats.frame, x - 0.08, y - 0.08, x + 0.08, y + 0.08, 0, LV.top + 1.1, rise);
-  }
-  if (opts.lift) {
-    const [x0, y0, x1, y1] = opts.lift;
-    F.box(SB, mats.base, x0, y0, x1, y1, 0, LV.top + 3.0, rise);
-    F.box(SB, mats.door, x0 + 0.6, y1, x1 - 0.6, y1 + 0.05, 0.2, 2.6, rise, { cast: false });
-  }
-  const group = new THREE.Group();
-  root.add(group);
-  SB.build(group);
-  // holographic outline for cutaway shots: wall box + gable/ridge lines
-  const lineMat = new THREE.LineBasicMaterial({ color: new THREE.Color('#38BDF8').multiplyScalar(2.5), transparent: true, opacity: 0, depthWrite: false, toneMapped: false });
-  const outline = new THREE.Group();
-  const eb = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(W, LV.eave, D)), lineMat);
-  eb.position.copy(F.world(W / 2, LV.eave / 2, D / 2));
-  outline.add(eb);
-  const p = [F.world(0, LV.eave, 0), F.world(half, LV.ridge, 0), F.world(W, LV.eave, 0), F.world(0, LV.eave, D), F.world(half, LV.ridge, D), F.world(W, LV.eave, D)];
-  outline.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints([p[0], p[1], p[1], p[2], p[3], p[4], p[4], p[5], p[1], p[4]]), lineMat));
-  root.add(outline);
-
-  const list = Object.values(mats);
-  let transparentNow = false, castNow = true;
-  return {
-    F,
-    // returns true when shadow casting changed (shadow map must be refreshed)
-    setCutaway(c) {
-      const op = 1 - 0.94 * c;
-      const transparent = op < 0.999;
-      for (const m of list) {
-        m.opacity = op;
-        if (transparent !== transparentNow) { m.transparent = transparent; m.depthWrite = !transparent; m.needsUpdate = true; }
-      }
-      transparentNow = transparent;
-      group.visible = c < 0.985;
-      lineMat.opacity = 0.85 * Math.sin(Math.min(1, c) * Math.PI / 2);
-      outline.visible = c > 0.01;
-      const cast = c < 0.5;
-      if (cast !== castNow) { group.traverse((o) => { if (o.isMesh) o.castShadow = cast; }); castNow = cast; return true; }
-      return false;
-    },
-  };
-}
+// Section 1-1: masonry to +3.40, windows at +1.0 / +5.3 / +11.9, vents at +3.8 / +9.7, monitor on the ridge.
+const PLANT_ENV = {
+  eave: LV.eave, ridge: LV.ridge, baseH: LV.mezz1, monitor: true,
+  windowRows: [[1.0, 2.5], [5.3, 6.8], [11.9, 13.4]], ventRows: [[3.8, 4.4], [9.7, 10.3]],
+  gableRows: [[11.9, 13.4, 'glass'], [9.7, 10.3, 'louver']],
+  stairLevels: [0, LV.mezz1, LV.mezz2, LV.top], liftTop: LV.top + 3.0,
+};
 
 // ---------------------------------------------------------------------------- decks + equipment
 // Grating deck: rectangle with circular openings around vessels and rectangular openings (stairs, cutout).
@@ -305,19 +136,73 @@ function silo(B, M, s, reactorTop, rx, rz) {
   B.mesh(chute, M.pipe, [p0.x, p0.y, p0.z], [e.x, e.y, e.z]);
 }
 
-function crane(root, M, F, W, D, yAt) {
+// Jumbo bag (FIBC): woven body with four lifting loops; origin at the bottom centre.
+export function jumboBag(mat, loopMat, size = 1.0, h = 1.15) {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.BoxGeometry(size, h, size, 1, 1, 1), mat);
+  body.position.y = h / 2;
+  body.castShadow = true;
+  g.add(body);
+  const top = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.22, 0.18, 10), mat);
+  top.position.y = h + 0.09;
+  g.add(top);
+  for (const [sx, sz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {
+    const loop = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.025, 4, 10, Math.PI), loopMat);
+    loop.position.set(sx * (size / 2 - 0.08), h, sz * (size / 2 - 0.08));
+    loop.rotation.y = Math.PI / 4 * (sx * sz);
+    g.add(loop);
+  }
+  g.userData.body = body;
+  return g;
+}
+
+// 3 t EOT crane on runway girders at +14.00. With `cycle`, the hoist carries jumbo bags from the floor under
+// the hoisting cut-out up through the decks and across to the bag discharger (36 s loop, a pure function of t).
+function crane(root, M, F, W, D, yAt, cycle) {
   const g = new THREE.Group();
   const yellow = makeMat({ color: '#F59E0B', roughness: 0.5, metalness: 0.3 });
   const dark = makeMat({ color: '#1E293B', roughness: 0.6 });
-  const add = (geo, mat, x, h, y) => { const m = new THREE.Mesh(geo, mat); m.position.copy(F.world(x, h, y)); m.castShadow = true; g.add(m); return m; };
+  const add = (geo, mat, x, h, y, parent = g) => { const m = new THREE.Mesh(geo, mat); m.position.copy(F.world(x, h, y)); m.castShadow = true; parent.add(m); return m; };
   for (const x of [0.75, W - 0.75]) add(new THREE.BoxGeometry(0.35, 0.65, D - 0.6), M.steelDark, x, LV.crane - 0.32, D / 2);   // runway girders
   add(new THREE.BoxGeometry(W - 1.2, 0.75, 0.6), yellow, W / 2, LV.crane + 0.4, yAt);                                      // bridge girder
   for (const x of [0.75, W - 0.75]) add(new THREE.BoxGeometry(0.6, 0.45, 2.2), yellow, x, LV.crane + 0.2, yAt);          // end trucks
-  add(new THREE.BoxGeometry(1.4, 0.6, 1.1), yellow, W * 0.38, LV.crane + 0.95, yAt);                                       // hoist trolley
-  add(new THREE.CylinderGeometry(0.02, 0.02, 3.0, 4), dark, W * 0.38, LV.crane - 1.1, yAt);
-  add(new THREE.BoxGeometry(0.35, 0.5, 0.25), yellow, W * 0.38, LV.crane - 2.7, yAt);                                      // hook block
+  const trolley = add(new THREE.BoxGeometry(1.4, 0.6, 1.1), yellow, W * 0.38, LV.crane + 0.95, yAt);                       // hoist trolley
+  const rope = add(new THREE.CylinderGeometry(0.025, 0.025, 1, 4), dark, W * 0.38, LV.crane - 1.1, yAt);
+  const hook = add(new THREE.BoxGeometry(0.35, 0.5, 0.25), yellow, W * 0.38, LV.crane - 2.7, yAt);                         // hook block
   root.add(g);
-  return g;
+  const ropeTop = LV.crane + 0.65;
+  const place = (x, hookH) => {
+    trolley.position.copy(F.world(x, LV.crane + 0.95, yAt));
+    hook.position.copy(F.world(x, hookH, yAt));
+    rope.position.copy(F.world(x, (ropeTop + hookH) / 2, yAt));
+    rope.scale.y = ropeTop - hookH;
+  };
+  place(W * 0.38, LV.crane - 2.7);
+  if (!cycle) return { update() {} };
+
+  const bag = jumboBag(makeMat({ color: '#E8EEF5', roughness: 0.9 }), makeMat({ color: '#F59E0B', roughness: 0.7 }));
+  g.add(bag);
+  const slings = add(new THREE.ConeGeometry(0.62, 0.55, 4, 1, true), dark, 0, 0, yAt);
+  slings.rotation.y = Math.PI / 4;
+  const { x0, x1, floor, top, rest, period } = cycle;
+  const ease = (u) => u * u * (3 - 2 * u);
+  const seg = (u, a, b) => ease(Math.min(1, Math.max(0, (u - a) / (b - a))));
+  return {
+    update(t) {
+      const u = ((t % period) + period) % period;
+      const lift = seg(u, 2.5, 10) - seg(u, 33, 35.5);               // floor → transfer height, later back down empty
+      const lower = seg(u, 14, 16.5) - seg(u, 27, 29);               // onto the discharger and back up
+      const x = x0 + (x1 - x0) * (seg(u, 10, 14) - seg(u, 29, 33));
+      const empty = seg(u, 17, 27);                                    // bag sags as it discharges (bottom held by the spout)
+      const bottom = floor + (top - floor) * lift - (top - rest) * lower;
+      const sy = 1 - 0.7 * empty;
+      const loopsH = bottom + 1.15 * sy + 0.15, hookH = loopsH + 0.8;
+      place(x, hookH);
+      bag.position.copy(F.world(x, bottom, yAt));
+      bag.scale.set(1 + 0.06 * empty, sy, 1 + 0.06 * empty);
+      slings.position.copy(F.world(x, (loopsH + hookH - 0.25) / 2, yAt));
+    },
+  };
 }
 
 function wedgePlanes(cx, cz, centerAz, width) {
@@ -492,17 +377,17 @@ function heroReactor(root, M, r) {
 }
 
 // ---------------------------------------------------------------------------- assembly
-export function buildPlants(world, M) {
+export function buildPlants(world, M, OB) {
   const root = new THREE.Group();
   world.scene.add(root);
   const deckMat = makeMat({ color: '#4A5F78', roughness: 0.7, metalness: 0.4, transparent: true, opacity: 0.5, depthWrite: false, side: THREE.DoubleSide });
   const KM = { ...M, deckMat };
 
   // ---- Plant 1 (drawings PB1-102/104/301)
-  const env1 = plantEnvelope(root, M, PLANT1, {
-    roofColor: '#00529B', roofRib: '#003F7A', stripe: '#00A3E0', frameLines: [0, 4, 9, 14, 19, 24, 29, 33],
+  const env1 = pebEnvelope(root, M, PLANT1, {
+    ...PLANT_ENV, roofColor: '#00529B', roofRib: '#003F7A', stripe: '#00A3E0', frameLines: [0, 4, 9, 14, 19, 24, 29, 33],
     stairs: [P1_CORES.stairSW, P1_CORES.stairNE], lift: P1_CORES.lift,
-    shutters: [[-0.12 - 0.06, 29.6, -0.12, 32.6, 0, 4.0]],                     // RS 3000×4000, west wall, G–H bay
+    shutters: [{ side: 'W', y0: 29.6, y1: 32.6, h: 4.0 }],                    // RS 3000×4000, west wall, G–H bay
   });
   const F1 = env1.F;
   const inner1 = new THREE.Group();
@@ -511,15 +396,36 @@ export function buildPlants(world, M) {
   F1.box(IB1, M.concreteLight, 0, 0, F1.W, F1.D, 0, 0.2, -1, { cast: false });
   const reactorHoles = P1_REACTORS.map((r) => [...F1.local(r.x, r.z), reactorDims(r.kl).R + 0.35]);
   const cores = [P1_CORES.stairSW, P1_CORES.stairNE, P1_CORES.lift, P1_CORES.cutout];
+  // the top deck's hoisting opening is extended east (assumed) so the crane rope can travel to the bag discharger
+  const SLOT = [P1_CORES.cutout[0], P1_CORES.cutout[1], 9.0, P1_CORES.cutout[3]];
   const full = [0.15, 0.15, F1.W - 0.15, F1.D - 0.15];
   deck(IB1, KM, F1, LV.mezz1, full, reactorHoles, cores);
   deck(IB1, KM, F1, LV.mezz2, full, reactorHoles.map(([a, b]) => [a, b, 0.75]), cores);
-  deck(IB1, KM, F1, LV.top, full, P1_REACTORS.map((r) => [...F1.local(r.silo.x, r.silo.z), 1.0]), cores);
+  deck(IB1, KM, F1, LV.top, full, P1_REACTORS.map((r) => [...F1.local(r.silo.x, r.silo.z), 1.0]), [...cores.slice(0, 3), SLOT]);
   for (const lvl of [LV.mezz1, LV.mezz2, LV.top]) {                           // cutout railing (MEZZ-2 plan)
-    const [a, b, c, d] = P1_CORES.cutout;
+    const [a, b, c, d] = lvl === LV.top ? SLOT : P1_CORES.cutout;
     F1.box(IB1, M.yellow, a, b - 0.05, c, b, lvl + 1.0, lvl + 1.06, -1, { cast: false });
     F1.box(IB1, M.yellow, c, b, c + 0.05, d, lvl + 1.0, lvl + 1.06, -1, { cast: false });
   }
+  // jumbo-bag discharger on MEZZ-2 beside the hoisting cut-out: frame, bag massagers, hopper, rotary valve,
+  // screw conveyor under the deck to P1-R-101's charging manhole
+  const DX = 7.6, DY = 30.85, BAG_REST = LV.mezz2 + 0.95;
+  for (const px of [DX - 0.75, DX + 0.75]) for (const py of [DY - 0.75, DY + 0.75]) F1.box(IB1, M.yellow, px - 0.06, py - 0.06, px + 0.06, py + 0.06, LV.mezz2, LV.mezz2 + 2.6, -1);
+  for (const py of [DY - 0.75, DY + 0.75]) F1.box(IB1, M.yellow, DX - 0.81, py - 0.06, DX + 0.81, py + 0.06, LV.mezz2 + 2.5, LV.mezz2 + 2.6, -1);
+  for (const px of [DX - 0.75, DX + 0.75]) F1.box(IB1, M.steelDark, px - 0.1, DY - 0.45, px + 0.1, DY + 0.45, LV.mezz2 + 1.1, LV.mezz2 + 1.5, -1);
+  F1.mesh(IB1, new THREE.ConeGeometry(0.95, 0.75, 4, 1, true), M.steel, DX, LV.mezz2 + 0.55, DY, [Math.PI, Math.PI / 4, 0]);
+  F1.box(IB1, M.steel, DX - 0.67, DY - 0.67, DX + 0.67, DY + 0.67, BAG_REST - 0.08, BAG_REST);
+  F1.box(IB1, M.yellow, DX - 0.2, DY - 0.2, DX + 0.2, DY + 0.2, LV.mezz2 - 0.5, LV.mezz2 - 0.1);
+  const r101 = P1_REACTORS.find((r) => r.tag === 'P1-R-101');
+  const r101Top = BODY_BOTTOM + reactorDims(r101.kl).hs + reactorDims(r101.kl).head;
+  tube(IB1, M.steel, F1.world(DX, LV.mezz2 - 0.5, DY), new THREE.Vector3(r101.x + 0.4, r101Top + 0.35, r101.z - 0.55), 0.13);
+  // lean-phase conveying line from Warehouse-1 (enters the west wall at +7.0) up to a header feeding the west silos
+  const LX = 1.4, LH = 13.3, entry = F1.local(-1.63, -20.425)[1];
+  polyline(IB1, M.pipe, [[-0.2, 7.0, entry], [LX, 7.0, entry], [LX, LH, entry]].map(([x, h, y]) => F1.world(x, h, y)), 0.09);
+  const westSilos = P1_REACTORS.filter((r) => r.x < PLANT1.x).map((r) => F1.local(r.silo.x, r.silo.z));
+  const ys = westSilos.map(([, y]) => y);
+  tube(IB1, M.pipe, F1.world(LX, LH, Math.min(...ys)), F1.world(LX, LH, Math.max(...ys)), 0.09);
+  for (const [sx, sy] of westSilos) tube(IB1, M.pipe, F1.world(LX, LH, sy), F1.world(sx - 1.1, LH, sy), 0.07);
   let hero = null;
   for (const r of P1_REACTORS) {
     const { hs, head } = reactorDims(r.kl);
@@ -530,14 +436,21 @@ export function buildPlants(world, M) {
   for (const [x, z] of P1_CLT) vessel(IB1, M, x, z, 1.5, 1.9, LV.mezz1);
   for (const [x, z] of P1_REC) vessel(IB1, M, x, z, 1.2, 1.4, LV.mezz2);
   IB1.build(inner1);
-  crane(inner1, M, F1, F1.W, F1.D, 18.5);
+  const crane1 = crane(inner1, M, F1, F1.W, F1.D, DY, { x0: 4.0, x1: DX, floor: 0.2, top: 9.9, rest: BAG_REST, period: 36 });
+  // jumbo bags arriving from Warehouse-1: one waiting at the west shutter, one on a forklift on road R3
+  const rb = riseDelay(-4, -28) + 0.05;
+  pallet(OB, M.wood, placeAt(-3.3, 0, -32.2), rb);
+  fibc(OB, M, placeAt(-3.3, 0.15, -32.2), rb);
+  forklift(OB, M, placeAt(-6.5, 0, -21.0, Math.PI / 2), rb, 0.3);
+  pallet(OB, M.wood, placeAt(-6.5, 0.25, -22.65, Math.PI / 2), rb);
+  fibc(OB, M, placeAt(-6.5, 0.4, -22.65), rb);
 
   // ---- Plant 2: same envelope; decks over the reactor rows, double-height finishing bay to the south
   const p2Frames = Array.from({ length: 11 }, (_, i) => (i * (PLANT2.d - 0.23)) / 10);
-  const env2 = plantEnvelope(root, M, PLANT2, {
-    roofColor: '#2E7D32', roofRib: '#1F5E23', stripe: '#4ADE80', frameLines: p2Frames,
+  const env2 = pebEnvelope(root, M, PLANT2, {
+    ...PLANT_ENV, roofColor: '#2E7D32', roofRib: '#1F5E23', stripe: '#4ADE80', frameLines: p2Frames,
     stairs: [[0.4, 44.0, 3.8, 47.4]],
-    shutters: [[PLANT2.w / 2 - 2.2, -0.12 - 0.06, PLANT2.w / 2 + 2.2, -0.12, 0, 4.5]],   // dispatch shutter at the finishing bay
+    shutters: [{ side: 'S', x0: PLANT2.w / 2 - 2.2, x1: PLANT2.w / 2 + 2.2, h: 4.5 }],   // dispatch shutter at the finishing bay
   });
   const F2 = env2.F;
   const inner2 = new THREE.Group();
@@ -560,13 +473,17 @@ export function buildPlants(world, M) {
 
   const top = (P) => new THREE.Vector3(P.x, LV.ridge + 1.5, P.z);
   return {
+    envs: { p1: env1, p2: env2 },
     anchors: {
       ...hero.anchors, plant1: top(PLANT1), plant2: top(PLANT2),
-      p1Crane: F1.world(F1.W * 0.38, LV.crane + 1.2, 18.5),
+      p1Crane: F1.world(F1.W * 0.38, LV.crane + 1.2, DY),
       p1Silo: new THREE.Vector3(P1_REACTORS[0].silo.x, LV.top + 2.0, P1_REACTORS[0].silo.z),
+      p1Hoist: F1.world(5.8, LV.crane + 1.0, DY),
+      p1Discharger: F1.world(DX, BAG_REST + 1.6, DY),
     },
     update(t, s) {
       hero.update(t, s);
+      crane1.update(t);
       feedMat.emissiveIntensity = 0.4 + 1.2 * s.finishingRun;
       inner1.visible = s.plant1Cutaway > 0.01;
       inner2.visible = s.plant2Cutaway > 0.01;
