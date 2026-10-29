@@ -504,6 +504,7 @@ export function createHud(canvas, tokens, timeline, assets) {
 
   return {
     setHideText(v) { P.hideText = v; },
+    clear() { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, W, HH); return []; },
     draw(t, frame) {
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.clearRect(0, 0, W, HH);

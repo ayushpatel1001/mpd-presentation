@@ -34,7 +34,7 @@ export function serve() {
 
 const withTimeout = (p, ms, what) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error(`timeout: ${what}`)), ms))]);
 
-export async function openRenderer(srv, { quality = 94, frameTimeoutMs = 90000 } = {}) {
+export async function openRenderer(srv, { quality = 94, frameTimeoutMs = 90000, query = '' } = {}) {
   const { chromium } = loadPlaywright();
   // launchServer gives a kill handle for wedged SwiftShader GPU processes
   const server = await chromium.launchServer({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--disable-frame-rate-limit'] });
@@ -43,7 +43,7 @@ export async function openRenderer(srv, { quality = 94, frameTimeoutMs = 90000 }
   const logs = [];
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') logs.push(`${m.type()}: ${m.text()}`); });
   page.on('pageerror', (e) => logs.push(`pageerror: ${e.message}`));
-  await page.goto(`http://127.0.0.1:${srv.address().port}/src/index.html`);
+  await page.goto(`http://127.0.0.1:${srv.address().port}/src/index.html${query}`);
   await page.waitForFunction(() => window.ready || window.bootError, null, { timeout: 180000 });
   const err = await page.evaluate(() => window.bootError);
   if (err) throw new Error(`renderer failed to boot:\n${err}\n${logs.join('\n')}`);

@@ -1,13 +1,16 @@
-// Plant 1 / Plant 2 reactor buildings: frame, floors, reactors (sized by volume),
-// fading shells, and the hero cutaway reactor used in Act 2.
+// Plant 1 / Plant 2 process buildings.
+// Plant 1 follows drawings PP-A-DR-PB1-102 (MEZZ-1 +3.40), PB1-104 (MEZZ-2 +7.50) and PB1-301 (sections):
+// PEB portal frames with a gable + monitor roof (eaves +16.0), metal-sheet cladding over a masonry base,
+// decks at +3.40 / +7.50 / +11.50, reactor lugs at +5.00, receivers CLT (+3.40) and REC (+7.50),
+// charging silos above each reactor, vapour columns to horizontal condensers at the top deck and a
+// 3 t EOT crane on runway girders at +14.00. Plant 2 shares the envelope and deck levels.
 import * as THREE from 'three';
-import { Batcher, patchRise, riseDepthMaterial, makeMat } from './materials.js';
+import { Batcher, patchRise, makeMat } from './materials.js';
 import { riseDelay } from './site.js';
-import { PLANT1, PLANT2, P1_REACTORS, P2_REACTORS } from './layout.js';
+import { PLANT1, PLANT2, P1_REACTORS, P2_REACTORS, P1_CLT, P1_REC, P1_CORES, PLANT_LEVELS as LV } from './layout.js';
 import { deg, hash } from '../lib/util.js';
 
-const BODY_BOTTOM = 4.2;   // bottom tangent line of every reactor (m)
-const MEZZ = [5.5, 10.5];  // floor levels (G+2)
+const BODY_BOTTOM = 3.0;   // bottom tangent line of every reactor; lugs bear on the +5.00 support frame
 
 export function reactorDims(kl) {
   const d = 2.6 * Math.cbrt(kl / 16);
@@ -24,53 +27,30 @@ function reactorProfile(R, hs, head) {
   return pts;
 }
 
-// Adds a static reactor (vessel, drive, lugs, outlet, condenser) to a batcher.
-function addReactor(B, M, r, condSide) {
-  const { R, hs, head } = reactorDims(r.kl);
-  const y0 = BODY_BOTTOM - head;
-  const shell = new THREE.LatheGeometry(reactorProfile(R, hs, head), 24);
-  B.mesh(shell, M.steel, [r.x, y0, r.z]);
-  const top = BODY_BOTTOM + hs + head;
-  B.mesh(new THREE.CylinderGeometry(0.32, 0.38, 0.55, 12), M.steelDark, [r.x, top + 0.25, r.z]);
-  B.box(M.msPaint, r.x, top + 0.95, r.z, 0.5, 0.9, 0.55);
-  for (let k = 0; k < 4; k++) {
-    const a = k * Math.PI / 2 + Math.PI / 4;
-    B.box(M.steelDark, r.x + Math.sin(a) * (R + 0.15), MEZZ[0] + 0.15, r.z + Math.cos(a) * (R + 0.15), 0.35, 0.3, 0.35);
-  }
-  B.mesh(new THREE.CylinderGeometry(0.09, 0.09, y0 - 2.6, 8), M.pipe, [r.x, (y0 + 2.6) / 2, r.z]);
-  // condenser + vapour line
-  const cx = r.x + condSide * (R + 0.9);
-  B.mesh(new THREE.CylinderGeometry(0.34, 0.34, 2.6, 14), M.steel, [cx, MEZZ[1] + 1.4, r.z]);
-  B.mesh(new THREE.CylinderGeometry(0.08, 0.08, MEZZ[1] + 2.9 - top, 8), M.pipe, [r.x + condSide * 0.4, (MEZZ[1] + 2.9 + top) / 2, r.z]);
-  B.box(M.pipe, (cx + r.x + condSide * 0.4) / 2, MEZZ[1] + 2.9, r.z, Math.abs(cx - r.x - condSide * 0.4) + 0.16, 0.16, 0.16);
-  B.mesh(new THREE.SphereGeometry(0.09, 8, 6), M.statusGreen, [r.x + 0.3, top + 1.5, r.z], [0, 0, 0], [1, 1, 1], -1, { cast: false });
+// ---------------------------------------------------------------------------- textures
+function ribTexture(base, rib, vertical) {
+  const c = document.createElement('canvas');
+  c.width = c.height = 32;
+  const g = c.getContext('2d');
+  g.fillStyle = base; g.fillRect(0, 0, 32, 32);
+  g.fillStyle = rib;
+  if (vertical) { g.fillRect(0, 0, 5, 32); g.fillRect(16, 0, 2, 32); } else { g.fillRect(0, 0, 32, 5); g.fillRect(0, 16, 32, 2); }
+  const t = new THREE.CanvasTexture(c);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
 }
 
-// Interior structure that stays visible in cutaway: central walkway beams, handrails, slab.
-function plantFrame(B, M, P) {
-  const { x, z, w, d } = P;
-  const dz = P.floorD ?? d, fz = P.floorZ ?? z;
-  for (const y of MEZZ) {
-    B.box(M.steelDark, x, y - 0.2, fz, 0.25, 0.3, dz - 0.6);
-    B.box(M.yellow, x, y + 1.05, fz, 0.06, 0.06, dz - 1.2, -1, { cast: false });
+// Box whose UVs are in metres / pitch so ribbed textures keep a constant rib spacing on any size.
+function ribbedBox(w, h, d, pitch = 0.8) {
+  const g = new THREE.BoxGeometry(w, h, d);
+  const uv = g.attributes.uv;
+  const scale = [[d, h], [d, h], [w, d], [w, d], [w, h], [w, h]];
+  for (let f = 0; f < 6; f++) for (let k = 0; k < 4; k++) {
+    const i = f * 4 + k;
+    uv.setXY(i, uv.getX(i) * scale[f][0] / pitch, uv.getY(i) * scale[f][1] / pitch);
   }
-  B.box(M.concreteLight, x, 0.1, z, w, 0.2, d, -1, { cast: false });
-}
-
-// Perimeter columns and edge beams belong to the envelope so they fade for interior shots.
-function perimeterFrame(SB, mat, P, rise) {
-  const { x, z, w, d, h } = P;
-  const nx = Math.round(w / 5.2), nz = Math.round(d / 5.5);
-  for (let i = 0; i <= nx; i++) for (let k = 0; k <= nz; k++) {
-    if (!(i === 0 || i === nx || k === 0 || k === nz)) continue;
-    SB.box(mat, x - w / 2 + 0.35 + (i * (w - 0.7)) / nx, h / 2, z - d / 2 + 0.35 + (k * (d - 0.7)) / nz, 0.4, h, 0.4, rise);
-  }
-  for (const y of MEZZ) {
-    SB.box(mat, x, y - 0.2, z - d / 2 + 0.35, w - 0.4, 0.35, 0.3, rise);
-    SB.box(mat, x, y - 0.2, z + d / 2 - 0.35, w - 0.4, 0.35, 0.3, rise);
-    SB.box(mat, x - w / 2 + 0.35, y - 0.2, z, 0.3, 0.35, d - 0.4, rise);
-    SB.box(mat, x + w / 2 - 0.35, y - 0.2, z, 0.3, 0.35, d - 0.4, rise);
-  }
+  return g;
 }
 
 function stripeTexture() {
@@ -86,77 +66,258 @@ function stripeTexture() {
   return t;
 }
 
-// Building envelope that fades away for the interior shots.
-function plantShell(root, M, P, roofColor, stripeColor) {
-  const rise = riseDelay(P.x, P.z);
-  const mk = (base) => {
-    const m = base.clone();
-    patchRise(m);
-    return m;
+// ---------------------------------------------------------------------------- PEB envelope
+// Local frame for a plant: x across (west→east, 0 at the west grid line), y along (south→north, 0 at the south grid line).
+function frameOf(P) {
+  const W = P.w - 0.23, D = P.d - 0.23;
+  const X0 = P.x - W / 2, Z0 = P.z + D / 2;
+  return {
+    W, D,
+    box(B, mat, x0, y0, x1, y1, h0, h1, rise, opts) {
+      const xa = Math.min(x0, x1), xb = Math.max(x0, x1), ya = Math.min(y0, y1), yb = Math.max(y0, y1);
+      B.box(mat, X0 + (xa + xb) / 2, (h0 + h1) / 2, Z0 - (ya + yb) / 2, xb - xa, h1 - h0, yb - ya, rise, opts);
+    },
+    mesh(B, geo, mat, x, h, y, rot = [0, 0, 0], rise = -1, opts) { B.mesh(geo, mat, [X0 + x, h, Z0 - y], rot, [1, 1, 1], rise, opts); },
+    world: (x, h, y) => new THREE.Vector3(X0 + x, h, Z0 - y),
+    local: (x, z) => [x - X0, Z0 - z],
   };
-  const mats = { wall: mk(M.wall), roof: mk(M[roofColor]), glass: mk(M.glass), stripe: mk(M.statusCyan), frame: mk(M.steelDark) };
-  mats.stripe.color.set(stripeColor); mats.stripe.emissive.set(stripeColor); mats.stripe.emissiveIntensity = 1.4;
+}
+
+function plantEnvelope(root, M, P, opts) {
+  const F = frameOf(P);
+  const { W, D } = F;
+  const rise = riseDelay(P.x, P.z);
+  const half = W / 2, pitch = Math.atan2(LV.ridge - LV.eave, half);
+  const mk = (m) => patchRise(m);
+  const ribV = ribTexture('#DCE3EA', '#B9C4D0', true);
+  const ribR = ribTexture(opts.roofColor, opts.roofRib, false);
+  const mats = {
+    base: mk(makeMat({ color: '#C9D2DC', roughness: 0.9 })),
+    clad: mk(makeMat({ color: '#FFFFFF', map: ribV, roughness: 0.6 })),
+    roof: mk(makeMat({ color: '#FFFFFF', map: ribR, roughness: 0.5, metalness: 0.3 })),
+    frame: mk(makeMat({ color: '#5B6B7D', roughness: 0.5, metalness: 0.5 })),
+    trim: mk(makeMat({ color: '#94A3B8', roughness: 0.5, metalness: 0.4 })),
+    glass: mk(makeMat({ color: '#4C87B2', emissive: '#0E3A5A', emissiveIntensity: 0.45, roughness: 0.15, metalness: 0.3 })),
+    louver: mk(makeMat({ color: '#334155', roughness: 0.6, metalness: 0.3 })),
+    door: mk(makeMat({ color: '#64748B', roughness: 0.5, metalness: 0.5 })),
+    stripe: mk(makeMat({ color: opts.stripe, emissive: opts.stripe, emissiveIntensity: 1.3 })),
+    stair: mk(makeMat({ color: '#94A3B8', roughness: 0.6, metalness: 0.4 })),
+  };
   const SB = new Batcher();
-  const { x, z, w, d, h } = P;
-  const t = 0.25;
-  perimeterFrame(SB, mats.frame, P, rise);
-  SB.box(mats.wall, x, h / 2, z - d / 2, w, h, t, rise);
-  SB.box(mats.wall, x, h / 2, z + d / 2, w, h, t, rise);
-  SB.box(mats.wall, x - w / 2, h / 2, z, t, h, d, rise);
-  SB.box(mats.wall, x + w / 2, h / 2, z, t, h, d, rise);
-  SB.box(mats.roof, x, h + 0.2, z, w + 0.6, 0.4, d + 0.6, rise);
-  SB.box(mats.roof, x, h + 1.1, z, w * 0.35, 1.4, d * 0.8, rise);
-  for (const y of [2.6, MEZZ[0] + 2.4, MEZZ[1] + 2.4]) {
-    SB.box(mats.glass, x, y, z + d / 2 + 0.15, w * 0.88, 1.3, 0.06, rise, { cast: false });
-    SB.box(mats.glass, x, y, z - d / 2 - 0.15, w * 0.88, 1.3, 0.06, rise, { cast: false });
-    SB.box(mats.glass, x - w / 2 - 0.15, y, z, 0.06, 1.3, d * 0.9, rise, { cast: false });
-    SB.box(mats.glass, x + w / 2 + 0.15, y, z, 0.06, 1.3, d * 0.9, rise, { cast: false });
+  const t = 0.23;
+  // masonry base up to the first deck, ribbed cladding above, trim band between them
+  for (const [x0, y0, x1, y1] of [[-t / 2, -t / 2, W + t / 2, t / 2], [-t / 2, D - t / 2, W + t / 2, D + t / 2], [-t / 2, -t / 2, t / 2, D + t / 2], [W - t / 2, -t / 2, W + t / 2, D + t / 2]]) {
+    F.box(SB, mats.base, x0, y0, x1, y1, 0, LV.mezz1, rise);
+    const w = x1 - x0, d = y1 - y0, h = LV.eave - LV.mezz1;
+    F.mesh(SB, ribbedBox(w, h, d), mats.clad, (x0 + x1) / 2, LV.mezz1 + h / 2, (y0 + y1) / 2, [0, 0, 0], rise);
+    F.box(SB, mats.trim, x0 - 0.05, y0 - 0.05, x1 + 0.05, y1 + 0.05, LV.mezz1 - 0.08, LV.mezz1 + 0.08, rise, { cast: false });
   }
+  // brand stripe under the eaves on the long walls
+  for (const x of [-t / 2 - 0.04, W + t / 2]) F.box(SB, mats.stripe, x, 0, x + 0.04, D, LV.eave - 0.9, LV.eave - 0.45, rise, { cast: false });
+  // gable triangles at both ends
+  const tri = new THREE.Shape([new THREE.Vector2(-half - t / 2, 0), new THREE.Vector2(half + t / 2, 0), new THREE.Vector2(0, LV.ridge - LV.eave)]);
+  const gable = new THREE.ExtrudeGeometry(tri, { depth: t, bevelEnabled: false });
+  gable.translate(0, 0, -t / 2);
+  for (const y of [0, D]) F.mesh(SB, gable, mats.base, half, LV.eave, y, [0, 0, 0], rise);
+  // roof: two ribbed slopes with overhang, monitor ventilator on the ridge, M.S. gutters
+  const slope = Math.hypot(half, LV.ridge - LV.eave) + 0.55;
   for (const s of [-1, 1]) {
-    SB.box(mats.stripe, x, h - 1.2, z + s * (d / 2 + 0.16), w + 0.1, 0.5, 0.06, rise, { cast: false });
-    SB.box(mats.stripe, x + s * (w / 2 + 0.16), h - 1.2, z, 0.06, 0.5, d + 0.1, rise, { cast: false });
+    const cx = half + s * (half / 2 - 0.25), cy = (LV.eave + LV.ridge) / 2 + 0.12;
+    F.mesh(SB, ribbedBox(slope, 0.14, D + 0.9, 0.6), mats.roof, cx, cy, D / 2, [0, 0, -s * pitch], rise);
+    F.box(SB, mats.trim, s < 0 ? -0.75 : W + 0.45, -0.45, s < 0 ? -0.45 : W + 0.75, D + 0.45, LV.eave - 0.25, LV.eave + 0.05, rise);
   }
-  // stair tower on the north-east corner
-  SB.box(mats.wall, x + w / 2 - 1.8, (h + 2.5) / 2, z - d / 2 - 1.6, 3.4, h + 2.5, 3.2, rise);
+  const mL = D * 0.82;
+  F.box(SB, mats.louver, half - 0.85, D / 2 - mL / 2, half + 0.85, D / 2 + mL / 2, LV.ridge - 0.05, LV.ridge + 0.65, rise);
+  for (const s of [-1, 1]) F.mesh(SB, ribbedBox(1.4, 0.1, mL + 0.3, 0.6), mats.roof, half + s * 0.62, LV.ridge + 0.82, D / 2, [0, 0, -s * 0.3], rise);
+  // portal frames: columns on both long walls + rafters under the roof, downpipes outside
+  const frames = opts.frameLines;
+  for (const y of frames) {
+    for (const x of [0.25, W - 0.25]) F.box(SB, mats.frame, x - 0.2, y - 0.15, x + 0.2, y + 0.15, 0, LV.eave, rise);
+    for (const s of [-1, 1]) {
+      const geo = new THREE.BoxGeometry(half / Math.cos(pitch), 0.55, 0.22);
+      F.mesh(SB, geo, mats.frame, half + s * half / 2, (LV.eave + LV.ridge) / 2 - 0.45, y, [0, 0, -s * pitch], rise);
+    }
+    for (const x of [-t / 2 - 0.05, W + t / 2 - 0.02]) F.box(SB, mats.trim, x, y - 0.06, x + 0.07, y + 0.06, 0.2, LV.eave - 0.3, rise, { cast: false });
+  }
+  // windows and vents per bay on the long walls (section 1-1): W at +1.0 / +5.3 / +11.9, V at +3.8 / +9.7
+  const win = (x, y0w, y1w, h0, h1, mat) => {
+    const out = x < W / 2 ? -1 : 1, xf = x < W / 2 ? -t / 2 : W + t / 2;
+    F.box(SB, mats.trim, xf, y0w - 0.07, xf + out * 0.05, y1w + 0.07, h0 - 0.07, h1 + 0.07, rise, { cast: false });
+    F.box(SB, mat, xf, y0w, xf + out * 0.08, y1w, h0, h1, rise, { cast: false });
+    if (mat === mats.glass) F.box(SB, mats.trim, xf, (y0w + y1w) / 2 - 0.025, xf + out * 0.1, (y0w + y1w) / 2 + 0.025, h0, h1, rise, { cast: false });
+  };
+  for (let i = 0; i < frames.length - 1; i++) {
+    const yc = (frames[i] + frames[i + 1]) / 2;
+    for (const x of [0, W]) {
+      for (const [h0, h1] of [[1.0, 2.5], [5.3, 6.8], [11.9, 13.4]]) win(x, yc - 0.75, yc + 0.75, h0, h1, mats.glass);
+      for (const [h0, h1] of [[3.8, 4.4], [9.7, 10.3]]) win(x, yc - 0.6, yc + 0.6, h0, h1, mats.louver);
+    }
+  }
+  // end walls: D1 double doors (1500×2500), gable windows and vents, optional rolling shutters
+  for (const y of [0, D]) {
+    const out = y === 0 ? -1 : 1, yf = y === 0 ? -t / 2 : D + t / 2;
+    F.box(SB, mats.door, half - 0.8, yf, half + 0.8, yf + out * 0.06, 0, 2.5, rise, { cast: false });
+    F.box(SB, mats.trim, half - 0.02, yf, half + 0.02, yf + out * 0.08, 0, 2.5, rise, { cast: false });
+    for (const xc of [half - 2.6, half + 2.6]) {
+      F.box(SB, mats.glass, xc - 0.75, yf, xc + 0.75, yf + out * 0.08, 11.9, 13.4, rise, { cast: false });
+      F.box(SB, mats.louver, xc - 0.6, yf, xc + 0.6, yf + out * 0.08, 9.7, 10.3, rise, { cast: false });
+    }
+  }
+  for (const rs of opts.shutters || []) {
+    const [x0, y0, x1, y1, h0, h1] = rs;
+    F.box(SB, mats.door, x0, y0, x1, y1, h0, h1, rise, { cast: false });
+    for (let h = h0 + 0.3; h < h1; h += 0.3) F.box(SB, mats.trim, x0 - 0.01, y0 - 0.01, x1 + 0.01, y1 + 0.01, h, h + 0.04, rise, { cast: false });
+  }
+  // stair towers and goods lift fade with the envelope so interior shots stay clean
+  for (const [x0, y0, x1, y1] of opts.stairs || []) {
+    const nW = x1 - x0;
+    for (const [h0, h1] of [[0, LV.mezz1], [LV.mezz1, LV.mezz2], [LV.mezz2, LV.top]]) {
+      const h2 = (h1 - h0) / 2, run = y1 - y0 - 1.2;
+      const len = Math.hypot(run, h2), ang = Math.atan2(h2, run);
+      F.mesh(SB, new THREE.BoxGeometry(nW / 2 - 0.1, 0.12, len), mats.stair, x0 + nW / 4, h0 + h2 / 2, y0 + run / 2, [ang, 0, 0], rise);
+      F.box(SB, mats.stair, x0, y1 - 1.2, x1, y1, h0 + h2 - 0.1, h0 + h2, rise);
+      F.mesh(SB, new THREE.BoxGeometry(nW / 2 - 0.1, 0.12, len), mats.stair, x0 + 3 * nW / 4, h0 + h2 * 1.5, y0 + run / 2, [-ang, 0, 0], rise);
+    }
+    for (const [x, y] of [[x0, y0], [x1, y0], [x0, y1], [x1, y1]]) F.box(SB, mats.frame, x - 0.08, y - 0.08, x + 0.08, y + 0.08, 0, LV.top + 1.1, rise);
+  }
+  if (opts.lift) {
+    const [x0, y0, x1, y1] = opts.lift;
+    F.box(SB, mats.base, x0, y0, x1, y1, 0, LV.top + 3.0, rise);
+    F.box(SB, mats.door, x0 + 0.6, y1, x1 - 0.6, y1 + 0.05, 0.2, 2.6, rise, { cast: false });
+  }
   const group = new THREE.Group();
   root.add(group);
   SB.build(group);
-  const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(w, h, d)), new THREE.LineBasicMaterial({ color: new THREE.Color('#38BDF8').multiplyScalar(2.5), transparent: true, opacity: 0, depthWrite: false, toneMapped: false }));
-  edges.position.set(x, h / 2, z);
-  root.add(edges);
-  const floorsGlow = [];
-  const fd = P.floorD ?? d, fzc = P.floorZ ?? z;
-  for (const y of MEZZ) {
-    const f = new THREE.Mesh(new THREE.PlaneGeometry(w - 0.6, fd - 0.6), M.grating.clone());
-    f.material.opacity = 0.2;
-    f.rotation.x = -Math.PI / 2;
-    f.position.set(x, y, fzc);
-    f.renderOrder = 2;
-    root.add(f);
-    floorsGlow.push(f);
-  }
+  // holographic outline for cutaway shots: wall box + gable/ridge lines
+  const lineMat = new THREE.LineBasicMaterial({ color: new THREE.Color('#38BDF8').multiplyScalar(2.5), transparent: true, opacity: 0, depthWrite: false, toneMapped: false });
+  const outline = new THREE.Group();
+  const eb = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(W, LV.eave, D)), lineMat);
+  eb.position.copy(F.world(W / 2, LV.eave / 2, D / 2));
+  outline.add(eb);
+  const p = [F.world(0, LV.eave, 0), F.world(half, LV.ridge, 0), F.world(W, LV.eave, 0), F.world(0, LV.eave, D), F.world(half, LV.ridge, D), F.world(W, LV.eave, D)];
+  outline.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints([p[0], p[1], p[1], p[2], p[3], p[4], p[4], p[5], p[1], p[4]]), lineMat));
+  root.add(outline);
+
+  const list = Object.values(mats);
   let transparentNow = false, castNow = true;
   return {
-    group, mats, edges,
+    F,
     // returns true when shadow casting changed (shadow map must be refreshed)
     setCutaway(c) {
       const op = 1 - 0.94 * c;
       const transparent = op < 0.999;
-      for (const m of Object.values(mats)) {
+      for (const m of list) {
         m.opacity = op;
         if (transparent !== transparentNow) { m.transparent = transparent; m.depthWrite = !transparent; m.needsUpdate = true; }
       }
       transparentNow = transparent;
       group.visible = c < 0.985;
-      edges.material.opacity = 0.85 * Math.sin(Math.min(1, c) * Math.PI / 2);
-      edges.visible = c > 0.01;
+      lineMat.opacity = 0.85 * Math.sin(Math.min(1, c) * Math.PI / 2);
+      outline.visible = c > 0.01;
       const cast = c < 0.5;
-      let changed = false;
-      if (cast !== castNow) { group.traverse((o) => { if (o.isMesh) o.castShadow = cast; }); castNow = cast; changed = true; }
-      for (const f of floorsGlow) f.visible = c > 0.02;
-      return changed;
+      if (cast !== castNow) { group.traverse((o) => { if (o.isMesh) o.castShadow = cast; }); castNow = cast; return true; }
+      return false;
     },
   };
+}
+
+// ---------------------------------------------------------------------------- decks + equipment
+// Grating deck: rectangle with circular openings around vessels and rectangular openings (stairs, cutout).
+function deck(B, M, F, level, rect, holes, rects) {
+  const [x0, y0, x1, y1] = rect;
+  const shape = new THREE.Shape([new THREE.Vector2(x0, y0), new THREE.Vector2(x1, y0), new THREE.Vector2(x1, y1), new THREE.Vector2(x0, y1)]);
+  for (const [hx, hy, r] of holes) { const p = new THREE.Path(); p.absarc(hx, hy, r, 0, Math.PI * 2, true); shape.holes.push(p); }
+  for (const [a, b, c, d] of rects) shape.holes.push(new THREE.Path([new THREE.Vector2(a, b), new THREE.Vector2(a, d), new THREE.Vector2(c, d), new THREE.Vector2(c, b)]));
+  const geo = new THREE.ShapeGeometry(shape, 20);
+  geo.rotateX(Math.PI / 2);   // shape y → +z; F.mesh maps local +y to −Z, so flip below
+  geo.scale(1, 1, -1);
+  F.mesh(B, geo, M.deckMat, 0, level, 0, [0, 0, 0], -1, { cast: false });
+  F.box(B, M.steelDark, x0, y0, x1, y0 + 0.2, level - 0.35, level, -1);
+  F.box(B, M.steelDark, x0, y1 - 0.2, x1, y1, level - 0.35, level, -1);
+  F.box(B, M.steelDark, (x0 + x1) / 2 - 0.1, y0, (x0 + x1) / 2 + 0.1, y1, level - 0.3, level, -1);
+  // handrails along the central aisle
+  for (const x of [(x0 + x1) / 2 - 2.0, (x0 + x1) / 2 + 2.0]) {
+    F.box(B, M.yellow, x - 0.03, y0 + 0.5, x + 0.03, y1 - 0.5, level + 1.0, level + 1.06, -1, { cast: false });
+    for (let y = y0 + 0.5; y <= y1 - 0.5; y += 2.0) F.box(B, M.yellow, x - 0.03, y - 0.03, x + 0.03, y + 0.03, level, level + 1.06, -1, { cast: false });
+  }
+}
+
+function addReactor(B, M, r, condSide, withColumn) {
+  const { R, hs, head } = reactorDims(r.kl);
+  const y0 = BODY_BOTTOM - head;
+  B.mesh(new THREE.LatheGeometry(reactorProfile(R, hs, head), 24), M.steel, [r.x, y0, r.z]);
+  const top = BODY_BOTTOM + hs + head;
+  B.mesh(new THREE.CylinderGeometry(R * 1.04, R * 1.04, hs * 0.75, 24, 1, true), M.steelDark, [r.x, BODY_BOTTOM + hs * 0.38, r.z]);   // jacket
+  B.mesh(new THREE.CylinderGeometry(0.32, 0.38, 0.55, 12), M.steelDark, [r.x, top + 0.25, r.z]);
+  B.box(M.msPaint, r.x, top + 0.95, r.z, 0.5, 0.9, 0.55);
+  B.mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.25, 12), M.steelDark, [r.x + 0.55, top - 0.1, r.z - 0.3]);           // manhole
+  // support frame at +5.00 with four lugs
+  for (const s of [-1, 1]) {
+    B.box(M.steelDark, r.x + s * (R + 0.25), LV.support - 0.15, r.z, 0.25, 0.3, 2 * R + 0.8);
+    B.box(M.steelDark, r.x, LV.support - 0.15, r.z + s * (R + 0.25), 2 * R + 0.8, 0.3, 0.25);
+  }
+  for (let k = 0; k < 4; k++) {
+    const a = k * Math.PI / 2 + Math.PI / 4;
+    B.box(M.steelDark, r.x + Math.sin(a) * (R + 0.12), LV.support + 0.15, r.z + Math.cos(a) * (R + 0.12), 0.35, 0.3, 0.35);
+  }
+  // bottom outlet + valve
+  B.mesh(new THREE.CylinderGeometry(0.09, 0.09, y0 - 0.9, 8), M.pipe, [r.x, (y0 + 0.9) / 2, r.z]);
+  B.box(M.yellow, r.x, 1.2, r.z, 0.3, 0.22, 0.3);
+  B.mesh(new THREE.SphereGeometry(0.09, 8, 6), M.statusGreen, [r.x + 0.3, top + 1.5, r.z], [0, 0, 0], [1, 1, 1], -1, { cast: false });
+  if (!withColumn) return;
+  // vapour column up to a horizontal shell-and-tube condenser on the +11.50 deck (section 1-1)
+  const cx = r.x + condSide * (R * 0.55);
+  B.mesh(new THREE.CylinderGeometry(0.24, 0.24, LV.top + 0.6 - top, 14), M.steel, [cx, (LV.top + 0.6 + top) / 2, r.z]);
+  B.mesh(new THREE.CylinderGeometry(0.42, 0.42, 2.8, 18), M.steel, [cx, LV.top + 0.95, r.z + 0.3], [Math.PI / 2, 0, 0]);
+  for (const s of [-1, 1]) {
+    B.mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.12, 18), M.steelDark, [cx, LV.top + 0.95, r.z + 0.3 + s * 1.4], [Math.PI / 2, 0, 0]);
+    B.box(M.steelDark, cx, LV.top + 0.3, r.z + 0.3 + s * 0.9, 0.7, 0.6, 0.18);
+  }
+  B.mesh(new THREE.CylinderGeometry(0.06, 0.06, 1.2, 8), M.pipe, [cx + condSide * 0.5, LV.top + 1.6, r.z + 0.9]);
+}
+
+function vessel(B, M, x, z, d, h, base, legs = 4) {
+  B.mesh(new THREE.CylinderGeometry(d / 2, d / 2, h, 18), M.steel, [x, base + 0.25 + h / 2, z]);
+  B.mesh(new THREE.SphereGeometry(d / 2, 18, 8, 0, Math.PI * 2, 0, Math.PI / 2), M.steel, [x, base + 0.25 + h, z], [0, 0, 0], [1, 0.35, 1]);
+  for (let k = 0; k < legs; k++) {
+    const a = (k / legs) * Math.PI * 2 + Math.PI / 4;
+    B.box(M.steelDark, x + Math.sin(a) * d * 0.42, base + 0.15, z + Math.cos(a) * d * 0.42, 0.12, 0.3, 0.12);
+  }
+}
+
+function silo(B, M, s, reactorTop, rx, rz) {
+  const r = 1.12;
+  B.mesh(new THREE.CylinderGeometry(r, r, 2.1, 22), M.steel, [s.x, LV.top + 1.45, s.z]);
+  B.mesh(new THREE.ConeGeometry(r + 0.04, 0.4, 22), M.steel, [s.x, LV.top + 2.7, s.z]);
+  B.mesh(new THREE.CylinderGeometry(r, 0.22, 1.7, 22, 1, true), M.steel, [s.x, LV.top - 0.45, s.z]);
+  for (let k = 0; k < 4; k++) {
+    const a = k * Math.PI / 2 + Math.PI / 4;
+    B.box(M.steelDark, s.x + Math.sin(a) * r, LV.top + 0.3, s.z + Math.cos(a) * r, 0.15, 0.6, 0.15);
+  }
+  // rotary valve + charging chute down to the reactor manhole
+  B.box(M.yellow, s.x, LV.top - 1.45, s.z, 0.4, 0.3, 0.4);
+  const p0 = new THREE.Vector3(s.x, LV.top - 1.6, s.z), p1 = new THREE.Vector3(rx + 0.55, reactorTop + 0.1, rz - 0.3);
+  const len = p0.distanceTo(p1);
+  const chute = new THREE.CylinderGeometry(0.11, 0.11, len, 8);
+  chute.translate(0, -len / 2, 0);
+  const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, -1, 0), p1.clone().sub(p0).normalize());
+  const e = new THREE.Euler().setFromQuaternion(q);
+  B.mesh(chute, M.pipe, [p0.x, p0.y, p0.z], [e.x, e.y, e.z]);
+}
+
+function crane(root, M, F, W, D, yAt) {
+  const g = new THREE.Group();
+  const yellow = makeMat({ color: '#F59E0B', roughness: 0.5, metalness: 0.3 });
+  const dark = makeMat({ color: '#1E293B', roughness: 0.6 });
+  const add = (geo, mat, x, h, y) => { const m = new THREE.Mesh(geo, mat); m.position.copy(F.world(x, h, y)); m.castShadow = true; g.add(m); return m; };
+  for (const x of [0.75, W - 0.75]) add(new THREE.BoxGeometry(0.35, 0.65, D - 0.6), M.steelDark, x, LV.crane - 0.32, D / 2);   // runway girders
+  add(new THREE.BoxGeometry(W - 1.2, 0.75, 0.6), yellow, W / 2, LV.crane + 0.4, yAt);                                      // bridge girder
+  for (const x of [0.75, W - 0.75]) add(new THREE.BoxGeometry(0.6, 0.45, 2.2), yellow, x, LV.crane + 0.2, yAt);          // end trucks
+  add(new THREE.BoxGeometry(1.4, 0.6, 1.1), yellow, W * 0.38, LV.crane + 0.95, yAt);                                       // hoist trolley
+  add(new THREE.CylinderGeometry(0.02, 0.02, 3.0, 4), dark, W * 0.38, LV.crane - 1.1, yAt);
+  add(new THREE.BoxGeometry(0.35, 0.5, 0.25), yellow, W * 0.38, LV.crane - 2.7, yAt);                                      // hook block
+  root.add(g);
+  return g;
 }
 
 function wedgePlanes(cx, cz, centerAz, width) {
@@ -180,7 +341,7 @@ function heroReactor(root, M, r) {
   shell.position.set(r.x, y0, r.z);
   shell.castShadow = true; shell.receiveShadow = true;
   g.add(shell);
-  // insulation/inner skin so the cut reads as a thick wall
+  // insulation / inner skin so the cut reads as a thick wall
   const innerMat = makeMat({ color: '#4B5D72', metalness: 0.3, roughness: 0.7, side: THREE.BackSide, clippingPlanes: planes, clipIntersection: true });
   const inner = new THREE.Mesh(new THREE.LatheGeometry(reactorProfile(R * 0.965, hs, head * 0.96), 48), innerMat);
   inner.position.set(r.x, y0 + head * 0.04, r.z);
@@ -192,24 +353,20 @@ function heroReactor(root, M, r) {
     e.position.set(r.x + Math.sin(a) * R * 0.98, BODY_BOTTOM + hs / 2, r.z + Math.cos(a) * R * 0.98);
     g.add(e);
   }
-
   // thermic-fluid jacket with upward-moving bands
   const stripes = stripeTexture();
   const jacketMat = makeMat({ color: '#3B4A5C', metalness: 0.6, roughness: 0.4, emissive: '#F59E0B', emissiveMap: stripes, emissiveIntensity: 0, side: THREE.DoubleSide, clippingPlanes: planes, clipIntersection: true });
   const jacket = new THREE.Mesh(new THREE.CylinderGeometry(R * 1.07, R * 1.07, hs * 0.8, 48, 1, true), jacketMat);
   jacket.position.set(r.x, BODY_BOTTOM + hs * 0.4, r.z);
   g.add(jacket);
-
   // liquid charge
   const liquidMat = makeMat({ color: '#92400E', emissive: '#F59E0B', emissiveIntensity: 0.55, roughness: 0.15, metalness: 0.05, transparent: true, opacity: 0.86 });
   const liquid = new THREE.Mesh(new THREE.CylinderGeometry(R * 0.94, R * 0.94, 1, 40), liquidMat);
   g.add(liquid);
-  const surfMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FBBF24').multiplyScalar(1.6), transparent: true, opacity: 0.9, toneMapped: false });
-  const surface = new THREE.Mesh(new THREE.CircleGeometry(R * 0.94, 40), surfMat);
+  const surface = new THREE.Mesh(new THREE.CircleGeometry(R * 0.94, 40), new THREE.MeshBasicMaterial({ color: new THREE.Color('#FBBF24').multiplyScalar(1.6), transparent: true, opacity: 0.9, toneMapped: false }));
   surface.rotation.x = -Math.PI / 2;
   g.add(surface);
   const liquidBottom = BODY_BOTTOM - head * 0.55;
-
   // agitator: shaft + two pitched-blade impellers
   const agitator = new THREE.Group();
   agitator.position.set(r.x, 0, r.z);
@@ -236,14 +393,19 @@ function heroReactor(root, M, r) {
   const motor = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.95, 0.6), makeMat({ color: '#00529B', metalness: 0.3, roughness: 0.5 }));
   motor.position.set(r.x, BODY_BOTTOM + hs + head + 1.05, r.z);
   g.add(motor);
-
+  // support beam at +5.00 on the far (east) side only, so nothing crosses the cut opening
+  const frameMat = makeMat({ color: '#5B6B7D', metalness: 0.5, roughness: 0.5 });
+  for (const s of [1]) {
+    const bx = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.3, 2 * R + 0.8), frameMat);
+    bx.position.set(r.x + s * (R + 0.25), LV.support - 0.15, r.z);
+    g.add(bx);
+  }
   // bubbles in the batch
   const NB = 46;
   const bubbles = new THREE.InstancedMesh(new THREE.SphereGeometry(0.045, 8, 6), new THREE.MeshBasicMaterial({ color: new THREE.Color('#FDE68A').multiplyScalar(2.0), toneMapped: false }), NB);
   bubbles.frustumCulled = false;
   g.add(bubbles);
-
-  // glass reflux condenser with tube bundle, vapour (up) and condensate (down)
+  // glass reflux condenser just above the reactor, with tube bundle, vapour (up) and condensate (down)
   const cx = r.x - (R + 0.95), cy0 = BODY_BOTTOM + hs + head + 0.45, ch = 2.6;
   const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, ch, 32, 1, true), makeMat({ color: '#A5D8FF', metalness: 0.1, roughness: 0.05, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false }));
   glass.position.set(cx, cy0 + ch / 2, r.z);
@@ -259,10 +421,9 @@ function heroReactor(root, M, r) {
     tube.position.set(cx + Math.cos(a) * 0.24 * (k ? 1 : 0), cy0 + ch / 2, r.z + Math.sin(a) * 0.24 * (k ? 1 : 0));
     g.add(tube);
   }
-  const vline = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+  g.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
     new THREE.Vector3(r.x - 0.45, BODY_BOTTOM + hs + head * 0.8, r.z), new THREE.Vector3(r.x - 0.6, cy0 + ch + 0.6, r.z),
-    new THREE.Vector3(cx, cy0 + ch + 0.6, r.z), new THREE.Vector3(cx, cy0 + ch, r.z)], false, 'catmullrom', 0.1), 24, 0.09, 8), makeMat({ color: '#8FA3B8', metalness: 0.7, roughness: 0.35 }));
-  g.add(vline);
+    new THREE.Vector3(cx, cy0 + ch + 0.6, r.z), new THREE.Vector3(cx, cy0 + ch, r.z)], false, 'catmullrom', 0.1), 24, 0.09, 8), makeMat({ color: '#8FA3B8', metalness: 0.7, roughness: 0.35 })));
   const NV = 40;
   const vapour = new THREE.InstancedMesh(new THREE.SphereGeometry(0.05, 6, 5), new THREE.MeshBasicMaterial({ color: new THREE.Color('#E0F2FE').multiplyScalar(1.6), transparent: true, opacity: 0.8, toneMapped: false, depthWrite: false }), NV);
   vapour.frustumCulled = false;
@@ -270,26 +431,22 @@ function heroReactor(root, M, r) {
   const droplets = new THREE.InstancedMesh(new THREE.SphereGeometry(0.04, 6, 5), new THREE.MeshBasicMaterial({ color: new THREE.Color('#38BDF8').multiplyScalar(2.0), toneMapped: false }), 24);
   droplets.frustumCulled = false;
   g.add(droplets);
-
   // thermic oil feed lines to the jacket
   const hot = makeMat({ color: '#7C2D12', emissive: '#F59E0B', emissiveIntensity: 0 });
   for (const [a, yy] of [[deg(150), BODY_BOTTOM + 0.2], [deg(200), BODY_BOTTOM + hs * 0.75]]) {
     const p0 = new THREE.Vector3(r.x + Math.sin(a) * R * 1.07, yy, r.z + Math.cos(a) * R * 1.07);
     const p1 = new THREE.Vector3(r.x + Math.sin(a) * (R + 1.3), yy, r.z + Math.cos(a) * (R + 1.3));
     const p2 = new THREE.Vector3(p1.x, 0.4, p1.z);
-    const tube = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([p0, p1, p2], false, 'catmullrom', 0.05), 16, 0.07, 8), hot);
-    g.add(tube);
+    g.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([p0, p1, p2], false, 'catmullrom', 0.05), 16, 0.07, 8), hot));
   }
 
   const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), s1 = new THREE.Vector3(1, 1, 1), v = new THREE.Vector3();
-  const anchors = {
-    heroReactor: new THREE.Vector3(r.x + Math.sin(deg(CUT_AZ + 30)) * R, BODY_BOTTOM + hs * 0.55, r.z + Math.cos(deg(CUT_AZ + 30)) * R),
-    heroJacket: new THREE.Vector3(r.x + Math.sin(deg(-78)) * R * 1.08, BODY_BOTTOM + hs * 0.25, r.z + Math.cos(deg(-78)) * R * 1.08),
-    heroCondenser: new THREE.Vector3(cx, cy0 + ch * 0.55, r.z),
-  };
-
   return {
-    anchors,
+    anchors: {
+      heroReactor: new THREE.Vector3(r.x + Math.sin(deg(CUT_AZ + 30)) * R, BODY_BOTTOM + hs * 0.55, r.z + Math.cos(deg(CUT_AZ + 30)) * R),
+      heroJacket: new THREE.Vector3(r.x + Math.sin(deg(-78)) * R * 1.08, BODY_BOTTOM + hs * 0.25, r.z + Math.cos(deg(-78)) * R * 1.08),
+      heroCondenser: new THREE.Vector3(cx, cy0 + ch * 0.55, r.z),
+    },
     update(t, s) {
       const level = s.heroReactorFill;
       const hLiquid = (BODY_BOTTOM + hs * level) - liquidBottom;
@@ -306,8 +463,7 @@ function heroReactor(root, M, r) {
         const ph = hash(i * 3.1), sp = 0.45 + hash(i * 7.7) * 0.5;
         const u = ((t * sp * 0.35 + ph) % 1);
         const rr = R * 0.82 * Math.sqrt(hash(i * 1.3)), a = hash(i * 5.9) * 6.283 + t * 0.6;
-        const y = liquidBottom + 0.15 + u * (hLiquid - 0.2);
-        v.set(r.x + Math.cos(a) * rr, y, r.z + Math.sin(a) * rr);
+        v.set(r.x + Math.cos(a) * rr, liquidBottom + 0.15 + u * (hLiquid - 0.2), r.z + Math.sin(a) * rr);
         const sc = heat > 0.05 ? (0.5 + hash(i) * 0.8) * Math.min(1, heat * 2) : 0.0001;
         m4.compose(v, q, s1.set(sc, sc, sc));
         bubbles.setMatrixAt(i, m4);
@@ -335,35 +491,87 @@ function heroReactor(root, M, r) {
   };
 }
 
-export function buildPlants(world, M, B) {
+// ---------------------------------------------------------------------------- assembly
+export function buildPlants(world, M) {
   const root = new THREE.Group();
   world.scene.add(root);
-  const P2 = { ...PLANT2, floorZ: (-49.2 - 16.5) / 2, floorD: 49.2 - 16.5 };
-  plantFrame(B, M, PLANT1);
-  plantFrame(B, M, P2);
+  const deckMat = makeMat({ color: '#4A5F78', roughness: 0.7, metalness: 0.4, transparent: true, opacity: 0.5, depthWrite: false, side: THREE.DoubleSide });
+  const KM = { ...M, deckMat };
+
+  // ---- Plant 1 (drawings PB1-102/104/301)
+  const env1 = plantEnvelope(root, M, PLANT1, {
+    roofColor: '#00529B', roofRib: '#003F7A', stripe: '#00A3E0', frameLines: [0, 4, 9, 14, 19, 24, 29, 33],
+    stairs: [P1_CORES.stairSW, P1_CORES.stairNE], lift: P1_CORES.lift,
+    shutters: [[-0.12 - 0.06, 29.6, -0.12, 32.6, 0, 4.0]],                     // RS 3000×4000, west wall, G–H bay
+  });
+  const F1 = env1.F;
+  const inner1 = new THREE.Group();
+  root.add(inner1);
+  const IB1 = new Batcher();
+  F1.box(IB1, M.concreteLight, 0, 0, F1.W, F1.D, 0, 0.2, -1, { cast: false });
+  const reactorHoles = P1_REACTORS.map((r) => [...F1.local(r.x, r.z), reactorDims(r.kl).R + 0.35]);
+  const cores = [P1_CORES.stairSW, P1_CORES.stairNE, P1_CORES.lift, P1_CORES.cutout];
+  const full = [0.15, 0.15, F1.W - 0.15, F1.D - 0.15];
+  deck(IB1, KM, F1, LV.mezz1, full, reactorHoles, cores);
+  deck(IB1, KM, F1, LV.mezz2, full, reactorHoles.map(([a, b]) => [a, b, 0.75]), cores);
+  deck(IB1, KM, F1, LV.top, full, P1_REACTORS.map((r) => [...F1.local(r.silo.x, r.silo.z), 1.0]), cores);
+  for (const lvl of [LV.mezz1, LV.mezz2, LV.top]) {                           // cutout railing (MEZZ-2 plan)
+    const [a, b, c, d] = P1_CORES.cutout;
+    F1.box(IB1, M.yellow, a, b - 0.05, c, b, lvl + 1.0, lvl + 1.06, -1, { cast: false });
+    F1.box(IB1, M.yellow, c, b, c + 0.05, d, lvl + 1.0, lvl + 1.06, -1, { cast: false });
+  }
   let hero = null;
   for (const r of P1_REACTORS) {
+    const { hs, head } = reactorDims(r.kl);
     if (r.hero) hero = heroReactor(root, M, r);
-    else addReactor(B, M, r, r.x < PLANT1.x ? -1 : 1);
+    else addReactor(IB1, M, r, r.x < PLANT1.x ? -1 : 1, true);
+    silo(IB1, M, r.silo, BODY_BOTTOM + hs + head, r.x, r.z);
   }
-  for (const r of P2_REACTORS) addReactor(B, M, r, r.x < PLANT2.x ? -1 : 1);
+  for (const [x, z] of P1_CLT) vessel(IB1, M, x, z, 1.5, 1.9, LV.mezz1);
+  for (const [x, z] of P1_REC) vessel(IB1, M, x, z, 1.2, 1.4, LV.mezz2);
+  IB1.build(inner1);
+  crane(inner1, M, F1, F1.W, F1.D, 18.5);
+
+  // ---- Plant 2: same envelope; decks over the reactor rows, double-height finishing bay to the south
+  const p2Frames = Array.from({ length: 11 }, (_, i) => (i * (PLANT2.d - 0.23)) / 10);
+  const env2 = plantEnvelope(root, M, PLANT2, {
+    roofColor: '#2E7D32', roofRib: '#1F5E23', stripe: '#4ADE80', frameLines: p2Frames,
+    stairs: [[0.4, 44.0, 3.8, 47.4]],
+    shutters: [[PLANT2.w / 2 - 2.2, -0.12 - 0.06, PLANT2.w / 2 + 2.2, -0.12, 0, 4.5]],   // dispatch shutter at the finishing bay
+  });
+  const F2 = env2.F;
+  const inner2 = new THREE.Group();
+  root.add(inner2);
+  const IB2 = new Batcher();
+  F2.box(IB2, M.concreteLight, 0, 0, F2.W, F2.D, 0, 0.2, -1, { cast: false });
+  const holes2 = P2_REACTORS.map((r) => [...F2.local(r.x, r.z), reactorDims(r.kl).R + 0.35]);
+  const bayEnd = F2.local(0, -16.5)[1];
+  for (const lvl of [LV.mezz1, LV.mezz2, LV.top]) {
+    deck(IB2, KM, F2, lvl, [0.15, bayEnd, F2.W - 0.15, F2.D - 0.15], lvl === LV.mezz1 ? holes2 : holes2.map(([a, b]) => [a, b, 0.75]), [[0.4, 44.0, 3.8, 47.4]]);
+  }
+  for (const r of P2_REACTORS) addReactor(IB2, M, r, r.x < PLANT2.x ? -1 : 1, true);
+  IB2.build(inner2);
+  crane(inner2, M, F2, F2.W, F2.D, 30);
+
   // P2 feed from the south powder-polyester reactor down to the flaker head
   const feedMat = makeMat({ color: '#78350F', emissive: '#F59E0B', emissiveIntensity: 1.2 });
-  const feed = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
-    new THREE.Vector3(25.6, 2.6, -20.5), new THREE.Vector3(25.6, 2.2, -18.0), new THREE.Vector3(26.0, 3.1, -15.6), new THREE.Vector3(26.0, 2.55, -14.4)], false, 'catmullrom', 0.2), 32, 0.11, 8), feedMat);
-  root.add(feed);
+  root.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+    new THREE.Vector3(25.6, 2.0, -20.5), new THREE.Vector3(25.6, 2.0, -18.0), new THREE.Vector3(26.0, 3.1, -15.6), new THREE.Vector3(26.0, 2.55, -14.4)], false, 'catmullrom', 0.2), 32, 0.11, 8), feedMat));
 
-  const shell1 = plantShell(root, M, PLANT1, 'roofP1', '#00A3E0');
-  const shell2 = plantShell(root, M, P2, 'roofP2', '#4ADE80');
-
-  const top = (P) => new THREE.Vector3(P.x, P.h + 1.5, P.z);
+  const top = (P) => new THREE.Vector3(P.x, LV.ridge + 1.5, P.z);
   return {
-    anchors: { ...hero.anchors, plant1: top(PLANT1), plant2: top(PLANT2) },
+    anchors: {
+      ...hero.anchors, plant1: top(PLANT1), plant2: top(PLANT2),
+      p1Crane: F1.world(F1.W * 0.38, LV.crane + 1.2, 18.5),
+      p1Silo: new THREE.Vector3(P1_REACTORS[0].silo.x, LV.top + 2.0, P1_REACTORS[0].silo.z),
+    },
     update(t, s) {
       hero.update(t, s);
       feedMat.emissiveIntensity = 0.4 + 1.2 * s.finishingRun;
-      const c1 = shell1.setCutaway(s.plant1Cutaway);
-      const c2 = shell2.setCutaway(s.plant2Cutaway);
+      inner1.visible = s.plant1Cutaway > 0.01;
+      inner2.visible = s.plant2Cutaway > 0.01;
+      const c1 = env1.setCutaway(s.plant1Cutaway);
+      const c2 = env2.setCutaway(s.plant2Cutaway);
       return c1 || c2;
     },
   };

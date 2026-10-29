@@ -57,9 +57,9 @@
       { "id": "a1_orbit",     "start": 14.0,  "end": 24.5,  "target": [[-3, 0, 2], [0, 0, -2]],       "radius": [215, 190], "elev": [38, 32], "azim": [-38, -10], "fov": [34, 34], "aperture": [0.25, 0.3], "ease": "inOutSine", "blendIn": 1.2 },
       { "id": "a1_push",      "start": 24.5,  "end": 30.5,  "target": [[0, 0, -2], [6.1, 6, -17.6]], "radius": [190, 60],  "elev": [32, 34], "azim": [-10, -30], "fov": [34, 34], "aperture": [0.3, 0.45], "ease": "inOutCubic", "blendIn": 1.0, "whoosh": true, "whooshAt": 26.2 },
 
-      { "id": "a2_dive",      "start": 30.5,  "end": 35.0,  "target": [[6.1, 6, -17.6], [2.3, 6.2, -7]], "radius": [60, 15], "elev": [34, 18], "azim": [-30, -55], "fov": [34, 34], "aperture": [0.45, 0.9], "ease": "inOutCubic", "blendIn": 0.8, "whoosh": true },
-      { "id": "a2_hero",      "start": 35.0,  "end": 47.0,  "target": [[2.3, 6.2, -7], [2.3, 6.0, -7]],  "radius": [15, 13], "elev": [18, 11], "azim": [-55, 12], "fov": [34, 31], "aperture": [0.9, 1.1], "ease": "inOutSine", "blendIn": 1.0 },
-      { "id": "a2_hall",      "start": 47.0,  "end": 56.0,  "target": [[2.3, 6.0, -7], [6.1, 5.5, -17.6]], "radius": [13, 40], "elev": [11, 34], "azim": [12, -38], "fov": [31, 34], "aperture": [1.1, 0.5], "ease": "inOutSine", "blendIn": 1.0 },
+      { "id": "a2_dive",      "start": 30.5,  "end": 35.0,  "target": [[6.1, 6, -17.6], [2.5, 4.8, -7.4]], "radius": [60, 15], "elev": [34, 10], "azim": [-30, -55], "fov": [34, 34], "aperture": [0.45, 0.9], "ease": "inOutCubic", "blendIn": 0.8, "whoosh": true },
+      { "id": "a2_hero",      "start": 35.0,  "end": 47.0,  "target": [[2.5, 4.8, -7.4], [2.5, 4.6, -7.4]], "radius": [15, 13], "elev": [10, 8], "azim": [-55, 12], "fov": [34, 31], "aperture": [0.9, 1.1], "ease": "inOutSine", "blendIn": 1.0 },
+      { "id": "a2_hall",      "start": 47.0,  "end": 56.0,  "target": [[2.5, 4.6, -7.4], [6.1, 5.5, -17.6]], "radius": [13, 40], "elev": [8, 34], "azim": [12, -38], "fov": [31, 34], "aperture": [1.1, 0.5], "ease": "inOutSine", "blendIn": 1.0 },
       { "id": "a2_exit",      "start": 56.0,  "end": 60.5,  "target": [[6.1, 5.5, -17.6], [29.5, 6, -24]], "radius": [40, 62], "elev": [34, 44], "azim": [-38, 18], "fov": [34, 34], "aperture": [0.5, 0.45], "ease": "inOutCubic", "blendIn": 0.8, "whoosh": true, "whooshAt": 56.4 },
 
       { "id": "a3_p2",        "start": 60.5,  "end": 65.0,  "target": [[29.5, 6, -24], [29.5, 5, -27]], "radius": [62, 44], "elev": [44, 38], "azim": [18, 34], "fov": [34, 34], "aperture": [0.45, 0.6], "ease": "inOutSine", "blendIn": 0.8 },

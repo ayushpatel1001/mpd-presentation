@@ -68,6 +68,18 @@ Hugging Face and the Whisper model host are not reachable from the build environ
   PocketSphinx forced alignment against the known script (word posteriors 0.85–0.99), which is
   more exact than free ASR for a fixed script.
 
+## 3D model sources
+
+| Model | Source drawings |
+|---|---|
+| Site layout, roads, tank farms, utilities | PP-A-DR-SP-001-2525 R2 site plan (survey grid → world: X = E − 85, Z = 95 − N) |
+| QA & QC / control room (`src/scene/qaqc.js`) | PP-A-DR-QC-101/102/103 (GF/FF/SF plans), QC-201 elevations, QC-301 sections — grids A–D × 01–03, floors 0/+4.5/+9.0, terrace +13.5, stair cabin +16.6 with glass curtain wall, emergency stair, every room's partitions, benches and equipment |
+| Plant 1 (`src/scene/process.js`, `layout.js`) | PP-A-DR-PB1-102 (MEZZ-1 +3.40), PB1-104 (MEZZ-2 +7.50), PB1-301 sections — P1-R-101…110, P1-CLT-101…110, P1-REC-101…110, P1-SILO-101…110 at drawing positions, decks +3.40/+7.50/+11.50, reactor lugs +5.00, 3 t EOT crane +14.00, PEB gable + monitor roof (eaves +16.0) |
+| Plant 2 | same PEB envelope and deck levels as Plant 1 (no Plant 2 drawings yet) |
+
+`node scripts/model_views.mjs` renders closed and cut-away views of these buildings to `build/preview/model_*.jpg`
+(`renderFrame(t, { cam, states, noHud })` accepts any camera and scene-state override).
+
 ## Content notes
 
 All figures come from the capabilities deck (slides 1–16). Two wording choices to review:

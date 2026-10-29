@@ -12,7 +12,6 @@ export const BOUNDARY = [
 export const BUILDINGS = [
   { id: 'wh1', label: 'Warehouse-1', no: '11', x: -23.7, z: -17.6, w: 25.23, d: 61.58, h: 11, roof: 'roof', style: 'shed' },
   { id: 'wh2', label: 'Warehouse-2', no: '19', x: -25.2, z: 35.8, w: 39.5, d: 23.5, h: 11, roof: 'roof', style: 'shed' },
-  { id: 'qa', label: 'QA & QC control room', no: '05', x: 6.1, z: -44.0, w: 15.46, d: 9.0, h: 12, roof: 'roofP1', style: 'office' },
   { id: 'elec', label: 'Electrical substation', no: '16', x: 48.6, z: -22.6, w: 6.55, d: 11.5, h: 5.5, roof: 'roof', style: 'plain' },
   { id: 'canteen', label: 'Canteen', no: '24', x: -70.8, z: -49.8, w: 16.5, d: 8.0, h: 5, roof: 'roof', style: 'office' },
   { id: 'admin', label: 'Admin', no: '04', x: 37.7, z: -62.4, w: 12.23, d: 8.73, h: 8, roof: 'roofP1', style: 'office' },
@@ -22,9 +21,13 @@ export const BUILDINGS = [
   { id: 'filling', label: 'Filling station', no: '21', x: -60.5, z: 3.6, w: 9.5, d: 10.0, h: 6, roof: 'roof', style: 'canopy' },
 ];
 
-export const PLANT1 = { id: 'p1', x: 6.1, z: -17.6, w: 15.46, d: 33.23, h: 17 };     // 08, G+2
-export const PLANT2 = { id: 'p2', x: 29.5, z: -25.3, w: 15.5, d: 47.83, h: 17 };     // 07
+// Plant 1 from PP-A-DR-PB1-102/104/301 (R0): grids 04→01 across (15.23 c/c), A→H along (33.0 c/c)
+export const PLANT1 = { id: 'p1', x: 6.1, z: -17.6, w: 15.46, d: 33.23, h: 17.6 };   // 08: eaves +16.0, ridge ≈ +17.6
+export const PLANT2 = { id: 'p2', x: 29.5, z: -25.3, w: 15.5, d: 47.83, h: 17.6 };   // 07 (same PEB envelope as Plant 1)
 export const BLENDER = { id: 'blender', x: 52.9, z: 1.4, w: 16.2, d: 26.5, h: 12 };  // 09
+// QA & QC / control room (05) — detailed model in qaqc.js; footprint incl. emergency stair + entrance canopy
+export const QAQC = { x: 6.1, z: -44.0, w: 15.46, d: 9.0 };
+export const QAQC_KEEPOUT = { x: 7.3, z: -44.1, w: 20.1, d: 10.6 };
 export const DAYTANK = { x: 17.5, z: 10.2, w: 34.23, d: 9.25 };                      // 10
 export const FG_FARM = { x: -65.9, z: -21.5, w: 19.3, d: 41.68 };                    // 13
 export const RM_FARM = { x: -63.2, z: 28.2, w: 12.9, d: 38.86 };                     // 12
@@ -45,7 +48,7 @@ export const ROADS = [
   [-51, -54, 52, -54, 6],      // north ring road
   [-48, -54, -48, 50.8, 6],    // west road
   [-6.5, -54, -6.5, 17.8, 6],  // WH-1 / Plant 1
-  [18, -54, 18, 17.8, 5],      // Plant 1 / Plant 2
+  [18.4, -54, 18.4, 17.8, 5],  // Plant 1 / Plant 2 (clear of the QA/QC emergency stair)
   [41.5, -54, 41.5, 17.8, 6],  // east of Plant 2
   [-51, 17.8, 72, 17.8, 6],    // middle road → material exit
   [-51, 50.8, 2, 50.8, 6],     // south-west road
@@ -55,17 +58,32 @@ export const ROADS = [
   [23.5, -87, 23.5, -54, 6],   // entry gate 1
 ];
 
-// Reactor allocation (slide 3) — rows inside each plant building.
-export const P1_REACTORS = [
-  // row A (west) — saturated polyester, 5 × 16 KL
-  { x: 2.3, z: -29.0, kl: 16, line: 'polyester' }, { x: 2.3, z: -23.5, kl: 16, line: 'polyester' },
-  { x: 2.3, z: -18.0, kl: 16, line: 'polyester' }, { x: 2.3, z: -12.5, kl: 16, line: 'polyester' },
-  { x: 2.3, z: -7.0, kl: 16, line: 'polyester', hero: true },
-  // row B (east) — alkyds 3 × 16 KL + 10 KL, modified epoxy 6 KL
-  { x: 9.9, z: -29.0, kl: 16, line: 'alkyd' }, { x: 9.9, z: -23.5, kl: 16, line: 'alkyd' },
-  { x: 9.9, z: -18.0, kl: 16, line: 'alkyd' }, { x: 9.9, z: -12.5, kl: 10, line: 'alkyd' },
-  { x: 9.9, z: -7.0, kl: 6, line: 'epoxy' },
+// Plant 1 equipment, drawing coordinates: x east of grid 04, y north of grid A (m).
+// World: X = PLANT1.x − 15.23/2 + x,  Z = PLANT1.z + 33.0/2 − y.
+export const p1World = (x, y) => [PLANT1.x - 15.23 / 2 + x, PLANT1.z + 33.0 / 2 - y];
+// Reactors P1-R-101…110 (MEZZ-1/2 plans); service allocation from the capabilities deck (slide 3)
+const P1R = [
+  ['P1-R-101', 4.0, 26.0, 16, 'polyester'], ['P1-R-102', 4.0, 21.4, 16, 'polyester'], ['P1-R-103', 4.0, 16.3, 16, 'polyester'],
+  ['P1-R-104', 4.0, 11.1, 16, 'polyester'], ['P1-R-105', 4.0, 6.3, 16, 'polyester', true],
+  ['P1-R-110', 11.2, 26.0, 16, 'alkyd'], ['P1-R-109', 11.2, 21.4, 16, 'alkyd'], ['P1-R-108', 11.2, 15.9, 16, 'alkyd'],
+  ['P1-R-107', 11.2, 11.1, 10, 'alkyd'], ['P1-R-106', 11.2, 6.3, 6, 'epoxy'],
 ];
+export const P1_REACTORS = P1R.map(([tag, px, py, kl, line, hero]) => {
+  const [x, z] = p1World(px, py);
+  // charging silo sits ~1.8 m north of each reactor (MEZZ-2 plan)
+  const [sx, sz] = p1World(px + 0.2, py + 1.8);
+  return { tag, x, z, kl, line, hero: !!hero, silo: { x: sx, z: sz } };
+});
+// Collection tanks P1-CLT-101…110 (4 t, supported at +3.40) and receivers P1-REC-101…110 (2 t, at +7.50)
+export const P1_CLT = [24.9, 22.6, 18.1, 13.1, 8.1].flatMap((y) => [p1World(1.94, y), p1World(13.36, y)]);
+export const P1_REC = [[2.3, 28.3], [2.3, 23.8], [2.3, 18.8], [2.3, 13.5], [2.3, 8.7],
+  [12.9, 28.2], [12.9, 24.3], [12.9, 18.9], [12.9, 13.7], [12.9, 8.8]].map(([x, y]) => p1World(x, y));
+// Openings / cores in plan (drawing coords): x0, y0, x1, y1
+export const P1_CORES = {
+  stairSW: [0.4, 0.4, 3.8, 3.9], stairNE: [9.6, 29.1, 14.8, 32.6], lift: [11.1, 0.1, 13.9, 3.9], cutout: [2.5, 29.1, 5.5, 32.6],
+};
+export const PLANT_LEVELS = { mezz1: 3.4, support: 5.0, mezz2: 7.5, top: 11.5, crane: 14.0, eave: 16.0, ridge: 17.6 };
+
 export const P2_REACTORS = [
   { x: 25.6, z: -45.5, kl: 10, line: 'polyamide' }, { x: 25.6, z: -40.5, kl: 10, line: 'polyamide' },
   { x: 25.6, z: -35.5, kl: 10, line: 'polyamide' }, { x: 25.6, z: -30.5, kl: 10, line: 'polyamide' },

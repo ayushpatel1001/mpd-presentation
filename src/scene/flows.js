@@ -21,7 +21,8 @@ const ROUTES = [
   ['resin_p2', 'resin', 'flowResin', [0.05, 0.4], [V(31, 5.0, -1.6), V(31, 6.6, -1.6), V(31, 6.6, 16.6)]],
   ['resin_bl', 'resin', 'flowResin', [0.4, 0.55], [V(47, 6.6, 16.6), V(50, 6.6, 16.6), V(50, 6.6, 12), V(50, 4.5, 12)]],
   ['resin_fg', 'resin', 'flowResin', [0.5, 1], [V(45.5, 5.0, 10), V(45.5, 6.0, 16.0), V(-48.6, 6.0, 16.0), V(-48.6, 6.0, -20), V(-55.5, 6.0, -20), V(-55.5, 3.0, -20)]],
-  ['solvent', 'solvent', 'flowSolvent', [0, 1], [V(-35, 0.8, 61.2), V(-35, 6.0, 61.2), V(-35, 6.0, 53.0), V(-4.4, 6.0, 53.0), V(-4.4, 6.0, -10), V(1.0, 6.0, -10), V(1.0, 5.0, -10)]],
+  // solvent enters Plant 1 through the south end along the centre aisle (keeps the Act 2 hero shot clear)
+  ['solvent', 'solvent', 'flowSolvent', [0, 1], [V(-35, 0.8, 61.2), V(-35, 6.0, 61.2), V(-35, 6.0, 53.0), V(-4.4, 6.0, 53.0), V(-4.4, 6.0, 20.2), V(8.0, 6.0, 20.2), V(8.0, 6.0, -2.5), V(8.0, 4.0, -2.5)]],
 ];
 
 const FLOW_FRAG = /* glsl */`
@@ -84,7 +85,8 @@ export function buildFlows(world, M, B, tokens) {
     { from: V(18, 0, 22), to: V(18, 0, 44.6), y: 7.9 },
     { from: V(-46, 0, 21.4), to: V(54, 0, 21.4), y: 7.0, cross: 'z' },
     { from: V(20, 0, 47.3), to: V(34, 0, 47.3), y: 7.6, cross: 'z' },
-    { from: V(-2.2, 0, -8), to: V(-2.2, 0, 13), y: 6.6 },
+    { from: V(-4.4, 0, 25), to: V(-4.4, 0, 50), y: 6.6 },
+    { from: V(8, 0, 1), to: V(8, 0, 17), y: 6.6 },
   ];
   for (const r of racks) {
     const L = r.from.distanceTo(r.to);

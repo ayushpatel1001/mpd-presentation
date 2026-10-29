@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { Batcher, withRise, patchRise, riseDepthMaterial } from './materials.js';
 import { BOUNDARY, BUILDINGS, ROADS, PESO, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER, FUTURE, insideBoundary,
-  PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK } from './layout.js';
+  PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, QAQC_KEEPOUT } from './layout.js';
 import { rng } from '../lib/util.js';
 
 const SITE_C = new THREE.Vector2(-3, 2);
@@ -134,7 +134,7 @@ export function buildSite(world, M, tokens, planTexture) {
 
   // ---- trees: green belt along the boundary + clusters
   const keepOut = [
-    ...BUILDINGS, PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, FUTURE,
+    ...BUILDINGS, QAQC_KEEPOUT, PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, FUTURE,
     { x: PESO.x, z: PESO.z, w: PESO.w, d: PESO.d }, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER,
   ];
   const roadBoxes = ROADS.map(([x0, z0, x1, z1, w]) => ({ x: (x0 + x1) / 2, z: (z0 + z1) / 2, w: Math.abs(x1 - x0) + w, d: Math.abs(z1 - z0) + w }));
