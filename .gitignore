@@ -1,4 +1,15 @@
+# Dependencies (restore with `npm install`)
 node_modules/
-build/
+
+# Heavy, regenerable build artefacts:
+# mix stems are 50-70 MB WAVs each, rebuilt by scripts/audio.py in ~1 min
+build/audio/
+# 5,400 rendered JPEG frames, rebuilt by scripts/render_frames.mjs
+build/frames/
+# validation captures + report, rebuilt by scripts/validate.mjs
+build/validation/
+
+# Scratch
 *.tmp
 __pycache__/
+.DS_Store

@@ -32,9 +32,13 @@ export function serve() {
   });
 }
 
-export async function openRenderer(srv, { quality = 94 } = {}) {
+const withTimeout = (p, ms, what) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error(`timeout: ${what}`)), ms))]);
+
+export async function openRenderer(srv, { quality = 94, frameTimeoutMs = 90000 } = {}) {
   const { chromium } = loadPlaywright();
-  const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--disable-frame-rate-limit'] });
+  // launchServer gives a kill handle for wedged SwiftShader GPU processes
+  const server = await chromium.launchServer({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--disable-frame-rate-limit'] });
+  const browser = await chromium.connect(server.wsEndpoint());
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   const logs = [];
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') logs.push(`${m.type()}: ${m.text()}`); });
@@ -46,14 +50,17 @@ export async function openRenderer(srv, { quality = 94 } = {}) {
   const cdp = await page.context().newCDPSession(page);
   return {
     browser, page, logs,
+    // Rejects with "timeout" if SwiftShader stalls; callers relaunch the browser and retry.
     async frame(t, opts = {}) {
-      const info = await page.evaluate(async ([tt, o]) => {
-        const r = window.renderFrame(tt, o);
-        if (!o.noWait) await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
-        return r;
-      }, [t, opts]);
-      const shot = await cdp.send('Page.captureScreenshot', { format: 'jpeg', quality, optimizeForSpeed: true });
-      return { jpeg: Buffer.from(shot.data, 'base64'), ...info };
+      return withTimeout((async () => {
+        const info = await page.evaluate(async ([tt, o]) => {
+          const r = window.renderFrame(tt, o);
+          if (!o.noWait) await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
+          return r;
+        }, [t, opts]);
+        const shot = await cdp.send('Page.captureScreenshot', { format: 'jpeg', quality, optimizeForSpeed: true });
+        return { jpeg: Buffer.from(shot.data, 'base64'), ...info };
+      })(), frameTimeoutMs, `frame ${t}`);
     },
     async png(t, opts = {}) {
       const info = await page.evaluate(async ([tt, o]) => {
@@ -64,6 +71,31 @@ export async function openRenderer(srv, { quality = 94 } = {}) {
       const shot = await cdp.send('Page.captureScreenshot', { format: 'png' });
       return { png: Buffer.from(shot.data, 'base64'), ...info };
     },
-    close: () => browser.close(),
+    close: async () => {
+      await withTimeout(browser.close(), 10000, 'browser close').catch(() => {});
+      await server.kill().catch(() => {});
+    },
+  };
+}
+
+// A renderer that transparently relaunches Chromium when a frame stalls or the page crashes.
+export async function resilientRenderer(srv, opts = {}) {
+  let r = await openRenderer(srv, opts);
+  const wrap = (fn) => async (t, o) => {
+    for (let attempt = 1; ; attempt++) {
+      try { return await r[fn](t, o); } catch (e) {
+        if (attempt >= 3) throw e;
+        console.log(`[renderer] ${e.message} — relaunching (attempt ${attempt + 1})`);
+        await r.close();
+        r = await openRenderer(srv, opts);
+      }
+    }
+  };
+  return {
+    get page() { return r.page; },
+    get logs() { return r.logs; },
+    frame: wrap('frame'),
+    png: wrap('png'),
+    close: () => r.close(),
   };
 }

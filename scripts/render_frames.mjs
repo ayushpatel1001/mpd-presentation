@@ -3,7 +3,7 @@
 // Each worker renders one contiguous block so per-worker state (shadow map refreshes) stays deterministic.
 import fs from 'node:fs';
 import path from 'node:path';
-import { serve, openRenderer, ROOT } from './browser.mjs';
+import { serve, resilientRenderer, ROOT } from './browser.mjs';
 
 const arg = (name, def) => { const i = process.argv.indexOf(`--${name}`); return i > 0 ? Number(process.argv[i + 1]) : def; };
 const tl = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'timeline.resolved.json'), 'utf8'));
@@ -31,7 +31,7 @@ const timer = setInterval(() => {
 
 try {
   await Promise.all(blocks.map(async (block) => {
-    const r = await openRenderer(srv, { quality });
+    const r = await resilientRenderer(srv, { quality });
     try {
       for (const i of block) {
         const f = await r.frame(i / FPS);

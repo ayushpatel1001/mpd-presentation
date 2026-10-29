@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { serve, openRenderer, ROOT } from './browser.mjs';
+import { serve, resilientRenderer, ROOT } from './browser.mjs';
 
 const OUT = path.join(ROOT, 'build', 'validation');
 fs.mkdirSync(path.join(OUT, 'frames'), { recursive: true });
@@ -12,7 +12,7 @@ const tl = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'timeline.resolved
 const D = tl.meta.durationSec;
 
 const srv = await serve();
-const r = await openRenderer(srv, { quality: 96 });
+const r = await resilientRenderer(srv, { quality: 96 });
 try {
   // (A) dense manifests
   const dense = [];
