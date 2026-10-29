@@ -184,12 +184,14 @@ function crane(root, M, F, W, D, yAt, cycle) {
   g.add(bag);
   const slings = add(new THREE.ConeGeometry(0.62, 0.55, 4, 1, true), dark, 0, 0, yAt);
   slings.rotation.y = Math.PI / 4;
-  const { x0, x1, floor, top, rest, period } = cycle;
+  const { x0, x1, floor, top, rest, period, speed = 1, phase = 0 } = cycle;
+  const anchor = new THREE.Vector3();
   const ease = (u) => u * u * (3 - 2 * u);
   const seg = (u, a, b) => ease(Math.min(1, Math.max(0, (u - a) / (b - a))));
   return {
+    anchor,
     update(t) {
-      const u = ((t % period) + period) % period;
+      const u = (((t * speed + phase) % period) + period) % period;
       const lift = seg(u, 2.5, 10) - seg(u, 33, 35.5);               // floor → transfer height, later back down empty
       const lower = seg(u, 14, 16.5) - seg(u, 27, 29);               // onto the discharger and back up
       const x = x0 + (x1 - x0) * (seg(u, 10, 14) - seg(u, 29, 33));
@@ -201,6 +203,7 @@ function crane(root, M, F, W, D, yAt, cycle) {
       bag.position.copy(F.world(x, bottom, yAt));
       bag.scale.set(1 + 0.06 * empty, sy, 1 + 0.06 * empty);
       slings.position.copy(F.world(x, (loopsH + hookH - 0.25) / 2, yAt));
+      anchor.copy(F.world(x, bottom + 0.6, yAt));
     },
   };
 }
@@ -436,7 +439,8 @@ export function buildPlants(world, M, OB) {
   for (const [x, z] of P1_CLT) vessel(IB1, M, x, z, 1.5, 1.9, LV.mezz1);
   for (const [x, z] of P1_REC) vessel(IB1, M, x, z, 1.2, 1.4, LV.mezz2);
   IB1.build(inner1);
-  const crane1 = crane(inner1, M, F1, F1.W, F1.D, DY, { x0: 4.0, x1: DX, floor: 0.2, top: 9.9, rest: BAG_REST, period: 36 });
+  // 36 s cycle played 1.6× fast; phase puts the lift at 42.3 s, inside the film's crane shot
+  const crane1 = crane(inner1, M, F1, F1.W, F1.D, DY, { x0: 4.0, x1: DX, floor: 0.2, top: 9.9, rest: BAG_REST, period: 36, speed: 1.6, phase: 6.82 });
   // jumbo bags arriving from Warehouse-1: one waiting at the west shutter, one on a forklift on road R3
   const rb = riseDelay(-4, -28) + 0.05;
   pallet(OB, M.wood, placeAt(-3.3, 0, -32.2), rb);
@@ -480,6 +484,7 @@ export function buildPlants(world, M, OB) {
       p1Silo: new THREE.Vector3(P1_REACTORS[0].silo.x, LV.top + 2.0, P1_REACTORS[0].silo.z),
       p1Hoist: F1.world(5.8, LV.crane + 1.0, DY),
       p1Discharger: F1.world(DX, BAG_REST + 1.6, DY),
+      jumboBag: crane1.anchor,
     },
     update(t, s) {
       hero.update(t, s);

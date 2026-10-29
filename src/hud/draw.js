@@ -189,6 +189,32 @@ export function icon(p, name, x, y, size, color, lw = 2.6) {
     case 'tray':
       for (const yy of [-s * 0.55, 0, s * 0.55]) { ctx.beginPath(); ctx.moveTo(-s * 0.85, yy - s * 0.15); ctx.lineTo(-s * 0.75, yy + s * 0.15); ctx.lineTo(s * 0.75, yy + s * 0.15); ctx.lineTo(s * 0.85, yy - s * 0.15); ctx.stroke(); }
       break;
+    case 'flask':
+      ctx.moveTo(-s * 0.25, -s * 0.9); ctx.lineTo(-s * 0.25, -s * 0.25); ctx.lineTo(-s * 0.8, s * 0.75);
+      ctx.quadraticCurveTo(-s * 0.85, s * 0.9, -s * 0.65, s * 0.9); ctx.lineTo(s * 0.65, s * 0.9);
+      ctx.quadraticCurveTo(s * 0.85, s * 0.9, s * 0.8, s * 0.75); ctx.lineTo(s * 0.25, -s * 0.25); ctx.lineTo(s * 0.25, -s * 0.9); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-s * 0.4, -s * 0.9); ctx.lineTo(s * 0.4, -s * 0.9); ctx.moveTo(-s * 0.55, s * 0.35); ctx.lineTo(s * 0.55, s * 0.35); ctx.stroke();
+      break;
+    case 'spray':
+      ctx.roundRect(-s * 0.85, -s * 0.45, s * 0.9, s * 0.5, s * 0.1); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-s * 0.55, s * 0.05); ctx.lineTo(-s * 0.7, s * 0.85); ctx.moveTo(-s * 0.4, -s * 0.45); ctx.lineTo(-s * 0.4, -s * 0.8); ctx.lineTo(-s * 0.05, -s * 0.8); ctx.stroke();
+      for (const [dx, dy] of [[0.35, -0.45], [0.6, -0.2], [0.85, 0.05], [0.6, -0.65], [0.85, -0.4]]) { ctx.beginPath(); ctx.arc(s * dx, s * dy, s * 0.07, 0, Math.PI * 2); ctx.fill(); }
+      break;
+    case 'sun':
+      ctx.arc(0, 0, s * 0.38, 0, Math.PI * 2); ctx.stroke();
+      for (let k = 0; k < 8; k++) { const a = (k * Math.PI) / 4; ctx.beginPath(); ctx.moveTo(Math.cos(a) * s * 0.58, Math.sin(a) * s * 0.58); ctx.lineTo(Math.cos(a) * s * 0.9, Math.sin(a) * s * 0.9); ctx.stroke(); }
+      break;
+    case 'gauge':
+      ctx.arc(0, s * 0.2, s * 0.8, Math.PI, 0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, s * 0.2); ctx.lineTo(s * 0.45, -s * 0.3); ctx.stroke();
+      ctx.beginPath(); ctx.arc(0, s * 0.2, s * 0.1, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(-s * 0.9, s * 0.55); ctx.lineTo(s * 0.9, s * 0.55); ctx.stroke();
+      break;
+    case 'shed':
+      ctx.moveTo(-s * 0.95, -s * 0.05); ctx.lineTo(0, -s * 0.75); ctx.lineTo(s * 0.95, -s * 0.05); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-s * 0.75, -s * 0.15); ctx.lineTo(-s * 0.75, s * 0.85); ctx.moveTo(s * 0.75, -s * 0.15); ctx.lineTo(s * 0.75, s * 0.85); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-s * 0.55, s * 0.85); ctx.quadraticCurveTo(-s * 0.2, s * 0.15, s * 0.1, s * 0.85); ctx.quadraticCurveTo(s * 0.35, s * 0.35, s * 0.55, s * 0.85); ctx.stroke();
+      break;
     case 'check':
       ctx.moveTo(-s * 0.5, 0); ctx.lineTo(-s * 0.12, s * 0.38); ctx.lineTo(s * 0.55, -s * 0.4); ctx.stroke();
       break;

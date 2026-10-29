@@ -25,8 +25,8 @@ const VIEWS = {
   wh1_racks: { cam: { target: [-22.0, 4, -35.5], radius: 19, elev: 17, azim: 86, fov: 48 }, states: { wh1Cutaway: 1 } },
   wh1_depal: { cam: { target: [-19.0, 1.8, -10.5], radius: 21, elev: 30, azim: 62 }, states: { wh1Cutaway: 1 } },
   wh2_cut: { cam: { target: WH2, radius: 56, elev: 42, azim: 28 }, states: { wh2Cutaway: 1, modelLabels: 1 }, labels: ['wh2Racks'] },
-  p1_hoist: { t: 6.5, cam: { target: [4.0, 6.5, -31.8], radius: 12.5, elev: 6, azim: -78, fov: 58 }, states: { plant1Cutaway: 1, modelLabels: 1 }, labels: ['p1Hoist'] },
-  p1_discharge: { t: 21, cam: { target: [5.2, 8.6, -31.5], radius: 11, elev: 14, azim: -66, fov: 50 }, states: { plant1Cutaway: 1 } },
+  p1_hoist: { t: 22.7, cam: { target: [4.0, 6.5, -31.8], radius: 12.5, elev: 6, azim: -78, fov: 58 }, states: { plant1Cutaway: 1, modelLabels: 1 }, labels: ['p1Hoist'] },
+  p1_discharge: { t: 9.3, cam: { target: [5.2, 8.6, -31.5], radius: 11, elev: 14, azim: -66, fov: 50 }, states: { plant1Cutaway: 1 } },
 };
 const names = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(VIEWS);
 const out = path.join(ROOT, 'build', 'preview');

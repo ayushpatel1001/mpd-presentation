@@ -16,17 +16,20 @@ with a Canvas 2D HUD on top, rendered frame-by-frame in headless Chromium and mu
 
 ## Structure of the film (beat grid)
 
-128 BPM, so every 30-second act is exactly 16 bars. Camera moves and act changes land on bar lines;
-HUD pops land on the narrated word they illustrate (resolved from word timestamps).
+128 BPM; eight sections follow the material flow through the plant, with short shots (3–7 s), quick
+whoosh cuts and a slightly faster voice. Camera moves and section changes land on bar lines; HUD pops land
+on the narrated word they illustrate (resolved from word timestamps).
 
-| Act | Time | 3D | 2D |
-|---|---|---|---|
-| 1 Hook & site flythrough | 0:00–0:30 | blueprint of the real site plan → plant rises out of it, aerial descent and orbit | logo resolve, counters 22 reactors / ~6,900 T/month, zone callouts |
-| 2 Plant 1 – liquid resins | 0:30–1:00 | building cuts away; wedge-cut 16 KL reactor with rising charge, agitator, thermic jacket, reflux condenser | reactor callout, 2→16 KL scale-up ladder, 4,373 T/month split |
-| 3 Plant 2 – solid & specialty | 1:00–1:30 | double-belt flaker (hot sheet cooling to flakes), pelletiser with pastilles, crusher, tray casting | finishing chips, 2,530 T/month capability matrix |
-| 4 Tank farms & blending | 1:30–2:00 | ground turns x-ray over 12 × 50 KL PESO tanks; FG farm with grade colours; blenders; resin transfer lines | 600 KL / ~1,045 KL / 380 KL capacity HUDs |
-| 5 Utilities & EHS | 2:00–2:30 | agro-waste thermic heaters, stacks, cooling tower fans; thermic oil, cooling water, N₂ and effluent flows light up | green EHS badges |
-| 6 Partnerships & CTA | 2:30–3:00 | clean isometric orbit, depth-of-field backdrop | toll conversion / full-service jobwork / dedicated capacity cards, contact card |
+| # | Section | Time | 3D | 2D |
+|---|---|---|---|---|
+| 01 | Greenfield site | 0:00–0:15 | blueprint → plant rises, aerial descent | logo, 22 reactors / ~6,900 T/month, zone callouts |
+| 02 | Storage & material handling | 0:15–0:39 | Warehouse-1 cut away (mobile compact racking), depalletiser → jumbo-bag cell, PESO x-ray | 2,904 pallets ≈ 1,500 t (WH-1 1,464 + WH-2 1,440), 600 KL solvents |
+| 03 | Plant 1 – liquid resins | 0:39–1:04 | EOT crane hoisting a jumbo bag to the charging deck, wedge-cut 16 KL reactor | 4,373 T/month split |
+| 04 | Plant 2 – solid & specialty | 1:04–1:24 | flaker, pelletiser | finishing chips, 2,530 T/month matrix |
+| 05 | QC & application labs | 1:24–1:41 | QA/QC building cut away floor by floor | QC lab, application lab, weathering/physical tests, central control room |
+| 06 | Blending & finished goods | 1:41–2:00 | blender house, FG tank farm, storage wide | 380 KL blending, ~1,045 KL FG, **total storage: 1,500 t packed + 1,645 KL bulk** |
+| 07 | Green utilities & EHS | 2:00–2:30 | thermic heaters, covered agro-waste fuel shed, 50 KLD ETP, rooftop solar wide | heaters, fuel shed, 2,200 TR cooling, N₂, 50 KLD ETP, 0.70 MWp solar |
+| 08 | Partnership & contact | 2:30–3:00 | isometric orbit | toll / full-service / dedicated cards, contact card |
 
 ## Pipeline
 
@@ -77,9 +80,10 @@ Hugging Face and the Whisper model host are not reachable from the build environ
 | Plant 1 (`src/scene/process.js`, `layout.js`) | PP-A-DR-PB1-102 (MEZZ-1 +3.40), PB1-104 (MEZZ-2 +7.50), PB1-301 sections — P1-R-101…110, P1-CLT-101…110, P1-REC-101…110, P1-SILO-101…110 at drawing positions, decks +3.40/+7.50/+11.50, reactor lugs +5.00, 3 t EOT crane +14.00, PEB gable + monitor roof (eaves +16.0) |
 | Plant 2 | same PEB envelope and deck levels as Plant 1 (no Plant 2 drawings yet) |
 | Warehouse-1 (`src/scene/warehouse.js`) | PP-A-WH-101-2525 **R0** (older issue, adopted for now): 30.0 × 61.35 m PEB, eaves +10.0, turbo vents + 300 mm polycarbonate strips per bay, 4 west truck docks, lean-phase powder transfer room, +4.0 platform with tanks, toilets. Storage as drawn: 7 double-faced mobile units (8 bays × 6 levels × 2 pallets per face, 500 kg) + static north row (10 bays × 6 levels × 2, 1 t) = **1,464 pallets ≈ 792 t**. The drawing is 5 m wider than the site plan, so the shed grows west towards road R2 |
-| Depalletiser → jumbo bag → crane (assumed) | WH-1 bay 05–06: pallet infeed, gantry layer depalletiser, bag-emptying station with dust collector, screw conveyor, FIBC filling station on load cells, new east shutter; bags go by forklift over road R3 to Plant 1's west shutter, where the 3 t EOT crane hoists them through the cut-out to a bag discharger on MEZZ-2 feeding P1-R-101 (36 s animated cycle). The top deck's hoisting opening is extended east so the rope can travel |
-| Warehouse-2 (assumed) | no drawing yet: PEB on the site-plan footprint, 6 mobile units × 10 bays × 6 levels × 2 pallets per face = **1,440 pallets ≈ 720 t** |
-| Rooftop solar (`src/scene/solar.js`, assumed) | 545 Wp modules flush on every PEB slope (between the lighting strips) and tilted 12° south on the flat roofs and canopies; trimmed to **1,285 modules = 700 kWp (0.70 MWp)**, inverter skid beside the substation |
+| Depalletiser → jumbo bag → crane | WH-1 bay 05–06 (planned): pallet infeed, gantry layer depalletiser, bag-emptying station with dust collector, screw conveyor, FIBC filling station on load cells, new east shutter; bags go by forklift over road R3 to Plant 1's west shutter, where the 3 t EOT crane hoists them through the cut-out to a bag discharger on MEZZ-2 feeding P1-R-101 (animated cycle, timed to the film's crane shot). The top deck's hoisting opening is extended east so the rope can travel |
+| Warehouse-2 | site-plan footprint (detailed drawing to follow): PEB shed, 6 mobile units × 10 bays × 6 levels × 2 pallets per face = **1,440 pallets ≈ 720 t** |
+| Rooftop solar (`src/scene/solar.js`) | planned layout: 545 Wp modules flush on every PEB slope (between the lighting strips) and tilted 12° south on the flat roofs and canopies; trimmed to **1,285 modules = 700 kWp (0.70 MWp)**, inverter skid beside the substation |
+| Utilities (`src/scene/utilities.js`) | agro-waste fuel yard under a covered, open-fronted portal-frame shed (bunker walls west/south, open to the boiler house and the north road); 50 KLD ETP: oil & grease trap + equalisation, flash mixer / primary settler, MBBR aeration, secondary clarifier, PSF + ACF, treated-water tank, filter press, sludge drying beds |
 
 `node scripts/model_views.mjs` renders closed and cut-away views of these buildings to `build/preview/model_*.jpg`
 (`renderFrame(t, { cam, states, noHud })` accepts any camera and scene-state override). Extra states for model

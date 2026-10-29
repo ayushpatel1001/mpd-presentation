@@ -259,8 +259,11 @@ export function createHud(canvas, tokens, timeline, assets) {
       P.group(a, () => {
         P.panel(x, y, w, h, { radius: 14 });
         P.rect(x, y + 16, 6, 190, col);
-        const vw = P.text(pr.value, x + 30, y + 122, { size: 116, weight: 900, family: 'Montserrat', color: '#FFFFFF' });
-        P.text(pr.unit, x + 30 + vw + 10, y + 122, { size: 46, weight: 800, family: 'Montserrat', color: colT });
+        // value + unit shrink together if a long unit (e.g. PALLETS) would overflow the panel
+        let vs = 116;
+        while (vs > 72 && P.measure(pr.value, { size: vs, weight: 900, family: 'Montserrat' }) + 10 + P.measure(pr.unit, { size: vs * 0.4, weight: 800, family: 'Montserrat' }) > w - 60) vs -= 4;
+        const vw = P.text(pr.value, x + 30, y + 122, { size: vs, weight: 900, family: 'Montserrat', color: '#FFFFFF' });
+        P.text(pr.unit, x + 30 + vw + 10, y + 122, { size: Math.round(vs * 0.4), weight: 800, family: 'Montserrat', color: colT });
         P.text(pr.title, x + 30, y + 170, { size: 28, weight: 800, spacing: 3, color: colT });
         P.text(pr.sub, x + 30, y + 210, { size: 28, weight: 500, color: '#C7D5E4' });
         const vy = y + 238;
@@ -311,28 +314,66 @@ export function createHud(canvas, tokens, timeline, assets) {
             const ly = barY + 66 + i * 36;
             P.rect(x + 30, ly - 17, 18, 18, pal[i]);
             P.text(sg.label, x + 60, ly, { size: 24, weight: 600, color: '#FFFFFF' });
-            P.text(`${fmt(sg.value)} KL`, x + w - 30, ly, { size: 24, weight: 700, color: '#C7D5E4', align: 'right' });
+            P.text(`${fmt(sg.value)} ${pr.segUnit || 'KL'}`, x + w - 30, ly, { size: 24, weight: 700, color: '#C7D5E4', align: 'right' });
           });
         }
         if (pr.detail) P.text(pr.detail, x + 30, y + h - 22, { size: 24, weight: 500, color: '#9FB3C8' });
       }, slide(k));
     },
 
+    // stacked badge list on the right; props.fill / glow recolour it (green for EHS, MPD blue for the labs),
+    // props.compact fits six items above the captions
     ecoBadges(ov, t) {
-      const x = RIGHT, w = COL_W, h = 112, gap = 14;
-      ov.props.items.forEach((it, i) => {
+      const pr = ov.props, c = pr.compact;
+      const x = RIGHT, w = COL_W, h = c ? 92 : 112, gap = c ? 10 : 14;
+      const fill = pr.fill || '#2E7D32', glow = pr.glow || 'rgba(46,125,50,0.55)';
+      pr.items.forEach((it, i) => {
         if (t < it.t) return;
-        const k = inv(it.t, it.t + 0.5, t);
-        const a = envelope(t, it.t, ov.out, 0.3, 0.35);
-        const y = 196 + i * (h + gap);
+        const k = inv(it.t, it.t + 0.4, t);
+        const a = envelope(t, it.t, ov.out, 0.25, 0.3);
+        const y = 196 + i * (h + gap), cy = y + h / 2;
         P.group(a, () => {
-          P.panel(x, y, w, h, { fill: '#2E7D32', alpha: 0.96, radius: 16, shadow: 22, shadowColor: 'rgba(46,125,50,0.55)' });
-          P.circle(x + 58, y + 56, 36, '#FFFFFF', 0.16);
-          icon(P, it.icon, x + 58, y + 56, 38, '#FFFFFF', 2.8);
-          P.text(it.title, x + 112, y + 50, { size: 30, weight: 800, family: 'Montserrat', color: '#FFFFFF' });
-          P.text(it.sub, x + 112, y + 86, { size: 24, weight: 500, color: '#F0FDF4' });
-        }, { px: x + w / 2, py: y + h / 2, scale: 0.88 + 0.12 * ease.outBack(k) });
+          P.panel(x, y, w, h, { fill, alpha: 0.96, radius: 16, shadow: 22, shadowColor: glow });
+          P.circle(x + 52, cy, c ? 30 : 36, '#FFFFFF', 0.16);
+          icon(P, it.icon, x + 52, cy, c ? 32 : 38, '#FFFFFF', 2.8);
+          const to = P.fit(it.title, w - 124, { size: c ? 27 : 30, weight: 800, family: 'Montserrat' });
+          P.text(it.title, x + 100, cy - 6, { ...to, color: '#FFFFFF' });
+          P.text(it.sub, x + 100, cy + (c ? 27 : 30), { ...P.fit(it.sub, w - 124, { size: 24, weight: 500 }), color: '#F0FDF4' });
+        }, { px: x + w / 2, py: cy, scale: 0.88 + 0.12 * ease.outBack(k) });
       });
+    },
+
+    // right-column summary: one row per store, then a highlighted total line
+    storageTotals(ov, t) {
+      const pr = ov.props;
+      const k = inv(ov.in, ov.in + 0.45, t);
+      const a = envelope(t, ov.in, ov.out, 0.3, 0.35);
+      const x = RIGHT, y = 196, w = COL_W, rowH = 86;
+      // the panel grows as rows and the total are spoken
+      const shown = pr.rows.reduce((n, r) => n + ease.outCubic(inv(r.t - 0.1, r.t + 0.3, t)), 0);
+      const h = 82 + shown * rowH + 96 * ease.outCubic(inv(pr.total.t - 0.1, pr.total.t + 0.3, t)) + 10;
+      P.group(a, () => {
+        P.panel(x, y, w, h, { radius: 14, stroke: '#F59E0B', strokeAlpha: 0.6 });
+        P.text(pr.title, x + 28, y + 50, { ...P.fit(pr.title, w - 56, { size: 26, weight: 800, spacing: 3 }), color: '#F59E0B' });
+        pr.rows.forEach((r, i) => {
+          if (t < r.t) return;
+          const kr = inv(r.t, r.t + 0.4, t);
+          const ry = y + 82 + i * rowH;
+          P.group(Math.min(1, kr * 2), () => {
+            P.rect(x + 28, ry + 8, 5, rowH - 22, '#38BDF8');
+            P.text(r.label, x + 46, ry + 34, { size: 24, weight: 600, color: '#C7D5E4' });
+            P.text(r.value, x + 46, ry + 70, { size: 32, weight: 800, family: 'Montserrat', color: '#FFFFFF' });
+          }, { dx: 24 * (1 - ease.outCubic(kr)) });
+        });
+        if (t >= pr.total.t) {
+          const kt = inv(pr.total.t, pr.total.t + 0.45, t);
+          const ty = y + 82 + pr.rows.length * rowH + 8;
+          P.group(Math.min(1, kt * 2), () => {
+            P.panel(x + 20, ty, w - 40, 76, { fill: '#F59E0B', alpha: 1, radius: 12 });
+            P.text(pr.total.text, x + w / 2, ty + 49, { ...P.fit(pr.total.text, w - 80, { size: 30, weight: 900, family: 'Montserrat' }), align: 'center', color: '#0A1626' });
+          }, { px: x + w / 2, py: ty + 38, scale: 0.9 + 0.1 * ease.outBack(kt) });
+        }
+      }, slide(k, 24));
     },
 
     partnerCards(ov, t) {

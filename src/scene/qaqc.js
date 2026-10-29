@@ -322,6 +322,9 @@ export function buildQaqc(world, M) {
       qaqc: new THREE.Vector3(AX + 7.6, PL + CABIN + 1.5, Z01 - 4.4),
       controlRoom: new THREE.Vector3(AX + 9.0, PL + 1.5, Z01 - 2.4),
       wetLab: new THREE.Vector3(AX + 7.5, PL + 9.0 + 1.6, Z01 - 7.5),
+      appLab: new THREE.Vector3(AX + 10.2, PL + 4.5 + 1.8, Z01 - 7.6),
+      physLab: new THREE.Vector3(AX + 5.6, PL + 4.5 + 1.3, Z01 - 8.0),
+      instrumentLab: new THREE.Vector3(AX + 8.0, PL + 9.0 + 1.3, Z01 - 0.6),
     },
     // c = 0 → closed building, 1 → envelope ghosted to reveal every floor; returns true if shadow casting changed
     update(t, c = 0) {

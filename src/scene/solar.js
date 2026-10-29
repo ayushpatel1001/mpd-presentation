@@ -137,7 +137,8 @@ export function siteRoofs(envs) {
     { name: 'QA & QC terrace', key: 'qaCutaway', flat: { x0: 2.1, x1: 13.35, z0: -48.0, z1: -40.05, h: 13.8, pitch: 2.85, avoid: [[4.7, 6.1, -47.5, -46.0]] } },
     { name: 'Blender house', key: 'blenderCutaway', flat: { x0: BLENDER.x - BLENDER.w / 2 + 0.6, x1: BLENDER.x + BLENDER.w / 2 - 0.6, z0: BLENDER.z - BLENDER.d / 2 + 0.6, z1: BLENDER.z + BLENDER.d / 2 - 0.6, h: BLENDER.h + 0.4 } },
     { name: 'Boiler house', flat: { x0: BOILER.x + 1.5, x1: BOILER.x + 14.5, z0: BOILER.z - BOILER.d / 2 + 0.2, z1: BOILER.z + BOILER.d / 2, h: 11.4 } },
-    { name: 'ETP', flat: { x0: ETP.x + 4.0, x1: ETP.x + 9.0, z0: ETP.z + 8.3, z1: ETP.z + 11.7, h: 3.9, pitch: 3 } },
+    { name: 'ETP', flat: { x0: ETP.x - 8.5, x1: ETP.x - 3.5, z0: ETP.z + 6.3, z1: ETP.z + 9.7, h: 3.9, pitch: 3 } },
+    { name: 'Agro-waste shed', peb: { env: envs.fuel, r0: 0.45 } },
     { name: 'PESO pump house', flat: { x0: -70.0, x1: -63.0, z0: 62.4, z1: 69.6, h: 4.8 } },
   ];
   for (const b of BUILDINGS) {

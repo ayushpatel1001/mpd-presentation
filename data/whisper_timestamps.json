@@ -1,138 +1,153 @@
 {
   "engine": "pocketsphinx-5 forced alignment (Whisper-compatible schema; Whisper weights unreachable in build env)",
   "language": "en",
-  "text": "Looking for scale, safety, and dedicated resin manufacturing capacity? Welcome to MPD Industries' state-of-the-art greenfield plant in Ujjain. Two plants on one site, commissioned together. 22 reactors. Around 6,900 tons of rated output, every month. Plant 1 specializes in high-volume liquid coating resins, driven by 16 KL commercial powerhouses, on a site that scales from 2 KL pilot trials. Saturated polyester, alkyds, and modified epoxy: 4,373 tons a month, from day one. Plant 2 powers specialty and solid resins, backed by versatile finishing lines, including flakers, pelletisers, and product crushers. Reactive polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month. Logistics are built for scale, with 600 KL of underground PESO solvent storage, and over 1,000 KL of dedicated finished-goods tanks. Twelve blenders add 380 KL of blending capacity, and grade-dedicated tanks keep every product clean. Built on eco-friendly power, driven by agro-waste thermic heaters, nitrogen blanketing, and zero-compromise ETP effluent treatment. Two 30 lakh kcal/h thermic heaters, a 2,200 TR cooling tower, and on-site nitrogen generation, sized for full load. Whether you need toll conversion, full-service jobwork, or dedicated plant capacity, partner with MPD Industries today. Every model comes with NDA confidentiality, segregated storage, and a scale-up path from 2 KL trials to 16 KL production. MPD Industries. We innovate. We serve.",
+  "text": "Welcome to MPD Industries' greenfield resin plant in Ujjain. Two plants, 22 reactors, around 6,900 tons of output every month. It starts with storage: two warehouses with mobile compact racking hold 2,904 pallets, about 1,500 tons. A depalletiser turns bagged raw materials into one-tonne jumbo bags for fast charging, and 600 KL of underground PESO tanks hold the solvents. In Plant 1, an overhead crane lifts each jumbo bag straight up to the reactor charging deck. Ten reactors up to 16 KL make saturated polyester, alkyds, and modified epoxy: 4,373 tons a month. Plant 2 adds specialty and solid resins, finished on flakers, pelletisers, and crushers. Polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month. Every batch is released by our state-of-the-art QC lab, with a dedicated application lab that tests coatings the way your customers use them. Both plants are run from one central control room. Twelve blenders add 380 KL of blending, and 22 grade-dedicated tanks hold over 1,000 KL of finished goods. In total: about 1,500 tons of packed storage, and over 1,600 KL of bulk liquids. Utilities run green: agro-waste fired thermic heaters, fed from a covered fuel shed, and a 2,200 TR cooling tower. On-site nitrogen, a 50 KLD effluent treatment plant, and 0.7 MW of rooftop solar. Toll conversion, full-service jobwork, or dedicated capacity: partner with MPD Industries. Every model comes with NDA confidentiality, segregated storage, and a scale-up path from 2 KL trials to 16 KL production. MPD Industries. We innovate. We serve.",
   "segments": [
     {
       "id": 0,
       "line_id": "a1_l1",
-      "start": 4.219,
-      "end": 9.159,
-      "text": " Looking for scale, safety, and dedicated resin manufacturing capacity?",
+      "start": 2.812,
+      "end": 6.172,
+      "text": " Welcome to MPD Industries' greenfield resin plant in Ujjain.",
       "words": [
         {
-          "word": " Looking",
-          "start": 4.219,
-          "end": 4.629,
-          "probability": 0.964,
-          "key": "looking",
-          "spoken": [
-            {
-              "word": "looking",
-              "start": 4.219,
-              "end": 4.629
-            }
-          ]
-        },
-        {
-          "word": " for",
-          "start": 4.629,
-          "end": 4.839,
-          "probability": 0.971,
-          "key": "for",
-          "spoken": [
-            {
-              "word": "for",
-              "start": 4.629,
-              "end": 4.839
-            }
-          ]
-        },
-        {
-          "word": " scale,",
-          "start": 4.839,
-          "end": 5.399,
-          "probability": 0.969,
-          "key": "scale",
-          "spoken": [
-            {
-              "word": "scale",
-              "start": 4.839,
-              "end": 5.399
-            }
-          ]
-        },
-        {
-          "word": " safety,",
-          "start": 5.509,
-          "end": 6.119,
-          "probability": 0.94,
-          "key": "safety",
-          "spoken": [
-            {
-              "word": "safety",
-              "start": 5.509,
-              "end": 6.119
-            }
-          ]
-        },
-        {
-          "word": " and",
-          "start": 6.119,
-          "end": 6.329,
+          "word": " Welcome",
+          "start": 2.812,
+          "end": 3.192,
           "probability": 0.97,
-          "key": "and",
+          "key": "welcome",
           "spoken": [
             {
-              "word": "and",
-              "start": 6.119,
-              "end": 6.329
+              "word": "welcome",
+              "start": 2.812,
+              "end": 3.192
             }
           ]
         },
         {
-          "word": " dedicated",
-          "start": 6.329,
-          "end": 6.939,
-          "probability": 0.95,
-          "key": "dedicated",
+          "word": " to",
+          "start": 3.192,
+          "end": 3.343,
+          "probability": 0.978,
+          "key": "to",
           "spoken": [
             {
-              "word": "dedicated",
-              "start": 6.329,
-              "end": 6.939
+              "word": "to",
+              "start": 3.192,
+              "end": 3.343
+            }
+          ]
+        },
+        {
+          "word": " MPD",
+          "start": 3.343,
+          "end": 3.792,
+          "probability": 0.985,
+          "key": "mpd",
+          "spoken": [
+            {
+              "word": "m",
+              "start": 3.343,
+              "end": 3.473
+            },
+            {
+              "word": "p",
+              "start": 3.473,
+              "end": 3.652
+            },
+            {
+              "word": "d",
+              "start": 3.652,
+              "end": 3.792
+            }
+          ]
+        },
+        {
+          "word": " Industries'",
+          "start": 3.792,
+          "end": 4.282,
+          "probability": 0.962,
+          "key": "industries",
+          "spoken": [
+            {
+              "word": "industries",
+              "start": 3.792,
+              "end": 4.282
+            }
+          ]
+        },
+        {
+          "word": " greenfield",
+          "start": 4.282,
+          "end": 4.832,
+          "probability": 0.959,
+          "key": "greenfield",
+          "spoken": [
+            {
+              "word": "greenfield",
+              "start": 4.282,
+              "end": 4.832
             }
           ]
         },
         {
           "word": " resin",
-          "start": 6.939,
-          "end": 7.279,
-          "probability": 0.975,
+          "start": 4.832,
+          "end": 5.152,
+          "probability": 0.977,
           "key": "resin",
           "spoken": [
             {
               "word": "resin",
-              "start": 6.939,
-              "end": 7.279
+              "start": 4.832,
+              "end": 5.152
             }
           ]
         },
         {
-          "word": " manufacturing",
-          "start": 7.279,
-          "end": 8.329,
-          "probability": 0.939,
-          "key": "manufacturing",
+          "word": " plant",
+          "start": 5.152,
+          "end": 5.482,
+          "probability": 0.975,
+          "key": "plant",
           "spoken": [
             {
-              "word": "manufacturing",
-              "start": 7.279,
-              "end": 8.329
+              "word": "plant",
+              "start": 5.152,
+              "end": 5.482
             }
           ]
         },
         {
-          "word": " capacity?",
-          "start": 8.329,
-          "end": 9.159,
-          "probability": 0.941,
-          "key": "capacity",
+          "word": " in",
+          "start": 5.482,
+          "end": 5.582,
+          "probability": 0.983,
+          "key": "in",
           "spoken": [
             {
-              "word": "capacity",
-              "start": 8.329,
-              "end": 9.159
+              "word": "in",
+              "start": 5.482,
+              "end": 5.582
+            }
+          ]
+        },
+        {
+          "word": " Ujjain.",
+          "start": 5.582,
+          "end": 6.172,
+          "probability": 0.864,
+          "key": "ujjain",
+          "spoken": [
+            {
+              "word": "oo",
+              "start": 5.582,
+              "end": 5.793
+            },
+            {
+              "word": "jane",
+              "start": 5.793,
+              "end": 6.172
             }
           ]
         }
@@ -141,163 +156,176 @@
     {
       "id": 1,
       "line_id": "a1_l2",
-      "start": 9.609,
-      "end": 13.959,
-      "text": " Welcome to MPD Industries' state-of-the-art greenfield plant in Ujjain.",
+      "start": 7.031,
+      "end": 11.831,
+      "text": " Two plants, 22 reactors, around 6,900 tons of output every month.",
       "words": [
         {
-          "word": " Welcome",
-          "start": 9.609,
-          "end": 10.049,
+          "word": " Two",
+          "start": 7.031,
+          "end": 7.201,
+          "probability": 0.987,
+          "key": "two",
+          "spoken": [
+            {
+              "word": "two",
+              "start": 7.031,
+              "end": 7.201
+            }
+          ]
+        },
+        {
+          "word": " plants,",
+          "start": 7.201,
+          "end": 7.711,
+          "probability": 0.964,
+          "key": "plants",
+          "spoken": [
+            {
+              "word": "plants",
+              "start": 7.201,
+              "end": 7.711
+            }
+          ]
+        },
+        {
+          "word": " 22",
+          "start": 7.821,
+          "end": 8.321,
           "probability": 0.969,
-          "key": "welcome",
+          "key": "22",
           "spoken": [
             {
-              "word": "welcome",
-              "start": 9.609,
-              "end": 10.049
-            }
-          ]
-        },
-        {
-          "word": " to",
-          "start": 10.049,
-          "end": 10.219,
-          "probability": 0.966,
-          "key": "to",
-          "spoken": [
-            {
-              "word": "to",
-              "start": 10.049,
-              "end": 10.219
-            }
-          ]
-        },
-        {
-          "word": " MPD",
-          "start": 10.219,
-          "end": 10.739,
-          "probability": 0.983,
-          "key": "mpd",
-          "spoken": [
-            {
-              "word": "m",
-              "start": 10.219,
-              "end": 10.379
+              "word": "twenty",
+              "start": 7.821,
+              "end": 8.151
             },
             {
-              "word": "p",
-              "start": 10.379,
-              "end": 10.579
-            },
-            {
-              "word": "d",
-              "start": 10.579,
-              "end": 10.739
+              "word": "two",
+              "start": 8.151,
+              "end": 8.321
             }
           ]
         },
         {
-          "word": " Industries'",
-          "start": 10.739,
-          "end": 11.269,
+          "word": " reactors,",
+          "start": 8.321,
+          "end": 8.961,
+          "probability": 0.927,
+          "key": "reactors",
+          "spoken": [
+            {
+              "word": "reactors",
+              "start": 8.321,
+              "end": 8.961
+            }
+          ]
+        },
+        {
+          "word": " around",
+          "start": 8.961,
+          "end": 9.371,
+          "probability": 0.952,
+          "key": "around",
+          "spoken": [
+            {
+              "word": "around",
+              "start": 8.961,
+              "end": 9.371
+            }
+          ]
+        },
+        {
+          "word": " 6,900",
+          "start": 9.371,
+          "end": 10.371,
           "probability": 0.962,
-          "key": "industries",
+          "key": "6,900",
           "spoken": [
             {
-              "word": "industries",
-              "start": 10.739,
-              "end": 11.269
+              "word": "sixty",
+              "start": 9.371,
+              "end": 9.761
+            },
+            {
+              "word": "nine",
+              "start": 9.761,
+              "end": 10.031
+            },
+            {
+              "word": "hundred",
+              "start": 10.031,
+              "end": 10.371
             }
           ]
         },
         {
-          "word": " state-of-the-art",
-          "start": 11.269,
-          "end": 12.069,
-          "probability": 0.969,
-          "key": "state-of-the-art",
+          "word": " tons",
+          "start": 10.371,
+          "end": 10.631,
+          "probability": 0.964,
+          "key": "tons",
           "spoken": [
             {
-              "word": "state",
-              "start": 11.269,
-              "end": 11.579
-            },
+              "word": "tons",
+              "start": 10.371,
+              "end": 10.631
+            }
+          ]
+        },
+        {
+          "word": " of",
+          "start": 10.631,
+          "end": 10.731,
+          "probability": 0.982,
+          "key": "of",
+          "spoken": [
             {
               "word": "of",
-              "start": 11.579,
-              "end": 11.679
-            },
-            {
-              "word": "the",
-              "start": 11.679,
-              "end": 11.839
-            },
-            {
-              "word": "art",
-              "start": 11.839,
-              "end": 12.069
+              "start": 10.631,
+              "end": 10.731
             }
           ]
         },
         {
-          "word": " greenfield",
-          "start": 12.069,
-          "end": 12.689,
+          "word": " output",
+          "start": 10.731,
+          "end": 11.041,
+          "probability": 0.962,
+          "key": "output",
+          "spoken": [
+            {
+              "word": "output",
+              "start": 10.731,
+              "end": 11.041
+            }
+          ]
+        },
+        {
+          "word": " every",
+          "start": 11.041,
+          "end": 11.391,
+          "probability": 0.965,
+          "key": "every",
+          "spoken": [
+            {
+              "word": "every",
+              "start": 11.041,
+              "end": 11.391
+            }
+          ]
+        },
+        {
+          "word": " month.",
+          "start": 11.391,
+          "end": 11.831,
           "probability": 0.958,
-          "key": "greenfield",
+          "key": "month",
           "spoken": [
             {
-              "word": "greenfield",
-              "start": 12.069,
-              "end": 12.689
-            }
-          ]
-        },
-        {
-          "word": " plant",
-          "start": 12.689,
-          "end": 13.069,
-          "probability": 0.97,
-          "key": "plant",
-          "spoken": [
-            {
-              "word": "plant",
-              "start": 12.689,
-              "end": 13.069
-            }
-          ]
-        },
-        {
-          "word": " in",
-          "start": 13.069,
-          "end": 13.189,
-          "probability": 0.985,
-          "key": "in",
-          "spoken": [
-            {
-              "word": "in",
-              "start": 13.069,
-              "end": 13.189
-            }
-          ]
-        },
-        {
-          "word": " Ujjain.",
-          "start": 13.189,
-          "end": 13.959,
-          "probability": 0.855,
-          "key": "ujjain",
-          "spoken": [
-            {
-              "word": "oo",
-              "start": 13.189,
-              "end": 13.429
-            },
-            {
-              "word": "jane",
-              "start": 13.429,
-              "end": 13.959
+              "word": "month",
+              "start": 11.391,
+              "end": 11.831
             }
           ]
         }
@@ -305,261 +333,257 @@
     },
     {
       "id": 2,
-      "line_id": "a1_l3",
-      "start": 15.0,
-      "end": 23.21,
-      "text": " Two plants on one site, commissioned together. 22 reactors. Around 6,900 tons of rated output, every month.",
+      "line_id": "a2_l1",
+      "start": 15.703,
+      "end": 22.913,
+      "text": " It starts with storage: two warehouses with mobile compact racking hold 2,904 pallets, about 1,500 tons.",
       "words": [
         {
-          "word": " Two",
-          "start": 15.0,
-          "end": 15.19,
-          "probability": 0.985,
+          "word": " It",
+          "start": 15.703,
+          "end": 15.843,
+          "probability": 0.988,
+          "key": "it",
+          "spoken": [
+            {
+              "word": "it",
+              "start": 15.703,
+              "end": 15.843
+            }
+          ]
+        },
+        {
+          "word": " starts",
+          "start": 15.843,
+          "end": 16.213,
+          "probability": 0.972,
+          "key": "starts",
+          "spoken": [
+            {
+              "word": "starts",
+              "start": 15.843,
+              "end": 16.213
+            }
+          ]
+        },
+        {
+          "word": " with",
+          "start": 16.213,
+          "end": 16.363,
+          "probability": 0.987,
+          "key": "with",
+          "spoken": [
+            {
+              "word": "with",
+              "start": 16.213,
+              "end": 16.363
+            }
+          ]
+        },
+        {
+          "word": " storage:",
+          "start": 16.363,
+          "end": 16.903,
+          "probability": 0.965,
+          "key": "storage",
+          "spoken": [
+            {
+              "word": "storage",
+              "start": 16.363,
+              "end": 16.903
+            }
+          ]
+        },
+        {
+          "word": " two",
+          "start": 17.093,
+          "end": 17.263,
+          "probability": 0.987,
           "key": "two",
           "spoken": [
             {
               "word": "two",
-              "start": 15.0,
-              "end": 15.19
+              "start": 17.093,
+              "end": 17.263
             }
           ]
         },
         {
-          "word": " plants",
-          "start": 15.19,
-          "end": 15.69,
-          "probability": 0.967,
-          "key": "plants",
+          "word": " warehouses",
+          "start": 17.263,
+          "end": 17.843,
+          "probability": 0.95,
+          "key": "warehouses",
           "spoken": [
             {
-              "word": "plants",
-              "start": 15.19,
-              "end": 15.69
+              "word": "warehouses",
+              "start": 17.263,
+              "end": 17.843
             }
           ]
         },
         {
-          "word": " on",
-          "start": 15.69,
-          "end": 15.87,
-          "probability": 0.986,
-          "key": "on",
+          "word": " with",
+          "start": 17.843,
+          "end": 17.993,
+          "probability": 0.983,
+          "key": "with",
           "spoken": [
             {
-              "word": "on",
-              "start": 15.69,
-              "end": 15.87
+              "word": "with",
+              "start": 17.843,
+              "end": 17.993
             }
           ]
         },
         {
-          "word": " one",
-          "start": 15.87,
-          "end": 16.13,
-          "probability": 0.98,
-          "key": "one",
+          "word": " mobile",
+          "start": 17.993,
+          "end": 18.323,
+          "probability": 0.97,
+          "key": "mobile",
           "spoken": [
             {
-              "word": "one",
-              "start": 15.87,
-              "end": 16.13
+              "word": "mobile",
+              "start": 17.993,
+              "end": 18.323
             }
           ]
         },
         {
-          "word": " site,",
-          "start": 16.13,
-          "end": 16.49,
-          "probability": 0.971,
-          "key": "site",
+          "word": " compact",
+          "start": 18.323,
+          "end": 18.853,
+          "probability": 0.937,
+          "key": "compact",
           "spoken": [
             {
-              "word": "site",
-              "start": 16.13,
-              "end": 16.49
+              "word": "compact",
+              "start": 18.323,
+              "end": 18.853
             }
           ]
         },
         {
-          "word": " commissioned",
-          "start": 16.49,
-          "end": 17.07,
-          "probability": 0.963,
-          "key": "commissioned",
+          "word": " racking",
+          "start": 18.853,
+          "end": 19.243,
+          "probability": 0.966,
+          "key": "racking",
           "spoken": [
             {
-              "word": "commissioned",
-              "start": 16.49,
-              "end": 17.07
+              "word": "racking",
+              "start": 18.853,
+              "end": 19.243
             }
           ]
         },
         {
-          "word": " together.",
-          "start": 17.07,
-          "end": 17.61,
-          "probability": 0.968,
-          "key": "together",
+          "word": " hold",
+          "start": 19.243,
+          "end": 19.493,
+          "probability": 0.977,
+          "key": "hold",
           "spoken": [
             {
-              "word": "together",
-              "start": 17.07,
-              "end": 17.61
+              "word": "hold",
+              "start": 19.243,
+              "end": 19.493
             }
           ]
         },
         {
-          "word": " 22",
-          "start": 17.82,
-          "end": 18.42,
-          "probability": 0.972,
-          "key": "22",
+          "word": " 2,904",
+          "start": 19.493,
+          "end": 20.753,
+          "probability": 0.961,
+          "key": "2,904",
           "spoken": [
             {
               "word": "twenty",
-              "start": 17.82,
-              "end": 18.22
-            },
-            {
-              "word": "two",
-              "start": 18.22,
-              "end": 18.42
-            }
-          ]
-        },
-        {
-          "word": " reactors.",
-          "start": 18.42,
-          "end": 19.18,
-          "probability": 0.946,
-          "key": "reactors",
-          "spoken": [
-            {
-              "word": "reactors",
-              "start": 18.42,
-              "end": 19.18
-            }
-          ]
-        },
-        {
-          "word": " Around",
-          "start": 19.39,
-          "end": 19.83,
-          "probability": 0.968,
-          "key": "around",
-          "spoken": [
-            {
-              "word": "around",
-              "start": 19.39,
-              "end": 19.83
-            }
-          ]
-        },
-        {
-          "word": " 6,900",
-          "start": 19.83,
-          "end": 20.99,
-          "probability": 0.957,
-          "key": "6,900",
-          "spoken": [
-            {
-              "word": "sixty",
-              "start": 19.83,
-              "end": 20.28
+              "start": 19.493,
+              "end": 19.813
             },
             {
               "word": "nine",
-              "start": 20.28,
-              "end": 20.59
+              "start": 19.813,
+              "end": 20.093
             },
             {
               "word": "hundred",
-              "start": 20.59,
-              "end": 20.99
+              "start": 20.093,
+              "end": 20.443
+            },
+            {
+              "word": "and",
+              "start": 20.443,
+              "end": 20.563
+            },
+            {
+              "word": "four",
+              "start": 20.563,
+              "end": 20.753
             }
           ]
         },
         {
-          "word": " tons",
-          "start": 20.99,
-          "end": 21.29,
-          "probability": 0.961,
+          "word": " pallets,",
+          "start": 20.753,
+          "end": 21.303,
+          "probability": 0.945,
+          "key": "pallets",
+          "spoken": [
+            {
+              "word": "pallets",
+              "start": 20.753,
+              "end": 21.303
+            }
+          ]
+        },
+        {
+          "word": " about",
+          "start": 21.303,
+          "end": 21.633,
+          "probability": 0.952,
+          "key": "about",
+          "spoken": [
+            {
+              "word": "about",
+              "start": 21.303,
+              "end": 21.633
+            }
+          ]
+        },
+        {
+          "word": " 1,500",
+          "start": 21.633,
+          "end": 22.413,
+          "probability": 0.96,
+          "key": "1,500",
+          "spoken": [
+            {
+              "word": "fifteen",
+              "start": 21.633,
+              "end": 22.063
+            },
+            {
+              "word": "hundred",
+              "start": 22.063,
+              "end": 22.413
+            }
+          ]
+        },
+        {
+          "word": " tons.",
+          "start": 22.413,
+          "end": 22.913,
+          "probability": 0.922,
           "key": "tons",
           "spoken": [
             {
               "word": "tons",
-              "start": 20.99,
-              "end": 21.29
-            }
-          ]
-        },
-        {
-          "word": " of",
-          "start": 21.29,
-          "end": 21.41,
-          "probability": 0.981,
-          "key": "of",
-          "spoken": [
-            {
-              "word": "of",
-              "start": 21.29,
-              "end": 21.41
-            }
-          ]
-        },
-        {
-          "word": " rated",
-          "start": 21.41,
-          "end": 21.76,
-          "probability": 0.975,
-          "key": "rated",
-          "spoken": [
-            {
-              "word": "rated",
-              "start": 21.41,
-              "end": 21.76
-            }
-          ]
-        },
-        {
-          "word": " output,",
-          "start": 21.76,
-          "end": 22.32,
-          "probability": 0.919,
-          "key": "output",
-          "spoken": [
-            {
-              "word": "output",
-              "start": 21.76,
-              "end": 22.32
-            }
-          ]
-        },
-        {
-          "word": " every",
-          "start": 22.32,
-          "end": 22.72,
-          "probability": 0.971,
-          "key": "every",
-          "spoken": [
-            {
-              "word": "every",
-              "start": 22.32,
-              "end": 22.72
-            }
-          ]
-        },
-        {
-          "word": " month.",
-          "start": 22.72,
-          "end": 23.21,
-          "probability": 0.94,
-          "key": "month",
-          "spoken": [
-            {
-              "word": "month",
-              "start": 22.72,
-              "end": 23.21
+              "start": 22.413,
+              "end": 22.913
             }
           ]
         }
@@ -567,331 +591,336 @@
     },
     {
       "id": 3,
-      "line_id": "a2_l1",
-      "start": 31.875,
-      "end": 41.725,
-      "text": " Plant 1 specializes in high-volume liquid coating resins, driven by 16 KL commercial powerhouses, on a site that scales from 2 KL pilot trials.",
+      "line_id": "a2_l2",
+      "start": 25.312,
+      "end": 33.672,
+      "text": " A depalletiser turns bagged raw materials into one-tonne jumbo bags for fast charging, and 600 KL of underground PESO tanks hold the solvents.",
       "words": [
         {
-          "word": " Plant",
-          "start": 31.875,
-          "end": 32.225,
-          "probability": 0.972,
-          "key": "plant",
-          "spoken": [
-            {
-              "word": "plant",
-              "start": 31.875,
-              "end": 32.225
-            }
-          ]
-        },
-        {
-          "word": " 1",
-          "start": 32.225,
-          "end": 32.495,
-          "probability": 0.98,
-          "key": "1",
-          "spoken": [
-            {
-              "word": "one",
-              "start": 32.225,
-              "end": 32.495
-            }
-          ]
-        },
-        {
-          "word": " specializes",
-          "start": 32.495,
-          "end": 33.365,
-          "probability": 0.948,
-          "key": "specializes",
-          "spoken": [
-            {
-              "word": "specializes",
-              "start": 32.495,
-              "end": 33.365
-            }
-          ]
-        },
-        {
-          "word": " in",
-          "start": 33.365,
-          "end": 33.485,
-          "probability": 0.986,
-          "key": "in",
-          "spoken": [
-            {
-              "word": "in",
-              "start": 33.365,
-              "end": 33.485
-            }
-          ]
-        },
-        {
-          "word": " high-volume",
-          "start": 33.485,
-          "end": 34.145,
-          "probability": 0.964,
-          "key": "high-volume",
-          "spoken": [
-            {
-              "word": "high",
-              "start": 33.485,
-              "end": 33.675
-            },
-            {
-              "word": "volume",
-              "start": 33.675,
-              "end": 34.145
-            }
-          ]
-        },
-        {
-          "word": " liquid",
-          "start": 34.145,
-          "end": 34.575,
-          "probability": 0.966,
-          "key": "liquid",
-          "spoken": [
-            {
-              "word": "liquid",
-              "start": 34.145,
-              "end": 34.575
-            }
-          ]
-        },
-        {
-          "word": " coating",
-          "start": 34.575,
-          "end": 34.965,
-          "probability": 0.973,
-          "key": "coating",
-          "spoken": [
-            {
-              "word": "coating",
-              "start": 34.575,
-              "end": 34.965
-            }
-          ]
-        },
-        {
-          "word": " resins,",
-          "start": 34.965,
-          "end": 35.465,
-          "probability": 0.957,
-          "key": "resins",
-          "spoken": [
-            {
-              "word": "resins",
-              "start": 34.965,
-              "end": 35.465
-            }
-          ]
-        },
-        {
-          "word": " driven",
-          "start": 35.465,
-          "end": 35.875,
-          "probability": 0.967,
-          "key": "driven",
-          "spoken": [
-            {
-              "word": "driven",
-              "start": 35.465,
-              "end": 35.875
-            }
-          ]
-        },
-        {
-          "word": " by",
-          "start": 35.875,
-          "end": 36.045,
-          "probability": 0.987,
-          "key": "by",
-          "spoken": [
-            {
-              "word": "by",
-              "start": 35.875,
-              "end": 36.045
-            }
-          ]
-        },
-        {
-          "word": " 16 KL",
-          "start": 36.045,
-          "end": 37.095,
-          "probability": 0.958,
-          "key": "16 kl",
-          "spoken": [
-            {
-              "word": "sixteen",
-              "start": 36.045,
-              "end": 36.605
-            },
-            {
-              "word": "kiloliter",
-              "start": 36.605,
-              "end": 37.095
-            }
-          ]
-        },
-        {
-          "word": " commercial",
-          "start": 37.095,
-          "end": 37.675,
-          "probability": 0.963,
-          "key": "commercial",
-          "spoken": [
-            {
-              "word": "commercial",
-              "start": 37.095,
-              "end": 37.675
-            }
-          ]
-        },
-        {
-          "word": " powerhouses,",
-          "start": 37.675,
-          "end": 38.575,
-          "probability": 0.912,
-          "key": "powerhouses",
-          "spoken": [
-            {
-              "word": "powerhouses",
-              "start": 37.675,
-              "end": 38.575
-            }
-          ]
-        },
-        {
-          "word": " on",
-          "start": 38.575,
-          "end": 38.785,
-          "probability": 0.977,
-          "key": "on",
-          "spoken": [
-            {
-              "word": "on",
-              "start": 38.575,
-              "end": 38.785
-            }
-          ]
-        },
-        {
-          "word": " a",
-          "start": 38.785,
-          "end": 38.835,
-          "probability": 0.991,
+          "word": " A",
+          "start": 25.312,
+          "end": 25.413,
+          "probability": 0.984,
           "key": "a",
           "spoken": [
             {
               "word": "a",
-              "start": 38.785,
-              "end": 38.835
+              "start": 25.312,
+              "end": 25.413
             }
           ]
         },
         {
-          "word": " site",
-          "start": 38.835,
-          "end": 39.135,
-          "probability": 0.974,
-          "key": "site",
+          "word": " depalletiser",
+          "start": 25.413,
+          "end": 26.262,
+          "probability": 0.956,
+          "key": "depalletiser",
           "spoken": [
             {
-              "word": "site",
-              "start": 38.835,
-              "end": 39.135
-            }
-          ]
-        },
-        {
-          "word": " that",
-          "start": 39.135,
-          "end": 39.345,
-          "probability": 0.975,
-          "key": "that",
-          "spoken": [
-            {
-              "word": "that",
-              "start": 39.135,
-              "end": 39.345
-            }
-          ]
-        },
-        {
-          "word": " scales",
-          "start": 39.345,
-          "end": 39.815,
-          "probability": 0.962,
-          "key": "scales",
-          "spoken": [
-            {
-              "word": "scales",
-              "start": 39.345,
-              "end": 39.815
-            }
-          ]
-        },
-        {
-          "word": " from",
-          "start": 39.815,
-          "end": 40.015,
-          "probability": 0.978,
-          "key": "from",
-          "spoken": [
-            {
-              "word": "from",
-              "start": 39.815,
-              "end": 40.015
-            }
-          ]
-        },
-        {
-          "word": " 2 KL",
-          "start": 40.015,
-          "end": 40.695,
-          "probability": 0.957,
-          "key": "2 kl",
-          "spoken": [
-            {
-              "word": "two",
-              "start": 40.015,
-              "end": 40.175
+              "word": "dee",
+              "start": 25.413,
+              "end": 25.593
             },
             {
-              "word": "kiloliter",
-              "start": 40.175,
-              "end": 40.695
+              "word": "palletizer",
+              "start": 25.593,
+              "end": 26.262
             }
           ]
         },
         {
-          "word": " pilot",
-          "start": 40.695,
-          "end": 41.095,
+          "word": " turns",
+          "start": 26.262,
+          "end": 26.602,
+          "probability": 0.971,
+          "key": "turns",
+          "spoken": [
+            {
+              "word": "turns",
+              "start": 26.262,
+              "end": 26.602
+            }
+          ]
+        },
+        {
+          "word": " bagged",
+          "start": 26.602,
+          "end": 26.883,
           "probability": 0.967,
-          "key": "pilot",
+          "key": "bagged",
           "spoken": [
             {
-              "word": "pilot",
-              "start": 40.695,
-              "end": 41.095
+              "word": "bagged",
+              "start": 26.602,
+              "end": 26.883
             }
           ]
         },
         {
-          "word": " trials.",
-          "start": 41.095,
-          "end": 41.725,
-          "probability": 0.957,
-          "key": "trials",
+          "word": " raw",
+          "start": 26.883,
+          "end": 27.032,
+          "probability": 0.988,
+          "key": "raw",
           "spoken": [
             {
-              "word": "trials",
-              "start": 41.095,
-              "end": 41.725
+              "word": "raw",
+              "start": 26.883,
+              "end": 27.032
+            }
+          ]
+        },
+        {
+          "word": " materials",
+          "start": 27.032,
+          "end": 27.622,
+          "probability": 0.956,
+          "key": "materials",
+          "spoken": [
+            {
+              "word": "materials",
+              "start": 27.032,
+              "end": 27.622
+            }
+          ]
+        },
+        {
+          "word": " into",
+          "start": 27.622,
+          "end": 27.852,
+          "probability": 0.973,
+          "key": "into",
+          "spoken": [
+            {
+              "word": "into",
+              "start": 27.622,
+              "end": 27.852
+            }
+          ]
+        },
+        {
+          "word": " one-tonne",
+          "start": 27.852,
+          "end": 28.253,
+          "probability": 0.97,
+          "key": "one-tonne",
+          "spoken": [
+            {
+              "word": "one",
+              "start": 27.852,
+              "end": 28.073
+            },
+            {
+              "word": "ton",
+              "start": 28.073,
+              "end": 28.253
+            }
+          ]
+        },
+        {
+          "word": " jumbo",
+          "start": 28.253,
+          "end": 28.663,
+          "probability": 0.974,
+          "key": "jumbo",
+          "spoken": [
+            {
+              "word": "jumbo",
+              "start": 28.253,
+              "end": 28.663
+            }
+          ]
+        },
+        {
+          "word": " bags",
+          "start": 28.663,
+          "end": 29.012,
+          "probability": 0.968,
+          "key": "bags",
+          "spoken": [
+            {
+              "word": "bags",
+              "start": 28.663,
+              "end": 29.012
+            }
+          ]
+        },
+        {
+          "word": " for",
+          "start": 29.012,
+          "end": 29.133,
+          "probability": 0.979,
+          "key": "for",
+          "spoken": [
+            {
+              "word": "for",
+              "start": 29.012,
+              "end": 29.133
+            }
+          ]
+        },
+        {
+          "word": " fast",
+          "start": 29.133,
+          "end": 29.433,
+          "probability": 0.965,
+          "key": "fast",
+          "spoken": [
+            {
+              "word": "fast",
+              "start": 29.133,
+              "end": 29.433
+            }
+          ]
+        },
+        {
+          "word": " charging,",
+          "start": 29.433,
+          "end": 29.933,
+          "probability": 0.94,
+          "key": "charging",
+          "spoken": [
+            {
+              "word": "charging",
+              "start": 29.433,
+              "end": 29.933
+            }
+          ]
+        },
+        {
+          "word": " and",
+          "start": 29.933,
+          "end": 30.133,
+          "probability": 0.981,
+          "key": "and",
+          "spoken": [
+            {
+              "word": "and",
+              "start": 29.933,
+              "end": 30.133
+            }
+          ]
+        },
+        {
+          "word": " 600 KL",
+          "start": 30.133,
+          "end": 31.212,
+          "probability": 0.95,
+          "key": "600 kl",
+          "spoken": [
+            {
+              "word": "six",
+              "start": 30.133,
+              "end": 30.392
+            },
+            {
+              "word": "hundred",
+              "start": 30.392,
+              "end": 30.703
+            },
+            {
+              "word": "kiloliters",
+              "start": 30.703,
+              "end": 31.212
+            }
+          ]
+        },
+        {
+          "word": " of",
+          "start": 31.212,
+          "end": 31.312,
+          "probability": 0.985,
+          "key": "of",
+          "spoken": [
+            {
+              "word": "of",
+              "start": 31.212,
+              "end": 31.312
+            }
+          ]
+        },
+        {
+          "word": " underground",
+          "start": 31.312,
+          "end": 31.873,
+          "probability": 0.94,
+          "key": "underground",
+          "spoken": [
+            {
+              "word": "underground",
+              "start": 31.312,
+              "end": 31.873
+            }
+          ]
+        },
+        {
+          "word": " PESO",
+          "start": 31.873,
+          "end": 32.252,
+          "probability": 0.973,
+          "key": "peso",
+          "spoken": [
+            {
+              "word": "peso",
+              "start": 31.873,
+              "end": 32.252
+            }
+          ]
+        },
+        {
+          "word": " tanks",
+          "start": 32.252,
+          "end": 32.653,
+          "probability": 0.965,
+          "key": "tanks",
+          "spoken": [
+            {
+              "word": "tanks",
+              "start": 32.252,
+              "end": 32.653
+            }
+          ]
+        },
+        {
+          "word": " hold",
+          "start": 32.653,
+          "end": 32.852,
+          "probability": 0.969,
+          "key": "hold",
+          "spoken": [
+            {
+              "word": "hold",
+              "start": 32.653,
+              "end": 32.852
+            }
+          ]
+        },
+        {
+          "word": " the",
+          "start": 32.852,
+          "end": 32.932,
+          "probability": 0.991,
+          "key": "the",
+          "spoken": [
+            {
+              "word": "the",
+              "start": 32.852,
+              "end": 32.932
+            }
+          ]
+        },
+        {
+          "word": " solvents.",
+          "start": 32.932,
+          "end": 33.672,
+          "probability": 0.959,
+          "key": "solvents",
+          "spoken": [
+            {
+              "word": "solvents",
+              "start": 32.932,
+              "end": 33.672
             }
           ]
         }
@@ -899,220 +928,246 @@
     },
     {
       "id": 4,
-      "line_id": "a2_l2",
-      "start": 43.125,
-      "end": 51.305,
-      "text": " Saturated polyester, alkyds, and modified epoxy: 4,373 tons a month, from day one.",
+      "line_id": "a3_l1",
+      "start": 40.078,
+      "end": 44.938,
+      "text": " In Plant 1, an overhead crane lifts each jumbo bag straight up to the reactor charging deck.",
       "words": [
         {
-          "word": " Saturated",
-          "start": 43.125,
-          "end": 43.885,
-          "probability": 0.955,
-          "key": "saturated",
+          "word": " In",
+          "start": 40.078,
+          "end": 40.238,
+          "probability": 0.987,
+          "key": "in",
           "spoken": [
             {
-              "word": "saturated",
-              "start": 43.125,
-              "end": 43.885
+              "word": "in",
+              "start": 40.078,
+              "end": 40.238
             }
           ]
         },
         {
-          "word": " polyester,",
-          "start": 43.885,
-          "end": 44.765,
-          "probability": 0.928,
-          "key": "polyester",
+          "word": " Plant",
+          "start": 40.238,
+          "end": 40.548,
+          "probability": 0.97,
+          "key": "plant",
           "spoken": [
             {
-              "word": "polyester",
-              "start": 43.885,
-              "end": 44.765
+              "word": "plant",
+              "start": 40.238,
+              "end": 40.548
             }
           ]
         },
         {
-          "word": " alkyds,",
-          "start": 44.765,
-          "end": 45.425,
-          "probability": 0.938,
-          "key": "alkyds",
-          "spoken": [
-            {
-              "word": "alkyds",
-              "start": 44.765,
-              "end": 45.425
-            }
-          ]
-        },
-        {
-          "word": " and",
-          "start": 45.425,
-          "end": 45.615,
-          "probability": 0.975,
-          "key": "and",
-          "spoken": [
-            {
-              "word": "and",
-              "start": 45.425,
-              "end": 45.615
-            }
-          ]
-        },
-        {
-          "word": " modified",
-          "start": 45.615,
-          "end": 46.235,
-          "probability": 0.956,
-          "key": "modified",
-          "spoken": [
-            {
-              "word": "modified",
-              "start": 45.615,
-              "end": 46.235
-            }
-          ]
-        },
-        {
-          "word": " epoxy:",
-          "start": 46.235,
-          "end": 46.895,
-          "probability": 0.952,
-          "key": "epoxy",
-          "spoken": [
-            {
-              "word": "epoxy",
-              "start": 46.235,
-              "end": 46.895
-            }
-          ]
-        },
-        {
-          "word": " 4,373",
-          "start": 47.105,
-          "end": 49.595,
-          "probability": 0.953,
-          "key": "4,373",
-          "spoken": [
-            {
-              "word": "four",
-              "start": 47.105,
-              "end": 47.355
-            },
-            {
-              "word": "thousand",
-              "start": 47.355,
-              "end": 47.905
-            },
-            {
-              "word": "three",
-              "start": 48.005,
-              "end": 48.255
-            },
-            {
-              "word": "hundred",
-              "start": 48.255,
-              "end": 48.655
-            },
-            {
-              "word": "and",
-              "start": 48.655,
-              "end": 48.805
-            },
-            {
-              "word": "seventy",
-              "start": 48.805,
-              "end": 49.325
-            },
-            {
-              "word": "three",
-              "start": 49.325,
-              "end": 49.595
-            }
-          ]
-        },
-        {
-          "word": " tons",
-          "start": 49.595,
-          "end": 49.935,
-          "probability": 0.972,
-          "key": "tons",
-          "spoken": [
-            {
-              "word": "tons",
-              "start": 49.595,
-              "end": 49.935
-            }
-          ]
-        },
-        {
-          "word": " a",
-          "start": 49.935,
-          "end": 49.975,
-          "probability": 0.992,
-          "key": "a",
-          "spoken": [
-            {
-              "word": "a",
-              "start": 49.935,
-              "end": 49.975
-            }
-          ]
-        },
-        {
-          "word": " month,",
-          "start": 49.975,
-          "end": 50.375,
-          "probability": 0.949,
-          "key": "month",
-          "spoken": [
-            {
-              "word": "month",
-              "start": 49.975,
-              "end": 50.375
-            }
-          ]
-        },
-        {
-          "word": " from",
-          "start": 50.375,
-          "end": 50.685,
-          "probability": 0.95,
-          "key": "from",
-          "spoken": [
-            {
-              "word": "from",
-              "start": 50.375,
-              "end": 50.685
-            }
-          ]
-        },
-        {
-          "word": " day",
-          "start": 50.685,
-          "end": 50.895,
-          "probability": 0.986,
-          "key": "day",
-          "spoken": [
-            {
-              "word": "day",
-              "start": 50.685,
-              "end": 50.895
-            }
-          ]
-        },
-        {
-          "word": " one.",
-          "start": 50.895,
-          "end": 51.305,
-          "probability": 0.934,
-          "key": "one",
+          "word": " 1,",
+          "start": 40.548,
+          "end": 40.868,
+          "probability": 0.947,
+          "key": "1",
           "spoken": [
             {
               "word": "one",
-              "start": 50.895,
-              "end": 51.305
+              "start": 40.548,
+              "end": 40.868
+            }
+          ]
+        },
+        {
+          "word": " an",
+          "start": 40.868,
+          "end": 41.028,
+          "probability": 0.976,
+          "key": "an",
+          "spoken": [
+            {
+              "word": "an",
+              "start": 40.868,
+              "end": 41.028
+            }
+          ]
+        },
+        {
+          "word": " overhead",
+          "start": 41.028,
+          "end": 41.468,
+          "probability": 0.967,
+          "key": "overhead",
+          "spoken": [
+            {
+              "word": "overhead",
+              "start": 41.028,
+              "end": 41.468
+            }
+          ]
+        },
+        {
+          "word": " crane",
+          "start": 41.468,
+          "end": 41.768,
+          "probability": 0.976,
+          "key": "crane",
+          "spoken": [
+            {
+              "word": "crane",
+              "start": 41.468,
+              "end": 41.768
+            }
+          ]
+        },
+        {
+          "word": " lifts",
+          "start": 41.768,
+          "end": 42.068,
+          "probability": 0.975,
+          "key": "lifts",
+          "spoken": [
+            {
+              "word": "lifts",
+              "start": 41.768,
+              "end": 42.068
+            }
+          ]
+        },
+        {
+          "word": " each",
+          "start": 42.068,
+          "end": 42.268,
+          "probability": 0.975,
+          "key": "each",
+          "spoken": [
+            {
+              "word": "each",
+              "start": 42.068,
+              "end": 42.268
+            }
+          ]
+        },
+        {
+          "word": " jumbo",
+          "start": 42.268,
+          "end": 42.678,
+          "probability": 0.974,
+          "key": "jumbo",
+          "spoken": [
+            {
+              "word": "jumbo",
+              "start": 42.268,
+              "end": 42.678
+            }
+          ]
+        },
+        {
+          "word": " bag",
+          "start": 42.678,
+          "end": 42.938,
+          "probability": 0.981,
+          "key": "bag",
+          "spoken": [
+            {
+              "word": "bag",
+              "start": 42.678,
+              "end": 42.938
+            }
+          ]
+        },
+        {
+          "word": " straight",
+          "start": 42.938,
+          "end": 43.268,
+          "probability": 0.975,
+          "key": "straight",
+          "spoken": [
+            {
+              "word": "straight",
+              "start": 42.938,
+              "end": 43.268
+            }
+          ]
+        },
+        {
+          "word": " up",
+          "start": 43.268,
+          "end": 43.418,
+          "probability": 0.974,
+          "key": "up",
+          "spoken": [
+            {
+              "word": "up",
+              "start": 43.268,
+              "end": 43.418
+            }
+          ]
+        },
+        {
+          "word": " to",
+          "start": 43.418,
+          "end": 43.508,
+          "probability": 0.986,
+          "key": "to",
+          "spoken": [
+            {
+              "word": "to",
+              "start": 43.418,
+              "end": 43.508
+            }
+          ]
+        },
+        {
+          "word": " the",
+          "start": 43.508,
+          "end": 43.608,
+          "probability": 0.986,
+          "key": "the",
+          "spoken": [
+            {
+              "word": "the",
+              "start": 43.508,
+              "end": 43.608
+            }
+          ]
+        },
+        {
+          "word": " reactor",
+          "start": 43.608,
+          "end": 44.048,
+          "probability": 0.961,
+          "key": "reactor",
+          "spoken": [
+            {
+              "word": "reactor",
+              "start": 43.608,
+              "end": 44.048
+            }
+          ]
+        },
+        {
+          "word": " charging",
+          "start": 44.048,
+          "end": 44.538,
+          "probability": 0.971,
+          "key": "charging",
+          "spoken": [
+            {
+              "word": "charging",
+              "start": 44.048,
+              "end": 44.538
+            }
+          ]
+        },
+        {
+          "word": " deck.",
+          "start": 44.538,
+          "end": 44.938,
+          "probability": 0.93,
+          "key": "deck",
+          "spoken": [
+            {
+              "word": "deck",
+              "start": 44.538,
+              "end": 44.938
             }
           ]
         }
@@ -1120,260 +1175,267 @@
     },
     {
       "id": 5,
-      "line_id": "a3_l1",
-      "start": 61.875,
-      "end": 70.335,
-      "text": " Plant 2 powers specialty and solid resins, backed by versatile finishing lines, including flakers, pelletisers, and product crushers.",
+      "line_id": "a3_l2",
+      "start": 48.75,
+      "end": 57.28,
+      "text": " Ten reactors up to 16 KL make saturated polyester, alkyds, and modified epoxy: 4,373 tons a month.",
       "words": [
         {
-          "word": " Plant",
-          "start": 61.875,
-          "end": 62.235,
-          "probability": 0.975,
-          "key": "plant",
+          "word": " Ten",
+          "start": 48.75,
+          "end": 48.98,
+          "probability": 0.983,
+          "key": "ten",
           "spoken": [
             {
-              "word": "plant",
-              "start": 61.875,
-              "end": 62.235
+              "word": "ten",
+              "start": 48.75,
+              "end": 48.98
             }
           ]
         },
         {
-          "word": " 2",
-          "start": 62.235,
-          "end": 62.395,
-          "probability": 0.982,
-          "key": "2",
+          "word": " reactors",
+          "start": 48.98,
+          "end": 49.48,
+          "probability": 0.96,
+          "key": "reactors",
           "spoken": [
             {
-              "word": "two",
-              "start": 62.235,
-              "end": 62.395
+              "word": "reactors",
+              "start": 48.98,
+              "end": 49.48
             }
           ]
         },
         {
-          "word": " powers",
-          "start": 62.395,
-          "end": 62.805,
-          "probability": 0.964,
-          "key": "powers",
+          "word": " up",
+          "start": 49.48,
+          "end": 49.61,
+          "probability": 0.978,
+          "key": "up",
           "spoken": [
             {
-              "word": "powers",
-              "start": 62.395,
-              "end": 62.805
+              "word": "up",
+              "start": 49.48,
+              "end": 49.61
             }
           ]
         },
         {
-          "word": " specialty",
-          "start": 62.805,
-          "end": 63.485,
-          "probability": 0.946,
-          "key": "specialty",
+          "word": " to",
+          "start": 49.61,
+          "end": 49.71,
+          "probability": 0.988,
+          "key": "to",
           "spoken": [
             {
-              "word": "specialty",
-              "start": 62.805,
-              "end": 63.485
+              "word": "to",
+              "start": 49.61,
+              "end": 49.71
             }
           ]
         },
         {
-          "word": " and",
-          "start": 63.485,
-          "end": 63.615,
-          "probability": 0.985,
-          "key": "and",
+          "word": " 16 KL",
+          "start": 49.71,
+          "end": 50.69,
+          "probability": 0.948,
+          "key": "16 kl",
           "spoken": [
             {
-              "word": "and",
-              "start": 63.485,
-              "end": 63.615
+              "word": "sixteen",
+              "start": 49.71,
+              "end": 50.18
+            },
+            {
+              "word": "kiloliters",
+              "start": 50.18,
+              "end": 50.69
             }
           ]
         },
         {
-          "word": " solid",
-          "start": 63.615,
-          "end": 64.105,
-          "probability": 0.966,
-          "key": "solid",
+          "word": " make",
+          "start": 50.69,
+          "end": 50.92,
+          "probability": 0.979,
+          "key": "make",
           "spoken": [
             {
-              "word": "solid",
-              "start": 63.615,
-              "end": 64.105
+              "word": "make",
+              "start": 50.69,
+              "end": 50.92
             }
           ]
         },
         {
-          "word": " resins,",
-          "start": 64.105,
-          "end": 64.615,
-          "probability": 0.962,
-          "key": "resins",
-          "spoken": [
-            {
-              "word": "resins",
-              "start": 64.105,
-              "end": 64.615
-            }
-          ]
-        },
-        {
-          "word": " backed",
-          "start": 64.615,
-          "end": 65.005,
-          "probability": 0.938,
-          "key": "backed",
-          "spoken": [
-            {
-              "word": "backed",
-              "start": 64.615,
-              "end": 65.005
-            }
-          ]
-        },
-        {
-          "word": " by",
-          "start": 65.005,
-          "end": 65.165,
-          "probability": 0.985,
-          "key": "by",
-          "spoken": [
-            {
-              "word": "by",
-              "start": 65.005,
-              "end": 65.165
-            }
-          ]
-        },
-        {
-          "word": " versatile",
-          "start": 65.165,
-          "end": 65.695,
-          "probability": 0.954,
-          "key": "versatile",
-          "spoken": [
-            {
-              "word": "versatile",
-              "start": 65.165,
-              "end": 65.695
-            }
-          ]
-        },
-        {
-          "word": " finishing",
-          "start": 65.695,
-          "end": 66.235,
-          "probability": 0.961,
-          "key": "finishing",
-          "spoken": [
-            {
-              "word": "finishing",
-              "start": 65.695,
-              "end": 66.235
-            }
-          ]
-        },
-        {
-          "word": " lines,",
-          "start": 66.235,
-          "end": 66.805,
-          "probability": 0.953,
-          "key": "lines",
-          "spoken": [
-            {
-              "word": "lines",
-              "start": 66.235,
-              "end": 66.805
-            }
-          ]
-        },
-        {
-          "word": " including",
-          "start": 66.805,
-          "end": 67.465,
-          "probability": 0.953,
-          "key": "including",
-          "spoken": [
-            {
-              "word": "including",
-              "start": 66.805,
-              "end": 67.465
-            }
-          ]
-        },
-        {
-          "word": " flakers,",
-          "start": 67.465,
-          "end": 68.085,
-          "probability": 0.958,
-          "key": "flakers",
-          "spoken": [
-            {
-              "word": "flakers",
-              "start": 67.465,
-              "end": 68.085
-            }
-          ]
-        },
-        {
-          "word": " pelletisers,",
-          "start": 68.085,
-          "end": 69.045,
-          "probability": 0.914,
-          "key": "pelletisers",
-          "spoken": [
-            {
-              "word": "pelletizers",
-              "start": 68.085,
-              "end": 69.045
-            }
-          ]
-        },
-        {
-          "word": " and",
-          "start": 69.045,
-          "end": 69.255,
-          "probability": 0.976,
-          "key": "and",
-          "spoken": [
-            {
-              "word": "and",
-              "start": 69.045,
-              "end": 69.255
-            }
-          ]
-        },
-        {
-          "word": " product",
-          "start": 69.255,
-          "end": 69.685,
-          "probability": 0.963,
-          "key": "product",
-          "spoken": [
-            {
-              "word": "product",
-              "start": 69.255,
-              "end": 69.685
-            }
-          ]
-        },
-        {
-          "word": " crushers.",
-          "start": 69.685,
-          "end": 70.335,
+          "word": " saturated",
+          "start": 50.92,
+          "end": 51.54,
           "probability": 0.959,
-          "key": "crushers",
+          "key": "saturated",
           "spoken": [
             {
-              "word": "crushers",
-              "start": 69.685,
-              "end": 70.335
+              "word": "saturated",
+              "start": 50.92,
+              "end": 51.54
+            }
+          ]
+        },
+        {
+          "word": " polyester,",
+          "start": 51.54,
+          "end": 52.28,
+          "probability": 0.947,
+          "key": "polyester",
+          "spoken": [
+            {
+              "word": "polyester",
+              "start": 51.54,
+              "end": 52.28
+            }
+          ]
+        },
+        {
+          "word": " alkyds,",
+          "start": 52.28,
+          "end": 52.89,
+          "probability": 0.923,
+          "key": "alkyds",
+          "spoken": [
+            {
+              "word": "alkyds",
+              "start": 52.28,
+              "end": 52.89
+            }
+          ]
+        },
+        {
+          "word": " and",
+          "start": 52.89,
+          "end": 53.04,
+          "probability": 0.979,
+          "key": "and",
+          "spoken": [
+            {
+              "word": "and",
+              "start": 52.89,
+              "end": 53.04
+            }
+          ]
+        },
+        {
+          "word": " modified",
+          "start": 53.04,
+          "end": 53.59,
+          "probability": 0.96,
+          "key": "modified",
+          "spoken": [
+            {
+              "word": "modified",
+              "start": 53.04,
+              "end": 53.59
+            }
+          ]
+        },
+        {
+          "word": " epoxy:",
+          "start": 53.59,
+          "end": 54.15,
+          "probability": 0.954,
+          "key": "epoxy",
+          "spoken": [
+            {
+              "word": "epoxy",
+              "start": 53.59,
+              "end": 54.15
+            }
+          ]
+        },
+        {
+          "word": " 4,373",
+          "start": 54.32,
+          "end": 56.5,
+          "probability": 0.941,
+          "key": "4,373",
+          "spoken": [
+            {
+              "word": "four",
+              "start": 54.32,
+              "end": 54.55
+            },
+            {
+              "word": "thousand",
+              "start": 54.55,
+              "end": 55.03
+            },
+            {
+              "word": "three",
+              "start": 55.03,
+              "end": 55.33
+            },
+            {
+              "word": "hundred",
+              "start": 55.33,
+              "end": 55.7
+            },
+            {
+              "word": "and",
+              "start": 55.7,
+              "end": 55.81
+            },
+            {
+              "word": "seventy",
+              "start": 55.81,
+              "end": 56.27
+            },
+            {
+              "word": "three",
+              "start": 56.27,
+              "end": 56.5
+            }
+          ]
+        },
+        {
+          "word": " tons",
+          "start": 56.5,
+          "end": 56.8,
+          "probability": 0.967,
+          "key": "tons",
+          "spoken": [
+            {
+              "word": "tons",
+              "start": 56.5,
+              "end": 56.8
+            }
+          ]
+        },
+        {
+          "word": " a",
+          "start": 56.8,
+          "end": 56.83,
+          "probability": 0.995,
+          "key": "a",
+          "spoken": [
+            {
+              "word": "a",
+              "start": 56.8,
+              "end": 56.83
+            }
+          ]
+        },
+        {
+          "word": " month.",
+          "start": 56.83,
+          "end": 57.28,
+          "probability": 0.947,
+          "key": "month",
+          "spoken": [
+            {
+              "word": "month",
+              "start": 56.83,
+              "end": 57.28
             }
           ]
         }
@@ -1381,244 +1443,190 @@
     },
     {
       "id": 6,
-      "line_id": "a3_l2",
-      "start": 73.125,
-      "end": 82.685,
-      "text": " Reactive polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month.",
+      "line_id": "a4_l1",
+      "start": 64.219,
+      "end": 69.129,
+      "text": " Plant 2 adds specialty and solid resins, finished on flakers, pelletisers, and crushers.",
       "words": [
         {
-          "word": " Reactive",
-          "start": 73.125,
-          "end": 73.695,
-          "probability": 0.942,
-          "key": "reactive",
+          "word": " Plant",
+          "start": 64.219,
+          "end": 64.529,
+          "probability": 0.977,
+          "key": "plant",
           "spoken": [
             {
-              "word": "reactive",
-              "start": 73.125,
-              "end": 73.695
+              "word": "plant",
+              "start": 64.219,
+              "end": 64.529
             }
           ]
         },
         {
-          "word": " polyamide,",
-          "start": 73.695,
-          "end": 74.685,
-          "probability": 0.932,
-          "key": "polyamide",
+          "word": " 2",
+          "start": 64.529,
+          "end": 64.709,
+          "probability": 0.987,
+          "key": "2",
           "spoken": [
             {
-              "word": "polyamide",
-              "start": 73.695,
-              "end": 74.685
+              "word": "two",
+              "start": 64.529,
+              "end": 64.709
             }
           ]
         },
         {
-          "word": " powder",
-          "start": 74.805,
-          "end": 75.165,
-          "probability": 0.972,
-          "key": "powder",
+          "word": " adds",
+          "start": 64.709,
+          "end": 64.869,
+          "probability": 0.979,
+          "key": "adds",
           "spoken": [
             {
-              "word": "powder",
-              "start": 74.805,
-              "end": 75.165
+              "word": "adds",
+              "start": 64.709,
+              "end": 64.869
             }
           ]
         },
         {
-          "word": " polyester,",
-          "start": 75.165,
-          "end": 76.035,
-          "probability": 0.951,
-          "key": "polyester",
+          "word": " specialty",
+          "start": 64.869,
+          "end": 65.449,
+          "probability": 0.95,
+          "key": "specialty",
           "spoken": [
             {
-              "word": "polyester",
-              "start": 75.165,
-              "end": 76.035
-            }
-          ]
-        },
-        {
-          "word": " acrylic",
-          "start": 76.115,
-          "end": 76.615,
-          "probability": 0.953,
-          "key": "acrylic",
-          "spoken": [
-            {
-              "word": "acrylic",
-              "start": 76.115,
-              "end": 76.615
-            }
-          ]
-        },
-        {
-          "word": " polyols,",
-          "start": 76.615,
-          "end": 77.275,
-          "probability": 0.937,
-          "key": "polyols",
-          "spoken": [
-            {
-              "word": "polyols",
-              "start": 76.615,
-              "end": 77.275
-            }
-          ]
-        },
-        {
-          "word": " phenolics,",
-          "start": 77.365,
-          "end": 78.135,
-          "probability": 0.855,
-          "key": "phenolics",
-          "spoken": [
-            {
-              "word": "phenolics",
-              "start": 77.365,
-              "end": 78.135
+              "word": "specialty",
+              "start": 64.869,
+              "end": 65.449
             }
           ]
         },
         {
           "word": " and",
-          "start": 78.135,
-          "end": 78.345,
-          "probability": 0.985,
+          "start": 65.449,
+          "end": 65.569,
+          "probability": 0.986,
           "key": "and",
           "spoken": [
             {
               "word": "and",
-              "start": 78.135,
-              "end": 78.345
+              "start": 65.449,
+              "end": 65.569
             }
           ]
         },
         {
-          "word": " R&D",
-          "start": 78.345,
-          "end": 78.855,
-          "probability": 0.977,
-          "key": "r&d",
+          "word": " solid",
+          "start": 65.569,
+          "end": 65.989,
+          "probability": 0.97,
+          "key": "solid",
           "spoken": [
             {
-              "word": "r",
-              "start": 78.345,
-              "end": 78.545
-            },
+              "word": "solid",
+              "start": 65.569,
+              "end": 65.989
+            }
+          ]
+        },
+        {
+          "word": " resins,",
+          "start": 65.989,
+          "end": 66.429,
+          "probability": 0.954,
+          "key": "resins",
+          "spoken": [
+            {
+              "word": "resins",
+              "start": 65.989,
+              "end": 66.429
+            }
+          ]
+        },
+        {
+          "word": " finished",
+          "start": 66.429,
+          "end": 66.849,
+          "probability": 0.93,
+          "key": "finished",
+          "spoken": [
+            {
+              "word": "finished",
+              "start": 66.429,
+              "end": 66.849
+            }
+          ]
+        },
+        {
+          "word": " on",
+          "start": 66.849,
+          "end": 67.009,
+          "probability": 0.985,
+          "key": "on",
+          "spoken": [
+            {
+              "word": "on",
+              "start": 66.849,
+              "end": 67.009
+            }
+          ]
+        },
+        {
+          "word": " flakers,",
+          "start": 67.009,
+          "end": 67.549,
+          "probability": 0.958,
+          "key": "flakers",
+          "spoken": [
+            {
+              "word": "flakers",
+              "start": 67.009,
+              "end": 67.549
+            }
+          ]
+        },
+        {
+          "word": " pelletisers,",
+          "start": 67.549,
+          "end": 68.379,
+          "probability": 0.923,
+          "key": "pelletisers",
+          "spoken": [
+            {
+              "word": "pelletizers",
+              "start": 67.549,
+              "end": 68.379
+            }
+          ]
+        },
+        {
+          "word": " and",
+          "start": 68.379,
+          "end": 68.569,
+          "probability": 0.979,
+          "key": "and",
+          "spoken": [
             {
               "word": "and",
-              "start": 78.545,
-              "end": 78.685
-            },
-            {
-              "word": "d",
-              "start": 78.685,
-              "end": 78.855
+              "start": 68.379,
+              "end": 68.569
             }
           ]
         },
         {
-          "word": " scale-up:",
-          "start": 78.855,
-          "end": 79.525,
-          "probability": 0.967,
-          "key": "scale-up",
+          "word": " crushers.",
+          "start": 68.569,
+          "end": 69.129,
+          "probability": 0.968,
+          "key": "crushers",
           "spoken": [
             {
-              "word": "scale",
-              "start": 78.855,
-              "end": 79.275
-            },
-            {
-              "word": "up",
-              "start": 79.275,
-              "end": 79.525
-            }
-          ]
-        },
-        {
-          "word": " 2,530",
-          "start": 79.795,
-          "end": 81.805,
-          "probability": 0.944,
-          "key": "2,530",
-          "spoken": [
-            {
-              "word": "two",
-              "start": 79.795,
-              "end": 79.995
-            },
-            {
-              "word": "thousand",
-              "start": 79.995,
-              "end": 80.555
-            },
-            {
-              "word": "five",
-              "start": 80.655,
-              "end": 80.895
-            },
-            {
-              "word": "hundred",
-              "start": 80.895,
-              "end": 81.295
-            },
-            {
-              "word": "and",
-              "start": 81.295,
-              "end": 81.445
-            },
-            {
-              "word": "thirty",
-              "start": 81.445,
-              "end": 81.805
-            }
-          ]
-        },
-        {
-          "word": " tons",
-          "start": 81.805,
-          "end": 82.145,
-          "probability": 0.964,
-          "key": "tons",
-          "spoken": [
-            {
-              "word": "tons",
-              "start": 81.805,
-              "end": 82.145
-            }
-          ]
-        },
-        {
-          "word": " a",
-          "start": 82.145,
-          "end": 82.185,
-          "probability": 0.993,
-          "key": "a",
-          "spoken": [
-            {
-              "word": "a",
-              "start": 82.145,
-              "end": 82.185
-            }
-          ]
-        },
-        {
-          "word": " month.",
-          "start": 82.185,
-          "end": 82.685,
-          "probability": 0.931,
-          "key": "month",
-          "spoken": [
-            {
-              "word": "month",
-              "start": 82.185,
-              "end": 82.685
+              "word": "crushers",
+              "start": 68.569,
+              "end": 69.129
             }
           ]
         }
@@ -1626,299 +1634,225 @@
     },
     {
       "id": 7,
-      "line_id": "a4_l1",
-      "start": 91.875,
-      "end": 101.625,
-      "text": " Logistics are built for scale, with 600 KL of underground PESO solvent storage, and over 1,000 KL of dedicated finished-goods tanks.",
+      "line_id": "a4_l2",
+      "start": 70.781,
+      "end": 78.311,
+      "text": " Polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month.",
       "words": [
         {
-          "word": " Logistics",
-          "start": 91.875,
-          "end": 92.545,
-          "probability": 0.949,
-          "key": "logistics",
+          "word": " Polyamide,",
+          "start": 70.781,
+          "end": 71.601,
+          "probability": 0.941,
+          "key": "polyamide",
           "spoken": [
             {
-              "word": "logistics",
-              "start": 91.875,
-              "end": 92.545
+              "word": "polyamide",
+              "start": 70.781,
+              "end": 71.601
             }
           ]
         },
         {
-          "word": " are",
-          "start": 92.545,
-          "end": 92.655,
-          "probability": 0.988,
-          "key": "are",
-          "spoken": [
-            {
-              "word": "are",
-              "start": 92.545,
-              "end": 92.655
-            }
-          ]
-        },
-        {
-          "word": " built",
-          "start": 92.655,
-          "end": 92.925,
+          "word": " powder",
+          "start": 71.701,
+          "end": 72.031,
           "probability": 0.973,
-          "key": "built",
+          "key": "powder",
           "spoken": [
             {
-              "word": "built",
-              "start": 92.655,
-              "end": 92.925
+              "word": "powder",
+              "start": 71.701,
+              "end": 72.031
             }
           ]
         },
         {
-          "word": " for",
-          "start": 92.925,
-          "end": 93.115,
-          "probability": 0.974,
-          "key": "for",
+          "word": " polyester,",
+          "start": 72.031,
+          "end": 72.781,
+          "probability": 0.955,
+          "key": "polyester",
           "spoken": [
             {
-              "word": "for",
-              "start": 92.925,
-              "end": 93.115
+              "word": "polyester",
+              "start": 72.031,
+              "end": 72.781
             }
           ]
         },
         {
-          "word": " scale,",
-          "start": 93.115,
-          "end": 93.725,
-          "probability": 0.965,
-          "key": "scale",
+          "word": " acrylic",
+          "start": 72.861,
+          "end": 73.291,
+          "probability": 0.955,
+          "key": "acrylic",
           "spoken": [
             {
-              "word": "scale",
-              "start": 93.115,
-              "end": 93.725
+              "word": "acrylic",
+              "start": 72.861,
+              "end": 73.291
             }
           ]
         },
         {
-          "word": " with",
-          "start": 93.775,
-          "end": 93.965,
-          "probability": 0.964,
-          "key": "with",
+          "word": " polyols,",
+          "start": 73.291,
+          "end": 73.851,
+          "probability": 0.939,
+          "key": "polyols",
           "spoken": [
             {
-              "word": "with",
-              "start": 93.775,
-              "end": 93.965
+              "word": "polyols",
+              "start": 73.291,
+              "end": 73.851
             }
           ]
         },
         {
-          "word": " 600 KL",
-          "start": 93.965,
-          "end": 95.205,
-          "probability": 0.953,
-          "key": "600 kl",
+          "word": " phenolics,",
+          "start": 73.941,
+          "end": 74.611,
+          "probability": 0.875,
+          "key": "phenolics",
           "spoken": [
             {
-              "word": "six",
-              "start": 93.965,
-              "end": 94.265
-            },
-            {
-              "word": "hundred",
-              "start": 94.265,
-              "end": 94.625
-            },
-            {
-              "word": "kiloliters",
-              "start": 94.625,
-              "end": 95.205
-            }
-          ]
-        },
-        {
-          "word": " of",
-          "start": 95.205,
-          "end": 95.325,
-          "probability": 0.978,
-          "key": "of",
-          "spoken": [
-            {
-              "word": "of",
-              "start": 95.205,
-              "end": 95.325
-            }
-          ]
-        },
-        {
-          "word": " underground",
-          "start": 95.325,
-          "end": 95.975,
-          "probability": 0.938,
-          "key": "underground",
-          "spoken": [
-            {
-              "word": "underground",
-              "start": 95.325,
-              "end": 95.975
-            }
-          ]
-        },
-        {
-          "word": " PESO",
-          "start": 95.975,
-          "end": 96.395,
-          "probability": 0.97,
-          "key": "peso",
-          "spoken": [
-            {
-              "word": "peso",
-              "start": 95.975,
-              "end": 96.395
-            }
-          ]
-        },
-        {
-          "word": " solvent",
-          "start": 96.395,
-          "end": 96.985,
-          "probability": 0.963,
-          "key": "solvent",
-          "spoken": [
-            {
-              "word": "solvent",
-              "start": 96.395,
-              "end": 96.985
-            }
-          ]
-        },
-        {
-          "word": " storage,",
-          "start": 96.985,
-          "end": 97.605,
-          "probability": 0.953,
-          "key": "storage",
-          "spoken": [
-            {
-              "word": "storage",
-              "start": 96.985,
-              "end": 97.605
+              "word": "phenolics",
+              "start": 73.941,
+              "end": 74.611
             }
           ]
         },
         {
           "word": " and",
-          "start": 97.645,
-          "end": 97.845,
-          "probability": 0.985,
+          "start": 74.611,
+          "end": 74.791,
+          "probability": 0.984,
           "key": "and",
           "spoken": [
             {
               "word": "and",
-              "start": 97.645,
-              "end": 97.845
+              "start": 74.611,
+              "end": 74.791
             }
           ]
         },
         {
-          "word": " over",
-          "start": 97.845,
-          "end": 98.125,
-          "probability": 0.982,
-          "key": "over",
+          "word": " R&D",
+          "start": 74.791,
+          "end": 75.241,
+          "probability": 0.973,
+          "key": "r&d",
           "spoken": [
             {
-              "word": "over",
-              "start": 97.845,
-              "end": 98.125
-            }
-          ]
-        },
-        {
-          "word": " 1,000 KL",
-          "start": 98.125,
-          "end": 99.505,
-          "probability": 0.946,
-          "key": "1,000 kl",
-          "spoken": [
-            {
-              "word": "one",
-              "start": 98.125,
-              "end": 98.425
+              "word": "r",
+              "start": 74.791,
+              "end": 74.961
             },
             {
-              "word": "thousand",
-              "start": 98.425,
-              "end": 98.915
+              "word": "and",
+              "start": 74.961,
+              "end": 75.091
             },
             {
-              "word": "kiloliters",
-              "start": 98.915,
-              "end": 99.505
+              "word": "d",
+              "start": 75.091,
+              "end": 75.241
             }
           ]
         },
         {
-          "word": " of",
-          "start": 99.505,
-          "end": 99.615,
-          "probability": 0.983,
-          "key": "of",
+          "word": " scale-up:",
+          "start": 75.241,
+          "end": 75.831,
+          "probability": 0.967,
+          "key": "scale-up",
           "spoken": [
             {
-              "word": "of",
-              "start": 99.505,
-              "end": 99.615
-            }
-          ]
-        },
-        {
-          "word": " dedicated",
-          "start": 99.615,
-          "end": 100.225,
-          "probability": 0.959,
-          "key": "dedicated",
-          "spoken": [
-            {
-              "word": "dedicated",
-              "start": 99.615,
-              "end": 100.225
-            }
-          ]
-        },
-        {
-          "word": " finished-goods",
-          "start": 100.225,
-          "end": 100.955,
-          "probability": 0.964,
-          "key": "finished-goods",
-          "spoken": [
-            {
-              "word": "finished",
-              "start": 100.225,
-              "end": 100.635
+              "word": "scale",
+              "start": 75.241,
+              "end": 75.601
             },
             {
-              "word": "goods",
-              "start": 100.635,
-              "end": 100.955
+              "word": "up",
+              "start": 75.601,
+              "end": 75.831
             }
           ]
         },
         {
-          "word": " tanks.",
-          "start": 100.955,
-          "end": 101.625,
-          "probability": 0.958,
-          "key": "tanks",
+          "word": " 2,530",
+          "start": 76.051,
+          "end": 77.531,
+          "probability": 0.955,
+          "key": "2,530",
           "spoken": [
             {
-              "word": "tanks",
-              "start": 100.955,
-              "end": 101.625
+              "word": "twenty",
+              "start": 76.051,
+              "end": 76.421
+            },
+            {
+              "word": "five",
+              "start": 76.421,
+              "end": 76.731
+            },
+            {
+              "word": "hundred",
+              "start": 76.731,
+              "end": 77.081
+            },
+            {
+              "word": "and",
+              "start": 77.081,
+              "end": 77.211
+            },
+            {
+              "word": "thirty",
+              "start": 77.211,
+              "end": 77.531
+            }
+          ]
+        },
+        {
+          "word": " tons",
+          "start": 77.531,
+          "end": 77.831,
+          "probability": 0.968,
+          "key": "tons",
+          "spoken": [
+            {
+              "word": "tons",
+              "start": 77.531,
+              "end": 77.831
+            }
+          ]
+        },
+        {
+          "word": " a",
+          "start": 77.831,
+          "end": 77.861,
+          "probability": 0.993,
+          "key": "a",
+          "spoken": [
+            {
+              "word": "a",
+              "start": 77.831,
+              "end": 77.861
+            }
+          ]
+        },
+        {
+          "word": " month.",
+          "start": 77.861,
+          "end": 78.311,
+          "probability": 0.95,
+          "key": "month",
+          "spoken": [
+            {
+              "word": "month",
+              "start": 77.861,
+              "end": 78.311
             }
           ]
         }
@@ -1926,229 +1860,350 @@
     },
     {
       "id": 8,
-      "line_id": "a4_l2",
-      "start": 105.0,
-      "end": 112.05,
-      "text": " Twelve blenders add 380 KL of blending capacity, and grade-dedicated tanks keep every product clean.",
+      "line_id": "a5_l1",
+      "start": 85.078,
+      "end": 92.068,
+      "text": " Every batch is released by our state-of-the-art QC lab, with a dedicated application lab that tests coatings the way your customers use them.",
       "words": [
         {
-          "word": " Twelve",
-          "start": 105.0,
-          "end": 105.32,
-          "probability": 0.948,
-          "key": "twelve",
-          "spoken": [
-            {
-              "word": "twelve",
-              "start": 105.0,
-              "end": 105.32
-            }
-          ]
-        },
-        {
-          "word": " blenders",
-          "start": 105.32,
-          "end": 105.75,
-          "probability": 0.965,
-          "key": "blenders",
-          "spoken": [
-            {
-              "word": "blenders",
-              "start": 105.32,
-              "end": 105.75
-            }
-          ]
-        },
-        {
-          "word": " add",
-          "start": 105.75,
-          "end": 105.87,
-          "probability": 0.986,
-          "key": "add",
-          "spoken": [
-            {
-              "word": "add",
-              "start": 105.75,
-              "end": 105.87
-            }
-          ]
-        },
-        {
-          "word": " 380 KL",
-          "start": 105.87,
-          "end": 107.55,
-          "probability": 0.942,
-          "key": "380 kl",
-          "spoken": [
-            {
-              "word": "three",
-              "start": 105.87,
-              "end": 106.11
-            },
-            {
-              "word": "hundred",
-              "start": 106.11,
-              "end": 106.52
-            },
-            {
-              "word": "and",
-              "start": 106.52,
-              "end": 106.68
-            },
-            {
-              "word": "eighty",
-              "start": 106.68,
-              "end": 106.96
-            },
-            {
-              "word": "kiloliters",
-              "start": 106.96,
-              "end": 107.55
-            }
-          ]
-        },
-        {
-          "word": " of",
-          "start": 107.55,
-          "end": 107.67,
-          "probability": 0.986,
-          "key": "of",
-          "spoken": [
-            {
-              "word": "of",
-              "start": 107.55,
-              "end": 107.67
-            }
-          ]
-        },
-        {
-          "word": " blending",
-          "start": 107.67,
-          "end": 108.1,
-          "probability": 0.965,
-          "key": "blending",
-          "spoken": [
-            {
-              "word": "blending",
-              "start": 107.67,
-              "end": 108.1
-            }
-          ]
-        },
-        {
-          "word": " capacity,",
-          "start": 108.1,
-          "end": 108.91,
-          "probability": 0.92,
-          "key": "capacity",
-          "spoken": [
-            {
-              "word": "capacity",
-              "start": 108.1,
-              "end": 108.91
-            }
-          ]
-        },
-        {
-          "word": " and",
-          "start": 108.91,
-          "end": 109.13,
-          "probability": 0.966,
-          "key": "and",
-          "spoken": [
-            {
-              "word": "and",
-              "start": 108.91,
-              "end": 109.13
-            }
-          ]
-        },
-        {
-          "word": " grade-dedicated",
-          "start": 109.13,
-          "end": 110.03,
-          "probability": 0.957,
-          "key": "grade-dedicated",
-          "spoken": [
-            {
-              "word": "grade",
-              "start": 109.13,
-              "end": 109.42
-            },
-            {
-              "word": "dedicated",
-              "start": 109.42,
-              "end": 110.03
-            }
-          ]
-        },
-        {
-          "word": " tanks",
-          "start": 110.03,
-          "end": 110.44,
-          "probability": 0.968,
-          "key": "tanks",
-          "spoken": [
-            {
-              "word": "tanks",
-              "start": 110.03,
-              "end": 110.44
-            }
-          ]
-        },
-        {
-          "word": " keep",
-          "start": 110.44,
-          "end": 110.74,
-          "probability": 0.977,
-          "key": "keep",
-          "spoken": [
-            {
-              "word": "keep",
-              "start": 110.44,
-              "end": 110.74
-            }
-          ]
-        },
-        {
-          "word": " every",
-          "start": 110.74,
-          "end": 111.14,
-          "probability": 0.973,
+          "word": " Every",
+          "start": 85.078,
+          "end": 85.458,
+          "probability": 0.958,
           "key": "every",
           "spoken": [
             {
               "word": "every",
-              "start": 110.74,
-              "end": 111.14
+              "start": 85.078,
+              "end": 85.458
             }
           ]
         },
         {
-          "word": " product",
-          "start": 111.14,
-          "end": 111.61,
+          "word": " batch",
+          "start": 85.458,
+          "end": 85.748,
+          "probability": 0.982,
+          "key": "batch",
+          "spoken": [
+            {
+              "word": "batch",
+              "start": 85.458,
+              "end": 85.748
+            }
+          ]
+        },
+        {
+          "word": " is",
+          "start": 85.748,
+          "end": 85.888,
+          "probability": 0.989,
+          "key": "is",
+          "spoken": [
+            {
+              "word": "is",
+              "start": 85.748,
+              "end": 85.888
+            }
+          ]
+        },
+        {
+          "word": " released",
+          "start": 85.888,
+          "end": 86.298,
+          "probability": 0.968,
+          "key": "released",
+          "spoken": [
+            {
+              "word": "released",
+              "start": 85.888,
+              "end": 86.298
+            }
+          ]
+        },
+        {
+          "word": " by",
+          "start": 86.298,
+          "end": 86.488,
+          "probability": 0.972,
+          "key": "by",
+          "spoken": [
+            {
+              "word": "by",
+              "start": 86.298,
+              "end": 86.488
+            }
+          ]
+        },
+        {
+          "word": " our",
+          "start": 86.488,
+          "end": 86.638,
+          "probability": 0.97,
+          "key": "our",
+          "spoken": [
+            {
+              "word": "our",
+              "start": 86.488,
+              "end": 86.638
+            }
+          ]
+        },
+        {
+          "word": " state-of-the-art",
+          "start": 86.638,
+          "end": 87.358,
+          "probability": 0.976,
+          "key": "state-of-the-art",
+          "spoken": [
+            {
+              "word": "state",
+              "start": 86.638,
+              "end": 86.928
+            },
+            {
+              "word": "of",
+              "start": 86.928,
+              "end": 87.008
+            },
+            {
+              "word": "the",
+              "start": 87.008,
+              "end": 87.158
+            },
+            {
+              "word": "art",
+              "start": 87.158,
+              "end": 87.358
+            }
+          ]
+        },
+        {
+          "word": " QC",
+          "start": 87.358,
+          "end": 87.738,
+          "probability": 0.984,
+          "key": "qc",
+          "spoken": [
+            {
+              "word": "q",
+              "start": 87.358,
+              "end": 87.568
+            },
+            {
+              "word": "c",
+              "start": 87.568,
+              "end": 87.738
+            }
+          ]
+        },
+        {
+          "word": " lab,",
+          "start": 87.738,
+          "end": 88.008,
           "probability": 0.961,
-          "key": "product",
+          "key": "lab",
           "spoken": [
             {
-              "word": "product",
-              "start": 111.14,
-              "end": 111.61
+              "word": "lab",
+              "start": 87.738,
+              "end": 88.008
             }
           ]
         },
         {
-          "word": " clean.",
-          "start": 111.61,
-          "end": 112.05,
-          "probability": 0.974,
-          "key": "clean",
+          "word": " with",
+          "start": 88.008,
+          "end": 88.218,
+          "probability": 0.946,
+          "key": "with",
           "spoken": [
             {
-              "word": "clean",
-              "start": 111.61,
-              "end": 112.05
+              "word": "with",
+              "start": 88.008,
+              "end": 88.218
+            }
+          ]
+        },
+        {
+          "word": " a",
+          "start": 88.218,
+          "end": 88.268,
+          "probability": 0.988,
+          "key": "a",
+          "spoken": [
+            {
+              "word": "a",
+              "start": 88.218,
+              "end": 88.268
+            }
+          ]
+        },
+        {
+          "word": " dedicated",
+          "start": 88.268,
+          "end": 88.798,
+          "probability": 0.953,
+          "key": "dedicated",
+          "spoken": [
+            {
+              "word": "dedicated",
+              "start": 88.268,
+              "end": 88.798
+            }
+          ]
+        },
+        {
+          "word": " application",
+          "start": 88.798,
+          "end": 89.438,
+          "probability": 0.954,
+          "key": "application",
+          "spoken": [
+            {
+              "word": "application",
+              "start": 88.798,
+              "end": 89.438
+            }
+          ]
+        },
+        {
+          "word": " lab",
+          "start": 89.438,
+          "end": 89.688,
+          "probability": 0.979,
+          "key": "lab",
+          "spoken": [
+            {
+              "word": "lab",
+              "start": 89.438,
+              "end": 89.688
+            }
+          ]
+        },
+        {
+          "word": " that",
+          "start": 89.688,
+          "end": 89.848,
+          "probability": 0.972,
+          "key": "that",
+          "spoken": [
+            {
+              "word": "that",
+              "start": 89.688,
+              "end": 89.848
+            }
+          ]
+        },
+        {
+          "word": " tests",
+          "start": 89.848,
+          "end": 90.178,
+          "probability": 0.975,
+          "key": "tests",
+          "spoken": [
+            {
+              "word": "tests",
+              "start": 89.848,
+              "end": 90.178
+            }
+          ]
+        },
+        {
+          "word": " coatings",
+          "start": 90.178,
+          "end": 90.618,
+          "probability": 0.97,
+          "key": "coatings",
+          "spoken": [
+            {
+              "word": "coatings",
+              "start": 90.178,
+              "end": 90.618
+            }
+          ]
+        },
+        {
+          "word": " the",
+          "start": 90.618,
+          "end": 90.698,
+          "probability": 0.991,
+          "key": "the",
+          "spoken": [
+            {
+              "word": "the",
+              "start": 90.618,
+              "end": 90.698
+            }
+          ]
+        },
+        {
+          "word": " way",
+          "start": 90.698,
+          "end": 90.878,
+          "probability": 0.981,
+          "key": "way",
+          "spoken": [
+            {
+              "word": "way",
+              "start": 90.698,
+              "end": 90.878
+            }
+          ]
+        },
+        {
+          "word": " your",
+          "start": 90.878,
+          "end": 91.058,
+          "probability": 0.965,
+          "key": "your",
+          "spoken": [
+            {
+              "word": "your",
+              "start": 90.878,
+              "end": 91.058
+            }
+          ]
+        },
+        {
+          "word": " customers",
+          "start": 91.058,
+          "end": 91.568,
+          "probability": 0.965,
+          "key": "customers",
+          "spoken": [
+            {
+              "word": "customers",
+              "start": 91.058,
+              "end": 91.568
+            }
+          ]
+        },
+        {
+          "word": " use",
+          "start": 91.568,
+          "end": 91.758,
+          "probability": 0.981,
+          "key": "use",
+          "spoken": [
+            {
+              "word": "use",
+              "start": 91.568,
+              "end": 91.758
+            }
+          ]
+        },
+        {
+          "word": " them.",
+          "start": 91.758,
+          "end": 92.068,
+          "probability": 0.942,
+          "key": "them",
+          "spoken": [
+            {
+              "word": "them",
+              "start": 91.758,
+              "end": 92.068
             }
           ]
         }
@@ -2156,257 +2211,134 @@
     },
     {
       "id": 9,
-      "line_id": "a5_l1",
-      "start": 121.875,
-      "end": 130.275,
-      "text": " Built on eco-friendly power, driven by agro-waste thermic heaters, nitrogen blanketing, and zero-compromise ETP effluent treatment.",
+      "line_id": "a5_l2",
+      "start": 95.625,
+      "end": 98.335,
+      "text": " Both plants are run from one central control room.",
       "words": [
         {
-          "word": " Built",
-          "start": 121.875,
-          "end": 122.155,
-          "probability": 0.976,
-          "key": "built",
+          "word": " Both",
+          "start": 95.625,
+          "end": 95.885,
+          "probability": 0.98,
+          "key": "both",
           "spoken": [
             {
-              "word": "built",
-              "start": 121.875,
-              "end": 122.155
+              "word": "both",
+              "start": 95.625,
+              "end": 95.885
             }
           ]
         },
         {
-          "word": " on",
-          "start": 122.155,
-          "end": 122.305,
+          "word": " plants",
+          "start": 95.885,
+          "end": 96.305,
+          "probability": 0.967,
+          "key": "plants",
+          "spoken": [
+            {
+              "word": "plants",
+              "start": 95.885,
+              "end": 96.305
+            }
+          ]
+        },
+        {
+          "word": " are",
+          "start": 96.305,
+          "end": 96.395,
+          "probability": 0.971,
+          "key": "are",
+          "spoken": [
+            {
+              "word": "are",
+              "start": 96.305,
+              "end": 96.395
+            }
+          ]
+        },
+        {
+          "word": " run",
+          "start": 96.395,
+          "end": 96.595,
           "probability": 0.984,
-          "key": "on",
+          "key": "run",
           "spoken": [
             {
-              "word": "on",
-              "start": 122.155,
-              "end": 122.305
+              "word": "run",
+              "start": 96.395,
+              "end": 96.595
             }
           ]
         },
         {
-          "word": " eco-friendly",
-          "start": 122.305,
-          "end": 123.115,
-          "probability": 0.968,
-          "key": "eco-friendly",
+          "word": " from",
+          "start": 96.595,
+          "end": 96.805,
+          "probability": 0.98,
+          "key": "from",
           "spoken": [
             {
-              "word": "eco",
-              "start": 122.305,
-              "end": 122.645
-            },
-            {
-              "word": "friendly",
-              "start": 122.645,
-              "end": 123.115
+              "word": "from",
+              "start": 96.595,
+              "end": 96.805
             }
           ]
         },
         {
-          "word": " power,",
-          "start": 123.115,
-          "end": 123.545,
-          "probability": 0.974,
-          "key": "power",
+          "word": " one",
+          "start": 96.805,
+          "end": 97.025,
+          "probability": 0.982,
+          "key": "one",
           "spoken": [
             {
-              "word": "power",
-              "start": 123.115,
-              "end": 123.545
+              "word": "one",
+              "start": 96.805,
+              "end": 97.025
             }
           ]
         },
         {
-          "word": " driven",
-          "start": 123.585,
-          "end": 123.935,
-          "probability": 0.95,
-          "key": "driven",
+          "word": " central",
+          "start": 97.025,
+          "end": 97.455,
+          "probability": 0.969,
+          "key": "central",
           "spoken": [
             {
-              "word": "driven",
-              "start": 123.585,
-              "end": 123.935
+              "word": "central",
+              "start": 97.025,
+              "end": 97.455
             }
           ]
         },
         {
-          "word": " by",
-          "start": 123.935,
-          "end": 124.165,
-          "probability": 0.985,
-          "key": "by",
+          "word": " control",
+          "start": 97.455,
+          "end": 97.875,
+          "probability": 0.969,
+          "key": "control",
           "spoken": [
             {
-              "word": "by",
-              "start": 123.935,
-              "end": 124.165
+              "word": "control",
+              "start": 97.455,
+              "end": 97.875
             }
           ]
         },
         {
-          "word": " agro-waste",
-          "start": 124.165,
-          "end": 124.835,
-          "probability": 0.974,
-          "key": "agro-waste",
+          "word": " room.",
+          "start": 97.875,
+          "end": 98.335,
+          "probability": 0.909,
+          "key": "room",
           "spoken": [
             {
-              "word": "agro",
-              "start": 124.165,
-              "end": 124.525
-            },
-            {
-              "word": "waste",
-              "start": 124.525,
-              "end": 124.835
-            }
-          ]
-        },
-        {
-          "word": " thermic",
-          "start": 124.835,
-          "end": 125.295,
-          "probability": 0.966,
-          "key": "thermic",
-          "spoken": [
-            {
-              "word": "thermic",
-              "start": 124.835,
-              "end": 125.295
-            }
-          ]
-        },
-        {
-          "word": " heaters,",
-          "start": 125.295,
-          "end": 125.755,
-          "probability": 0.94,
-          "key": "heaters",
-          "spoken": [
-            {
-              "word": "heaters",
-              "start": 125.295,
-              "end": 125.755
-            }
-          ]
-        },
-        {
-          "word": " nitrogen",
-          "start": 125.755,
-          "end": 126.405,
-          "probability": 0.943,
-          "key": "nitrogen",
-          "spoken": [
-            {
-              "word": "nitrogen",
-              "start": 125.755,
-              "end": 126.405
-            }
-          ]
-        },
-        {
-          "word": " blanketing,",
-          "start": 126.405,
-          "end": 127.135,
-          "probability": 0.913,
-          "key": "blanketing",
-          "spoken": [
-            {
-              "word": "blanketing",
-              "start": 126.405,
-              "end": 127.135
-            }
-          ]
-        },
-        {
-          "word": " and",
-          "start": 127.135,
-          "end": 127.375,
-          "probability": 0.973,
-          "key": "and",
-          "spoken": [
-            {
-              "word": "and",
-              "start": 127.135,
-              "end": 127.375
-            }
-          ]
-        },
-        {
-          "word": " zero-compromise",
-          "start": 127.375,
-          "end": 128.485,
-          "probability": 0.955,
-          "key": "zero-compromise",
-          "spoken": [
-            {
-              "word": "zero",
-              "start": 127.375,
-              "end": 127.705
-            },
-            {
-              "word": "compromise",
-              "start": 127.705,
-              "end": 128.485
-            }
-          ]
-        },
-        {
-          "word": " ETP",
-          "start": 128.485,
-          "end": 129.065,
-          "probability": 0.977,
-          "key": "etp",
-          "spoken": [
-            {
-              "word": "e",
-              "start": 128.485,
-              "end": 128.605
-            },
-            {
-              "word": "t",
-              "start": 128.605,
-              "end": 128.855
-            },
-            {
-              "word": "p",
-              "start": 128.855,
-              "end": 129.065
-            }
-          ]
-        },
-        {
-          "word": " effluent",
-          "start": 129.065,
-          "end": 129.665,
-          "probability": 0.962,
-          "key": "effluent",
-          "spoken": [
-            {
-              "word": "effluent",
-              "start": 129.065,
-              "end": 129.665
-            }
-          ]
-        },
-        {
-          "word": " treatment.",
-          "start": 129.665,
-          "end": 130.275,
-          "probability": 0.921,
-          "key": "treatment",
-          "spoken": [
-            {
-              "word": "treatment",
-              "start": 129.665,
-              "end": 130.275
+              "word": "room",
+              "start": 97.875,
+              "end": 98.335
             }
           ]
         }
@@ -2414,267 +2346,272 @@
     },
     {
       "id": 10,
-      "line_id": "a5_l2",
-      "start": 133.125,
-      "end": 141.205,
-      "text": " Two 30 lakh kcal/h thermic heaters, a 2,200 TR cooling tower, and on-site nitrogen generation, sized for full load.",
+      "line_id": "a6_l1",
+      "start": 101.953,
+      "end": 109.093,
+      "text": " Twelve blenders add 380 KL of blending, and 22 grade-dedicated tanks hold over 1,000 KL of finished goods.",
       "words": [
         {
-          "word": " Two",
-          "start": 133.125,
-          "end": 133.315,
-          "probability": 0.986,
-          "key": "two",
+          "word": " Twelve",
+          "start": 101.953,
+          "end": 102.233,
+          "probability": 0.96,
+          "key": "twelve",
           "spoken": [
             {
-              "word": "two",
-              "start": 133.125,
-              "end": 133.315
+              "word": "twelve",
+              "start": 101.953,
+              "end": 102.233
             }
           ]
         },
         {
-          "word": " 30 lakh kcal/h",
-          "start": 133.315,
-          "end": 134.665,
-          "probability": 0.934,
-          "key": "30 lakh kcal/h",
+          "word": " blenders",
+          "start": 102.233,
+          "end": 102.613,
+          "probability": 0.968,
+          "key": "blenders",
           "spoken": [
             {
-              "word": "thirty",
-              "start": 133.315,
-              "end": 133.735
-            },
-            {
-              "word": "lack",
-              "start": 133.735,
-              "end": 134.015
-            },
-            {
-              "word": "kilocalorie",
-              "start": 134.015,
-              "end": 134.665
+              "word": "blenders",
+              "start": 102.233,
+              "end": 102.613
             }
           ]
         },
         {
-          "word": " thermic",
-          "start": 134.665,
-          "end": 135.125,
-          "probability": 0.972,
-          "key": "thermic",
+          "word": " add",
+          "start": 102.613,
+          "end": 102.713,
+          "probability": 0.98,
+          "key": "add",
           "spoken": [
             {
-              "word": "thermic",
-              "start": 134.665,
-              "end": 135.125
+              "word": "add",
+              "start": 102.613,
+              "end": 102.713
             }
           ]
         },
         {
-          "word": " heaters,",
-          "start": 135.125,
-          "end": 135.545,
-          "probability": 0.967,
-          "key": "heaters",
+          "word": " 380 KL",
+          "start": 102.713,
+          "end": 104.143,
+          "probability": 0.953,
+          "key": "380 kl",
           "spoken": [
             {
-              "word": "heaters",
-              "start": 135.125,
-              "end": 135.545
-            }
-          ]
-        },
-        {
-          "word": " a",
-          "start": 135.585,
-          "end": 135.675,
-          "probability": 0.986,
-          "key": "a",
-          "spoken": [
-            {
-              "word": "a",
-              "start": 135.585,
-              "end": 135.675
-            }
-          ]
-        },
-        {
-          "word": " 2,200 TR",
-          "start": 135.675,
-          "end": 137.075,
-          "probability": 0.957,
-          "key": "2,200 tr",
-          "spoken": [
-            {
-              "word": "twenty",
-              "start": 135.675,
-              "end": 136.105
-            },
-            {
-              "word": "two",
-              "start": 136.105,
-              "end": 136.315
+              "word": "three",
+              "start": 102.713,
+              "end": 102.923
             },
             {
               "word": "hundred",
-              "start": 136.315,
-              "end": 136.725
+              "start": 102.923,
+              "end": 103.283
             },
             {
-              "word": "t",
-              "start": 136.725,
-              "end": 136.895
+              "word": "and",
+              "start": 103.283,
+              "end": 103.413
             },
             {
-              "word": "r",
-              "start": 136.895,
-              "end": 137.075
+              "word": "eighty",
+              "start": 103.413,
+              "end": 103.633
+            },
+            {
+              "word": "kiloliters",
+              "start": 103.633,
+              "end": 104.143
             }
           ]
         },
         {
-          "word": " cooling",
-          "start": 137.075,
-          "end": 137.505,
-          "probability": 0.971,
-          "key": "cooling",
+          "word": " of",
+          "start": 104.143,
+          "end": 104.253,
+          "probability": 0.984,
+          "key": "of",
           "spoken": [
             {
-              "word": "cooling",
-              "start": 137.075,
-              "end": 137.505
+              "word": "of",
+              "start": 104.143,
+              "end": 104.253
             }
           ]
         },
         {
-          "word": " tower,",
-          "start": 137.505,
-          "end": 137.905,
-          "probability": 0.957,
-          "key": "tower",
+          "word": " blending,",
+          "start": 104.253,
+          "end": 104.683,
+          "probability": 0.929,
+          "key": "blending",
           "spoken": [
             {
-              "word": "tower",
-              "start": 137.505,
-              "end": 137.905
+              "word": "blending",
+              "start": 104.253,
+              "end": 104.683
             }
           ]
         },
         {
           "word": " and",
-          "start": 137.905,
-          "end": 138.135,
-          "probability": 0.979,
+          "start": 104.683,
+          "end": 104.903,
+          "probability": 0.972,
           "key": "and",
           "spoken": [
             {
               "word": "and",
-              "start": 137.905,
-              "end": 138.135
+              "start": 104.683,
+              "end": 104.903
             }
           ]
         },
         {
-          "word": " on-site",
-          "start": 138.135,
-          "end": 138.615,
-          "probability": 0.977,
-          "key": "on-site",
+          "word": " 22",
+          "start": 104.903,
+          "end": 105.403,
+          "probability": 0.971,
+          "key": "22",
           "spoken": [
             {
-              "word": "on",
-              "start": 138.135,
-              "end": 138.315
+              "word": "twenty",
+              "start": 104.903,
+              "end": 105.223
             },
             {
-              "word": "site",
-              "start": 138.315,
-              "end": 138.615
+              "word": "two",
+              "start": 105.223,
+              "end": 105.403
             }
           ]
         },
         {
-          "word": " nitrogen",
-          "start": 138.615,
-          "end": 139.245,
-          "probability": 0.951,
-          "key": "nitrogen",
+          "word": " grade-dedicated",
+          "start": 105.403,
+          "end": 106.193,
+          "probability": 0.964,
+          "key": "grade-dedicated",
           "spoken": [
             {
-              "word": "nitrogen",
-              "start": 138.615,
-              "end": 139.245
-            }
-          ]
-        },
-        {
-          "word": " generation,",
-          "start": 139.245,
-          "end": 139.995,
-          "probability": 0.955,
-          "key": "generation",
-          "spoken": [
+              "word": "grade",
+              "start": 105.403,
+              "end": 105.673
+            },
             {
-              "word": "generation",
-              "start": 139.245,
-              "end": 139.995
+              "word": "dedicated",
+              "start": 105.673,
+              "end": 106.193
             }
           ]
         },
         {
-          "word": " sized",
-          "start": 140.045,
-          "end": 140.385,
+          "word": " tanks",
+          "start": 106.193,
+          "end": 106.563,
           "probability": 0.972,
-          "key": "sized",
+          "key": "tanks",
           "spoken": [
             {
-              "word": "sized",
-              "start": 140.045,
-              "end": 140.385
+              "word": "tanks",
+              "start": 106.193,
+              "end": 106.563
             }
           ]
         },
         {
-          "word": " for",
-          "start": 140.385,
-          "end": 140.555,
+          "word": " hold",
+          "start": 106.563,
+          "end": 106.773,
+          "probability": 0.963,
+          "key": "hold",
+          "spoken": [
+            {
+              "word": "hold",
+              "start": 106.563,
+              "end": 106.773
+            }
+          ]
+        },
+        {
+          "word": " over",
+          "start": 106.773,
+          "end": 107.023,
+          "probability": 0.981,
+          "key": "over",
+          "spoken": [
+            {
+              "word": "over",
+              "start": 106.773,
+              "end": 107.023
+            }
+          ]
+        },
+        {
+          "word": " 1,000 KL",
+          "start": 107.023,
+          "end": 108.213,
+          "probability": 0.951,
+          "key": "1,000 kl",
+          "spoken": [
+            {
+              "word": "one",
+              "start": 107.023,
+              "end": 107.273
+            },
+            {
+              "word": "thousand",
+              "start": 107.273,
+              "end": 107.703
+            },
+            {
+              "word": "kiloliters",
+              "start": 107.703,
+              "end": 108.213
+            }
+          ]
+        },
+        {
+          "word": " of",
+          "start": 108.213,
+          "end": 108.283,
+          "probability": 0.989,
+          "key": "of",
+          "spoken": [
+            {
+              "word": "of",
+              "start": 108.213,
+              "end": 108.283
+            }
+          ]
+        },
+        {
+          "word": " finished",
+          "start": 108.283,
+          "end": 108.653,
+          "probability": 0.967,
+          "key": "finished",
+          "spoken": [
+            {
+              "word": "finished",
+              "start": 108.283,
+              "end": 108.653
+            }
+          ]
+        },
+        {
+          "word": " goods.",
+          "start": 108.653,
+          "end": 109.093,
           "probability": 0.97,
-          "key": "for",
+          "key": "goods",
           "spoken": [
             {
-              "word": "for",
-              "start": 140.385,
-              "end": 140.555
-            }
-          ]
-        },
-        {
-          "word": " full",
-          "start": 140.555,
-          "end": 140.805,
-          "probability": 0.983,
-          "key": "full",
-          "spoken": [
-            {
-              "word": "full",
-              "start": 140.555,
-              "end": 140.805
-            }
-          ]
-        },
-        {
-          "word": " load.",
-          "start": 140.805,
-          "end": 141.205,
-          "probability": 0.979,
-          "key": "load",
-          "spoken": [
-            {
-              "word": "load",
-              "start": 140.805,
-              "end": 141.205
+              "word": "goods",
+              "start": 108.653,
+              "end": 109.093
             }
           ]
         }
@@ -2682,252 +2619,219 @@
     },
     {
       "id": 11,
-      "line_id": "a6_l1",
-      "start": 151.875,
-      "end": 159.195,
-      "text": " Whether you need toll conversion, full-service jobwork, or dedicated plant capacity, partner with MPD Industries today.",
+      "line_id": "a6_l2",
+      "start": 111.328,
+      "end": 116.928,
+      "text": " In total: about 1,500 tons of packed storage, and over 1,600 KL of bulk liquids.",
       "words": [
         {
-          "word": " Whether",
-          "start": 151.875,
-          "end": 152.185,
-          "probability": 0.974,
-          "key": "whether",
-          "spoken": [
-            {
-              "word": "whether",
-              "start": 151.875,
-              "end": 152.185
-            }
-          ]
-        },
-        {
-          "word": " you",
-          "start": 152.185,
-          "end": 152.315,
+          "word": " In",
+          "start": 111.328,
+          "end": 111.478,
           "probability": 0.987,
-          "key": "you",
+          "key": "in",
           "spoken": [
             {
-              "word": "you",
-              "start": 152.185,
-              "end": 152.315
+              "word": "in",
+              "start": 111.328,
+              "end": 111.478
             }
           ]
         },
         {
-          "word": " need",
-          "start": 152.315,
-          "end": 152.555,
-          "probability": 0.974,
-          "key": "need",
+          "word": " total:",
+          "start": 111.478,
+          "end": 111.828,
+          "probability": 0.975,
+          "key": "total",
           "spoken": [
             {
-              "word": "need",
-              "start": 152.315,
-              "end": 152.555
+              "word": "total",
+              "start": 111.478,
+              "end": 111.828
             }
           ]
         },
         {
-          "word": " toll",
-          "start": 152.555,
-          "end": 152.765,
-          "probability": 0.984,
-          "key": "toll",
-          "spoken": [
-            {
-              "word": "toll",
-              "start": 152.555,
-              "end": 152.765
-            }
-          ]
-        },
-        {
-          "word": " conversion,",
-          "start": 152.765,
-          "end": 153.335,
-          "probability": 0.954,
-          "key": "conversion",
-          "spoken": [
-            {
-              "word": "conversion",
-              "start": 152.765,
-              "end": 153.335
-            }
-          ]
-        },
-        {
-          "word": " full-service",
-          "start": 153.335,
-          "end": 154.135,
-          "probability": 0.935,
-          "key": "full-service",
-          "spoken": [
-            {
-              "word": "full",
-              "start": 153.335,
-              "end": 153.655
-            },
-            {
-              "word": "service",
-              "start": 153.655,
-              "end": 154.135
-            }
-          ]
-        },
-        {
-          "word": " jobwork,",
-          "start": 154.135,
-          "end": 154.945,
-          "probability": 0.927,
-          "key": "jobwork",
-          "spoken": [
-            {
-              "word": "job",
-              "start": 154.135,
-              "end": 154.475
-            },
-            {
-              "word": "work",
-              "start": 154.475,
-              "end": 154.945
-            }
-          ]
-        },
-        {
-          "word": " or",
-          "start": 154.945,
-          "end": 155.105,
-          "probability": 0.987,
-          "key": "or",
-          "spoken": [
-            {
-              "word": "or",
-              "start": 154.945,
-              "end": 155.105
-            }
-          ]
-        },
-        {
-          "word": " dedicated",
-          "start": 155.105,
-          "end": 155.725,
-          "probability": 0.958,
-          "key": "dedicated",
-          "spoken": [
-            {
-              "word": "dedicated",
-              "start": 155.105,
-              "end": 155.725
-            }
-          ]
-        },
-        {
-          "word": " plant",
-          "start": 155.725,
-          "end": 156.105,
-          "probability": 0.971,
-          "key": "plant",
-          "spoken": [
-            {
-              "word": "plant",
-              "start": 155.725,
-              "end": 156.105
-            }
-          ]
-        },
-        {
-          "word": " capacity,",
-          "start": 156.105,
-          "end": 156.915,
-          "probability": 0.948,
-          "key": "capacity",
-          "spoken": [
-            {
-              "word": "capacity",
-              "start": 156.105,
-              "end": 156.915
-            }
-          ]
-        },
-        {
-          "word": " partner",
-          "start": 156.955,
-          "end": 157.375,
-          "probability": 0.96,
-          "key": "partner",
-          "spoken": [
-            {
-              "word": "partner",
-              "start": 156.955,
-              "end": 157.375
-            }
-          ]
-        },
-        {
-          "word": " with",
-          "start": 157.375,
-          "end": 157.565,
+          "word": " about",
+          "start": 112.008,
+          "end": 112.308,
           "probability": 0.978,
-          "key": "with",
+          "key": "about",
           "spoken": [
             {
-              "word": "with",
-              "start": 157.375,
-              "end": 157.565
+              "word": "about",
+              "start": 112.008,
+              "end": 112.308
             }
           ]
         },
         {
-          "word": " MPD",
-          "start": 157.565,
-          "end": 158.095,
-          "probability": 0.981,
-          "key": "mpd",
+          "word": " 1,500",
+          "start": 112.308,
+          "end": 113.078,
+          "probability": 0.964,
+          "key": "1,500",
           "spoken": [
             {
-              "word": "m",
-              "start": 157.565,
-              "end": 157.725
+              "word": "fifteen",
+              "start": 112.308,
+              "end": 112.738
             },
             {
-              "word": "p",
-              "start": 157.725,
-              "end": 157.935
+              "word": "hundred",
+              "start": 112.738,
+              "end": 113.078
+            }
+          ]
+        },
+        {
+          "word": " tons",
+          "start": 113.078,
+          "end": 113.338,
+          "probability": 0.958,
+          "key": "tons",
+          "spoken": [
+            {
+              "word": "tons",
+              "start": 113.078,
+              "end": 113.338
+            }
+          ]
+        },
+        {
+          "word": " of",
+          "start": 113.338,
+          "end": 113.428,
+          "probability": 0.989,
+          "key": "of",
+          "spoken": [
+            {
+              "word": "of",
+              "start": 113.338,
+              "end": 113.428
+            }
+          ]
+        },
+        {
+          "word": " packed",
+          "start": 113.428,
+          "end": 113.728,
+          "probability": 0.967,
+          "key": "packed",
+          "spoken": [
+            {
+              "word": "packed",
+              "start": 113.428,
+              "end": 113.728
+            }
+          ]
+        },
+        {
+          "word": " storage,",
+          "start": 113.728,
+          "end": 114.258,
+          "probability": 0.925,
+          "key": "storage",
+          "spoken": [
+            {
+              "word": "storage",
+              "start": 113.728,
+              "end": 114.258
+            }
+          ]
+        },
+        {
+          "word": " and",
+          "start": 114.258,
+          "end": 114.478,
+          "probability": 0.974,
+          "key": "and",
+          "spoken": [
+            {
+              "word": "and",
+              "start": 114.258,
+              "end": 114.478
+            }
+          ]
+        },
+        {
+          "word": " over",
+          "start": 114.478,
+          "end": 114.728,
+          "probability": 0.978,
+          "key": "over",
+          "spoken": [
+            {
+              "word": "over",
+              "start": 114.478,
+              "end": 114.728
+            }
+          ]
+        },
+        {
+          "word": " 1,600 KL",
+          "start": 114.728,
+          "end": 116.058,
+          "probability": 0.958,
+          "key": "1,600 kl",
+          "spoken": [
+            {
+              "word": "sixteen",
+              "start": 114.728,
+              "end": 115.198
             },
             {
-              "word": "d",
-              "start": 157.935,
-              "end": 158.095
+              "word": "hundred",
+              "start": 115.198,
+              "end": 115.538
+            },
+            {
+              "word": "kiloliters",
+              "start": 115.538,
+              "end": 116.058
             }
           ]
         },
         {
-          "word": " Industries",
-          "start": 158.095,
-          "end": 158.635,
-          "probability": 0.963,
-          "key": "industries",
+          "word": " of",
+          "start": 116.058,
+          "end": 116.158,
+          "probability": 0.986,
+          "key": "of",
           "spoken": [
             {
-              "word": "industries",
-              "start": 158.095,
-              "end": 158.635
+              "word": "of",
+              "start": 116.058,
+              "end": 116.158
             }
           ]
         },
         {
-          "word": " today.",
-          "start": 158.635,
-          "end": 159.195,
-          "probability": 0.92,
-          "key": "today",
+          "word": " bulk",
+          "start": 116.158,
+          "end": 116.408,
+          "probability": 0.969,
+          "key": "bulk",
           "spoken": [
             {
-              "word": "today",
-              "start": 158.635,
-              "end": 159.195
+              "word": "bulk",
+              "start": 116.158,
+              "end": 116.408
+            }
+          ]
+        },
+        {
+          "word": " liquids.",
+          "start": 116.408,
+          "end": 116.928,
+          "probability": 0.958,
+          "key": "liquids",
+          "spoken": [
+            {
+              "word": "liquids",
+              "start": 116.408,
+              "end": 116.928
             }
           ]
         }
@@ -2935,285 +2839,285 @@
     },
     {
       "id": 12,
-      "line_id": "a6_l2",
-      "start": 161.25,
-      "end": 170.14,
-      "text": " Every model comes with NDA confidentiality, segregated storage, and a scale-up path from 2 KL trials to 16 KL production.",
+      "line_id": "a7_l1",
+      "start": 120.703,
+      "end": 127.503,
+      "text": " Utilities run green: agro-waste fired thermic heaters, fed from a covered fuel shed, and a 2,200 TR cooling tower.",
       "words": [
         {
-          "word": " Every",
-          "start": 161.25,
-          "end": 161.7,
-          "probability": 0.957,
-          "key": "every",
+          "word": " Utilities",
+          "start": 120.703,
+          "end": 121.323,
+          "probability": 0.956,
+          "key": "utilities",
           "spoken": [
             {
-              "word": "every",
-              "start": 161.25,
-              "end": 161.7
+              "word": "utilities",
+              "start": 120.703,
+              "end": 121.323
             }
           ]
         },
         {
-          "word": " model",
-          "start": 161.7,
-          "end": 162.08,
+          "word": " run",
+          "start": 121.323,
+          "end": 121.533,
+          "probability": 0.976,
+          "key": "run",
+          "spoken": [
+            {
+              "word": "run",
+              "start": 121.323,
+              "end": 121.533
+            }
+          ]
+        },
+        {
+          "word": " green:",
+          "start": 121.533,
+          "end": 121.913,
+          "probability": 0.975,
+          "key": "green",
+          "spoken": [
+            {
+              "word": "green",
+              "start": 121.533,
+              "end": 121.913
+            }
+          ]
+        },
+        {
+          "word": " agro-waste",
+          "start": 122.043,
+          "end": 122.693,
+          "probability": 0.971,
+          "key": "agro-waste",
+          "spoken": [
+            {
+              "word": "agro",
+              "start": 122.043,
+              "end": 122.413
+            },
+            {
+              "word": "waste",
+              "start": 122.413,
+              "end": 122.693
+            }
+          ]
+        },
+        {
+          "word": " fired",
+          "start": 122.693,
+          "end": 123.043,
+          "probability": 0.97,
+          "key": "fired",
+          "spoken": [
+            {
+              "word": "fired",
+              "start": 122.693,
+              "end": 123.043
+            }
+          ]
+        },
+        {
+          "word": " thermic",
+          "start": 123.043,
+          "end": 123.423,
+          "probability": 0.975,
+          "key": "thermic",
+          "spoken": [
+            {
+              "word": "thermic",
+              "start": 123.043,
+              "end": 123.423
+            }
+          ]
+        },
+        {
+          "word": " heaters,",
+          "start": 123.423,
+          "end": 123.773,
           "probability": 0.972,
-          "key": "model",
+          "key": "heaters",
           "spoken": [
             {
-              "word": "model",
-              "start": 161.7,
-              "end": 162.08
+              "word": "heaters",
+              "start": 123.423,
+              "end": 123.773
             }
           ]
         },
         {
-          "word": " comes",
-          "start": 162.08,
-          "end": 162.39,
-          "probability": 0.978,
-          "key": "comes",
+          "word": " fed",
+          "start": 123.773,
+          "end": 124.053,
+          "probability": 0.935,
+          "key": "fed",
           "spoken": [
             {
-              "word": "comes",
-              "start": 162.08,
-              "end": 162.39
-            }
-          ]
-        },
-        {
-          "word": " with",
-          "start": 162.39,
-          "end": 162.55,
-          "probability": 0.981,
-          "key": "with",
-          "spoken": [
-            {
-              "word": "with",
-              "start": 162.39,
-              "end": 162.55
-            }
-          ]
-        },
-        {
-          "word": " NDA",
-          "start": 162.55,
-          "end": 162.88,
-          "probability": 0.988,
-          "key": "nda",
-          "spoken": [
-            {
-              "word": "n",
-              "start": 162.55,
-              "end": 162.68
-            },
-            {
-              "word": "d",
-              "start": 162.68,
-              "end": 162.84
-            },
-            {
-              "word": "a",
-              "start": 162.84,
-              "end": 162.88
-            }
-          ]
-        },
-        {
-          "word": " confidentiality,",
-          "start": 162.88,
-          "end": 164.26,
-          "probability": 0.918,
-          "key": "confidentiality",
-          "spoken": [
-            {
-              "word": "confidentiality",
-              "start": 162.88,
-              "end": 164.26
-            }
-          ]
-        },
-        {
-          "word": " segregated",
-          "start": 164.31,
-          "end": 165.05,
-          "probability": 0.953,
-          "key": "segregated",
-          "spoken": [
-            {
-              "word": "segregated",
-              "start": 164.31,
-              "end": 165.05
-            }
-          ]
-        },
-        {
-          "word": " storage,",
-          "start": 165.05,
-          "end": 165.68,
-          "probability": 0.958,
-          "key": "storage",
-          "spoken": [
-            {
-              "word": "storage",
-              "start": 165.05,
-              "end": 165.68
-            }
-          ]
-        },
-        {
-          "word": " and",
-          "start": 165.73,
-          "end": 165.91,
-          "probability": 0.986,
-          "key": "and",
-          "spoken": [
-            {
-              "word": "and",
-              "start": 165.73,
-              "end": 165.91
-            }
-          ]
-        },
-        {
-          "word": " a",
-          "start": 165.91,
-          "end": 165.96,
-          "probability": 0.993,
-          "key": "a",
-          "spoken": [
-            {
-              "word": "a",
-              "start": 165.91,
-              "end": 165.96
-            }
-          ]
-        },
-        {
-          "word": " scale-up",
-          "start": 165.96,
-          "end": 166.54,
-          "probability": 0.973,
-          "key": "scale-up",
-          "spoken": [
-            {
-              "word": "scale",
-              "start": 165.96,
-              "end": 166.39
-            },
-            {
-              "word": "up",
-              "start": 166.39,
-              "end": 166.54
-            }
-          ]
-        },
-        {
-          "word": " path",
-          "start": 166.54,
-          "end": 166.84,
-          "probability": 0.965,
-          "key": "path",
-          "spoken": [
-            {
-              "word": "path",
-              "start": 166.54,
-              "end": 166.84
+              "word": "fed",
+              "start": 123.773,
+              "end": 124.053
             }
           ]
         },
         {
           "word": " from",
-          "start": 166.84,
-          "end": 167.08,
-          "probability": 0.974,
+          "start": 124.053,
+          "end": 124.253,
+          "probability": 0.982,
           "key": "from",
           "spoken": [
             {
               "word": "from",
-              "start": 166.84,
-              "end": 167.08
+              "start": 124.053,
+              "end": 124.253
             }
           ]
         },
         {
-          "word": " 2 KL",
-          "start": 167.08,
-          "end": 167.75,
-          "probability": 0.959,
-          "key": "2 kl",
+          "word": " a",
+          "start": 124.253,
+          "end": 124.303,
+          "probability": 0.987,
+          "key": "a",
           "spoken": [
+            {
+              "word": "a",
+              "start": 124.253,
+              "end": 124.303
+            }
+          ]
+        },
+        {
+          "word": " covered",
+          "start": 124.303,
+          "end": 124.623,
+          "probability": 0.975,
+          "key": "covered",
+          "spoken": [
+            {
+              "word": "covered",
+              "start": 124.303,
+              "end": 124.623
+            }
+          ]
+        },
+        {
+          "word": " fuel",
+          "start": 124.623,
+          "end": 124.973,
+          "probability": 0.97,
+          "key": "fuel",
+          "spoken": [
+            {
+              "word": "fuel",
+              "start": 124.623,
+              "end": 124.973
+            }
+          ]
+        },
+        {
+          "word": " shed,",
+          "start": 124.973,
+          "end": 125.273,
+          "probability": 0.954,
+          "key": "shed",
+          "spoken": [
+            {
+              "word": "shed",
+              "start": 124.973,
+              "end": 125.273
+            }
+          ]
+        },
+        {
+          "word": " and",
+          "start": 125.273,
+          "end": 125.463,
+          "probability": 0.983,
+          "key": "and",
+          "spoken": [
+            {
+              "word": "and",
+              "start": 125.273,
+              "end": 125.463
+            }
+          ]
+        },
+        {
+          "word": " a",
+          "start": 125.463,
+          "end": 125.503,
+          "probability": 0.991,
+          "key": "a",
+          "spoken": [
+            {
+              "word": "a",
+              "start": 125.463,
+              "end": 125.503
+            }
+          ]
+        },
+        {
+          "word": " 2,200 TR",
+          "start": 125.503,
+          "end": 126.723,
+          "probability": 0.963,
+          "key": "2,200 tr",
+          "spoken": [
+            {
+              "word": "twenty",
+              "start": 125.503,
+              "end": 125.883
+            },
             {
               "word": "two",
-              "start": 167.08,
-              "end": 167.25
+              "start": 125.883,
+              "end": 126.073
             },
             {
-              "word": "kiloliter",
-              "start": 167.25,
-              "end": 167.75
-            }
-          ]
-        },
-        {
-          "word": " trials",
-          "start": 167.75,
-          "end": 168.28,
-          "probability": 0.959,
-          "key": "trials",
-          "spoken": [
-            {
-              "word": "trials",
-              "start": 167.75,
-              "end": 168.28
-            }
-          ]
-        },
-        {
-          "word": " to",
-          "start": 168.28,
-          "end": 168.4,
-          "probability": 0.986,
-          "key": "to",
-          "spoken": [
-            {
-              "word": "to",
-              "start": 168.28,
-              "end": 168.4
-            }
-          ]
-        },
-        {
-          "word": " 16 KL",
-          "start": 168.4,
-          "end": 169.46,
-          "probability": 0.954,
-          "key": "16 kl",
-          "spoken": [
-            {
-              "word": "sixteen",
-              "start": 168.4,
-              "end": 168.95
+              "word": "hundred",
+              "start": 126.073,
+              "end": 126.413
             },
             {
-              "word": "kiloliter",
-              "start": 168.95,
-              "end": 169.46
+              "word": "t",
+              "start": 126.413,
+              "end": 126.573
+            },
+            {
+              "word": "r",
+              "start": 126.573,
+              "end": 126.723
             }
           ]
         },
         {
-          "word": " production.",
-          "start": 169.46,
-          "end": 170.14,
-          "probability": 0.95,
-          "key": "production",
+          "word": " cooling",
+          "start": 126.723,
+          "end": 127.103,
+          "probability": 0.971,
+          "key": "cooling",
           "spoken": [
             {
-              "word": "production",
-              "start": 169.46,
-              "end": 170.14
+              "word": "cooling",
+              "start": 126.723,
+              "end": 127.103
+            }
+          ]
+        },
+        {
+          "word": " tower.",
+          "start": 127.103,
+          "end": 127.503,
+          "probability": 0.979,
+          "key": "tower",
+          "spoken": [
+            {
+              "word": "tower",
+              "start": 127.103,
+              "end": 127.503
             }
           ]
         }
@@ -3221,102 +3125,778 @@
     },
     {
       "id": 13,
-      "line_id": "a6_l3",
-      "start": 172.5,
-      "end": 175.49,
-      "text": " MPD Industries. We innovate. We serve.",
+      "line_id": "a7_l2",
+      "start": 130.078,
+      "end": 136.018,
+      "text": " On-site nitrogen, a 50 KLD effluent treatment plant, and 0.7 MW of rooftop solar.",
       "words": [
         {
-          "word": " MPD",
-          "start": 172.5,
-          "end": 173.07,
+          "word": " On-site",
+          "start": 130.078,
+          "end": 130.528,
+          "probability": 0.979,
+          "key": "on-site",
+          "spoken": [
+            {
+              "word": "on",
+              "start": 130.078,
+              "end": 130.278
+            },
+            {
+              "word": "site",
+              "start": 130.278,
+              "end": 130.528
+            }
+          ]
+        },
+        {
+          "word": " nitrogen,",
+          "start": 130.528,
+          "end": 131.128,
+          "probability": 0.955,
+          "key": "nitrogen",
+          "spoken": [
+            {
+              "word": "nitrogen",
+              "start": 130.528,
+              "end": 131.128
+            }
+          ]
+        },
+        {
+          "word": " a",
+          "start": 131.208,
+          "end": 131.278,
+          "probability": 0.986,
+          "key": "a",
+          "spoken": [
+            {
+              "word": "a",
+              "start": 131.208,
+              "end": 131.278
+            }
+          ]
+        },
+        {
+          "word": " 50 KLD",
+          "start": 131.278,
+          "end": 132.418,
+          "probability": 0.959,
+          "key": "50 kld",
+          "spoken": [
+            {
+              "word": "fifty",
+              "start": 131.278,
+              "end": 131.588
+            },
+            {
+              "word": "kiloliter",
+              "start": 131.588,
+              "end": 132.038
+            },
+            {
+              "word": "per",
+              "start": 132.038,
+              "end": 132.228
+            },
+            {
+              "word": "day",
+              "start": 132.228,
+              "end": 132.418
+            }
+          ]
+        },
+        {
+          "word": " effluent",
+          "start": 132.418,
+          "end": 132.958,
+          "probability": 0.963,
+          "key": "effluent",
+          "spoken": [
+            {
+              "word": "effluent",
+              "start": 132.418,
+              "end": 132.958
+            }
+          ]
+        },
+        {
+          "word": " treatment",
+          "start": 132.958,
+          "end": 133.348,
+          "probability": 0.967,
+          "key": "treatment",
+          "spoken": [
+            {
+              "word": "treatment",
+              "start": 132.958,
+              "end": 133.348
+            }
+          ]
+        },
+        {
+          "word": " plant,",
+          "start": 133.348,
+          "end": 133.728,
+          "probability": 0.953,
+          "key": "plant",
+          "spoken": [
+            {
+              "word": "plant",
+              "start": 133.348,
+              "end": 133.728
+            }
+          ]
+        },
+        {
+          "word": " and",
+          "start": 133.728,
+          "end": 133.928,
           "probability": 0.98,
+          "key": "and",
+          "spoken": [
+            {
+              "word": "and",
+              "start": 133.728,
+              "end": 133.928
+            }
+          ]
+        },
+        {
+          "word": " 0.7 MW",
+          "start": 133.928,
+          "end": 135.028,
+          "probability": 0.957,
+          "key": "0.7 mw",
+          "spoken": [
+            {
+              "word": "point",
+              "start": 133.928,
+              "end": 134.228
+            },
+            {
+              "word": "seven",
+              "start": 134.228,
+              "end": 134.518
+            },
+            {
+              "word": "megawatts",
+              "start": 134.518,
+              "end": 135.028
+            }
+          ]
+        },
+        {
+          "word": " of",
+          "start": 135.028,
+          "end": 135.138,
+          "probability": 0.986,
+          "key": "of",
+          "spoken": [
+            {
+              "word": "of",
+              "start": 135.028,
+              "end": 135.138
+            }
+          ]
+        },
+        {
+          "word": " rooftop",
+          "start": 135.138,
+          "end": 135.528,
+          "probability": 0.962,
+          "key": "rooftop",
+          "spoken": [
+            {
+              "word": "rooftop",
+              "start": 135.138,
+              "end": 135.528
+            }
+          ]
+        },
+        {
+          "word": " solar.",
+          "start": 135.528,
+          "end": 136.018,
+          "probability": 0.931,
+          "key": "solar",
+          "spoken": [
+            {
+              "word": "solar",
+              "start": 135.528,
+              "end": 136.018
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "line_id": "a8_l1",
+      "start": 151.172,
+      "end": 156.542,
+      "text": " Toll conversion, full-service jobwork, or dedicated capacity: partner with MPD Industries.",
+      "words": [
+        {
+          "word": " Toll",
+          "start": 151.172,
+          "end": 151.392,
+          "probability": 0.979,
+          "key": "toll",
+          "spoken": [
+            {
+              "word": "toll",
+              "start": 151.172,
+              "end": 151.392
+            }
+          ]
+        },
+        {
+          "word": " conversion,",
+          "start": 151.392,
+          "end": 151.902,
+          "probability": 0.961,
+          "key": "conversion",
+          "spoken": [
+            {
+              "word": "conversion",
+              "start": 151.392,
+              "end": 151.902
+            }
+          ]
+        },
+        {
+          "word": " full-service",
+          "start": 152.002,
+          "end": 152.632,
+          "probability": 0.971,
+          "key": "full-service",
+          "spoken": [
+            {
+              "word": "full",
+              "start": 152.002,
+              "end": 152.212
+            },
+            {
+              "word": "service",
+              "start": 152.212,
+              "end": 152.632
+            }
+          ]
+        },
+        {
+          "word": " jobwork,",
+          "start": 152.632,
+          "end": 153.282,
+          "probability": 0.947,
+          "key": "jobwork",
+          "spoken": [
+            {
+              "word": "job",
+              "start": 152.632,
+              "end": 152.912
+            },
+            {
+              "word": "work",
+              "start": 152.912,
+              "end": 153.282
+            }
+          ]
+        },
+        {
+          "word": " or",
+          "start": 153.282,
+          "end": 153.472,
+          "probability": 0.974,
+          "key": "or",
+          "spoken": [
+            {
+              "word": "or",
+              "start": 153.282,
+              "end": 153.472
+            }
+          ]
+        },
+        {
+          "word": " dedicated",
+          "start": 153.472,
+          "end": 154.022,
+          "probability": 0.955,
+          "key": "dedicated",
+          "spoken": [
+            {
+              "word": "dedicated",
+              "start": 153.472,
+              "end": 154.022
+            }
+          ]
+        },
+        {
+          "word": " capacity:",
+          "start": 154.022,
+          "end": 154.682,
+          "probability": 0.946,
+          "key": "capacity",
+          "spoken": [
+            {
+              "word": "capacity",
+              "start": 154.022,
+              "end": 154.682
+            }
+          ]
+        },
+        {
+          "word": " partner",
+          "start": 154.862,
+          "end": 155.242,
+          "probability": 0.971,
+          "key": "partner",
+          "spoken": [
+            {
+              "word": "partner",
+              "start": 154.862,
+              "end": 155.242
+            }
+          ]
+        },
+        {
+          "word": " with",
+          "start": 155.242,
+          "end": 155.402,
+          "probability": 0.985,
+          "key": "with",
+          "spoken": [
+            {
+              "word": "with",
+              "start": 155.242,
+              "end": 155.402
+            }
+          ]
+        },
+        {
+          "word": " MPD",
+          "start": 155.402,
+          "end": 155.862,
+          "probability": 0.983,
           "key": "mpd",
           "spoken": [
             {
               "word": "m",
-              "start": 172.5,
-              "end": 172.7
+              "start": 155.402,
+              "end": 155.552
             },
             {
               "word": "p",
-              "start": 172.7,
-              "end": 172.91
+              "start": 155.552,
+              "end": 155.722
             },
             {
               "word": "d",
-              "start": 172.91,
-              "end": 173.07
+              "start": 155.722,
+              "end": 155.862
             }
           ]
         },
         {
           "word": " Industries.",
-          "start": 173.07,
-          "end": 173.87,
-          "probability": 0.953,
+          "start": 155.862,
+          "end": 156.542,
+          "probability": 0.958,
           "key": "industries",
           "spoken": [
             {
               "word": "industries",
-              "start": 173.07,
-              "end": 173.87
+              "start": 155.862,
+              "end": 156.542
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "line_id": "a8_l2",
+      "start": 157.5,
+      "end": 165.22,
+      "text": " Every model comes with NDA confidentiality, segregated storage, and a scale-up path from 2 KL trials to 16 KL production.",
+      "words": [
+        {
+          "word": " Every",
+          "start": 157.5,
+          "end": 157.88,
+          "probability": 0.961,
+          "key": "every",
+          "spoken": [
+            {
+              "word": "every",
+              "start": 157.5,
+              "end": 157.88
             }
           ]
         },
         {
-          "word": " We",
-          "start": 174.01,
-          "end": 174.18,
+          "word": " model",
+          "start": 157.88,
+          "end": 158.22,
+          "probability": 0.975,
+          "key": "model",
+          "spoken": [
+            {
+              "word": "model",
+              "start": 157.88,
+              "end": 158.22
+            }
+          ]
+        },
+        {
+          "word": " comes",
+          "start": 158.22,
+          "end": 158.48,
+          "probability": 0.978,
+          "key": "comes",
+          "spoken": [
+            {
+              "word": "comes",
+              "start": 158.22,
+              "end": 158.48
+            }
+          ]
+        },
+        {
+          "word": " with",
+          "start": 158.48,
+          "end": 158.63,
+          "probability": 0.978,
+          "key": "with",
+          "spoken": [
+            {
+              "word": "with",
+              "start": 158.48,
+              "end": 158.63
+            }
+          ]
+        },
+        {
+          "word": " NDA",
+          "start": 158.63,
+          "end": 158.91,
+          "probability": 0.986,
+          "key": "nda",
+          "spoken": [
+            {
+              "word": "n",
+              "start": 158.63,
+              "end": 158.74
+            },
+            {
+              "word": "d",
+              "start": 158.74,
+              "end": 158.87
+            },
+            {
+              "word": "a",
+              "start": 158.87,
+              "end": 158.91
+            }
+          ]
+        },
+        {
+          "word": " confidentiality,",
+          "start": 158.91,
+          "end": 160.11,
+          "probability": 0.926,
+          "key": "confidentiality",
+          "spoken": [
+            {
+              "word": "confidentiality",
+              "start": 158.91,
+              "end": 160.11
+            }
+          ]
+        },
+        {
+          "word": " segregated",
+          "start": 160.15,
+          "end": 160.8,
+          "probability": 0.953,
+          "key": "segregated",
+          "spoken": [
+            {
+              "word": "segregated",
+              "start": 160.15,
+              "end": 160.8
+            }
+          ]
+        },
+        {
+          "word": " storage,",
+          "start": 160.8,
+          "end": 161.34,
+          "probability": 0.958,
+          "key": "storage",
+          "spoken": [
+            {
+              "word": "storage",
+              "start": 160.8,
+              "end": 161.34
+            }
+          ]
+        },
+        {
+          "word": " and",
+          "start": 161.39,
+          "end": 161.55,
           "probability": 0.987,
-          "key": "we",
+          "key": "and",
           "spoken": [
             {
-              "word": "we",
-              "start": 174.01,
-              "end": 174.18
+              "word": "and",
+              "start": 161.39,
+              "end": 161.55
             }
           ]
         },
         {
-          "word": " innovate.",
-          "start": 174.18,
-          "end": 174.69,
-          "probability": 0.966,
-          "key": "innovate",
+          "word": " a",
+          "start": 161.55,
+          "end": 161.59,
+          "probability": 0.992,
+          "key": "a",
           "spoken": [
             {
-              "word": "innovate",
-              "start": 174.18,
-              "end": 174.69
+              "word": "a",
+              "start": 161.55,
+              "end": 161.59
+            }
+          ]
+        },
+        {
+          "word": " scale-up",
+          "start": 161.59,
+          "end": 162.09,
+          "probability": 0.97,
+          "key": "scale-up",
+          "spoken": [
+            {
+              "word": "scale",
+              "start": 161.59,
+              "end": 161.97
+            },
+            {
+              "word": "up",
+              "start": 161.97,
+              "end": 162.09
+            }
+          ]
+        },
+        {
+          "word": " path",
+          "start": 162.09,
+          "end": 162.35,
+          "probability": 0.969,
+          "key": "path",
+          "spoken": [
+            {
+              "word": "path",
+              "start": 162.09,
+              "end": 162.35
+            }
+          ]
+        },
+        {
+          "word": " from",
+          "start": 162.35,
+          "end": 162.56,
+          "probability": 0.974,
+          "key": "from",
+          "spoken": [
+            {
+              "word": "from",
+              "start": 162.35,
+              "end": 162.56
+            }
+          ]
+        },
+        {
+          "word": " 2 KL",
+          "start": 162.56,
+          "end": 163.15,
+          "probability": 0.961,
+          "key": "2 kl",
+          "spoken": [
+            {
+              "word": "two",
+              "start": 162.56,
+              "end": 162.71
+            },
+            {
+              "word": "kiloliter",
+              "start": 162.71,
+              "end": 163.15
+            }
+          ]
+        },
+        {
+          "word": " trials",
+          "start": 163.15,
+          "end": 163.61,
+          "probability": 0.958,
+          "key": "trials",
+          "spoken": [
+            {
+              "word": "trials",
+              "start": 163.15,
+              "end": 163.61
+            }
+          ]
+        },
+        {
+          "word": " to",
+          "start": 163.61,
+          "end": 163.71,
+          "probability": 0.989,
+          "key": "to",
+          "spoken": [
+            {
+              "word": "to",
+              "start": 163.61,
+              "end": 163.71
+            }
+          ]
+        },
+        {
+          "word": " 16 KL",
+          "start": 163.71,
+          "end": 164.63,
+          "probability": 0.954,
+          "key": "16 kl",
+          "spoken": [
+            {
+              "word": "sixteen",
+              "start": 163.71,
+              "end": 164.19
+            },
+            {
+              "word": "kiloliter",
+              "start": 164.19,
+              "end": 164.63
+            }
+          ]
+        },
+        {
+          "word": " production.",
+          "start": 164.63,
+          "end": 165.22,
+          "probability": 0.95,
+          "key": "production",
+          "spoken": [
+            {
+              "word": "production",
+              "start": 164.63,
+              "end": 165.22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "line_id": "a8_l3",
+      "start": 172.5,
+      "end": 175.03,
+      "text": " MPD Industries. We innovate. We serve.",
+      "words": [
+        {
+          "word": " MPD",
+          "start": 172.5,
+          "end": 172.99,
+          "probability": 0.985,
+          "key": "mpd",
+          "spoken": [
+            {
+              "word": "m",
+              "start": 172.5,
+              "end": 172.67
+            },
+            {
+              "word": "p",
+              "start": 172.67,
+              "end": 172.85
+            },
+            {
+              "word": "d",
+              "start": 172.85,
+              "end": 172.99
+            }
+          ]
+        },
+        {
+          "word": " Industries.",
+          "start": 172.99,
+          "end": 173.69,
+          "probability": 0.952,
+          "key": "industries",
+          "spoken": [
+            {
+              "word": "industries",
+              "start": 172.99,
+              "end": 173.69
             }
           ]
         },
         {
           "word": " We",
-          "start": 174.84,
-          "end": 175.01,
+          "start": 173.8,
+          "end": 173.95,
           "probability": 0.988,
           "key": "we",
           "spoken": [
             {
               "word": "we",
-              "start": 174.84,
-              "end": 175.01
+              "start": 173.8,
+              "end": 173.95
+            }
+          ]
+        },
+        {
+          "word": " innovate.",
+          "start": 173.95,
+          "end": 174.4,
+          "probability": 0.968,
+          "key": "innovate",
+          "spoken": [
+            {
+              "word": "innovate",
+              "start": 173.95,
+              "end": 174.4
+            }
+          ]
+        },
+        {
+          "word": " We",
+          "start": 174.52,
+          "end": 174.68,
+          "probability": 0.988,
+          "key": "we",
+          "spoken": [
+            {
+              "word": "we",
+              "start": 174.52,
+              "end": 174.68
             }
           ]
         },
         {
           "word": " serve.",
-          "start": 175.01,
-          "end": 175.49,
-          "probability": 0.942,
+          "start": 174.68,
+          "end": 175.03,
+          "probability": 0.977,
           "key": "serve",
           "spoken": [
             {
               "word": "serve",
-              "start": 175.01,
-              "end": 175.49
+              "start": 174.68,
+              "end": 175.03
             }
           ]
         }

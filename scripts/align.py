@@ -27,6 +27,7 @@ EXTRA_PRON = {
     "kiloliter": "K IH L OW L IY T ER",
     "kiloliters": "K IH L OW L IY T ER Z",
     "oo": "UW",
+    "palletizer": "P AE L AH T AY Z ER",
     "pelletizers": "P EH L AH T AY Z ER Z",
     "phenolics": "F AH N AA L IH K S",
     "polyols": "P AA L IY AO L Z",

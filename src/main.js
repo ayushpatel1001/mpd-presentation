@@ -58,7 +58,7 @@ async function boot() {
   const flows = buildFlows(world, M, B, tokens);
   const qaqc = buildQaqc(world, M);
   const warehouses = buildWarehouses(world, M);
-  const solar = buildSolar(world, M, siteRoofs({ ...plants.envs, ...warehouses.envs }), B);
+  const solar = buildSolar(world, M, siteRoofs({ ...plants.envs, ...warehouses.envs, fuel: utilities.fuelShed }), B);
   window.__model = { solar: { modules: solar.count, kwp: solar.kwp, candidates: solar.available, perRoof: solar.perRoof }, storage: warehouses.storage };
   const statics = new THREE.Group();
   world.scene.add(statics);
@@ -70,7 +70,7 @@ async function boot() {
   labels.push(
     { anchor: 'wh1', offset: [70, -170], title: 'WAREHOUSE-1 · MOBILE COMPACT RACKING',
       lines: [`${fmt(st.wh1.pallets)} pallet positions ≈ ${fmt(st.wh1.tonnes)} t`, `7 mobile units: ${fmt(st.wh1.byKg[500])} × 500 kg · static row: ${fmt(st.wh1.byKg[1000])} × 1 t`] },
-    { anchor: 'wh2', offset: [70, -150], title: 'WAREHOUSE-2 · MOBILE COMPACT RACKING (ASSUMED)',
+    { anchor: 'wh2', offset: [70, -150], title: 'WAREHOUSE-2 · MOBILE COMPACT RACKING',
       lines: [`${fmt(st.wh2.pallets)} pallet positions ≈ ${fmt(st.wh2.tonnes)} t`, `6 mobile units × 10 bays × 6 levels · 500 kg`] },
     { anchor: 'solarWh1', offset: [-80, -150], color: '#F59E0B', title: `${(solar.kwp / 1000).toFixed(2)} MWp ROOFTOP SOLAR`,
       lines: [`${fmt(solar.count)} × ${MODULE.wp} Wp modules on every roof`] },

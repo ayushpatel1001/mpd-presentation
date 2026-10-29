@@ -62,7 +62,7 @@ def resolve_nested(obj, res, ctx):
             resolve_nested(v, res, f"{ctx}[{i}]")
 
 
-SLOTTED = {"capacityHud": "leftPanel", "barSplit": "rightPanel", "matrix": "rightPanel"}
+SLOTTED = {"capacityHud": "leftPanel", "barSplit": "rightPanel", "matrix": "rightPanel", "storageTotals": "rightPanel"}
 
 
 def split_balanced(words, n):

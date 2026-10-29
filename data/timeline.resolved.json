@@ -1,69 +1,86 @@
 {
   "meta": {
     "title": "MPD Industries - Ujjain Plant Jobwork Capabilities",
-    "logline": "From 2 KL pilot trials to 82,800 tons/year commercial output - MPD Industries' greenfield Ujjain plant is a high-capacity, technology-driven manufacturing partner for global chemical brands.",
+    "logline": "From raw-material storage to 16 KL reactors, QC and application labs, blending and green utilities - MPD Industries' greenfield Ujjain plant is a high-capacity, technology-driven manufacturing partner for global chemical brands.",
     "durationSec": 180,
     "fps": 30,
     "width": 1920,
     "height": 1080,
     "bpm": 128,
     "beatSec": 0.46875,
-    "barSec": 1.875,
-    "barsPerAct": 16
+    "barSec": 1.875
   },
   "acts": [
     {
       "id": "act1",
       "n": 1,
-      "title": "The Hook & 3D Site Flythrough",
+      "title": "Greenfield Site",
       "start": 0,
-      "end": 30,
+      "end": 15,
       "eyebrow": "01",
       "label": "GREENFIELD SITE · UJJAIN"
     },
     {
       "id": "act2",
       "n": 2,
-      "title": "Plant 1 – Liquid Resin Manufacturing",
-      "start": 30,
-      "end": 60,
+      "title": "Storage & Material Handling",
+      "start": 15,
+      "end": 39.375,
       "eyebrow": "02",
-      "label": "PLANT 1 · LIQUID COATING RESINS"
+      "label": "STORAGE & MATERIAL HANDLING"
     },
     {
       "id": "act3",
       "n": 3,
-      "title": "Plant 2 – Solid & Specialty Resins",
-      "start": 60,
-      "end": 90,
+      "title": "Plant 1 – Liquid Resins",
+      "start": 39.375,
+      "end": 63.75,
       "eyebrow": "03",
-      "label": "PLANT 2 · SOLID & SPECIALTY RESINS"
+      "label": "PLANT 1 · LIQUID COATING RESINS"
     },
     {
       "id": "act4",
       "n": 4,
-      "title": "Tank Farm, Solvent Storage & Blending",
-      "start": 90,
-      "end": 120,
+      "title": "Plant 2 – Solid & Specialty Resins",
+      "start": 63.75,
+      "end": 84.375,
       "eyebrow": "04",
-      "label": "TANK FARMS · SOLVENTS · BLENDING"
+      "label": "PLANT 2 · SOLID & SPECIALTY RESINS"
     },
     {
       "id": "act5",
       "n": 5,
-      "title": "Sustainable Utilities & EHS",
-      "start": 120,
-      "end": 150,
+      "title": "QC & Application Labs",
+      "start": 84.375,
+      "end": 101.25,
       "eyebrow": "05",
-      "label": "UTILITIES & EHS"
+      "label": "QC & APPLICATION LABS"
     },
     {
       "id": "act6",
       "n": 6,
+      "title": "Blending & Finished Goods",
+      "start": 101.25,
+      "end": 120,
+      "eyebrow": "06",
+      "label": "BLENDING & FINISHED GOODS"
+    },
+    {
+      "id": "act7",
+      "n": 7,
+      "title": "Green Utilities & EHS",
+      "start": 120,
+      "end": 150,
+      "eyebrow": "07",
+      "label": "GREEN UTILITIES & EHS"
+    },
+    {
+      "id": "act8",
+      "n": 8,
       "title": "Partnership Models & Contact",
       "start": 150,
       "end": 180,
-      "eyebrow": "06",
+      "eyebrow": "08",
       "label": "PARTNERSHIP MODELS"
     }
   ],
@@ -71,7 +88,7 @@
     {
       "id": "a1_blueprint",
       "start": 0.0,
-      "end": 5.0,
+      "end": 3.2,
       "target": [
         [
           -3,
@@ -86,30 +103,30 @@
       ],
       "radius": [
         430,
-        400
+        405
       ],
       "elev": [
         89,
-        84
+        86
       ],
       "azim": [
         -6,
-        -14
+        -10
       ],
       "fov": [
         30,
         30
       ],
       "aperture": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "ease": "linear"
     },
     {
       "id": "a1_descend",
-      "start": 5.0,
-      "end": 14.0,
+      "start": 3.2,
+      "end": 8.0,
       "target": [
         [
           -3,
@@ -123,33 +140,33 @@
         ]
       ],
       "radius": [
-        400,
+        405,
         215
       ],
       "elev": [
-        84,
+        86,
         38
       ],
       "azim": [
-        -14,
-        -38
+        -10,
+        -36
       ],
       "fov": [
         30,
         34
       ],
       "aperture": [
-        0.0,
+        0,
         0.25
       ],
       "ease": "inOutCubic",
-      "blendIn": 0.6,
+      "blendIn": 0.4,
       "whoosh": true
     },
     {
       "id": "a1_orbit",
-      "start": 14.0,
-      "end": 24.5,
+      "start": 8.0,
+      "end": 12.6,
       "target": [
         [
           -3,
@@ -157,22 +174,22 @@
           2
         ],
         [
+          -6,
           0,
-          0,
-          -2
+          -4
         ]
       ],
       "radius": [
         215,
-        190
+        185
       ],
       "elev": [
         38,
-        32
+        33
       ],
       "azim": [
-        -38,
-        -10
+        -36,
+        -16
       ],
       "fov": [
         34,
@@ -183,35 +200,35 @@
         0.3
       ],
       "ease": "inOutSine",
-      "blendIn": 1.2
+      "blendIn": 0.6
     },
     {
       "id": "a1_push",
-      "start": 24.5,
-      "end": 30.5,
+      "start": 12.6,
+      "end": 16.0,
       "target": [
         [
+          -6,
           0,
-          0,
-          -2
+          -4
         ],
         [
-          6.1,
-          6,
+          -26,
+          3,
           -17.6
         ]
       ],
       "radius": [
-        190,
-        60
+        185,
+        80
       ],
       "elev": [
-        32,
-        34
+        33,
+        44
       ],
       "azim": [
-        -10,
-        -30
+        -16,
+        35
       ],
       "fov": [
         34,
@@ -219,57 +236,297 @@
       ],
       "aperture": [
         0.3,
-        0.45
+        0.4
       ],
       "ease": "inOutCubic",
-      "blendIn": 1.0,
+      "blendIn": 0.5,
       "whoosh": true,
-      "whooshAt": 26.2
+      "whooshAt": 12.8
     },
     {
-      "id": "a2_dive",
-      "start": 30.5,
-      "end": 35.0,
+      "id": "a2_wh",
+      "start": 16.0,
+      "end": 21.4,
       "target": [
         [
-          6.1,
-          6,
+          -26,
+          3,
           -17.6
         ],
         [
-          2.5,
-          4.8,
-          -7.4
+          -23,
+          3,
+          -28
         ]
       ],
       "radius": [
-        60,
-        15
+        80,
+        58
       ],
       "elev": [
-        34,
-        10
+        44,
+        40
       ],
       "azim": [
-        -30,
-        -55
+        35,
+        70
       ],
       "fov": [
         34,
         34
       ],
       "aperture": [
-        0.45,
-        0.9
+        0.4,
+        0.5
       ],
-      "ease": "inOutCubic",
-      "blendIn": 0.8,
+      "ease": "inOutSine",
+      "blendIn": 0.6
+    },
+    {
+      "id": "a2_racks",
+      "start": 21.4,
+      "end": 25.0,
+      "target": [
+        [
+          -22,
+          4,
+          -36.5
+        ],
+        [
+          -22,
+          3.5,
+          -34
+        ]
+      ],
+      "radius": [
+        19,
+        16
+      ],
+      "elev": [
+        17,
+        12
+      ],
+      "azim": [
+        80,
+        100
+      ],
+      "fov": [
+        46,
+        44
+      ],
+      "aperture": [
+        0.6,
+        0.7
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5,
       "whoosh": true
     },
     {
-      "id": "a2_hero",
-      "start": 35.0,
-      "end": 47.0,
+      "id": "a2_depal",
+      "start": 25.0,
+      "end": 29.4,
+      "target": [
+        [
+          -19,
+          1.8,
+          -10.5
+        ],
+        [
+          -19.5,
+          1.6,
+          -11.5
+        ]
+      ],
+      "radius": [
+        21,
+        17
+      ],
+      "elev": [
+        30,
+        24
+      ],
+      "azim": [
+        62,
+        85
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.7,
+        0.8
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.6,
+      "whoosh": true
+    },
+    {
+      "id": "a2_fly",
+      "start": 29.4,
+      "end": 31.8,
+      "target": [
+        [
+          -19.5,
+          1.6,
+          -11.5
+        ],
+        [
+          -41,
+          -1,
+          71
+        ]
+      ],
+      "radius": [
+        17,
+        80
+      ],
+      "elev": [
+        24,
+        48
+      ],
+      "azim": [
+        85,
+        -10
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.8,
+        0.4
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 29.5
+    },
+    {
+      "id": "a2_peso",
+      "start": 31.8,
+      "end": 39.6,
+      "target": [
+        [
+          -41,
+          -1,
+          71
+        ],
+        [
+          -41,
+          -2.4,
+          71.6
+        ]
+      ],
+      "radius": [
+        80,
+        22
+      ],
+      "elev": [
+        48,
+        15
+      ],
+      "azim": [
+        -10,
+        -38
+      ],
+      "fov": [
+        34,
+        36
+      ],
+      "aperture": [
+        0.4,
+        0.7
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a3_fly",
+      "start": 39.6,
+      "end": 42.0,
+      "target": [
+        [
+          -41,
+          -2.4,
+          71.6
+        ],
+        [
+          6.1,
+          8,
+          -17.6
+        ]
+      ],
+      "radius": [
+        22,
+        60
+      ],
+      "elev": [
+        15,
+        36
+      ],
+      "azim": [
+        -38,
+        -50
+      ],
+      "fov": [
+        36,
+        34
+      ],
+      "aperture": [
+        0.7,
+        0.45
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 39.6
+    },
+    {
+      "id": "a3_crane",
+      "start": 42.0,
+      "end": 48.2,
+      "target": [
+        [
+          4.0,
+          6.5,
+          -31.8
+        ],
+        [
+          4.5,
+          8.5,
+          -31.6
+        ]
+      ],
+      "radius": [
+        13,
+        12
+      ],
+      "elev": [
+        6,
+        10
+      ],
+      "azim": [
+        -78,
+        -70
+      ],
+      "fov": [
+        58,
+        54
+      ],
+      "aperture": [
+        0.2,
+        0.3
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.6,
+      "whoosh": true
+    },
+    {
+      "id": "a3_hero",
+      "start": 48.2,
+      "end": 56.0,
       "target": [
         [
           2.5,
@@ -292,7 +549,7 @@
       ],
       "azim": [
         -55,
-        12
+        0
       ],
       "fov": [
         34,
@@ -303,12 +560,13 @@
         1.1
       ],
       "ease": "inOutSine",
-      "blendIn": 1.0
+      "blendIn": 0.6,
+      "whoosh": true
     },
     {
-      "id": "a2_hall",
-      "start": 47.0,
-      "end": 56.0,
+      "id": "a3_hall",
+      "start": 56.0,
+      "end": 63.9,
       "target": [
         [
           2.5,
@@ -323,14 +581,14 @@
       ],
       "radius": [
         13,
-        40
+        42
       ],
       "elev": [
         8,
         34
       ],
       "azim": [
-        12,
+        0,
         -38
       ],
       "fov": [
@@ -342,12 +600,12 @@
         0.5
       ],
       "ease": "inOutSine",
-      "blendIn": 1.0
+      "blendIn": 0.8
     },
     {
-      "id": "a2_exit",
-      "start": 56.0,
-      "end": 60.5,
+      "id": "a4_p2",
+      "start": 63.9,
+      "end": 66.8,
       "target": [
         [
           6.1,
@@ -356,21 +614,21 @@
         ],
         [
           29.5,
-          6,
-          -24
+          5,
+          -27
         ]
       ],
       "radius": [
-        40,
-        62
+        42,
+        44
       ],
       "elev": [
         34,
-        44
+        40
       ],
       "azim": [
         -38,
-        18
+        20
       ],
       "fov": [
         34,
@@ -378,56 +636,17 @@
       ],
       "aperture": [
         0.5,
-        0.45
-      ],
-      "ease": "inOutCubic",
-      "blendIn": 0.8,
-      "whoosh": true,
-      "whooshAt": 56.4
-    },
-    {
-      "id": "a3_p2",
-      "start": 60.5,
-      "end": 65.0,
-      "target": [
-        [
-          29.5,
-          6,
-          -24
-        ],
-        [
-          29.5,
-          5,
-          -27
-        ]
-      ],
-      "radius": [
-        62,
-        44
-      ],
-      "elev": [
-        44,
-        38
-      ],
-      "azim": [
-        18,
-        34
-      ],
-      "fov": [
-        34,
-        34
-      ],
-      "aperture": [
-        0.45,
         0.6
       ],
-      "ease": "inOutSine",
-      "blendIn": 0.8
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 64.0
     },
     {
-      "id": "a3_flaker",
-      "start": 65.0,
-      "end": 78.0,
+      "id": "a4_flaker",
+      "start": 66.8,
+      "end": 74.0,
       "target": [
         [
           26,
@@ -461,13 +680,13 @@
         1.0
       ],
       "ease": "inOutSine",
-      "blendIn": 1.6,
+      "blendIn": 0.6,
       "whoosh": true
     },
     {
-      "id": "a3_pellet",
-      "start": 78.0,
-      "end": 86.5,
+      "id": "a4_pellet",
+      "start": 74.0,
+      "end": 79.0,
       "target": [
         [
           27,
@@ -501,12 +720,12 @@
         0.9
       ],
       "ease": "inOutSine",
-      "blendIn": 1.0
+      "blendIn": 0.6
     },
     {
-      "id": "a3_exit",
-      "start": 86.5,
-      "end": 90.5,
+      "id": "a4_wide",
+      "start": 79.0,
+      "end": 84.4,
       "target": [
         [
           33.4,
@@ -514,22 +733,22 @@
           -9.5
         ],
         [
-          -41,
-          -1,
-          71
+          29.5,
+          5,
+          -24
         ]
       ],
       "radius": [
         9.5,
-        72
+        52
       ],
       "elev": [
         22,
-        50
+        42
       ],
       "azim": [
         40,
-        -20
+        70
       ],
       "fov": [
         33,
@@ -537,119 +756,40 @@
       ],
       "aperture": [
         0.9,
-        0.4
-      ],
-      "ease": "inOutCubic",
-      "blendIn": 0.6,
-      "whoosh": true,
-      "whooshAt": 86.8
-    },
-    {
-      "id": "a4_peso",
-      "start": 90.5,
-      "end": 99.5,
-      "target": [
-        [
-          -41,
-          -1,
-          71
-        ],
-        [
-          -41,
-          -2.4,
-          71.6
-        ]
-      ],
-      "radius": [
-        72,
-        21
-      ],
-      "elev": [
-        50,
-        14
-      ],
-      "azim": [
-        -20,
-        -40
-      ],
-      "fov": [
-        34,
-        36
-      ],
-      "aperture": [
-        0.4,
-        0.7
-      ],
-      "ease": "inOutCubic",
-      "blendIn": 0.8
-    },
-    {
-      "id": "a4_fg",
-      "start": 99.5,
-      "end": 108.5,
-      "target": [
-        [
-          -62,
-          1,
-          26
-        ],
-        [
-          -66,
-          2,
-          -21
-        ]
-      ],
-      "radius": [
-        44,
-        46
-      ],
-      "elev": [
-        24,
-        30
-      ],
-      "azim": [
-        -70,
-        -112
-      ],
-      "fov": [
-        34,
-        34
-      ],
-      "aperture": [
-        0.6,
         0.45
       ],
       "ease": "inOutSine",
-      "blendIn": 1.8,
-      "whoosh": true
+      "blendIn": 0.6,
+      "whoosh": true,
+      "whooshAt": 79.1
     },
     {
-      "id": "a4_rise",
-      "start": 108.5,
-      "end": 113.0,
+      "id": "a5_qa",
+      "start": 84.4,
+      "end": 88.0,
       "target": [
         [
-          -66,
-          2,
-          -21
+          29.5,
+          5,
+          -24
         ],
         [
-          10,
-          2,
-          -5
+          6.1,
+          7,
+          -44
         ]
       ],
       "radius": [
-        46,
-        72
+        52,
+        44
       ],
       "elev": [
-        30,
-        50
+        42,
+        22
       ],
       "azim": [
-        -112,
-        -160
+        70,
+        145
       ],
       "fov": [
         34,
@@ -657,56 +797,95 @@
       ],
       "aperture": [
         0.45,
-        0.3
+        0.5
       ],
-      "ease": "inOutSine",
-      "blendIn": 1.0,
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
       "whoosh": true,
-      "whooshAt": 108.7
+      "whooshAt": 84.5
     },
     {
-      "id": "a4_blend",
-      "start": 113.0,
-      "end": 118.5,
+      "id": "a5_cut",
+      "start": 88.0,
+      "end": 96.5,
       "target": [
         [
-          10,
-          2,
-          -5
+          6.1,
+          6,
+          -44
         ],
         [
-          52.9,
-          3,
-          1.4
+          6.1,
+          6.5,
+          -44
         ]
       ],
       "radius": [
-        72,
-        40
+        32,
+        27
       ],
       "elev": [
-        50,
-        42
+        16,
+        14
       ],
       "azim": [
-        -160,
-        -200
+        150,
+        190
       ],
       "fov": [
         34,
         34
       ],
       "aperture": [
-        0.3,
-        0.55
+        0.5,
+        0.7
       ],
       "ease": "inOutSine",
       "blendIn": 0.6
     },
     {
-      "id": "a4_exit",
-      "start": 118.5,
-      "end": 121.0,
+      "id": "a5_out",
+      "start": 96.5,
+      "end": 101.6,
+      "target": [
+        [
+          6.1,
+          6.5,
+          -44
+        ],
+        [
+          6.1,
+          6,
+          -44
+        ]
+      ],
+      "radius": [
+        27,
+        62
+      ],
+      "elev": [
+        14,
+        38
+      ],
+      "azim": [
+        190,
+        215
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.7,
+        0.4
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.6
+    },
+    {
+      "id": "a6_blend",
+      "start": 101.6,
+      "end": 108.4,
       "target": [
         [
           52.9,
@@ -714,22 +893,63 @@
           1.4
         ],
         [
-          40,
-          4,
-          60
+          52.9,
+          3,
+          1.4
         ]
       ],
       "radius": [
-        40,
-        56
+        46,
+        36
       ],
       "elev": [
         42,
-        30
+        34
       ],
       "azim": [
-        -200,
-        -200
+        160,
+        130
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.4,
+        0.55
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5,
+      "whoosh": true,
+      "whooshAt": 101.6
+    },
+    {
+      "id": "a6_rise",
+      "start": 108.4,
+      "end": 110.6,
+      "target": [
+        [
+          52.9,
+          3,
+          1.4
+        ],
+        [
+          -66,
+          2,
+          -21
+        ]
+      ],
+      "radius": [
+        36,
+        120
+      ],
+      "elev": [
+        34,
+        50
+      ],
+      "azim": [
+        130,
+        190
       ],
       "fov": [
         34,
@@ -737,17 +957,97 @@
       ],
       "aperture": [
         0.55,
-        0.45
+        0.3
       ],
       "ease": "inOutCubic",
-      "blendIn": 0.6,
+      "blendIn": 0.3,
       "whoosh": true,
-      "whooshAt": 118.6
+      "whooshAt": 108.5
     },
     {
-      "id": "a5_boiler",
-      "start": 121.0,
-      "end": 132.0,
+      "id": "a6_fg",
+      "start": 110.6,
+      "end": 116.0,
+      "target": [
+        [
+          -66,
+          2,
+          -21
+        ],
+        [
+          -64,
+          2,
+          -24
+        ]
+      ],
+      "radius": [
+        120,
+        44
+      ],
+      "elev": [
+        50,
+        30
+      ],
+      "azim": [
+        190,
+        160
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.3,
+        0.5
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4
+    },
+    {
+      "id": "a6_total",
+      "start": 116.0,
+      "end": 120.2,
+      "target": [
+        [
+          -64,
+          2,
+          -24
+        ],
+        [
+          -25,
+          2,
+          8
+        ]
+      ],
+      "radius": [
+        44,
+        150
+      ],
+      "elev": [
+        30,
+        46
+      ],
+      "azim": [
+        160,
+        140
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.5,
+        0.3
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5,
+      "whoosh": true,
+      "whooshAt": 116.1
+    },
+    {
+      "id": "a7_boiler",
+      "start": 120.2,
+      "end": 126.0,
       "target": [
         [
           40,
@@ -761,55 +1061,137 @@
         ]
       ],
       "radius": [
-        56,
-        36
+        60,
+        34
       ],
       "elev": [
-        30,
+        32,
         22
       ],
       "azim": [
-        -200,
-        -238
+        140,
+        128
       ],
       "fov": [
         34,
         34
       ],
       "aperture": [
-        0.45,
-        0.65
+        0.35,
+        0.6
       ],
-      "ease": "inOutSine",
-      "blendIn": 0.8
+      "ease": "inOutCubic",
+      "blendIn": 0.5,
+      "whoosh": true,
+      "whooshAt": 120.3
     },
     {
-      "id": "a5_util",
-      "start": 132.0,
-      "end": 142.0,
+      "id": "a7_shed",
+      "start": 126.0,
+      "end": 131.0,
       "target": [
         [
-          38,
-          5,
-          58
+          10.4,
+          3,
+          64.0
         ],
         [
-          22,
-          2,
-          18
+          10.4,
+          3,
+          65.0
         ]
       ],
       "radius": [
-        36,
-        118
+        34,
+        30
       ],
       "elev": [
-        22,
-        42
+        26,
+        22
       ],
       "azim": [
-        -238,
-        -280
+        150,
+        192
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.6,
+        0.65
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.6,
+      "whoosh": true
+    },
+    {
+      "id": "a7_etp",
+      "start": 131.0,
+      "end": 135.6,
+      "target": [
+        [
+          -9,
+          2,
+          66.5
+        ],
+        [
+          -9,
+          2,
+          67.5
+        ]
+      ],
+      "radius": [
+        30,
+        27
+      ],
+      "elev": [
+        38,
+        33
+      ],
+      "azim": [
+        200,
+        168
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.6,
+        0.65
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.6,
+      "whoosh": true
+    },
+    {
+      "id": "a7_solar",
+      "start": 135.6,
+      "end": 143.6,
+      "target": [
+        [
+          -9,
+          2,
+          66.5
+        ],
+        [
+          -5,
+          0,
+          -5
+        ]
+      ],
+      "radius": [
+        26,
+        200
+      ],
+      "elev": [
+        30,
+        52
+      ],
+      "azim": [
+        168,
+        28
       ],
       "fov": [
         34,
@@ -817,22 +1199,22 @@
       ],
       "aperture": [
         0.65,
-        0.3
+        0.25
       ],
       "ease": "inOutSine",
-      "blendIn": 1.0,
+      "blendIn": 0.6,
       "whoosh": true,
-      "whooshAt": 132.3
+      "whooshAt": 135.7
     },
     {
-      "id": "a5_wide",
-      "start": 142.0,
+      "id": "a7_wide",
+      "start": 143.6,
       "end": 150.5,
       "target": [
         [
-          22,
-          2,
-          18
+          -5,
+          0,
+          -5
         ],
         [
           0,
@@ -841,30 +1223,30 @@
         ]
       ],
       "radius": [
-        118,
-        200
+        200,
+        205
       ],
       "elev": [
-        42,
+        52,
         50
       ],
       "azim": [
-        -280,
-        -330
+        28,
+        15
       ],
       "fov": [
         34,
         34
       ],
       "aperture": [
-        0.3,
+        0.25,
         0.25
       ],
       "ease": "inOutSine",
-      "blendIn": 1.0
+      "blendIn": 0.8
     },
     {
-      "id": "a6_overview",
+      "id": "a8_overview",
       "start": 150.5,
       "end": 180.0,
       "target": [
@@ -880,7 +1262,7 @@
         ]
       ],
       "radius": [
-        200,
+        205,
         236
       ],
       "elev": [
@@ -888,8 +1270,8 @@
         40
       ],
       "azim": [
-        -330,
-        -382
+        15,
+        -32
       ],
       "fov": [
         34,
@@ -900,7 +1282,7 @@
         1.4
       ],
       "ease": "inOutSine",
-      "blendIn": 1.2,
+      "blendIn": 1.0,
       "whoosh": true,
       "whooshAt": 150.2
     }
@@ -912,11 +1294,11 @@
         1
       ],
       [
-        6.5,
+        4.4,
         1
       ],
       [
-        12,
+        8.8,
         0
       ]
     ],
@@ -926,11 +1308,11 @@
         0
       ],
       [
-        5.8,
+        3.4,
         0
       ],
       [
-        13.2,
+        8.6,
         1
       ]
     ],
@@ -940,171 +1322,207 @@
         0.55
       ],
       [
-        4.6,
+        3.0,
         0.55
       ],
       [
-        7.5,
+        4.6,
         0
       ]
     ],
-    "plant1Cutaway": [
+    "wh1Cutaway": [
+      [
+        15.2,
+        0
+      ],
+      [
+        16.6,
+        1
+      ],
+      [
+        29.0,
+        1
+      ],
       [
         30.4,
         0
-      ],
-      [
-        33.0,
-        1
-      ],
-      [
-        56.8,
-        1
-      ],
-      [
-        59.0,
-        0
-      ]
-    ],
-    "plant2Cutaway": [
-      [
-        60.8,
-        0
-      ],
-      [
-        63.4,
-        1
-      ],
-      [
-        88.4,
-        1
-      ],
-      [
-        90.2,
-        0
-      ]
-    ],
-    "heroReactorFill": [
-      [
-        35.4,
-        0.12
-      ],
-      [
-        44.6,
-        0.78
-      ]
-    ],
-    "heroReactorHeat": [
-      [
-        34.5,
-        0
-      ],
-      [
-        37.5,
-        1
-      ],
-      [
-        57,
-        1
-      ],
-      [
-        59,
-        0.2
-      ]
-    ],
-    "finishingRun": [
-      [
-        62.0,
-        0
-      ],
-      [
-        64.5,
-        1
-      ],
-      [
-        88,
-        1
-      ],
-      [
-        90,
-        0.3
       ]
     ],
     "pesoXray": [
       [
-        90.8,
+        30.6,
         0
       ],
       [
-        94.0,
+        32.4,
         1
       ],
       [
-        99.6,
+        39.2,
         1
       ],
       [
-        102.0,
+        40.6,
         0
       ]
     ],
     "pesoFill": [
       [
-        92.5,
+        32.2,
         0.2
       ],
       [
-        99.0,
+        38.6,
         0.85
+      ]
+    ],
+    "flowSolvent": [
+      [
+        32.4,
+        0
+      ],
+      [
+        37.0,
+        1
+      ],
+      [
+        39.6,
+        1
+      ],
+      [
+        41.4,
+        0.35
+      ]
+    ],
+    "plant1Cutaway": [
+      [
+        40.4,
+        0
+      ],
+      [
+        41.8,
+        1
+      ],
+      [
+        62.6,
+        1
+      ],
+      [
+        63.9,
+        0
+      ]
+    ],
+    "heroReactorFill": [
+      [
+        49.0,
+        0.12
+      ],
+      [
+        55.5,
+        0.78
+      ]
+    ],
+    "heroReactorHeat": [
+      [
+        48.4,
+        0
+      ],
+      [
+        50.4,
+        1
+      ],
+      [
+        61,
+        1
+      ],
+      [
+        63,
+        0.2
+      ]
+    ],
+    "plant2Cutaway": [
+      [
+        63.9,
+        0
+      ],
+      [
+        65.3,
+        1
+      ],
+      [
+        83.6,
+        1
+      ],
+      [
+        84.6,
+        0
+      ]
+    ],
+    "finishingRun": [
+      [
+        64.0,
+        0
+      ],
+      [
+        66.0,
+        1
+      ],
+      [
+        83,
+        1
+      ],
+      [
+        84.4,
+        0.3
+      ]
+    ],
+    "qaCutaway": [
+      [
+        87.4,
+        0
+      ],
+      [
+        89.0,
+        1
+      ],
+      [
+        99.8,
+        1
+      ],
+      [
+        101.2,
+        0
       ]
     ],
     "blenderCutaway": [
       [
-        109.5,
+        101.8,
         0
       ],
       [
-        111.8,
+        103.2,
         1
       ],
       [
-        118.6,
+        108.0,
         1
       ],
       [
-        120.2,
-        0
-      ]
-    ],
-    "tankGradeColors": [
-      [
-        100.0,
-        0
-      ],
-      [
-        102.0,
-        1
-      ],
-      [
-        118.0,
-        1
-      ],
-      [
-        120.0,
+        109.2,
         0
       ]
     ],
     "flowResin": [
       [
-        104.0,
+        102.0,
         0
       ],
       [
-        113.5,
+        108.0,
         1
       ],
       [
-        119.0,
+        119.5,
         1
       ],
       [
@@ -1112,61 +1530,79 @@
         0.35
       ]
     ],
-    "flowSolvent": [
+    "tankGradeColors": [
       [
-        93.5,
+        109.0,
         0
       ],
       [
-        98.5,
+        111.0,
         1
       ],
       [
-        119.0,
+        119.5,
         1
       ],
       [
         121.0,
-        0.35
+        0
+      ]
+    ],
+    "utilityGlow": [
+      [
+        120.0,
+        0
+      ],
+      [
+        122.5,
+        1
+      ],
+      [
+        150,
+        1
+      ],
+      [
+        153,
+        0.5
       ]
     ],
     "flowThermic": [
       [
-        123.0,
+        121.0,
         0
       ],
       [
-        130.0,
+        125.5,
         1
       ]
     ],
     "flowCooling": [
       [
-        133.0,
+        124.0,
         0
       ],
       [
-        137.5,
+        128.0,
         1
       ]
     ],
     "flowNitrogen": [
       [
-        136.0,
+        129.5,
         0
       ],
       [
-        140.5,
+        133.0,
         1
       ]
     ],
     "flowEffluent": [
       [
-        139.0,
+        130.5,
         0
       ],
       [
-        143.5,
+        134.5,
         1
       ]
     ],
@@ -1184,39 +1620,21 @@
         0.55
       ]
     ],
-    "utilityGlow": [
-      [
-        121.0,
-        0
-      ],
-      [
-        124.0,
-        1
-      ],
-      [
-        150,
-        1
-      ],
-      [
-        153,
-        0.5
-      ]
-    ],
     "cardsBackdrop": [
       [
-        152.6,
+        151.6,
         0
       ],
       [
-        154.0,
+        153.0,
         1
       ],
       [
-        168.8,
+        167.2,
         1
       ],
       [
-        169.6,
+        168.0,
         0.9
       ]
     ],
@@ -1226,7 +1644,7 @@
         1
       ],
       [
-        0.5,
+        0.4,
         0
       ],
       [
@@ -1243,8 +1661,8 @@
     {
       "id": "logo_card",
       "type": "logoCard",
-      "in": 0.45,
-      "out": 4.9,
+      "in": 0.35,
+      "out": 3.35,
       "sfx": "sting",
       "props": {
         "eyebrow": "UJJAIN PLANT · JOBWORK CAPABILITIES",
@@ -1254,63 +1672,79 @@
     {
       "id": "logo_bug",
       "type": "logoBug",
-      "in": 5.0,
-      "out": 169.0,
+      "in": 3.4,
+      "out": 167.0,
       "sfx": null
     },
     {
       "id": "act1_title",
       "type": "actTitle",
       "act": "act1",
-      "in": 5.6,
-      "out": 13.6,
+      "in": 4.6,
+      "out": 11.0,
       "sfx": "click"
     },
     {
       "id": "act2_title",
       "type": "actTitle",
       "act": "act2",
-      "in": 30.7,
-      "out": 58.6,
+      "in": 15.3,
+      "out": 37.8,
       "sfx": "click"
     },
     {
       "id": "act3_title",
       "type": "actTitle",
       "act": "act3",
-      "in": 60.7,
-      "out": 88.6,
+      "in": 39.6,
+      "out": 62.2,
       "sfx": "click"
     },
     {
       "id": "act4_title",
       "type": "actTitle",
       "act": "act4",
-      "in": 90.7,
-      "out": 118.6,
+      "in": 64.0,
+      "out": 82.8,
       "sfx": "click"
     },
     {
       "id": "act5_title",
       "type": "actTitle",
       "act": "act5",
-      "in": 120.7,
-      "out": 148.6,
+      "in": 84.6,
+      "out": 99.8,
       "sfx": "click"
     },
     {
       "id": "act6_title",
       "type": "actTitle",
       "act": "act6",
-      "in": 150.7,
-      "out": 168.6,
+      "in": 101.5,
+      "out": 118.6,
+      "sfx": "click"
+    },
+    {
+      "id": "act7_title",
+      "type": "actTitle",
+      "act": "act7",
+      "in": 120.3,
+      "out": 148.6,
+      "sfx": "click"
+    },
+    {
+      "id": "act8_title",
+      "type": "actTitle",
+      "act": "act8",
+      "in": 150.3,
+      "out": 166.8,
       "sfx": "click"
     },
     {
       "id": "a1_sites",
       "type": "statChip",
-      "in": 14.88,
-      "out": 23.95,
+      "in": 6.911,
+      "out": 12.3,
       "sfx": "click",
       "props": {
         "slot": "leftTop",
@@ -1320,8 +1754,8 @@
     {
       "id": "a1_reactors",
       "type": "counter",
-      "in": 17.7,
-      "out": 23.95,
+      "in": 7.701,
+      "out": 12.3,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1337,8 +1771,8 @@
     {
       "id": "a1_capacity",
       "type": "counter",
-      "in": 19.71,
-      "out": 23.95,
+      "in": 9.251,
+      "out": 12.3,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1354,12 +1788,18 @@
     {
       "id": "a1_zones",
       "type": "zoneCallouts",
-      "in": 24.1,
-      "out": 28.3,
+      "in": 12.4,
+      "out": 15.2,
       "sfx": "click",
       "props": {
-        "stagger": 0.22,
+        "stagger": 0.14,
         "items": [
+          {
+            "anchor": "wh1",
+            "text": "WAREHOUSES",
+            "sub": "2,904 pallets",
+            "color": "steel"
+          },
           {
             "anchor": "plant1",
             "text": "PLANT 1",
@@ -1373,15 +1813,15 @@
             "color": "plant2"
           },
           {
+            "anchor": "qaqc",
+            "text": "QC & APP LABS",
+            "sub": "State of the art",
+            "color": "plant1"
+          },
+          {
             "anchor": "fgTankFarm",
             "text": "FG TANK FARM",
             "sub": "22 tanks",
-            "color": "steel"
-          },
-          {
-            "anchor": "peso",
-            "text": "PESO UG FARM",
-            "sub": "12 × 50 KL",
             "color": "steel"
           },
           {
@@ -1394,232 +1834,66 @@
       }
     },
     {
-      "id": "a2_jacket",
-      "type": "tag3d",
-      "in": 36.4,
-      "out": 46.6,
-      "sfx": "click",
+      "id": "a2_wh",
+      "type": "capacityHud",
+      "in": 17.163,
+      "out": 29.913,
+      "sfx": "thump",
+      "major": true,
       "props": {
-        "anchor": "heroJacket",
-        "text": "THERMIC-FLUID JACKET",
-        "side": "left",
-        "dx": -250,
-        "dy": 70
-      }
-    },
-    {
-      "id": "a2_condenser",
-      "type": "tag3d",
-      "in": 37.3,
-      "out": 46.6,
-      "sfx": "click",
-      "props": {
-        "anchor": "heroCondenser",
-        "text": "REFLUX CONDENSER",
-        "side": "left",
-        "dx": -230,
-        "dy": -40
-      }
-    },
-    {
-      "id": "a2_reactor",
-      "type": "callout3d",
-      "in": 35.945,
-      "out": 42.5,
-      "sfx": "click",
-      "props": {
-        "anchor": "heroReactor",
-        "title": "16 KL REACTOR",
-        "lines": [
-          "16.2 T per batch",
-          "24 h cycle"
-        ],
-        "side": "right",
-        "dx": 260,
-        "dy": -150
-      }
-    },
-    {
-      "id": "a2_ladder",
-      "type": "reactorLadder",
-      "in": 39.915,
-      "out": 46.6,
-      "sfx": "click",
-      "props": {
-        "title": "SCALE-UP PATH ON ONE SITE",
-        "sizes": [
-          2,
-          4,
-          6,
-          10,
-          16
-        ]
-      }
-    },
-    {
-      "id": "a2_split",
-      "type": "barSplit",
-      "in": 42.675,
-      "out": 57.6,
-      "sfx": "click",
-      "props": {
-        "title": "PLANT 1 · LIQUID COATING RESINS",
-        "color": "plant1",
-        "unit": "T/month",
-        "total": {
-          "value": 4373,
-          "label": "TONS PER MONTH",
-          "t": 46.985
-        },
-        "rows": [
+        "value": "2,904",
+        "unit": "PALLETS",
+        "title": "WAREHOUSE STORAGE",
+        "sub": "≈ 1,500 t · mobile compact racking",
+        "viz": "stackedBar",
+        "segUnit": "pallets",
+        "color": "steel",
+        "segments": [
           {
-            "label": "Saturated Polyester",
-            "value": 2430,
-            "detail": "5 × 16 KL · 16.2 T batch · 24 h",
-            "t": 43.025
+            "label": "Warehouse-1",
+            "value": 1464
           },
           {
-            "label": "Alkyds",
-            "value": 1761,
-            "detail": "3 × 16 KL + 10 KL · 24 h",
-            "t": 44.665
-          },
-          {
-            "label": "Modified Epoxy",
-            "value": 182,
-            "detail": "1 × 6 KL · 6.05 T batch",
-            "t": 46.135
+            "label": "Warehouse-2",
+            "value": 1440
           }
         ],
-        "footer": "10 REACTORS · 144 KL · 11 BLENDERS"
+        "detail": "6-level racks · 500 kg and 1 t pallet positions"
       }
     },
     {
-      "id": "a3_chips",
-      "type": "chips",
-      "in": 67.315,
-      "out": 73.4,
+      "id": "a2_racks_tag",
+      "type": "tag3d",
+      "in": 21.7,
+      "out": 24.8,
       "sfx": "click",
       "props": {
-        "items": [
-          {
-            "icon": "flaker",
-            "text": "DOUBLE-BELT FLAKER",
-            "t": 67.345
-          },
-          {
-            "icon": "pellet",
-            "text": "PELLETISER",
-            "t": 67.965
-          },
-          {
-            "icon": "crusher",
-            "text": "ROSIN & PRODUCT CRUSHING",
-            "t": 69.565
-          },
-          {
-            "icon": "tray",
-            "text": "TRAY CASTING",
-            "t": 70.135
-          }
-        ]
-      }
-    },
-    {
-      "id": "a3_flaker_tag",
-      "type": "tag3d",
-      "in": 66.2,
-      "out": 77.4,
-      "sfx": null,
-      "props": {
-        "anchor": "flakerBreaker",
-        "text": "FLAKES · IN-LINE PACKING",
+        "anchor": "wh1Racks",
+        "text": "MOBILE COMPACT RACKING",
         "side": "right",
-        "dx": 220,
+        "dx": 200,
         "dy": -120
       }
     },
     {
-      "id": "a3_feed_tag",
+      "id": "a2_depal_tag",
       "type": "tag3d",
-      "in": 66.8,
-      "out": 77.4,
-      "sfx": null,
-      "props": {
-        "anchor": "flakerFeed",
-        "text": "MOLTEN RESIN FEED",
-        "side": "left",
-        "dx": -220,
-        "dy": -110
-      }
-    },
-    {
-      "id": "a3_pellet_tag",
-      "type": "tag3d",
-      "in": 79.6,
-      "out": 86.2,
+      "in": 25.313,
+      "out": 29.3,
       "sfx": "click",
       "props": {
-        "anchor": "pelletiser",
-        "text": "PELLETISER · FREE-FLOWING PELLETS",
+        "anchor": "depalletiser",
+        "text": "DEPALLETISER → 1 T JUMBO BAGS",
         "side": "right",
-        "dx": 200,
+        "dx": 210,
         "dy": -150
       }
     },
     {
-      "id": "a3_matrix",
-      "type": "matrix",
-      "in": 72.675,
-      "out": 88.2,
-      "sfx": "click",
-      "props": {
-        "title": "PLANT 2 · SOLID & SPECIALTY RESINS",
-        "color": "plant2",
-        "total": {
-          "value": 2530,
-          "label": "TONS PER MONTH",
-          "t": 79.675
-        },
-        "rows": [
-          {
-            "label": "Reactive Polyamide",
-            "value": 960,
-            "detail": "4 × 10 KL · pelletising",
-            "t": 73.495
-          },
-          {
-            "label": "Powder Polyester",
-            "value": 720,
-            "detail": "3 × 10 KL · flaker",
-            "t": 74.705
-          },
-          {
-            "label": "Acrylic Polyols",
-            "value": 608,
-            "detail": "2 × 6 KL + 4 KL · 12 h",
-            "t": 76.015
-          },
-          {
-            "label": "Phenolic Resins",
-            "value": 180,
-            "detail": "1 × 16 KL · 48 h",
-            "t": 77.265
-          },
-          {
-            "label": "R&D Scale-up",
-            "value": 62,
-            "detail": "1 × 2 KL · partner trials",
-            "t": 78.245
-          }
-        ]
-      }
-    },
-    {
-      "id": "a4_peso",
+      "id": "a2_peso",
       "type": "capacityHud",
-      "in": 93.845,
-      "out": 100.025,
+      "in": 30.013,
+      "out": 39.2,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1634,10 +1908,10 @@
       }
     },
     {
-      "id": "a4_peso_tag",
+      "id": "a2_peso_tag",
       "type": "tag3d",
-      "in": 95.6,
-      "out": 99.6,
+      "in": 33.6,
+      "out": 39.2,
       "sfx": null,
       "props": {
         "anchor": "pesoTanks",
@@ -1648,40 +1922,266 @@
       }
     },
     {
-      "id": "a4_fg",
-      "type": "capacityHud",
-      "in": 100.125,
-      "out": 107.45,
-      "sfx": "thump",
-      "major": true,
+      "id": "a3_bag_tag",
+      "type": "tag3d",
+      "in": 42.168,
+      "out": 48.0,
+      "sfx": "click",
       "props": {
-        "value": "~1,045",
-        "unit": "KL",
-        "title": "FINISHED-GOODS STORAGE",
-        "sub": "22 grade-dedicated tanks",
-        "viz": "stackedBar",
-        "color": "resin",
-        "segments": [
+        "anchor": "jumboBag",
+        "text": "JUMBO BAG → REACTOR CHARGING",
+        "side": "right",
+        "dx": 230,
+        "dy": -60
+      }
+    },
+    {
+      "id": "a3_reactor",
+      "type": "callout3d",
+      "in": 49.61,
+      "out": 55.2,
+      "sfx": "click",
+      "props": {
+        "anchor": "heroReactor",
+        "title": "16 KL REACTOR",
+        "lines": [
+          "16.2 T per batch",
+          "24 h cycle"
+        ],
+        "side": "left",
+        "dx": -250,
+        "dy": -170
+      }
+    },
+    {
+      "id": "a3_jacket",
+      "type": "tag3d",
+      "in": 51.6,
+      "out": 55.6,
+      "sfx": null,
+      "props": {
+        "anchor": "heroJacket",
+        "text": "THERMIC-FLUID JACKET",
+        "side": "left",
+        "dx": -240,
+        "dy": 110
+      }
+    },
+    {
+      "id": "a3_split",
+      "type": "barSplit",
+      "in": 50.47,
+      "out": 63.3,
+      "sfx": "click",
+      "props": {
+        "title": "PLANT 1 · LIQUID COATING RESINS",
+        "color": "plant1",
+        "unit": "T/month",
+        "total": {
+          "value": 4373,
+          "label": "TONS PER MONTH",
+          "t": 54.2
+        },
+        "rows": [
           {
-            "label": "Polyester ×6",
-            "value": 480
+            "label": "Saturated Polyester",
+            "value": 2430,
+            "detail": "5 × 16 KL · 16.2 T batch · 24 h",
+            "t": 50.82
           },
           {
-            "label": "Alkyd ×6",
-            "value": 340
+            "label": "Alkyds",
+            "value": 1761,
+            "detail": "3 × 16 KL + 10 KL · 24 h",
+            "t": 52.18
           },
           {
-            "label": "Other grades ×10",
-            "value": 225
+            "label": "Modified Epoxy",
+            "value": 182,
+            "detail": "1 × 6 KL · 6.05 T batch",
+            "t": 53.49
+          }
+        ],
+        "footer": "10 REACTORS · 144 KL · 11 BLENDERS"
+      }
+    },
+    {
+      "id": "a4_chips",
+      "type": "chips",
+      "in": 66.859,
+      "out": 73.8,
+      "sfx": "click",
+      "props": {
+        "items": [
+          {
+            "icon": "flaker",
+            "text": "DOUBLE-BELT FLAKER",
+            "t": 66.889
+          },
+          {
+            "icon": "pellet",
+            "text": "PELLETISER",
+            "t": 67.429
+          },
+          {
+            "icon": "crusher",
+            "text": "ROSIN & PRODUCT CRUSHING",
+            "t": 68.449
+          },
+          {
+            "icon": "tray",
+            "text": "TRAY CASTING",
+            "t": 68.919
           }
         ]
       }
     },
     {
-      "id": "a4_blend",
+      "id": "a4_flaker_tag",
+      "type": "tag3d",
+      "in": 67.0,
+      "out": 70.4,
+      "sfx": null,
+      "props": {
+        "anchor": "flakerBreaker",
+        "text": "FLAKES · IN-LINE PACKING",
+        "side": "right",
+        "dx": 220,
+        "dy": -120
+      }
+    },
+    {
+      "id": "a4_pellet_tag",
+      "type": "tag3d",
+      "in": 74.6,
+      "out": 78.8,
+      "sfx": "click",
+      "props": {
+        "anchor": "pelletiser",
+        "text": "PELLETISER · FREE-FLOWING PELLETS",
+        "side": "left",
+        "dx": -200,
+        "dy": -150
+      }
+    },
+    {
+      "id": "a4_matrix",
+      "type": "matrix",
+      "in": 70.331,
+      "out": 84.2,
+      "sfx": "click",
+      "props": {
+        "title": "PLANT 2 · SOLID & SPECIALTY RESINS",
+        "color": "plant2",
+        "total": {
+          "value": 2530,
+          "label": "TONS PER MONTH",
+          "t": 75.931
+        },
+        "rows": [
+          {
+            "label": "Reactive Polyamide",
+            "value": 960,
+            "detail": "4 × 10 KL · pelletising",
+            "t": 70.681
+          },
+          {
+            "label": "Powder Polyester",
+            "value": 720,
+            "detail": "3 × 10 KL · flaker",
+            "t": 71.601
+          },
+          {
+            "label": "Acrylic Polyols",
+            "value": 608,
+            "detail": "2 × 6 KL + 4 KL · 12 h",
+            "t": 72.761
+          },
+          {
+            "label": "Phenolic Resins",
+            "value": 180,
+            "detail": "1 × 16 KL · 48 h",
+            "t": 73.841
+          },
+          {
+            "label": "R&D Scale-up",
+            "value": 62,
+            "detail": "1 × 2 KL · partner trials",
+            "t": 74.691
+          }
+        ]
+      }
+    },
+    {
+      "id": "a5_labs",
+      "type": "ecoBadges",
+      "in": 87.208,
+      "out": 100.4,
+      "sfx": "click",
+      "props": {
+        "fill": "#00529B",
+        "glow": "rgba(0,163,224,0.5)",
+        "items": [
+          {
+            "icon": "flask",
+            "title": "STATE-OF-THE-ART QC LAB",
+            "sub": "Wet chemistry · instruments · viscosity",
+            "t": 87.238
+          },
+          {
+            "icon": "spray",
+            "title": "APPLICATION LAB",
+            "sub": "Powder booth · extruder · panel testing",
+            "t": 88.678
+          },
+          {
+            "icon": "sun",
+            "title": "WEATHERING & PHYSICAL TESTS",
+            "sub": "Coating performance on real panels",
+            "t": 90.058
+          },
+          {
+            "icon": "gauge",
+            "title": "CENTRAL CONTROL ROOM",
+            "sub": "Both plants run from one room",
+            "t": 97.335
+          }
+        ]
+      }
+    },
+    {
+      "id": "a5_app_tag",
+      "type": "tag3d",
+      "in": 88.698,
+      "out": 99.4,
+      "sfx": null,
+      "props": {
+        "anchor": "appLab",
+        "text": "APPLICATION LAB",
+        "side": "left",
+        "dx": -230,
+        "dy": 70
+      }
+    },
+    {
+      "id": "a5_wet_tag",
+      "type": "tag3d",
+      "in": 87.558,
+      "out": 99.4,
+      "sfx": null,
+      "props": {
+        "anchor": "wetLab",
+        "text": "QC LAB · FUME HOODS",
+        "side": "left",
+        "dx": -230,
+        "dy": -90
+      }
+    },
+    {
+      "id": "a6_blend",
       "type": "capacityHud",
-      "in": 107.55,
-      "out": 118.4,
+      "in": 104.133,
+      "out": 108.083,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1709,45 +2209,119 @@
       }
     },
     {
-      "id": "a5_badges",
-      "type": "ecoBadges",
-      "in": 123.965,
-      "out": 148.6,
-      "sfx": "click",
+      "id": "a6_fg",
+      "type": "capacityHud",
+      "in": 108.183,
+      "out": 119.4,
+      "sfx": "thump",
+      "major": true,
       "props": {
-        "items": [
+        "value": "~1,045",
+        "unit": "KL",
+        "title": "FINISHED-GOODS STORAGE",
+        "sub": "22 grade-dedicated tanks",
+        "viz": "stackedBar",
+        "color": "resin",
+        "segments": [
           {
-            "icon": "flame",
-            "title": "2 × 30 LAKH kcal/h",
-            "sub": "Agro-waste fired thermic heaters",
-            "t": 124.045
+            "label": "Polyester ×6",
+            "value": 480
           },
           {
-            "icon": "n2",
-            "title": "ON-SITE N₂ GENERATOR",
-            "sub": "Inert blanketing for flammable service",
-            "t": 125.635
+            "label": "Alkyd ×6",
+            "value": 340
           },
           {
-            "icon": "drop",
-            "title": "ETP / STP SITE-WIDE",
-            "sub": "Effluent & sewage treatment",
-            "t": 128.365
-          },
-          {
-            "icon": "fan",
-            "title": "2,200 TR COOLING TOWER",
-            "sub": "Closed-loop water & thermic cooling",
-            "t": 135.555
+            "label": "Other grades ×10",
+            "value": 225
           }
         ]
       }
     },
     {
-      "id": "a5_heater_tag",
+      "id": "a6_totals",
+      "type": "storageTotals",
+      "in": 111.278,
+      "out": 119.6,
+      "sfx": "click",
+      "props": {
+        "title": "TOTAL STORAGE ON SITE",
+        "rows": [
+          {
+            "label": "Packed goods · 2 warehouses",
+            "value": "2,904 pallets ≈ 1,500 t",
+            "t": 112.208
+          },
+          {
+            "label": "Solvents · PESO underground",
+            "value": "600 KL",
+            "t": 114.628
+          },
+          {
+            "label": "Finished goods · 22 tanks",
+            "value": "~1,045 KL",
+            "t": 114.978
+          }
+        ],
+        "total": {
+          "text": "1,500 t PACKED + 1,645 KL BULK",
+          "t": 116.058
+        }
+      }
+    },
+    {
+      "id": "a7_badges",
+      "type": "ecoBadges",
+      "in": 121.843,
+      "out": 148.6,
+      "sfx": "click",
+      "props": {
+        "compact": true,
+        "items": [
+          {
+            "icon": "flame",
+            "title": "2 × 30 LAKH kcal/h",
+            "sub": "Agro-waste fired thermic heaters",
+            "t": 121.923
+          },
+          {
+            "icon": "shed",
+            "title": "COVERED FUEL SHED",
+            "sub": "Agro-waste kept dry under roof",
+            "t": 124.183
+          },
+          {
+            "icon": "fan",
+            "title": "2,200 TR COOLING TOWER",
+            "sub": "Closed-loop process cooling",
+            "t": 125.383
+          },
+          {
+            "icon": "n2",
+            "title": "ON-SITE N₂ GENERATION",
+            "sub": "Inert blanketing for solvents",
+            "t": 130.408
+          },
+          {
+            "icon": "drop",
+            "title": "50 KLD ETP",
+            "sub": "Effluent treated on site",
+            "t": 131.158
+          },
+          {
+            "icon": "sun",
+            "title": "0.70 MWp ROOFTOP SOLAR",
+            "sub": "1,285 modules on every roof",
+            "t": 133.808
+          }
+        ]
+      }
+    },
+    {
+      "id": "a7_heater_tag",
       "type": "tag3d",
-      "in": 124.835,
-      "out": 131.8,
+      "in": 123.043,
+      "out": 125.8,
       "sfx": null,
       "props": {
         "anchor": "heaters",
@@ -1758,24 +2332,56 @@
       }
     },
     {
-      "id": "a5_silo_tag",
+      "id": "a7_shed_tag",
       "type": "tag3d",
-      "in": 127.8,
-      "out": 131.8,
-      "sfx": null,
+      "in": 126.8,
+      "out": 130.8,
+      "sfx": "click",
       "props": {
-        "anchor": "silo",
-        "text": "AGRO-WASTE SILO · BAG FILTERS",
+        "anchor": "fuelShed",
+        "text": "COVERED AGRO-WASTE SHED",
         "side": "left",
-        "dx": -200,
-        "dy": -90
+        "dx": -220,
+        "dy": -110
       }
     },
     {
-      "id": "a6_cards",
+      "id": "a7_etp_tag",
+      "type": "tag3d",
+      "in": 131.6,
+      "out": 135.4,
+      "sfx": "click",
+      "props": {
+        "anchor": "etp",
+        "text": "50 KLD EFFLUENT TREATMENT PLANT",
+        "side": "left",
+        "dx": -220,
+        "dy": -120
+      }
+    },
+    {
+      "id": "a7_solar",
+      "type": "callout3d",
+      "in": 137.6,
+      "out": 147.8,
+      "sfx": "click",
+      "props": {
+        "anchor": "solarWh1",
+        "title": "0.70 MWp ROOFTOP SOLAR",
+        "lines": [
+          "1,285 × 545 Wp modules",
+          "on every roof on site"
+        ],
+        "side": "left",
+        "dx": -220,
+        "dy": -120
+      }
+    },
+    {
+      "id": "a8_cards",
       "type": "partnerCards",
-      "in": 152.435,
-      "out": 168.8,
+      "in": 151.052,
+      "out": 166.8,
       "sfx": "click",
       "props": {
         "items": [
@@ -1783,28 +2389,28 @@
             "n": "01",
             "title": "Toll Conversion",
             "body": "You supply the formulation and key raw materials; we convert, test and pack for a per-ton fee.",
-            "t": 152.435
+            "t": 151.052
           },
           {
             "n": "02",
             "title": "Full-Service Jobwork",
             "body": "We source raw materials to your approved specs and deliver finished resin to your standard.",
-            "t": 153.215
+            "t": 151.882
           },
           {
             "n": "03",
             "title": "Dedicated Capacity",
             "body": "Reactors, blenders and tanks reserved for your grades under a long-term agreement.",
-            "t": 154.985
+            "t": 153.352
           }
         ]
       }
     },
     {
-      "id": "a6_ribbon",
+      "id": "a8_ribbon",
       "type": "ribbon",
-      "in": 162.4,
-      "out": 168.8,
+      "in": 158.48,
+      "out": 166.8,
       "sfx": "click",
       "props": {
         "items": [
@@ -1815,9 +2421,9 @@
       }
     },
     {
-      "id": "a6_contact",
+      "id": "a8_contact",
       "type": "contactCard",
-      "in": 169.2,
+      "in": 167.2,
       "out": 181.0,
       "sfx": "thump",
       "major": true,
@@ -1845,86 +2451,104 @@
   "narration": [
     {
       "id": "a1_l1",
-      "start": 4.21875,
-      "end": 9.16875,
-      "text": "Looking for scale, safety, and dedicated resin manufacturing capacity?"
+      "start": 2.8125,
+      "end": 6.2925,
+      "text": "Welcome to MPD Industries' greenfield resin plant in Ujjain."
     },
     {
       "id": "a1_l2",
-      "start": 9.60938,
-      "end": 13.96937,
-      "text": "Welcome to MPD Industries' state-of-the-art greenfield plant in Ujjain."
-    },
-    {
-      "id": "a1_l3",
-      "start": 15.0,
-      "end": 23.22,
-      "text": "Two plants on one site, commissioned together. 22 reactors. Around 6,900 tons of rated output, every month."
+      "start": 7.03125,
+      "end": 11.84125,
+      "text": "Two plants, 22 reactors, around 6,900 tons of output every month."
     },
     {
       "id": "a2_l1",
-      "start": 31.875,
-      "end": 41.815,
-      "text": "Plant 1 specializes in high-volume liquid coating resins, driven by 16 KL commercial powerhouses, on a site that scales from 2 KL pilot trials."
+      "start": 15.70312,
+      "end": 23.01312,
+      "text": "It starts with storage: two warehouses with mobile compact racking hold 2,904 pallets, about 1,500 tons."
     },
     {
       "id": "a2_l2",
-      "start": 43.125,
-      "end": 51.425,
-      "text": "Saturated polyester, alkyds, and modified epoxy: 4,373 tons a month, from day one."
+      "start": 25.3125,
+      "end": 33.7725,
+      "text": "A depalletiser turns bagged raw materials into one-tonne jumbo bags for fast charging, and 600 KL of underground PESO tanks hold the solvents."
     },
     {
       "id": "a3_l1",
-      "start": 61.875,
-      "end": 70.435,
-      "text": "Plant 2 powers specialty and solid resins, backed by versatile finishing lines, including flakers, pelletisers, and product crushers."
+      "start": 40.07812,
+      "end": 44.94812,
+      "text": "In Plant 1, an overhead crane lifts each jumbo bag straight up to the reactor charging deck."
     },
     {
       "id": "a3_l2",
-      "start": 73.125,
-      "end": 82.695,
-      "text": "Reactive polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month."
+      "start": 48.75,
+      "end": 57.29,
+      "text": "Ten reactors up to 16 KL make saturated polyester, alkyds, and modified epoxy: 4,373 tons a month."
     },
     {
       "id": "a4_l1",
-      "start": 91.875,
-      "end": 101.735,
-      "text": "Logistics are built for scale, with 600 KL of underground PESO solvent storage, and over 1,000 KL of dedicated finished-goods tanks."
+      "start": 64.21875,
+      "end": 69.22875,
+      "text": "Plant 2 adds specialty and solid resins, finished on flakers, pelletisers, and crushers."
     },
     {
       "id": "a4_l2",
-      "start": 105.0,
-      "end": 112.16,
-      "text": "Twelve blenders add 380 KL of blending capacity, and grade-dedicated tanks keep every product clean."
+      "start": 70.78125,
+      "end": 78.32125,
+      "text": "Polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month."
     },
     {
       "id": "a5_l1",
-      "start": 121.875,
-      "end": 130.285,
-      "text": "Built on eco-friendly power, driven by agro-waste thermic heaters, nitrogen blanketing, and zero-compromise ETP effluent treatment."
+      "start": 85.07812,
+      "end": 92.07812,
+      "text": "Every batch is released by our state-of-the-art QC lab, with a dedicated application lab that tests coatings the way your customers use them."
     },
     {
       "id": "a5_l2",
-      "start": 133.125,
-      "end": 141.305,
-      "text": "Two 30 lakh kcal/h thermic heaters, a 2,200 TR cooling tower, and on-site nitrogen generation, sized for full load."
+      "start": 95.625,
+      "end": 98.345,
+      "text": "Both plants are run from one central control room."
     },
     {
       "id": "a6_l1",
-      "start": 151.875,
-      "end": 159.205,
-      "text": "Whether you need toll conversion, full-service jobwork, or dedicated plant capacity, partner with MPD Industries today."
+      "start": 101.95312,
+      "end": 109.18313,
+      "text": "Twelve blenders add 380 KL of blending, and 22 grade-dedicated tanks hold over 1,000 KL of finished goods."
     },
     {
       "id": "a6_l2",
-      "start": 161.25,
-      "end": 170.22,
+      "start": 111.32812,
+      "end": 117.02813,
+      "text": "In total: about 1,500 tons of packed storage, and over 1,600 KL of bulk liquids."
+    },
+    {
+      "id": "a7_l1",
+      "start": 120.70312,
+      "end": 127.56312,
+      "text": "Utilities run green: agro-waste fired thermic heaters, fed from a covered fuel shed, and a 2,200 TR cooling tower."
+    },
+    {
+      "id": "a7_l2",
+      "start": 130.07812,
+      "end": 136.02812,
+      "text": "On-site nitrogen, a 50 KLD effluent treatment plant, and 0.7 MW of rooftop solar."
+    },
+    {
+      "id": "a8_l1",
+      "start": 151.17188,
+      "end": 156.66188,
+      "text": "Toll conversion, full-service jobwork, or dedicated capacity: partner with MPD Industries."
+    },
+    {
+      "id": "a8_l2",
+      "start": 157.5,
+      "end": 165.32,
       "text": "Every model comes with NDA confidentiality, segregated storage, and a scale-up path from 2 KL trials to 16 KL production."
     },
     {
-      "id": "a6_l3",
+      "id": "a8_l3",
       "start": 172.5,
-      "end": 175.5,
+      "end": 175.12,
       "text": "MPD Industries. We innovate. We serve."
     }
   ],
@@ -1933,1498 +2557,1809 @@
       "line": "a1_l1",
       "words": [
         {
-          "text": "Looking",
-          "start": 4.219,
-          "end": 4.629
+          "text": "Welcome",
+          "start": 2.812,
+          "end": 3.192
         },
         {
-          "text": "for",
-          "start": 4.629,
-          "end": 4.839
+          "text": "to",
+          "start": 3.192,
+          "end": 3.343
         },
         {
-          "text": "scale,",
-          "start": 4.839,
-          "end": 5.399
+          "text": "MPD",
+          "start": 3.343,
+          "end": 3.792
         },
         {
-          "text": "safety,",
-          "start": 5.509,
-          "end": 6.119
+          "text": "Industries'",
+          "start": 3.792,
+          "end": 4.282
         },
         {
-          "text": "and",
-          "start": 6.119,
-          "end": 6.329
-        },
-        {
-          "text": "dedicated",
-          "start": 6.329,
-          "end": 6.939
+          "text": "greenfield",
+          "start": 4.282,
+          "end": 4.832
         },
         {
           "text": "resin",
-          "start": 6.939,
-          "end": 7.279
+          "start": 4.832,
+          "end": 5.152
         },
         {
-          "text": "manufacturing",
-          "start": 7.279,
-          "end": 8.329
+          "text": "plant",
+          "start": 5.152,
+          "end": 5.482
         },
         {
-          "text": "capacity?",
-          "start": 8.329,
-          "end": 9.159
+          "text": "in",
+          "start": 5.482,
+          "end": 5.582
+        },
+        {
+          "text": "Ujjain.",
+          "start": 5.582,
+          "end": 6.172
         }
       ],
-      "start": 4.099,
-      "end": 9.709,
-      "text": "Looking for scale, safety, and dedicated resin manufacturing capacity?"
+      "start": 2.692,
+      "end": 6.722,
+      "text": "Welcome to MPD Industries' greenfield resin plant in Ujjain."
     },
     {
       "line": "a1_l2",
       "words": [
         {
-          "text": "Welcome",
-          "start": 9.609,
-          "end": 10.049
-        },
-        {
-          "text": "to",
-          "start": 10.049,
-          "end": 10.219
-        },
-        {
-          "text": "MPD",
-          "start": 10.219,
-          "end": 10.739
-        },
-        {
-          "text": "Industries'",
-          "start": 10.739,
-          "end": 11.269
-        },
-        {
-          "text": "state-of-the-art",
-          "start": 11.269,
-          "end": 12.069
-        },
-        {
-          "text": "greenfield",
-          "start": 12.069,
-          "end": 12.689
-        },
-        {
-          "text": "plant",
-          "start": 12.689,
-          "end": 13.069
-        },
-        {
-          "text": "in",
-          "start": 13.069,
-          "end": 13.189
-        },
-        {
-          "text": "Ujjain.",
-          "start": 13.189,
-          "end": 13.959
-        }
-      ],
-      "start": 9.489,
-      "end": 14.509,
-      "text": "Welcome to MPD Industries' state-of-the-art greenfield plant in Ujjain."
-    },
-    {
-      "line": "a1_l3",
-      "words": [
-        {
           "text": "Two",
-          "start": 15.0,
-          "end": 15.19
+          "start": 7.031,
+          "end": 7.201
         },
         {
-          "text": "plants",
-          "start": 15.19,
-          "end": 15.69
-        },
-        {
-          "text": "on",
-          "start": 15.69,
-          "end": 15.87
-        },
-        {
-          "text": "one",
-          "start": 15.87,
-          "end": 16.13
-        },
-        {
-          "text": "site,",
-          "start": 16.13,
-          "end": 16.49
-        },
-        {
-          "text": "commissioned",
-          "start": 16.49,
-          "end": 17.07
-        },
-        {
-          "text": "together.",
-          "start": 17.07,
-          "end": 17.61
+          "text": "plants,",
+          "start": 7.201,
+          "end": 7.711
         },
         {
           "text": "22",
-          "start": 17.82,
-          "end": 18.42
+          "start": 7.821,
+          "end": 8.321
         },
         {
-          "text": "reactors.",
-          "start": 18.42,
-          "end": 19.18
-        }
-      ],
-      "start": 14.88,
-      "end": 19.26,
-      "text": "Two plants on one site, commissioned together. 22 reactors."
-    },
-    {
-      "line": "a1_l3",
-      "words": [
+          "text": "reactors,",
+          "start": 8.321,
+          "end": 8.961
+        },
         {
-          "text": "Around",
-          "start": 19.39,
-          "end": 19.83
+          "text": "around",
+          "start": 8.961,
+          "end": 9.371
         },
         {
           "text": "6,900",
-          "start": 19.83,
-          "end": 20.99
+          "start": 9.371,
+          "end": 10.371
         },
         {
           "text": "tons",
-          "start": 20.99,
-          "end": 21.29
+          "start": 10.371,
+          "end": 10.631
         },
         {
           "text": "of",
-          "start": 21.29,
-          "end": 21.41
+          "start": 10.631,
+          "end": 10.731
         },
         {
-          "text": "rated",
-          "start": 21.41,
-          "end": 21.76
-        },
-        {
-          "text": "output,",
-          "start": 21.76,
-          "end": 22.32
+          "text": "output",
+          "start": 10.731,
+          "end": 11.041
         },
         {
           "text": "every",
-          "start": 22.32,
-          "end": 22.72
+          "start": 11.041,
+          "end": 11.391
         },
         {
           "text": "month.",
-          "start": 22.72,
-          "end": 23.21
+          "start": 11.391,
+          "end": 11.831
         }
       ],
-      "start": 19.27,
-      "end": 23.76,
-      "text": "Around 6,900 tons of rated output, every month."
+      "start": 6.911,
+      "end": 12.381,
+      "text": "Two plants, 22 reactors, around 6,900 tons of output every month."
     },
     {
       "line": "a2_l1",
       "words": [
         {
-          "text": "Plant",
-          "start": 31.875,
-          "end": 32.225
+          "text": "It",
+          "start": 15.703,
+          "end": 15.843
         },
         {
-          "text": "1",
-          "start": 32.225,
-          "end": 32.495
+          "text": "starts",
+          "start": 15.843,
+          "end": 16.213
         },
         {
-          "text": "specializes",
-          "start": 32.495,
-          "end": 33.365
+          "text": "with",
+          "start": 16.213,
+          "end": 16.363
         },
         {
-          "text": "in",
-          "start": 33.365,
-          "end": 33.485
+          "text": "storage:",
+          "start": 16.363,
+          "end": 16.903
         },
         {
-          "text": "high-volume",
-          "start": 33.485,
-          "end": 34.145
+          "text": "two",
+          "start": 17.093,
+          "end": 17.263
         },
         {
-          "text": "liquid",
-          "start": 34.145,
-          "end": 34.575
+          "text": "warehouses",
+          "start": 17.263,
+          "end": 17.843
         },
         {
-          "text": "coating",
-          "start": 34.575,
-          "end": 34.965
+          "text": "with",
+          "start": 17.843,
+          "end": 17.993
         },
         {
-          "text": "resins,",
-          "start": 34.965,
-          "end": 35.465
-        },
-        {
-          "text": "driven",
-          "start": 35.465,
-          "end": 35.875
-        },
-        {
-          "text": "by",
-          "start": 35.875,
-          "end": 36.045
-        },
-        {
-          "text": "16 KL",
-          "start": 36.045,
-          "end": 37.095
+          "text": "mobile",
+          "start": 17.993,
+          "end": 18.323
         }
       ],
-      "start": 31.755,
-      "end": 36.965,
-      "text": "Plant 1 specializes in high-volume liquid coating resins, driven by 16 KL"
+      "start": 15.583,
+      "end": 18.193,
+      "text": "It starts with storage: two warehouses with mobile"
     },
     {
       "line": "a2_l1",
       "words": [
         {
-          "text": "commercial",
-          "start": 37.095,
-          "end": 37.675
+          "text": "compact",
+          "start": 18.323,
+          "end": 18.853
         },
         {
-          "text": "powerhouses,",
-          "start": 37.675,
-          "end": 38.575
+          "text": "racking",
+          "start": 18.853,
+          "end": 19.243
         },
         {
-          "text": "on",
-          "start": 38.575,
-          "end": 38.785
+          "text": "hold",
+          "start": 19.243,
+          "end": 19.493
         },
         {
-          "text": "a",
-          "start": 38.785,
-          "end": 38.835
+          "text": "2,904",
+          "start": 19.493,
+          "end": 20.753
         },
         {
-          "text": "site",
-          "start": 38.835,
-          "end": 39.135
+          "text": "pallets,",
+          "start": 20.753,
+          "end": 21.303
         },
         {
-          "text": "that",
-          "start": 39.135,
-          "end": 39.345
+          "text": "about",
+          "start": 21.303,
+          "end": 21.633
         },
         {
-          "text": "scales",
-          "start": 39.345,
-          "end": 39.815
+          "text": "1,500",
+          "start": 21.633,
+          "end": 22.413
         },
         {
-          "text": "from",
-          "start": 39.815,
-          "end": 40.015
-        },
-        {
-          "text": "2 KL",
-          "start": 40.015,
-          "end": 40.695
-        },
-        {
-          "text": "pilot",
-          "start": 40.695,
-          "end": 41.095
-        },
-        {
-          "text": "trials.",
-          "start": 41.095,
-          "end": 41.725
+          "text": "tons.",
+          "start": 22.413,
+          "end": 22.913
         }
       ],
-      "start": 36.975,
-      "end": 42.275,
-      "text": "commercial powerhouses, on a site that scales from 2 KL pilot trials."
+      "start": 18.203,
+      "end": 23.463,
+      "text": "compact racking hold 2,904 pallets, about 1,500 tons."
     },
     {
       "line": "a2_l2",
       "words": [
         {
-          "text": "Saturated",
-          "start": 43.125,
-          "end": 43.885
+          "text": "A",
+          "start": 25.312,
+          "end": 25.413
         },
         {
-          "text": "polyester,",
-          "start": 43.885,
-          "end": 44.765
+          "text": "depalletiser",
+          "start": 25.413,
+          "end": 26.262
         },
         {
-          "text": "alkyds,",
-          "start": 44.765,
-          "end": 45.425
+          "text": "turns",
+          "start": 26.262,
+          "end": 26.602
+        },
+        {
+          "text": "bagged",
+          "start": 26.602,
+          "end": 26.883
+        },
+        {
+          "text": "raw",
+          "start": 26.883,
+          "end": 27.032
+        },
+        {
+          "text": "materials",
+          "start": 27.032,
+          "end": 27.622
+        },
+        {
+          "text": "into",
+          "start": 27.622,
+          "end": 27.852
+        },
+        {
+          "text": "one-tonne",
+          "start": 27.852,
+          "end": 28.253
+        },
+        {
+          "text": "jumbo",
+          "start": 28.253,
+          "end": 28.663
+        },
+        {
+          "text": "bags",
+          "start": 28.663,
+          "end": 29.012
+        },
+        {
+          "text": "for",
+          "start": 29.012,
+          "end": 29.133
+        }
+      ],
+      "start": 25.192,
+      "end": 29.003,
+      "text": "A depalletiser turns bagged raw materials into one-tonne jumbo bags for"
+    },
+    {
+      "line": "a2_l2",
+      "words": [
+        {
+          "text": "fast",
+          "start": 29.133,
+          "end": 29.433
+        },
+        {
+          "text": "charging,",
+          "start": 29.433,
+          "end": 29.933
         },
         {
           "text": "and",
-          "start": 45.425,
-          "end": 45.615
+          "start": 29.933,
+          "end": 30.133
         },
         {
-          "text": "modified",
-          "start": 45.615,
-          "end": 46.235
+          "text": "600 KL",
+          "start": 30.133,
+          "end": 31.212
         },
         {
-          "text": "epoxy:",
-          "start": 46.235,
-          "end": 46.895
+          "text": "of",
+          "start": 31.212,
+          "end": 31.312
         },
         {
-          "text": "4,373",
-          "start": 47.105,
-          "end": 49.595
+          "text": "underground",
+          "start": 31.312,
+          "end": 31.873
         },
         {
-          "text": "tons",
-          "start": 49.595,
-          "end": 49.935
+          "text": "PESO",
+          "start": 31.873,
+          "end": 32.252
         },
         {
-          "text": "a",
-          "start": 49.935,
-          "end": 49.975
+          "text": "tanks",
+          "start": 32.252,
+          "end": 32.653
         },
         {
-          "text": "month,",
-          "start": 49.975,
-          "end": 50.375
+          "text": "hold",
+          "start": 32.653,
+          "end": 32.852
         },
         {
-          "text": "from",
-          "start": 50.375,
-          "end": 50.685
+          "text": "the",
+          "start": 32.852,
+          "end": 32.932
         },
         {
-          "text": "day",
-          "start": 50.685,
-          "end": 50.895
-        },
-        {
-          "text": "one.",
-          "start": 50.895,
-          "end": 51.305
+          "text": "solvents.",
+          "start": 32.932,
+          "end": 33.672
         }
       ],
-      "start": 43.005,
-      "end": 51.855,
-      "text": "Saturated polyester, alkyds, and modified epoxy: 4,373 tons a month, from day one."
+      "start": 29.013,
+      "end": 34.222,
+      "text": "fast charging, and 600 KL of underground PESO tanks hold the solvents."
     },
     {
       "line": "a3_l1",
       "words": [
+        {
+          "text": "In",
+          "start": 40.078,
+          "end": 40.238
+        },
         {
           "text": "Plant",
-          "start": 61.875,
-          "end": 62.235
+          "start": 40.238,
+          "end": 40.548
         },
         {
-          "text": "2",
-          "start": 62.235,
-          "end": 62.395
+          "text": "1,",
+          "start": 40.548,
+          "end": 40.868
         },
         {
-          "text": "powers",
-          "start": 62.395,
-          "end": 62.805
+          "text": "an",
+          "start": 40.868,
+          "end": 41.028
         },
         {
-          "text": "specialty",
-          "start": 62.805,
-          "end": 63.485
+          "text": "overhead",
+          "start": 41.028,
+          "end": 41.468
         },
         {
-          "text": "and",
-          "start": 63.485,
-          "end": 63.615
+          "text": "crane",
+          "start": 41.468,
+          "end": 41.768
         },
         {
-          "text": "solid",
-          "start": 63.615,
-          "end": 64.105
+          "text": "lifts",
+          "start": 41.768,
+          "end": 42.068
         },
         {
-          "text": "resins,",
-          "start": 64.105,
-          "end": 64.615
+          "text": "each",
+          "start": 42.068,
+          "end": 42.268
         },
         {
-          "text": "backed",
-          "start": 64.615,
-          "end": 65.005
+          "text": "jumbo",
+          "start": 42.268,
+          "end": 42.678
         },
         {
-          "text": "by",
-          "start": 65.005,
-          "end": 65.165
+          "text": "bag",
+          "start": 42.678,
+          "end": 42.938
         },
         {
-          "text": "versatile",
-          "start": 65.165,
-          "end": 65.695
+          "text": "straight",
+          "start": 42.938,
+          "end": 43.268
+        },
+        {
+          "text": "up",
+          "start": 43.268,
+          "end": 43.418
+        },
+        {
+          "text": "to",
+          "start": 43.418,
+          "end": 43.508
+        },
+        {
+          "text": "the",
+          "start": 43.508,
+          "end": 43.608
+        },
+        {
+          "text": "reactor",
+          "start": 43.608,
+          "end": 44.048
+        },
+        {
+          "text": "charging",
+          "start": 44.048,
+          "end": 44.538
+        },
+        {
+          "text": "deck.",
+          "start": 44.538,
+          "end": 44.938
         }
       ],
-      "start": 61.755,
-      "end": 65.565,
-      "text": "Plant 2 powers specialty and solid resins, backed by versatile"
-    },
-    {
-      "line": "a3_l1",
-      "words": [
-        {
-          "text": "finishing",
-          "start": 65.695,
-          "end": 66.235
-        },
-        {
-          "text": "lines,",
-          "start": 66.235,
-          "end": 66.805
-        },
-        {
-          "text": "including",
-          "start": 66.805,
-          "end": 67.465
-        },
-        {
-          "text": "flakers,",
-          "start": 67.465,
-          "end": 68.085
-        },
-        {
-          "text": "pelletisers,",
-          "start": 68.085,
-          "end": 69.045
-        },
-        {
-          "text": "and",
-          "start": 69.045,
-          "end": 69.255
-        },
-        {
-          "text": "product",
-          "start": 69.255,
-          "end": 69.685
-        },
-        {
-          "text": "crushers.",
-          "start": 69.685,
-          "end": 70.335
-        }
-      ],
-      "start": 65.575,
-      "end": 70.885,
-      "text": "finishing lines, including flakers, pelletisers, and product crushers."
+      "start": 39.958,
+      "end": 45.488,
+      "text": "In Plant 1, an overhead crane lifts each jumbo bag straight up to the reactor charging deck."
     },
     {
       "line": "a3_l2",
       "words": [
         {
-          "text": "Reactive",
-          "start": 73.125,
-          "end": 73.695
+          "text": "Ten",
+          "start": 48.75,
+          "end": 48.98
         },
         {
-          "text": "polyamide,",
-          "start": 73.695,
-          "end": 74.685
+          "text": "reactors",
+          "start": 48.98,
+          "end": 49.48
         },
         {
-          "text": "powder",
-          "start": 74.805,
-          "end": 75.165
+          "text": "up",
+          "start": 49.48,
+          "end": 49.61
+        },
+        {
+          "text": "to",
+          "start": 49.61,
+          "end": 49.71
+        },
+        {
+          "text": "16 KL",
+          "start": 49.71,
+          "end": 50.69
+        },
+        {
+          "text": "make",
+          "start": 50.69,
+          "end": 50.92
+        },
+        {
+          "text": "saturated",
+          "start": 50.92,
+          "end": 51.54
         },
         {
           "text": "polyester,",
-          "start": 75.165,
-          "end": 76.035
+          "start": 51.54,
+          "end": 52.28
         },
         {
-          "text": "acrylic",
-          "start": 76.115,
-          "end": 76.615
-        },
-        {
-          "text": "polyols,",
-          "start": 76.615,
-          "end": 77.275
-        },
-        {
-          "text": "phenolics,",
-          "start": 77.365,
-          "end": 78.135
+          "text": "alkyds,",
+          "start": 52.28,
+          "end": 52.89
         },
         {
           "text": "and",
-          "start": 78.135,
-          "end": 78.345
+          "start": 52.89,
+          "end": 53.04
         },
         {
-          "text": "R&D",
-          "start": 78.345,
-          "end": 78.855
+          "text": "modified",
+          "start": 53.04,
+          "end": 53.59
         },
         {
-          "text": "scale-up:",
-          "start": 78.855,
-          "end": 79.525
+          "text": "epoxy:",
+          "start": 53.59,
+          "end": 54.15
         },
         {
-          "text": "2,530",
-          "start": 79.795,
-          "end": 81.805
+          "text": "4,373",
+          "start": 54.32,
+          "end": 56.5
         },
         {
           "text": "tons",
-          "start": 81.805,
-          "end": 82.145
+          "start": 56.5,
+          "end": 56.8
         },
         {
           "text": "a",
-          "start": 82.145,
-          "end": 82.185
+          "start": 56.8,
+          "end": 56.83
         },
         {
           "text": "month.",
-          "start": 82.185,
-          "end": 82.685
+          "start": 56.83,
+          "end": 57.28
         }
       ],
-      "start": 73.005,
-      "end": 83.235,
-      "text": "Reactive polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month."
+      "start": 48.63,
+      "end": 57.83,
+      "text": "Ten reactors up to 16 KL make saturated polyester, alkyds, and modified epoxy: 4,373 tons a month."
     },
     {
       "line": "a4_l1",
       "words": [
         {
-          "text": "Logistics",
-          "start": 91.875,
-          "end": 92.545
+          "text": "Plant",
+          "start": 64.219,
+          "end": 64.529
         },
         {
-          "text": "are",
-          "start": 92.545,
-          "end": 92.655
+          "text": "2",
+          "start": 64.529,
+          "end": 64.709
         },
         {
-          "text": "built",
-          "start": 92.655,
-          "end": 92.925
+          "text": "adds",
+          "start": 64.709,
+          "end": 64.869
         },
         {
-          "text": "for",
-          "start": 92.925,
-          "end": 93.115
-        },
-        {
-          "text": "scale,",
-          "start": 93.115,
-          "end": 93.725
-        },
-        {
-          "text": "with",
-          "start": 93.775,
-          "end": 93.965
-        },
-        {
-          "text": "600 KL",
-          "start": 93.965,
-          "end": 95.205
-        },
-        {
-          "text": "of",
-          "start": 95.205,
-          "end": 95.325
-        },
-        {
-          "text": "underground",
-          "start": 95.325,
-          "end": 95.975
-        },
-        {
-          "text": "PESO",
-          "start": 95.975,
-          "end": 96.395
-        }
-      ],
-      "start": 91.755,
-      "end": 96.265,
-      "text": "Logistics are built for scale, with 600 KL of underground PESO"
-    },
-    {
-      "line": "a4_l1",
-      "words": [
-        {
-          "text": "solvent",
-          "start": 96.395,
-          "end": 96.985
-        },
-        {
-          "text": "storage,",
-          "start": 96.985,
-          "end": 97.605
+          "text": "specialty",
+          "start": 64.869,
+          "end": 65.449
         },
         {
           "text": "and",
-          "start": 97.645,
-          "end": 97.845
+          "start": 65.449,
+          "end": 65.569
         },
         {
-          "text": "over",
-          "start": 97.845,
-          "end": 98.125
+          "text": "solid",
+          "start": 65.569,
+          "end": 65.989
         },
         {
-          "text": "1,000 KL",
-          "start": 98.125,
-          "end": 99.505
+          "text": "resins,",
+          "start": 65.989,
+          "end": 66.429
         },
         {
-          "text": "of",
-          "start": 99.505,
-          "end": 99.615
+          "text": "finished",
+          "start": 66.429,
+          "end": 66.849
         },
         {
-          "text": "dedicated",
-          "start": 99.615,
-          "end": 100.225
+          "text": "on",
+          "start": 66.849,
+          "end": 67.009
         },
         {
-          "text": "finished-goods",
-          "start": 100.225,
-          "end": 100.955
+          "text": "flakers,",
+          "start": 67.009,
+          "end": 67.549
         },
         {
-          "text": "tanks.",
-          "start": 100.955,
-          "end": 101.625
+          "text": "pelletisers,",
+          "start": 67.549,
+          "end": 68.379
+        },
+        {
+          "text": "and",
+          "start": 68.379,
+          "end": 68.569
+        },
+        {
+          "text": "crushers.",
+          "start": 68.569,
+          "end": 69.129
         }
       ],
-      "start": 96.275,
-      "end": 102.175,
-      "text": "solvent storage, and over 1,000 KL of dedicated finished-goods tanks."
+      "start": 64.099,
+      "end": 69.679,
+      "text": "Plant 2 adds specialty and solid resins, finished on flakers, pelletisers, and crushers."
     },
     {
       "line": "a4_l2",
       "words": [
         {
-          "text": "Twelve",
-          "start": 105.0,
-          "end": 105.32
+          "text": "Polyamide,",
+          "start": 70.781,
+          "end": 71.601
         },
         {
-          "text": "blenders",
-          "start": 105.32,
-          "end": 105.75
+          "text": "powder",
+          "start": 71.701,
+          "end": 72.031
         },
         {
-          "text": "add",
-          "start": 105.75,
-          "end": 105.87
+          "text": "polyester,",
+          "start": 72.031,
+          "end": 72.781
         },
         {
-          "text": "380 KL",
-          "start": 105.87,
-          "end": 107.55
+          "text": "acrylic",
+          "start": 72.861,
+          "end": 73.291
         },
         {
-          "text": "of",
-          "start": 107.55,
-          "end": 107.67
+          "text": "polyols,",
+          "start": 73.291,
+          "end": 73.851
         },
         {
-          "text": "blending",
-          "start": 107.67,
-          "end": 108.1
-        },
-        {
-          "text": "capacity,",
-          "start": 108.1,
-          "end": 108.91
+          "text": "phenolics,",
+          "start": 73.941,
+          "end": 74.611
         },
         {
           "text": "and",
-          "start": 108.91,
-          "end": 109.13
+          "start": 74.611,
+          "end": 74.791
         },
         {
-          "text": "grade-dedicated",
-          "start": 109.13,
-          "end": 110.03
+          "text": "R&D",
+          "start": 74.791,
+          "end": 75.241
         },
         {
-          "text": "tanks",
-          "start": 110.03,
-          "end": 110.44
+          "text": "scale-up:",
+          "start": 75.241,
+          "end": 75.831
         },
         {
-          "text": "keep",
-          "start": 110.44,
-          "end": 110.74
+          "text": "2,530",
+          "start": 76.051,
+          "end": 77.531
         },
         {
-          "text": "every",
-          "start": 110.74,
-          "end": 111.14
-        },
-        {
-          "text": "product",
-          "start": 111.14,
-          "end": 111.61
-        },
-        {
-          "text": "clean.",
-          "start": 111.61,
-          "end": 112.05
-        }
-      ],
-      "start": 104.88,
-      "end": 112.6,
-      "text": "Twelve blenders add 380 KL of blending capacity, and grade-dedicated tanks keep every product clean."
-    },
-    {
-      "line": "a5_l1",
-      "words": [
-        {
-          "text": "Built",
-          "start": 121.875,
-          "end": 122.155
-        },
-        {
-          "text": "on",
-          "start": 122.155,
-          "end": 122.305
-        },
-        {
-          "text": "eco-friendly",
-          "start": 122.305,
-          "end": 123.115
-        },
-        {
-          "text": "power,",
-          "start": 123.115,
-          "end": 123.545
-        },
-        {
-          "text": "driven",
-          "start": 123.585,
-          "end": 123.935
-        },
-        {
-          "text": "by",
-          "start": 123.935,
-          "end": 124.165
-        },
-        {
-          "text": "agro-waste",
-          "start": 124.165,
-          "end": 124.835
-        },
-        {
-          "text": "thermic",
-          "start": 124.835,
-          "end": 125.295
-        },
-        {
-          "text": "heaters,",
-          "start": 125.295,
-          "end": 125.755
-        }
-      ],
-      "start": 121.755,
-      "end": 125.625,
-      "text": "Built on eco-friendly power, driven by agro-waste thermic heaters,"
-    },
-    {
-      "line": "a5_l1",
-      "words": [
-        {
-          "text": "nitrogen",
-          "start": 125.755,
-          "end": 126.405
-        },
-        {
-          "text": "blanketing,",
-          "start": 126.405,
-          "end": 127.135
-        },
-        {
-          "text": "and",
-          "start": 127.135,
-          "end": 127.375
-        },
-        {
-          "text": "zero-compromise",
-          "start": 127.375,
-          "end": 128.485
-        },
-        {
-          "text": "ETP",
-          "start": 128.485,
-          "end": 129.065
-        },
-        {
-          "text": "effluent",
-          "start": 129.065,
-          "end": 129.665
-        },
-        {
-          "text": "treatment.",
-          "start": 129.665,
-          "end": 130.275
-        }
-      ],
-      "start": 125.635,
-      "end": 130.825,
-      "text": "nitrogen blanketing, and zero-compromise ETP effluent treatment."
-    },
-    {
-      "line": "a5_l2",
-      "words": [
-        {
-          "text": "Two",
-          "start": 133.125,
-          "end": 133.315
-        },
-        {
-          "text": "30 lakh kcal/h",
-          "start": 133.315,
-          "end": 134.665
-        },
-        {
-          "text": "thermic",
-          "start": 134.665,
-          "end": 135.125
-        },
-        {
-          "text": "heaters,",
-          "start": 135.125,
-          "end": 135.545
+          "text": "tons",
+          "start": 77.531,
+          "end": 77.831
         },
         {
           "text": "a",
-          "start": 135.585,
-          "end": 135.675
+          "start": 77.831,
+          "end": 77.861
         },
         {
-          "text": "2,200 TR",
-          "start": 135.675,
-          "end": 137.075
-        },
-        {
-          "text": "cooling",
-          "start": 137.075,
-          "end": 137.505
-        },
-        {
-          "text": "tower,",
-          "start": 137.505,
-          "end": 137.905
+          "text": "month.",
+          "start": 77.861,
+          "end": 78.311
         }
       ],
-      "start": 133.005,
-      "end": 137.775,
-      "text": "Two 30 lakh kcal/h thermic heaters, a 2,200 TR cooling tower,"
+      "start": 70.661,
+      "end": 78.861,
+      "text": "Polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month."
     },
     {
-      "line": "a5_l2",
-      "words": [
-        {
-          "text": "and",
-          "start": 137.905,
-          "end": 138.135
-        },
-        {
-          "text": "on-site",
-          "start": 138.135,
-          "end": 138.615
-        },
-        {
-          "text": "nitrogen",
-          "start": 138.615,
-          "end": 139.245
-        },
-        {
-          "text": "generation,",
-          "start": 139.245,
-          "end": 139.995
-        },
-        {
-          "text": "sized",
-          "start": 140.045,
-          "end": 140.385
-        },
-        {
-          "text": "for",
-          "start": 140.385,
-          "end": 140.555
-        },
-        {
-          "text": "full",
-          "start": 140.555,
-          "end": 140.805
-        },
-        {
-          "text": "load.",
-          "start": 140.805,
-          "end": 141.205
-        }
-      ],
-      "start": 137.785,
-      "end": 141.755,
-      "text": "and on-site nitrogen generation, sized for full load."
-    },
-    {
-      "line": "a6_l1",
-      "words": [
-        {
-          "text": "Whether",
-          "start": 151.875,
-          "end": 152.185
-        },
-        {
-          "text": "you",
-          "start": 152.185,
-          "end": 152.315
-        },
-        {
-          "text": "need",
-          "start": 152.315,
-          "end": 152.555
-        },
-        {
-          "text": "toll",
-          "start": 152.555,
-          "end": 152.765
-        },
-        {
-          "text": "conversion,",
-          "start": 152.765,
-          "end": 153.335
-        },
-        {
-          "text": "full-service",
-          "start": 153.335,
-          "end": 154.135
-        },
-        {
-          "text": "jobwork,",
-          "start": 154.135,
-          "end": 154.945
-        }
-      ],
-      "start": 151.755,
-      "end": 154.815,
-      "text": "Whether you need toll conversion, full-service jobwork,"
-    },
-    {
-      "line": "a6_l1",
-      "words": [
-        {
-          "text": "or",
-          "start": 154.945,
-          "end": 155.105
-        },
-        {
-          "text": "dedicated",
-          "start": 155.105,
-          "end": 155.725
-        },
-        {
-          "text": "plant",
-          "start": 155.725,
-          "end": 156.105
-        },
-        {
-          "text": "capacity,",
-          "start": 156.105,
-          "end": 156.915
-        },
-        {
-          "text": "partner",
-          "start": 156.955,
-          "end": 157.375
-        },
-        {
-          "text": "with",
-          "start": 157.375,
-          "end": 157.565
-        },
-        {
-          "text": "MPD",
-          "start": 157.565,
-          "end": 158.095
-        },
-        {
-          "text": "Industries",
-          "start": 158.095,
-          "end": 158.635
-        },
-        {
-          "text": "today.",
-          "start": 158.635,
-          "end": 159.195
-        }
-      ],
-      "start": 154.825,
-      "end": 159.745,
-      "text": "or dedicated plant capacity, partner with MPD Industries today."
-    },
-    {
-      "line": "a6_l2",
+      "line": "a5_l1",
       "words": [
         {
           "text": "Every",
-          "start": 161.25,
-          "end": 161.7
+          "start": 85.078,
+          "end": 85.458
         },
         {
-          "text": "model",
-          "start": 161.7,
-          "end": 162.08
+          "text": "batch",
+          "start": 85.458,
+          "end": 85.748
         },
         {
-          "text": "comes",
-          "start": 162.08,
-          "end": 162.39
+          "text": "is",
+          "start": 85.748,
+          "end": 85.888
+        },
+        {
+          "text": "released",
+          "start": 85.888,
+          "end": 86.298
+        },
+        {
+          "text": "by",
+          "start": 86.298,
+          "end": 86.488
+        },
+        {
+          "text": "our",
+          "start": 86.488,
+          "end": 86.638
+        },
+        {
+          "text": "state-of-the-art",
+          "start": 86.638,
+          "end": 87.358
+        },
+        {
+          "text": "QC",
+          "start": 87.358,
+          "end": 87.738
+        },
+        {
+          "text": "lab,",
+          "start": 87.738,
+          "end": 88.008
         },
         {
           "text": "with",
-          "start": 162.39,
-          "end": 162.55
+          "start": 88.008,
+          "end": 88.218
         },
         {
-          "text": "NDA",
-          "start": 162.55,
-          "end": 162.88
+          "text": "a",
+          "start": 88.218,
+          "end": 88.268
         },
         {
-          "text": "confidentiality,",
-          "start": 162.88,
-          "end": 164.26
-        },
-        {
-          "text": "segregated",
-          "start": 164.31,
-          "end": 165.05
-        },
-        {
-          "text": "storage,",
-          "start": 165.05,
-          "end": 165.68
+          "text": "dedicated",
+          "start": 88.268,
+          "end": 88.798
         }
       ],
-      "start": 161.13,
-      "end": 165.6,
-      "text": "Every model comes with NDA confidentiality, segregated storage,"
+      "start": 84.958,
+      "end": 88.668,
+      "text": "Every batch is released by our state-of-the-art QC lab, with a dedicated"
+    },
+    {
+      "line": "a5_l1",
+      "words": [
+        {
+          "text": "application",
+          "start": 88.798,
+          "end": 89.438
+        },
+        {
+          "text": "lab",
+          "start": 89.438,
+          "end": 89.688
+        },
+        {
+          "text": "that",
+          "start": 89.688,
+          "end": 89.848
+        },
+        {
+          "text": "tests",
+          "start": 89.848,
+          "end": 90.178
+        },
+        {
+          "text": "coatings",
+          "start": 90.178,
+          "end": 90.618
+        },
+        {
+          "text": "the",
+          "start": 90.618,
+          "end": 90.698
+        },
+        {
+          "text": "way",
+          "start": 90.698,
+          "end": 90.878
+        },
+        {
+          "text": "your",
+          "start": 90.878,
+          "end": 91.058
+        },
+        {
+          "text": "customers",
+          "start": 91.058,
+          "end": 91.568
+        },
+        {
+          "text": "use",
+          "start": 91.568,
+          "end": 91.758
+        },
+        {
+          "text": "them.",
+          "start": 91.758,
+          "end": 92.068
+        }
+      ],
+      "start": 88.678,
+      "end": 92.618,
+      "text": "application lab that tests coatings the way your customers use them."
+    },
+    {
+      "line": "a5_l2",
+      "words": [
+        {
+          "text": "Both",
+          "start": 95.625,
+          "end": 95.885
+        },
+        {
+          "text": "plants",
+          "start": 95.885,
+          "end": 96.305
+        },
+        {
+          "text": "are",
+          "start": 96.305,
+          "end": 96.395
+        },
+        {
+          "text": "run",
+          "start": 96.395,
+          "end": 96.595
+        },
+        {
+          "text": "from",
+          "start": 96.595,
+          "end": 96.805
+        },
+        {
+          "text": "one",
+          "start": 96.805,
+          "end": 97.025
+        },
+        {
+          "text": "central",
+          "start": 97.025,
+          "end": 97.455
+        },
+        {
+          "text": "control",
+          "start": 97.455,
+          "end": 97.875
+        },
+        {
+          "text": "room.",
+          "start": 97.875,
+          "end": 98.335
+        }
+      ],
+      "start": 95.505,
+      "end": 98.885,
+      "text": "Both plants are run from one central control room."
+    },
+    {
+      "line": "a6_l1",
+      "words": [
+        {
+          "text": "Twelve",
+          "start": 101.953,
+          "end": 102.233
+        },
+        {
+          "text": "blenders",
+          "start": 102.233,
+          "end": 102.613
+        },
+        {
+          "text": "add",
+          "start": 102.613,
+          "end": 102.713
+        },
+        {
+          "text": "380 KL",
+          "start": 102.713,
+          "end": 104.143
+        },
+        {
+          "text": "of",
+          "start": 104.143,
+          "end": 104.253
+        },
+        {
+          "text": "blending,",
+          "start": 104.253,
+          "end": 104.683
+        }
+      ],
+      "start": 101.833,
+      "end": 104.553,
+      "text": "Twelve blenders add 380 KL of blending,"
+    },
+    {
+      "line": "a6_l1",
+      "words": [
+        {
+          "text": "and",
+          "start": 104.683,
+          "end": 104.903
+        },
+        {
+          "text": "22",
+          "start": 104.903,
+          "end": 105.403
+        },
+        {
+          "text": "grade-dedicated",
+          "start": 105.403,
+          "end": 106.193
+        },
+        {
+          "text": "tanks",
+          "start": 106.193,
+          "end": 106.563
+        },
+        {
+          "text": "hold",
+          "start": 106.563,
+          "end": 106.773
+        },
+        {
+          "text": "over",
+          "start": 106.773,
+          "end": 107.023
+        },
+        {
+          "text": "1,000 KL",
+          "start": 107.023,
+          "end": 108.213
+        },
+        {
+          "text": "of",
+          "start": 108.213,
+          "end": 108.283
+        },
+        {
+          "text": "finished",
+          "start": 108.283,
+          "end": 108.653
+        },
+        {
+          "text": "goods.",
+          "start": 108.653,
+          "end": 109.093
+        }
+      ],
+      "start": 104.563,
+      "end": 109.643,
+      "text": "and 22 grade-dedicated tanks hold over 1,000 KL of finished goods."
     },
     {
       "line": "a6_l2",
       "words": [
         {
+          "text": "In",
+          "start": 111.328,
+          "end": 111.478
+        },
+        {
+          "text": "total:",
+          "start": 111.478,
+          "end": 111.828
+        },
+        {
+          "text": "about",
+          "start": 112.008,
+          "end": 112.308
+        },
+        {
+          "text": "1,500",
+          "start": 112.308,
+          "end": 113.078
+        },
+        {
+          "text": "tons",
+          "start": 113.078,
+          "end": 113.338
+        },
+        {
+          "text": "of",
+          "start": 113.338,
+          "end": 113.428
+        },
+        {
+          "text": "packed",
+          "start": 113.428,
+          "end": 113.728
+        },
+        {
+          "text": "storage,",
+          "start": 113.728,
+          "end": 114.258
+        },
+        {
           "text": "and",
-          "start": 165.73,
-          "end": 165.91
+          "start": 114.258,
+          "end": 114.478
         },
         {
-          "text": "a",
-          "start": 165.91,
-          "end": 165.96
+          "text": "over",
+          "start": 114.478,
+          "end": 114.728
         },
         {
-          "text": "scale-up",
-          "start": 165.96,
-          "end": 166.54
+          "text": "1,600 KL",
+          "start": 114.728,
+          "end": 116.058
         },
         {
-          "text": "path",
-          "start": 166.54,
-          "end": 166.84
+          "text": "of",
+          "start": 116.058,
+          "end": 116.158
+        },
+        {
+          "text": "bulk",
+          "start": 116.158,
+          "end": 116.408
+        },
+        {
+          "text": "liquids.",
+          "start": 116.408,
+          "end": 116.928
+        }
+      ],
+      "start": 111.208,
+      "end": 117.478,
+      "text": "In total: about 1,500 tons of packed storage, and over 1,600 KL of bulk liquids."
+    },
+    {
+      "line": "a7_l1",
+      "words": [
+        {
+          "text": "Utilities",
+          "start": 120.703,
+          "end": 121.323
+        },
+        {
+          "text": "run",
+          "start": 121.323,
+          "end": 121.533
+        },
+        {
+          "text": "green:",
+          "start": 121.533,
+          "end": 121.913
+        },
+        {
+          "text": "agro-waste",
+          "start": 122.043,
+          "end": 122.693
+        },
+        {
+          "text": "fired",
+          "start": 122.693,
+          "end": 123.043
+        },
+        {
+          "text": "thermic",
+          "start": 123.043,
+          "end": 123.423
+        },
+        {
+          "text": "heaters,",
+          "start": 123.423,
+          "end": 123.773
+        }
+      ],
+      "start": 120.583,
+      "end": 123.643,
+      "text": "Utilities run green: agro-waste fired thermic heaters,"
+    },
+    {
+      "line": "a7_l1",
+      "words": [
+        {
+          "text": "fed",
+          "start": 123.773,
+          "end": 124.053
         },
         {
           "text": "from",
-          "start": 166.84,
-          "end": 167.08
+          "start": 124.053,
+          "end": 124.253
+        },
+        {
+          "text": "a",
+          "start": 124.253,
+          "end": 124.303
+        },
+        {
+          "text": "covered",
+          "start": 124.303,
+          "end": 124.623
+        },
+        {
+          "text": "fuel",
+          "start": 124.623,
+          "end": 124.973
+        },
+        {
+          "text": "shed,",
+          "start": 124.973,
+          "end": 125.273
+        },
+        {
+          "text": "and",
+          "start": 125.273,
+          "end": 125.463
+        },
+        {
+          "text": "a",
+          "start": 125.463,
+          "end": 125.503
+        },
+        {
+          "text": "2,200 TR",
+          "start": 125.503,
+          "end": 126.723
+        },
+        {
+          "text": "cooling",
+          "start": 126.723,
+          "end": 127.103
+        },
+        {
+          "text": "tower.",
+          "start": 127.103,
+          "end": 127.503
+        }
+      ],
+      "start": 123.653,
+      "end": 128.053,
+      "text": "fed from a covered fuel shed, and a 2,200 TR cooling tower."
+    },
+    {
+      "line": "a7_l2",
+      "words": [
+        {
+          "text": "On-site",
+          "start": 130.078,
+          "end": 130.528
+        },
+        {
+          "text": "nitrogen,",
+          "start": 130.528,
+          "end": 131.128
+        },
+        {
+          "text": "a",
+          "start": 131.208,
+          "end": 131.278
+        },
+        {
+          "text": "50 KLD",
+          "start": 131.278,
+          "end": 132.418
+        },
+        {
+          "text": "effluent",
+          "start": 132.418,
+          "end": 132.958
+        },
+        {
+          "text": "treatment",
+          "start": 132.958,
+          "end": 133.348
+        },
+        {
+          "text": "plant,",
+          "start": 133.348,
+          "end": 133.728
+        },
+        {
+          "text": "and",
+          "start": 133.728,
+          "end": 133.928
+        },
+        {
+          "text": "0.7 MW",
+          "start": 133.928,
+          "end": 135.028
+        },
+        {
+          "text": "of",
+          "start": 135.028,
+          "end": 135.138
+        },
+        {
+          "text": "rooftop",
+          "start": 135.138,
+          "end": 135.528
+        },
+        {
+          "text": "solar.",
+          "start": 135.528,
+          "end": 136.018
+        }
+      ],
+      "start": 129.958,
+      "end": 136.568,
+      "text": "On-site nitrogen, a 50 KLD effluent treatment plant, and 0.7 MW of rooftop solar."
+    },
+    {
+      "line": "a8_l1",
+      "words": [
+        {
+          "text": "Toll",
+          "start": 151.172,
+          "end": 151.392
+        },
+        {
+          "text": "conversion,",
+          "start": 151.392,
+          "end": 151.902
+        },
+        {
+          "text": "full-service",
+          "start": 152.002,
+          "end": 152.632
+        },
+        {
+          "text": "jobwork,",
+          "start": 152.632,
+          "end": 153.282
+        },
+        {
+          "text": "or",
+          "start": 153.282,
+          "end": 153.472
+        },
+        {
+          "text": "dedicated",
+          "start": 153.472,
+          "end": 154.022
+        },
+        {
+          "text": "capacity:",
+          "start": 154.022,
+          "end": 154.682
+        },
+        {
+          "text": "partner",
+          "start": 154.862,
+          "end": 155.242
+        },
+        {
+          "text": "with",
+          "start": 155.242,
+          "end": 155.402
+        },
+        {
+          "text": "MPD",
+          "start": 155.402,
+          "end": 155.862
+        },
+        {
+          "text": "Industries.",
+          "start": 155.862,
+          "end": 156.542
+        }
+      ],
+      "start": 151.052,
+      "end": 157.092,
+      "text": "Toll conversion, full-service jobwork, or dedicated capacity: partner with MPD Industries."
+    },
+    {
+      "line": "a8_l2",
+      "words": [
+        {
+          "text": "Every",
+          "start": 157.5,
+          "end": 157.88
+        },
+        {
+          "text": "model",
+          "start": 157.88,
+          "end": 158.22
+        },
+        {
+          "text": "comes",
+          "start": 158.22,
+          "end": 158.48
+        },
+        {
+          "text": "with",
+          "start": 158.48,
+          "end": 158.63
+        },
+        {
+          "text": "NDA",
+          "start": 158.63,
+          "end": 158.91
+        },
+        {
+          "text": "confidentiality,",
+          "start": 158.91,
+          "end": 160.11
+        },
+        {
+          "text": "segregated",
+          "start": 160.15,
+          "end": 160.8
+        },
+        {
+          "text": "storage,",
+          "start": 160.8,
+          "end": 161.34
+        }
+      ],
+      "start": 157.38,
+      "end": 161.26,
+      "text": "Every model comes with NDA confidentiality, segregated storage,"
+    },
+    {
+      "line": "a8_l2",
+      "words": [
+        {
+          "text": "and",
+          "start": 161.39,
+          "end": 161.55
+        },
+        {
+          "text": "a",
+          "start": 161.55,
+          "end": 161.59
+        },
+        {
+          "text": "scale-up",
+          "start": 161.59,
+          "end": 162.09
+        },
+        {
+          "text": "path",
+          "start": 162.09,
+          "end": 162.35
+        },
+        {
+          "text": "from",
+          "start": 162.35,
+          "end": 162.56
         },
         {
           "text": "2 KL",
-          "start": 167.08,
-          "end": 167.75
+          "start": 162.56,
+          "end": 163.15
         },
         {
           "text": "trials",
-          "start": 167.75,
-          "end": 168.28
+          "start": 163.15,
+          "end": 163.61
         },
         {
           "text": "to",
-          "start": 168.28,
-          "end": 168.4
+          "start": 163.61,
+          "end": 163.71
         },
         {
           "text": "16 KL",
-          "start": 168.4,
-          "end": 169.46
+          "start": 163.71,
+          "end": 164.63
         },
         {
           "text": "production.",
-          "start": 169.46,
-          "end": 170.14
+          "start": 164.63,
+          "end": 165.22
         }
       ],
-      "start": 165.61,
-      "end": 170.69,
+      "start": 161.27,
+      "end": 165.77,
       "text": "and a scale-up path from 2 KL trials to 16 KL production."
     },
     {
-      "line": "a6_l3",
+      "line": "a8_l3",
       "words": [
         {
           "text": "MPD",
           "start": 172.5,
-          "end": 173.07
+          "end": 172.99
         },
         {
           "text": "Industries.",
-          "start": 173.07,
-          "end": 173.87
+          "start": 172.99,
+          "end": 173.69
         },
         {
           "text": "We",
-          "start": 174.01,
-          "end": 174.18
+          "start": 173.8,
+          "end": 173.95
         },
         {
           "text": "innovate.",
-          "start": 174.18,
-          "end": 174.69
+          "start": 173.95,
+          "end": 174.4
         },
         {
           "text": "We",
-          "start": 174.84,
-          "end": 175.01
+          "start": 174.52,
+          "end": 174.68
         },
         {
           "text": "serve.",
-          "start": 175.01,
-          "end": 175.49
+          "start": 174.68,
+          "end": 175.03
         }
       ],
       "start": 172.38,
-      "end": 176.04,
+      "end": 175.58,
       "text": "MPD Industries. We innovate. We serve."
     }
   ],
   "sfx": [
     {
       "type": "swoosh",
-      "at": 0.33,
+      "at": 0.22999999999999998,
       "src": "logo_card"
     },
     {
       "type": "sting",
-      "at": 0.45,
+      "at": 0.35,
       "src": "logo_card"
     },
     {
       "type": "whoosh",
-      "at": 5.0,
+      "at": 3.2,
       "src": "a1_descend"
     },
     {
       "type": "rise_build",
-      "at": 5.6,
-      "dur": 7.2
+      "at": 3.4,
+      "dur": 5.2
     },
     {
       "type": "click",
-      "at": 5.6,
+      "at": 4.6,
       "src": "act1_title"
     },
     {
       "type": "click",
-      "at": 14.88,
+      "at": 6.911,
       "src": "a1_sites"
     },
     {
       "type": "thump",
-      "at": 17.7,
+      "at": 7.701,
       "src": "a1_reactors"
     },
     {
       "type": "ticks",
-      "at": 17.849999999999998,
+      "at": 7.851,
       "dur": 1.35,
       "src": "a1_reactors"
     },
     {
       "type": "thump",
-      "at": 19.71,
+      "at": 9.251,
       "src": "a1_capacity"
     },
     {
       "type": "ticks",
-      "at": 19.86,
+      "at": 9.401,
       "dur": 1.35,
       "src": "a1_capacity"
     },
     {
       "type": "click",
-      "at": 24.1,
+      "at": 12.4,
       "src": "a1_zones"
     },
     {
       "type": "whoosh",
-      "at": 26.2,
+      "at": 12.8,
       "src": "a1_push"
     },
     {
       "type": "riser",
-      "at": 28.125,
+      "at": 13.125,
       "dur": 1.875
     },
     {
       "type": "impact",
-      "at": 30.0
-    },
-    {
-      "type": "whoosh",
-      "at": 30.5,
-      "src": "a2_dive"
+      "at": 15
     },
     {
       "type": "click",
-      "at": 30.7,
+      "at": 15.3,
       "src": "act2_title"
     },
     {
-      "type": "click",
-      "at": 35.945,
-      "src": "a2_reactor"
-    },
-    {
-      "type": "click",
-      "at": 36.4,
-      "src": "a2_jacket"
-    },
-    {
-      "type": "click",
-      "at": 37.3,
-      "src": "a2_condenser"
-    },
-    {
-      "type": "click",
-      "at": 39.915,
-      "src": "a2_ladder"
-    },
-    {
       "type": "swoosh",
-      "at": 42.555,
-      "src": "a2_split"
-    },
-    {
-      "type": "click",
-      "at": 42.675,
-      "src": "a2_split"
-    },
-    {
-      "type": "click",
-      "at": 43.025,
-      "src": "a2_split"
-    },
-    {
-      "type": "click",
-      "at": 44.665,
-      "src": "a2_split"
-    },
-    {
-      "type": "click",
-      "at": 46.135,
-      "src": "a2_split"
+      "at": 17.043,
+      "src": "a2_wh"
     },
     {
       "type": "thump",
-      "at": 46.985,
-      "src": "a2_split.total"
+      "at": 17.163,
+      "src": "a2_wh"
     },
     {
       "type": "whoosh",
-      "at": 56.4,
-      "src": "a2_exit"
+      "at": 21.4,
+      "src": "a2_racks"
+    },
+    {
+      "type": "click",
+      "at": 21.7,
+      "src": "a2_racks_tag"
+    },
+    {
+      "type": "whoosh",
+      "at": 25.0,
+      "src": "a2_depal"
+    },
+    {
+      "type": "click",
+      "at": 25.313,
+      "src": "a2_depal_tag"
+    },
+    {
+      "type": "whoosh",
+      "at": 29.5,
+      "src": "a2_fly"
+    },
+    {
+      "type": "swoosh",
+      "at": 29.893,
+      "src": "a2_peso"
+    },
+    {
+      "type": "thump",
+      "at": 30.013,
+      "src": "a2_peso"
+    },
+    {
+      "type": "hiss",
+      "at": 30.8,
+      "dur": 2.4
     },
     {
       "type": "riser",
-      "at": 58.125,
+      "at": 37.5,
       "dur": 1.875
     },
     {
       "type": "impact",
-      "at": 60.0
+      "at": 39.375
     },
     {
       "type": "click",
-      "at": 60.7,
+      "at": 39.6,
       "src": "act3_title"
     },
     {
       "type": "whoosh",
-      "at": 65.0,
-      "src": "a3_flaker"
-    },
-    {
-      "type": "click",
-      "at": 67.315,
-      "src": "a3_chips"
-    },
-    {
-      "type": "click",
-      "at": 67.965,
-      "src": "a3_chips"
-    },
-    {
-      "type": "click",
-      "at": 69.565,
-      "src": "a3_chips"
-    },
-    {
-      "type": "click",
-      "at": 70.135,
-      "src": "a3_chips"
-    },
-    {
-      "type": "swoosh",
-      "at": 72.55499999999999,
-      "src": "a3_matrix"
-    },
-    {
-      "type": "click",
-      "at": 72.675,
-      "src": "a3_matrix"
-    },
-    {
-      "type": "click",
-      "at": 73.495,
-      "src": "a3_matrix"
-    },
-    {
-      "type": "click",
-      "at": 74.705,
-      "src": "a3_matrix"
-    },
-    {
-      "type": "click",
-      "at": 76.015,
-      "src": "a3_matrix"
-    },
-    {
-      "type": "click",
-      "at": 77.265,
-      "src": "a3_matrix"
-    },
-    {
-      "type": "click",
-      "at": 78.245,
-      "src": "a3_matrix"
-    },
-    {
-      "type": "click",
-      "at": 79.6,
-      "src": "a3_pellet_tag"
-    },
-    {
-      "type": "thump",
-      "at": 79.675,
-      "src": "a3_matrix.total"
+      "at": 39.6,
+      "src": "a3_fly"
     },
     {
       "type": "whoosh",
-      "at": 86.8,
-      "src": "a3_exit"
+      "at": 42.0,
+      "src": "a3_crane"
+    },
+    {
+      "type": "click",
+      "at": 42.168,
+      "src": "a3_bag_tag"
+    },
+    {
+      "type": "whoosh",
+      "at": 48.2,
+      "src": "a3_hero"
+    },
+    {
+      "type": "click",
+      "at": 49.61,
+      "src": "a3_reactor"
+    },
+    {
+      "type": "swoosh",
+      "at": 50.35,
+      "src": "a3_split"
+    },
+    {
+      "type": "click",
+      "at": 50.47,
+      "src": "a3_split"
+    },
+    {
+      "type": "click",
+      "at": 50.82,
+      "src": "a3_split"
+    },
+    {
+      "type": "click",
+      "at": 52.18,
+      "src": "a3_split"
+    },
+    {
+      "type": "click",
+      "at": 53.49,
+      "src": "a3_split"
+    },
+    {
+      "type": "thump",
+      "at": 54.2,
+      "src": "a3_split.total"
     },
     {
       "type": "riser",
-      "at": 88.125,
+      "at": 61.875,
       "dur": 1.875
     },
     {
       "type": "impact",
-      "at": 90.0
+      "at": 63.75
     },
     {
       "type": "click",
-      "at": 90.7,
+      "at": 64.0,
       "src": "act4_title"
     },
     {
-      "type": "hiss",
-      "at": 91.2,
-      "dur": 2.6
-    },
-    {
-      "type": "swoosh",
-      "at": 93.725,
-      "src": "a4_peso"
-    },
-    {
-      "type": "thump",
-      "at": 93.845,
-      "src": "a4_peso"
+      "type": "whoosh",
+      "at": 64.0,
+      "src": "a4_p2"
     },
     {
       "type": "whoosh",
-      "at": 99.5,
-      "src": "a4_fg"
+      "at": 66.8,
+      "src": "a4_flaker"
+    },
+    {
+      "type": "click",
+      "at": 66.859,
+      "src": "a4_chips"
+    },
+    {
+      "type": "click",
+      "at": 67.429,
+      "src": "a4_chips"
+    },
+    {
+      "type": "click",
+      "at": 68.449,
+      "src": "a4_chips"
+    },
+    {
+      "type": "click",
+      "at": 68.919,
+      "src": "a4_chips"
     },
     {
       "type": "swoosh",
-      "at": 100.005,
-      "src": "a4_fg"
+      "at": 70.211,
+      "src": "a4_matrix"
+    },
+    {
+      "type": "click",
+      "at": 70.331,
+      "src": "a4_matrix"
+    },
+    {
+      "type": "click",
+      "at": 70.681,
+      "src": "a4_matrix"
+    },
+    {
+      "type": "click",
+      "at": 71.601,
+      "src": "a4_matrix"
+    },
+    {
+      "type": "click",
+      "at": 72.761,
+      "src": "a4_matrix"
+    },
+    {
+      "type": "click",
+      "at": 73.841,
+      "src": "a4_matrix"
+    },
+    {
+      "type": "click",
+      "at": 74.6,
+      "src": "a4_pellet_tag"
+    },
+    {
+      "type": "click",
+      "at": 74.691,
+      "src": "a4_matrix"
     },
     {
       "type": "thump",
-      "at": 100.125,
-      "src": "a4_fg"
-    },
-    {
-      "type": "swoosh",
-      "at": 107.42999999999999,
-      "src": "a4_blend"
-    },
-    {
-      "type": "thump",
-      "at": 107.55,
-      "src": "a4_blend"
+      "at": 75.931,
+      "src": "a4_matrix.total"
     },
     {
       "type": "whoosh",
-      "at": 108.7,
-      "src": "a4_rise"
+      "at": 79.1,
+      "src": "a4_wide"
+    },
+    {
+      "type": "riser",
+      "at": 82.5,
+      "dur": 1.875
+    },
+    {
+      "type": "impact",
+      "at": 84.375
+    },
+    {
+      "type": "whoosh",
+      "at": 84.5,
+      "src": "a5_qa"
+    },
+    {
+      "type": "click",
+      "at": 84.6,
+      "src": "act5_title"
+    },
+    {
+      "type": "click",
+      "at": 87.208,
+      "src": "a5_labs"
+    },
+    {
+      "type": "click",
+      "at": 88.678,
+      "src": "a5_labs"
+    },
+    {
+      "type": "click",
+      "at": 90.058,
+      "src": "a5_labs"
+    },
+    {
+      "type": "click",
+      "at": 97.335,
+      "src": "a5_labs"
+    },
+    {
+      "type": "riser",
+      "at": 99.375,
+      "dur": 1.875
+    },
+    {
+      "type": "impact",
+      "at": 101.25
+    },
+    {
+      "type": "click",
+      "at": 101.5,
+      "src": "act6_title"
+    },
+    {
+      "type": "whoosh",
+      "at": 101.6,
+      "src": "a6_blend"
+    },
+    {
+      "type": "swoosh",
+      "at": 104.01299999999999,
+      "src": "a6_blend"
+    },
+    {
+      "type": "thump",
+      "at": 104.133,
+      "src": "a6_blend"
+    },
+    {
+      "type": "swoosh",
+      "at": 108.063,
+      "src": "a6_fg"
+    },
+    {
+      "type": "thump",
+      "at": 108.183,
+      "src": "a6_fg"
+    },
+    {
+      "type": "whoosh",
+      "at": 108.5,
+      "src": "a6_rise"
+    },
+    {
+      "type": "click",
+      "at": 111.278,
+      "src": "a6_totals"
+    },
+    {
+      "type": "click",
+      "at": 112.208,
+      "src": "a6_totals"
+    },
+    {
+      "type": "click",
+      "at": 114.628,
+      "src": "a6_totals"
+    },
+    {
+      "type": "click",
+      "at": 114.978,
+      "src": "a6_totals"
+    },
+    {
+      "type": "thump",
+      "at": 116.058,
+      "src": "a6_totals.total"
+    },
+    {
+      "type": "whoosh",
+      "at": 116.1,
+      "src": "a6_total"
     },
     {
       "type": "riser",
@@ -3432,48 +4367,83 @@
       "dur": 1.875
     },
     {
-      "type": "whoosh",
-      "at": 118.6,
-      "src": "a4_exit"
-    },
-    {
       "type": "impact",
-      "at": 120.0
+      "at": 120
     },
     {
       "type": "click",
-      "at": 120.7,
-      "src": "act5_title"
+      "at": 120.3,
+      "src": "act7_title"
+    },
+    {
+      "type": "whoosh",
+      "at": 120.3,
+      "src": "a7_boiler"
     },
     {
       "type": "steam",
-      "at": 123.4,
-      "dur": 2.2
+      "at": 121.5,
+      "dur": 2.0
     },
     {
       "type": "click",
-      "at": 123.965,
-      "src": "a5_badges"
+      "at": 121.843,
+      "src": "a7_badges"
     },
     {
       "type": "click",
-      "at": 125.635,
-      "src": "a5_badges"
+      "at": 124.183,
+      "src": "a7_badges"
     },
     {
       "type": "click",
-      "at": 128.365,
-      "src": "a5_badges"
+      "at": 125.383,
+      "src": "a7_badges"
     },
     {
       "type": "whoosh",
-      "at": 132.3,
-      "src": "a5_util"
+      "at": 126.0,
+      "src": "a7_shed"
     },
     {
       "type": "click",
-      "at": 135.555,
-      "src": "a5_badges"
+      "at": 126.8,
+      "src": "a7_shed_tag"
+    },
+    {
+      "type": "click",
+      "at": 130.408,
+      "src": "a7_badges"
+    },
+    {
+      "type": "whoosh",
+      "at": 131.0,
+      "src": "a7_etp"
+    },
+    {
+      "type": "click",
+      "at": 131.158,
+      "src": "a7_badges"
+    },
+    {
+      "type": "click",
+      "at": 131.6,
+      "src": "a7_etp_tag"
+    },
+    {
+      "type": "click",
+      "at": 133.808,
+      "src": "a7_badges"
+    },
+    {
+      "type": "whoosh",
+      "at": 135.7,
+      "src": "a7_solar"
+    },
+    {
+      "type": "click",
+      "at": 137.6,
+      "src": "a7_solar"
     },
     {
       "type": "riser",
@@ -3482,56 +4452,56 @@
     },
     {
       "type": "impact",
-      "at": 150.0
+      "at": 150
     },
     {
       "type": "whoosh",
       "at": 150.2,
-      "src": "a6_overview"
+      "src": "a8_overview"
     },
     {
       "type": "click",
-      "at": 150.7,
-      "src": "act6_title"
+      "at": 150.3,
+      "src": "act8_title"
     },
     {
       "type": "swoosh",
-      "at": 152.315,
-      "src": "a6_cards"
+      "at": 150.932,
+      "src": "a8_cards"
     },
     {
       "type": "click",
-      "at": 152.435,
-      "src": "a6_cards"
+      "at": 151.052,
+      "src": "a8_cards"
     },
     {
       "type": "click",
-      "at": 153.215,
-      "src": "a6_cards"
+      "at": 151.882,
+      "src": "a8_cards"
     },
     {
       "type": "click",
-      "at": 154.985,
-      "src": "a6_cards"
+      "at": 153.352,
+      "src": "a8_cards"
     },
     {
       "type": "click",
-      "at": 162.4,
-      "src": "a6_ribbon"
+      "at": 158.48,
+      "src": "a8_ribbon"
     },
     {
       "type": "swoosh",
-      "at": 169.07999999999998,
-      "src": "a6_contact"
+      "at": 167.07999999999998,
+      "src": "a8_contact"
     },
     {
       "type": "thump",
-      "at": 169.2,
-      "src": "a6_contact"
+      "at": 167.2,
+      "src": "a8_contact"
     }
   ],
   "music": {
-    "$comment": "Procedural score at 128 BPM, 4/4. Bars are 1.875 s; each act is 16 bars. Progression is two bars per chord.",
+    "$comment": "Procedural score at 128 BPM, 4/4. Bars are 1.875 s; sections follow the eight acts. Progression is two bars per chord.",
     "key": "D major",
     "progression": [
       "Bm",
@@ -3551,12 +4521,12 @@
           "sub",
           "shimmer"
         ],
-        "energy": 0.3
+        "energy": 0.32
       },
       {
         "bars": [
           2,
-          8
+          5
         ],
         "name": "aerial",
         "layers": [
@@ -3565,12 +4535,12 @@
           "arp_filtered",
           "kick_soft"
         ],
-        "energy": 0.45
+        "energy": 0.5
       },
       {
         "bars": [
-          8,
-          16
+          5,
+          8
         ],
         "name": "stats",
         "layers": [
@@ -3580,14 +4550,14 @@
           "kick",
           "hats"
         ],
-        "energy": 0.6
+        "energy": 0.64
       },
       {
         "bars": [
-          16,
-          32
+          8,
+          21
         ],
-        "name": "plant1",
+        "name": "storage",
         "layers": [
           "pad",
           "bass",
@@ -3596,12 +4566,29 @@
           "clap",
           "hats"
         ],
-        "energy": 0.72
+        "energy": 0.74
       },
       {
         "bars": [
-          32,
-          48
+          21,
+          34
+        ],
+        "name": "plant1",
+        "layers": [
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "clap",
+          "hats",
+          "lead"
+        ],
+        "energy": 0.8
+      },
+      {
+        "bars": [
+          34,
+          45
         ],
         "name": "plant2",
         "layers": [
@@ -3613,27 +4600,30 @@
           "hats",
           "lead"
         ],
-        "energy": 0.78
+        "energy": 0.82
       },
       {
         "bars": [
-          48,
-          52
+          45,
+          54
         ],
-        "name": "underground",
+        "name": "labs",
         "layers": [
-          "pad_dark",
-          "sub",
-          "arp_filtered"
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "hats",
+          "shimmer"
         ],
-        "energy": 0.4
+        "energy": 0.72
       },
       {
         "bars": [
-          52,
+          54,
           64
         ],
-        "name": "tankfarm",
+        "name": "blending",
         "layers": [
           "pad",
           "bass",
@@ -3642,7 +4632,7 @@
           "clap",
           "hats"
         ],
-        "energy": 0.72
+        "energy": 0.78
       },
       {
         "bars": [
@@ -3659,7 +4649,7 @@
           "hats",
           "shimmer"
         ],
-        "energy": 0.82
+        "energy": 0.84
       },
       {
         "bars": [
@@ -3697,291 +4687,419 @@
   "anchors": [
     {
       "ctx": "a1_sites.in",
-      "line": "a1_l3",
+      "line": "a1_l2",
       "word": "Two",
-      "wordStart": 15.0,
+      "wordStart": 7.031,
       "offset": -0.12,
-      "cue": 14.88
+      "cue": 6.911
     },
     {
       "ctx": "a1_reactors.in",
-      "line": "a1_l3",
+      "line": "a1_l2",
       "word": "22",
-      "wordStart": 17.82,
+      "wordStart": 7.821,
       "offset": -0.12,
-      "cue": 17.7
+      "cue": 7.701
     },
     {
       "ctx": "a1_capacity.in",
-      "line": "a1_l3",
+      "line": "a1_l2",
       "word": "6,900",
-      "wordStart": 19.83,
+      "wordStart": 9.371,
       "offset": -0.12,
-      "cue": 19.71
+      "cue": 9.251
     },
     {
-      "ctx": "a2_reactor.in",
+      "ctx": "a2_wh.in",
       "line": "a2_l1",
-      "word": "16 KL",
-      "wordStart": 36.045,
+      "word": "warehouses",
+      "wordStart": 17.263,
       "offset": -0.1,
-      "cue": 35.945
+      "cue": 17.163
     },
     {
-      "ctx": "a2_ladder.in",
-      "line": "a2_l1",
-      "word": "2 KL",
-      "wordStart": 40.015,
-      "offset": -0.1,
-      "cue": 39.915
-    },
-    {
-      "ctx": "a2_split.in",
+      "ctx": "a2_depal_tag.in",
       "line": "a2_l2",
-      "word": "Saturated",
-      "wordStart": 43.125,
-      "offset": -0.45,
-      "cue": 42.675
+      "word": "depalletiser",
+      "wordStart": 25.413,
+      "offset": -0.1,
+      "cue": 25.313
     },
     {
-      "ctx": "a2_split.total",
+      "ctx": "a2_peso.in",
       "line": "a2_l2",
-      "word": "4,373",
-      "wordStart": 47.105,
-      "offset": -0.12,
-      "cue": 46.985
-    },
-    {
-      "ctx": "a2_split.rows[0]",
-      "line": "a2_l2",
-      "word": "Saturated",
-      "wordStart": 43.125,
-      "offset": -0.1,
-      "cue": 43.025
-    },
-    {
-      "ctx": "a2_split.rows[1]",
-      "line": "a2_l2",
-      "word": "alkyds",
-      "wordStart": 44.765,
-      "offset": -0.1,
-      "cue": 44.665
-    },
-    {
-      "ctx": "a2_split.rows[2]",
-      "line": "a2_l2",
-      "word": "epoxy",
-      "wordStart": 46.235,
-      "offset": -0.1,
-      "cue": 46.135
-    },
-    {
-      "ctx": "a3_chips.in",
-      "line": "a3_l1",
-      "word": "flakers",
-      "wordStart": 67.465,
-      "offset": -0.15,
-      "cue": 67.315
-    },
-    {
-      "ctx": "a3_chips.items[0]",
-      "line": "a3_l1",
-      "word": "flakers",
-      "wordStart": 67.465,
-      "offset": -0.12,
-      "cue": 67.345
-    },
-    {
-      "ctx": "a3_chips.items[1]",
-      "line": "a3_l1",
-      "word": "pelletisers",
-      "wordStart": 68.085,
-      "offset": -0.12,
-      "cue": 67.965
-    },
-    {
-      "ctx": "a3_chips.items[2]",
-      "line": "a3_l1",
-      "word": "crushers",
-      "wordStart": 69.685,
-      "offset": -0.12,
-      "cue": 69.565
-    },
-    {
-      "ctx": "a3_chips.items[3]",
-      "line": "a3_l1",
-      "word": "crushers",
-      "wordStart": 69.685,
-      "offset": 0.45,
-      "cue": 70.135
-    },
-    {
-      "ctx": "a3_matrix.in",
-      "line": "a3_l2",
-      "word": "Reactive",
-      "wordStart": 73.125,
-      "offset": -0.45,
-      "cue": 72.675
-    },
-    {
-      "ctx": "a3_matrix.total",
-      "line": "a3_l2",
-      "word": "2,530",
-      "wordStart": 79.795,
-      "offset": -0.12,
-      "cue": 79.675
-    },
-    {
-      "ctx": "a3_matrix.rows[0]",
-      "line": "a3_l2",
-      "word": "polyamide",
-      "wordStart": 73.695,
-      "offset": -0.2,
-      "cue": 73.495
-    },
-    {
-      "ctx": "a3_matrix.rows[1]",
-      "line": "a3_l2",
-      "word": "powder",
-      "wordStart": 74.805,
-      "offset": -0.1,
-      "cue": 74.705
-    },
-    {
-      "ctx": "a3_matrix.rows[2]",
-      "line": "a3_l2",
-      "word": "acrylic",
-      "wordStart": 76.115,
-      "offset": -0.1,
-      "cue": 76.015
-    },
-    {
-      "ctx": "a3_matrix.rows[3]",
-      "line": "a3_l2",
-      "word": "phenolics",
-      "wordStart": 77.365,
-      "offset": -0.1,
-      "cue": 77.265
-    },
-    {
-      "ctx": "a3_matrix.rows[4]",
-      "line": "a3_l2",
-      "word": "R&D",
-      "wordStart": 78.345,
-      "offset": -0.1,
-      "cue": 78.245
-    },
-    {
-      "ctx": "a4_peso.in",
-      "line": "a4_l1",
       "word": "600 KL",
-      "wordStart": 93.965,
+      "wordStart": 30.133,
       "offset": -0.12,
-      "cue": 93.845
+      "cue": 30.013
     },
     {
-      "ctx": "a4_fg.in",
-      "line": "a4_l1",
-      "word": "finished-goods",
-      "wordStart": 100.225,
+      "ctx": "a3_bag_tag.in",
+      "line": "a3_l1",
+      "word": "jumbo",
+      "wordStart": 42.268,
       "offset": -0.1,
-      "cue": 100.125
+      "cue": 42.168
     },
     {
-      "ctx": "a4_blend.in",
-      "line": "a4_l2",
-      "word": "blending",
-      "wordStart": 107.67,
+      "ctx": "a3_reactor.in",
+      "line": "a3_l2",
+      "word": "16 KL",
+      "wordStart": 49.71,
+      "offset": -0.1,
+      "cue": 49.61
+    },
+    {
+      "ctx": "a3_split.in",
+      "line": "a3_l2",
+      "word": "saturated",
+      "wordStart": 50.92,
+      "offset": -0.45,
+      "cue": 50.47
+    },
+    {
+      "ctx": "a3_split.total",
+      "line": "a3_l2",
+      "word": "4,373",
+      "wordStart": 54.32,
       "offset": -0.12,
-      "cue": 107.55
+      "cue": 54.2
     },
     {
-      "ctx": "a5_badges.in",
-      "line": "a5_l1",
-      "word": "agro-waste",
-      "wordStart": 124.165,
-      "offset": -0.2,
-      "cue": 123.965
+      "ctx": "a3_split.rows[0]",
+      "line": "a3_l2",
+      "word": "saturated",
+      "wordStart": 50.92,
+      "offset": -0.1,
+      "cue": 50.82
     },
     {
-      "ctx": "a5_badges.items[0]",
-      "line": "a5_l1",
-      "word": "agro-waste",
-      "wordStart": 124.165,
-      "offset": -0.12,
-      "cue": 124.045
+      "ctx": "a3_split.rows[1]",
+      "line": "a3_l2",
+      "word": "alkyds",
+      "wordStart": 52.28,
+      "offset": -0.1,
+      "cue": 52.18
     },
     {
-      "ctx": "a5_badges.items[1]",
-      "line": "a5_l1",
-      "word": "nitrogen",
-      "wordStart": 125.755,
-      "offset": -0.12,
-      "cue": 125.635
+      "ctx": "a3_split.rows[2]",
+      "line": "a3_l2",
+      "word": "epoxy",
+      "wordStart": 53.59,
+      "offset": -0.1,
+      "cue": 53.49
     },
     {
-      "ctx": "a5_badges.items[2]",
-      "line": "a5_l1",
-      "word": "ETP",
-      "wordStart": 128.485,
-      "offset": -0.12,
-      "cue": 128.365
-    },
-    {
-      "ctx": "a5_badges.items[3]",
-      "line": "a5_l2",
-      "word": "2,200 TR",
-      "wordStart": 135.675,
-      "offset": -0.12,
-      "cue": 135.555
-    },
-    {
-      "ctx": "a5_heater_tag.in",
-      "line": "a5_l1",
-      "word": "thermic",
-      "wordStart": 124.835,
-      "offset": 0.0,
-      "cue": 124.835
-    },
-    {
-      "ctx": "a6_cards.in",
-      "line": "a6_l1",
-      "word": "toll",
-      "wordStart": 152.555,
-      "offset": -0.12,
-      "cue": 152.435
-    },
-    {
-      "ctx": "a6_cards.items[0]",
-      "line": "a6_l1",
-      "word": "toll",
-      "wordStart": 152.555,
-      "offset": -0.12,
-      "cue": 152.435
-    },
-    {
-      "ctx": "a6_cards.items[1]",
-      "line": "a6_l1",
-      "word": "full-service",
-      "wordStart": 153.335,
-      "offset": -0.12,
-      "cue": 153.215
-    },
-    {
-      "ctx": "a6_cards.items[2]",
-      "line": "a6_l1",
-      "word": "dedicated",
-      "wordStart": 155.105,
-      "offset": -0.12,
-      "cue": 154.985
-    },
-    {
-      "ctx": "a6_ribbon.in",
-      "line": "a6_l2",
-      "word": "NDA",
-      "wordStart": 162.55,
+      "ctx": "a4_chips.in",
+      "line": "a4_l1",
+      "word": "flakers",
+      "wordStart": 67.009,
       "offset": -0.15,
-      "cue": 162.4
+      "cue": 66.859
+    },
+    {
+      "ctx": "a4_chips.items[0]",
+      "line": "a4_l1",
+      "word": "flakers",
+      "wordStart": 67.009,
+      "offset": -0.12,
+      "cue": 66.889
+    },
+    {
+      "ctx": "a4_chips.items[1]",
+      "line": "a4_l1",
+      "word": "pelletisers",
+      "wordStart": 67.549,
+      "offset": -0.12,
+      "cue": 67.429
+    },
+    {
+      "ctx": "a4_chips.items[2]",
+      "line": "a4_l1",
+      "word": "crushers",
+      "wordStart": 68.569,
+      "offset": -0.12,
+      "cue": 68.449
+    },
+    {
+      "ctx": "a4_chips.items[3]",
+      "line": "a4_l1",
+      "word": "crushers",
+      "wordStart": 68.569,
+      "offset": 0.35,
+      "cue": 68.919
+    },
+    {
+      "ctx": "a4_matrix.in",
+      "line": "a4_l2",
+      "word": "Polyamide",
+      "wordStart": 70.781,
+      "offset": -0.45,
+      "cue": 70.331
+    },
+    {
+      "ctx": "a4_matrix.total",
+      "line": "a4_l2",
+      "word": "2,530",
+      "wordStart": 76.051,
+      "offset": -0.12,
+      "cue": 75.931
+    },
+    {
+      "ctx": "a4_matrix.rows[0]",
+      "line": "a4_l2",
+      "word": "Polyamide",
+      "wordStart": 70.781,
+      "offset": -0.1,
+      "cue": 70.681
+    },
+    {
+      "ctx": "a4_matrix.rows[1]",
+      "line": "a4_l2",
+      "word": "powder",
+      "wordStart": 71.701,
+      "offset": -0.1,
+      "cue": 71.601
+    },
+    {
+      "ctx": "a4_matrix.rows[2]",
+      "line": "a4_l2",
+      "word": "acrylic",
+      "wordStart": 72.861,
+      "offset": -0.1,
+      "cue": 72.761
+    },
+    {
+      "ctx": "a4_matrix.rows[3]",
+      "line": "a4_l2",
+      "word": "phenolics",
+      "wordStart": 73.941,
+      "offset": -0.1,
+      "cue": 73.841
+    },
+    {
+      "ctx": "a4_matrix.rows[4]",
+      "line": "a4_l2",
+      "word": "R&D",
+      "wordStart": 74.791,
+      "offset": -0.1,
+      "cue": 74.691
+    },
+    {
+      "ctx": "a5_labs.in",
+      "line": "a5_l1",
+      "word": "QC",
+      "wordStart": 87.358,
+      "offset": -0.15,
+      "cue": 87.208
+    },
+    {
+      "ctx": "a5_labs.items[0]",
+      "line": "a5_l1",
+      "word": "QC",
+      "wordStart": 87.358,
+      "offset": -0.12,
+      "cue": 87.238
+    },
+    {
+      "ctx": "a5_labs.items[1]",
+      "line": "a5_l1",
+      "word": "application",
+      "wordStart": 88.798,
+      "offset": -0.12,
+      "cue": 88.678
+    },
+    {
+      "ctx": "a5_labs.items[2]",
+      "line": "a5_l1",
+      "word": "coatings",
+      "wordStart": 90.178,
+      "offset": -0.12,
+      "cue": 90.058
+    },
+    {
+      "ctx": "a5_labs.items[3]",
+      "line": "a5_l2",
+      "word": "control",
+      "wordStart": 97.455,
+      "offset": -0.12,
+      "cue": 97.335
+    },
+    {
+      "ctx": "a5_app_tag.in",
+      "line": "a5_l1",
+      "word": "application",
+      "wordStart": 88.798,
+      "offset": -0.1,
+      "cue": 88.698
+    },
+    {
+      "ctx": "a5_wet_tag.in",
+      "line": "a5_l1",
+      "word": "QC",
+      "wordStart": 87.358,
+      "offset": 0.2,
+      "cue": 87.558
+    },
+    {
+      "ctx": "a6_blend.in",
+      "line": "a6_l1",
+      "word": "blending",
+      "wordStart": 104.253,
+      "offset": -0.12,
+      "cue": 104.133
+    },
+    {
+      "ctx": "a6_fg.in",
+      "line": "a6_l1",
+      "word": "finished",
+      "wordStart": 108.283,
+      "offset": -0.1,
+      "cue": 108.183
+    },
+    {
+      "ctx": "a6_totals.in",
+      "line": "a6_l2",
+      "word": "total",
+      "wordStart": 111.478,
+      "offset": -0.2,
+      "cue": 111.278
+    },
+    {
+      "ctx": "a6_totals.rows[0]",
+      "line": "a6_l2",
+      "word": "1,500",
+      "wordStart": 112.308,
+      "offset": -0.1,
+      "cue": 112.208
+    },
+    {
+      "ctx": "a6_totals.rows[1]",
+      "line": "a6_l2",
+      "word": "1,600 KL",
+      "wordStart": 114.728,
+      "offset": -0.1,
+      "cue": 114.628
+    },
+    {
+      "ctx": "a6_totals.rows[2]",
+      "line": "a6_l2",
+      "word": "1,600 KL",
+      "wordStart": 114.728,
+      "offset": 0.25,
+      "cue": 114.978
+    },
+    {
+      "ctx": "a6_totals.total",
+      "line": "a6_l2",
+      "word": "bulk",
+      "wordStart": 116.158,
+      "offset": -0.1,
+      "cue": 116.058
+    },
+    {
+      "ctx": "a7_badges.in",
+      "line": "a7_l1",
+      "word": "agro-waste",
+      "wordStart": 122.043,
+      "offset": -0.2,
+      "cue": 121.843
+    },
+    {
+      "ctx": "a7_badges.items[0]",
+      "line": "a7_l1",
+      "word": "agro-waste",
+      "wordStart": 122.043,
+      "offset": -0.12,
+      "cue": 121.923
+    },
+    {
+      "ctx": "a7_badges.items[1]",
+      "line": "a7_l1",
+      "word": "covered",
+      "wordStart": 124.303,
+      "offset": -0.12,
+      "cue": 124.183
+    },
+    {
+      "ctx": "a7_badges.items[2]",
+      "line": "a7_l1",
+      "word": "2,200 TR",
+      "wordStart": 125.503,
+      "offset": -0.12,
+      "cue": 125.383
+    },
+    {
+      "ctx": "a7_badges.items[3]",
+      "line": "a7_l2",
+      "word": "nitrogen",
+      "wordStart": 130.528,
+      "offset": -0.12,
+      "cue": 130.408
+    },
+    {
+      "ctx": "a7_badges.items[4]",
+      "line": "a7_l2",
+      "word": "50 KLD",
+      "wordStart": 131.278,
+      "offset": -0.12,
+      "cue": 131.158
+    },
+    {
+      "ctx": "a7_badges.items[5]",
+      "line": "a7_l2",
+      "word": "0.7 MW",
+      "wordStart": 133.928,
+      "offset": -0.12,
+      "cue": 133.808
+    },
+    {
+      "ctx": "a7_heater_tag.in",
+      "line": "a7_l1",
+      "word": "thermic",
+      "wordStart": 123.043,
+      "offset": 0.0,
+      "cue": 123.043
+    },
+    {
+      "ctx": "a8_cards.in",
+      "line": "a8_l1",
+      "word": "Toll",
+      "wordStart": 151.172,
+      "offset": -0.12,
+      "cue": 151.052
+    },
+    {
+      "ctx": "a8_cards.items[0]",
+      "line": "a8_l1",
+      "word": "Toll",
+      "wordStart": 151.172,
+      "offset": -0.12,
+      "cue": 151.052
+    },
+    {
+      "ctx": "a8_cards.items[1]",
+      "line": "a8_l1",
+      "word": "full-service",
+      "wordStart": 152.002,
+      "offset": -0.12,
+      "cue": 151.882
+    },
+    {
+      "ctx": "a8_cards.items[2]",
+      "line": "a8_l1",
+      "word": "dedicated",
+      "wordStart": 153.472,
+      "offset": -0.12,
+      "cue": 153.352
+    },
+    {
+      "ctx": "a8_ribbon.in",
+      "line": "a8_l2",
+      "word": "NDA",
+      "wordStart": 158.63,
+      "offset": -0.15,
+      "cue": 158.48
     }
   ]
 }
