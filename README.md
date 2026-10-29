@@ -9,7 +9,7 @@ with a Canvas 2D HUD on top, rendered frame-by-frame in headless Chromium and mu
 
 | Output | |
 |---|---|
-| `out/mpd_ujain_3min_3d2d_showcase.mp4` | narrated master (H.264 + AAC, −14 LUFS) |
+| `out/mpd_ujain_3min_3d2d_showcase.mp4` | narrated master (H.264 CRF 23 + AAC, −14 LUFS; kept under GitHub's 100 MB limit — `CRF=20 scripts/encode.sh` for a higher-quality local copy) |
 | `out/mpd_ujain_3min_3d2d_showcase_music_only.mp4` | same picture, score + SFX only (built locally, not committed) |
 | `out/validation_report.md` | automated contrast / legibility / safe-area / sync / loudness report |
 | `out/contact_sheet_*.jpg` | stills across the film |

@@ -8,7 +8,8 @@ mkdir -p out
 FPS=30
 MAIN=out/mpd_ujain_3min_3d2d_showcase.mp4
 ALT=out/mpd_ujain_3min_3d2d_showcase_music_only.mp4
-CRF=${CRF:-20}
+# CRF 23 keeps the 3-minute 1080p master under GitHub's 100 MB file limit; CRF=20 for a higher-quality local copy
+CRF=${CRF:-23}
 
 ffmpeg -hide_banner -loglevel warning -stats -y \
   -framerate "$FPS" -i build/frames/f_%05d.jpg \
