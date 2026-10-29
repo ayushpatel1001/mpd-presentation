@@ -8,6 +8,8 @@ build/audio/
 build/frames/
 # validation captures + report, rebuilt by scripts/validate.mjs
 build/validation/
+# render / validation logs
+build/logs/
 
 # Scratch
 *.tmp
