@@ -1,0 +1,108 @@
+{
+  "$comment": "Design tokens for the MPD Ujjain 3D/2D showcase. Every HUD colour, size and motion constant is read from here by src/hud and checked by scripts/validate.mjs.",
+  "canvas": { "width": 1920, "height": 1080, "fps": 30, "durationSec": 180 },
+  "safeArea": {
+    "$comment": "10% outer padding on every edge. All 2D text must sit inside this box.",
+    "padding": 0.10,
+    "x0": 192, "y0": 108, "x1": 1728, "y1": 972
+  },
+  "color": {
+    "brand": {
+      "mpdDeepBlue": "#00529B",
+      "greenfieldCyan": "#00A3E0",
+      "ecoGreen": "#2E7D32",
+      "steel": "#94A3B8",
+      "solarYellow": "#F59E0B"
+    },
+    "scene": {
+      "skyTop": "#040B16",
+      "skyHorizon": "#0B2A44",
+      "fog": "#071A2C",
+      "ground": "#0A1522",
+      "groundGrid": "#123A5C",
+      "sitePad": "#1A2A3D",
+      "road": "#0E1826",
+      "roadMarking": "#F59E0B",
+      "buildingWall": "#D9E2EC",
+      "buildingRoof": "#00529B",
+      "plant2Roof": "#2E7D32",
+      "tankShell": "#C3CED9",
+      "steel": "#94A3B8",
+      "tree": "#2E7D32",
+      "blueprint": "#38BDF8"
+    },
+    "flow": {
+      "thermicOil": "#F59E0B",
+      "coolingWater": "#00A3E0",
+      "nitrogen": "#A5D8FF",
+      "effluent": "#4ADE80",
+      "resin": "#FBBF24",
+      "solvent": "#22D3EE"
+    },
+    "hud": {
+      "panel": "#07182B",
+      "panelAlpha": 0.9,
+      "panelStroke": "#00A3E0",
+      "textPrimary": "#FFFFFF",
+      "textSecondary": "#C7D5E4",
+      "textMuted": "#9FB3C8",
+      "accentNumber": "#38BDF8",
+      "activeCallout": "#F59E0B",
+      "onAccentText": "#0A1626",
+      "plant1": "#00529B",
+      "plant1Text": "#5CB8FF",
+      "plant2": "#2E7D32",
+      "plant2Text": "#6EE7A0",
+      "ecoBadge": "#2E7D32",
+      "card": "#FFFFFF",
+      "cardText": "#0B2545",
+      "captionBg": "#050E1A",
+      "captionBgAlpha": 0.78,
+      "captionText": "#E6EEF7",
+      "captionActive": "#F59E0B"
+    }
+  },
+  "type": {
+    "display": "Montserrat",
+    "body": "Inter",
+    "mono": "JetBrains Mono",
+    "$sizes": "px at 1080p; the validator fails any text below type.minSizePx",
+    "minSizePx": 24,
+    "size": {
+      "hero": 132,
+      "counter": 112,
+      "h1": 56,
+      "h2": 40,
+      "h3": 32,
+      "body": 28,
+      "label": 24,
+      "caption": 34
+    },
+    "tracking": { "eyebrow": 0.18, "label": 0.08 }
+  },
+  "shape": {
+    "radius": 14,
+    "badgeRadius": 10,
+    "strokeWidth": 2,
+    "leaderWidth": 2,
+    "anchorDot": 7
+  },
+  "motion": {
+    "popInSec": 0.45,
+    "popOutSec": 0.35,
+    "staggerSec": 0.12,
+    "counterSec": 1.6,
+    "easeIn": "outBack",
+    "easeOut": "inCubic"
+  },
+  "validation": {
+    "minContrastBody": 4.5,
+    "minContrastLarge": 3.0,
+    "largeTextPx": 36,
+    "readingWordsPerSec": 3.2,
+    "readingPadSec": 0.6,
+    "maxSyncErrorSec": 0.034,
+    "targetLufs": -14.0,
+    "maxTruePeakDb": -1.0
+  }
+}

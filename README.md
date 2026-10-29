@@ -1,0 +1,78 @@
+# MPD Industries – Ujjain Plant · 3-minute 3D/2D showcase
+
+> “From 2 KL pilot trials to 82,800 tons/year commercial output — MPD Industries' greenfield Ujjain
+> plant is a high-capacity, technology-driven manufacturing partner for global chemical brands.”
+
+A 180-second, 1920×1080 / 30 fps hybrid motion-graphics film for B2B jobwork partners, built entirely
+in code: a Three.js model of the Ujjain site (laid out from site-plan drawing PP-A-DR-SP-001-2525 R2)
+with a Canvas 2D HUD on top, rendered frame-by-frame in headless Chromium and muxed with FFmpeg.
+
+| Output | |
+|---|---|
+| `out/mpd_ujain_3min_3d2d_showcase.mp4` | narrated master (H.264 + AAC, −14 LUFS) |
+| `out/mpd_ujain_3min_3d2d_showcase_music_only.mp4` | same picture, score + SFX only (built locally, not committed) |
+| `out/validation_report.md` | automated contrast / legibility / safe-area / sync / loudness report |
+| `out/contact_sheet_*.jpg` | stills across the film |
+
+## Structure of the film (beat grid)
+
+128 BPM, so every 30-second act is exactly 16 bars. Camera moves and act changes land on bar lines;
+HUD pops land on the narrated word they illustrate (resolved from word timestamps).
+
+| Act | Time | 3D | 2D |
+|---|---|---|---|
+| 1 Hook & site flythrough | 0:00–0:30 | blueprint of the real site plan → plant rises out of it, aerial descent and orbit | logo resolve, counters 22 reactors / ~6,900 T/month, zone callouts |
+| 2 Plant 1 – liquid resins | 0:30–1:00 | building cuts away; wedge-cut 16 KL reactor with rising charge, agitator, thermic jacket, reflux condenser | reactor callout, 2→16 KL scale-up ladder, 4,373 T/month split |
+| 3 Plant 2 – solid & specialty | 1:00–1:30 | double-belt flaker (hot sheet cooling to flakes), pelletiser with pastilles, crusher, tray casting | finishing chips, 2,530 T/month capability matrix |
+| 4 Tank farms & blending | 1:30–2:00 | ground turns x-ray over 12 × 50 KL PESO tanks; FG farm with grade colours; blenders; resin transfer lines | 600 KL / ~1,045 KL / 380 KL capacity HUDs |
+| 5 Utilities & EHS | 2:00–2:30 | agro-waste thermic heaters, stacks, cooling tower fans; thermic oil, cooling water, N₂ and effluent flows light up | green EHS badges |
+| 6 Partnerships & CTA | 2:30–3:00 | clean isometric orbit, depth-of-field backdrop | toll conversion / full-service jobwork / dedicated capacity cards, contact card |
+
+## Pipeline
+
+```
+data/beat_grid.json ─┐                                     ┌─ src/ (Three.js scene + Canvas HUD)
+data/style_tokens.json┤                                    │        │ window.renderFrame(t)
+                      ├─ scripts/narration.py  → build/vo/*.wav, data/narration_layout.json
+                      ├─ scripts/align.py      → data/whisper_timestamps.json
+                      ├─ scripts/resolve_timeline.py → data/timeline.resolved.json ─┤
+                      ├─ scripts/audio.py      → build/audio/mix_*.wav             │
+                      ├─ scripts/validate.mjs + validate_analyze.py → report      ─┤
+                      └─ scripts/render_frames.mjs → build/frames → scripts/encode.sh → out/*.mp4
+```
+
+Run everything with `scripts/build.sh` (needs Node 22, Python 3 with numpy/scipy/Pillow/pocketsphinx,
+FFmpeg, Playwright's Chromium, and the `rhvoice rhvoice-english` apt packages).
+`node scripts/preview_stills.mjs 12 40 95` renders individual frames to `build/preview/` for quick looks.
+
+* **Deterministic rendering.** Every animation (camera, liquid level, flakes, pellets, plumes, flow
+  pulses) is a pure function of `t`, so frames can be rendered in any order or in parallel.
+* **Renderer.** Headless Chromium + SwiftShader WebGL. The 3D layer renders at 1600×900 into an HDR
+  target with depth, then quarter-res bloom, a depth-of-field gather, ACES tone mapping and FXAA
+  upscale to 1080p; the HUD is a native-resolution 2D canvas on top. Lambert/Phong shading keeps it
+  around one second per frame on CPU.
+* **Audio.** The score (pads, pulsing bass, arpeggio, drums, bell lead), UI clicks, pneumatic
+  whooshes, risers/impacts and sub-bass thumps are synthesized in numpy from the same resolved
+  timeline the renderer uses. Music ducks under the voice and both mixes are loudness-normalized.
+
+## Narration and timestamps
+
+Hugging Face and the Whisper model host are not reachable from the build environment, so:
+
+* **Voice** is RHVoice (`bdl`, offline, apt), driven by phonetic respellings in the beat grid
+  (`{Ujjain|oo jane}`, `{MPD|M P D}`, numbers written out) while captions show the real text.
+  It is intelligible but clearly synthetic. To use a professional voice-over, drop one WAV per line
+  into `build/vo_override/<line id>.wav` (ids in `data/beat_grid.json`) and re-run `scripts/build.sh`;
+  timing, captions, HUD cues and SFX all re-derive from the new recording.
+* **`data/whisper_timestamps.json`** uses Whisper's word-timestamp schema but is produced by
+  PocketSphinx forced alignment against the known script (word posteriors 0.85–0.99), which is
+  more exact than free ASR for a fixed script.
+
+## Content notes
+
+All figures come from the capabilities deck (slides 1–16). Two wording choices to review:
+
+* Act 2 narration says Plant 1 is "driven by 16 KL commercial powerhouses, on a site that scales
+  from 2 KL pilot trials". The 2 KL R&D reactor sits in Plant 2 (Plant 1 runs 6–16 KL), so the
+  brief's line was adjusted to stay accurate.
+* "Saturated Polyester" (from the brief) is used where the deck says "Polyester chemistry".

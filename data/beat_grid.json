@@ -1,0 +1,254 @@
+{
+  "$comment": "Master timeline. Times are seconds. Overlay/SFX cues may be absolute ('at') or anchored to a narrated word ('anchor': line id + display word); scripts/resolve_timeline.py turns anchors into absolute times using whisper_timestamps.json. World coordinates: X = east (m), Y = up, Z = south (m), origin near the site centre (X = E - 85, Z = 95 - N from the site-plan survey grid).",
+  "meta": {
+    "title": "MPD Industries - Ujjain Plant Jobwork Capabilities",
+    "logline": "From 2 KL pilot trials to 82,800 tons/year commercial output - MPD Industries' greenfield Ujjain plant is a high-capacity, technology-driven manufacturing partner for global chemical brands.",
+    "durationSec": 180,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "bpm": 128,
+    "beatSec": 0.46875,
+    "barSec": 1.875,
+    "barsPerAct": 16
+  },
+
+  "acts": [
+    { "id": "act1", "n": 1, "title": "The Hook & 3D Site Flythrough", "start": 0, "end": 30, "eyebrow": "01", "label": "GREENFIELD SITE · UJJAIN" },
+    { "id": "act2", "n": 2, "title": "Plant 1 – Liquid Resin Manufacturing", "start": 30, "end": 60, "eyebrow": "02", "label": "PLANT 1 · LIQUID COATING RESINS" },
+    { "id": "act3", "n": 3, "title": "Plant 2 – Solid & Specialty Resins", "start": 60, "end": 90, "eyebrow": "03", "label": "PLANT 2 · SOLID & SPECIALTY RESINS" },
+    { "id": "act4", "n": 4, "title": "Tank Farm, Solvent Storage & Blending", "start": 90, "end": 120, "eyebrow": "04", "label": "TANK FARMS · SOLVENTS · BLENDING" },
+    { "id": "act5", "n": 5, "title": "Sustainable Utilities & EHS", "start": 120, "end": 150, "eyebrow": "05", "label": "UTILITIES & EHS" },
+    { "id": "act6", "n": 6, "title": "Partnership Models & Contact", "start": 150, "end": 180, "eyebrow": "06", "label": "PARTNERSHIP MODELS" }
+  ],
+
+  "narration": {
+    "$comment": "{display|spoken} pairs keep on-screen captions exact while the TTS engine gets a phonetic respelling. 'start' is the earliest start; lines are snapped to the half-beat grid and pushed later if the previous line is still speaking.",
+    "voice": { "engine": "rhvoice", "profile": "bdl", "rate": 100, "pitch": 100 },
+    "minGapSec": 0.35,
+    "lines": [
+      { "id": "a1_l1", "act": "act1", "start": 4.21875, "text": "Looking for scale, safety, and dedicated resin manufacturing capacity?" },
+      { "id": "a1_l2", "act": "act1", "start": 8.4375, "text": "Welcome to {MPD|M P D} Industries' state-of-the-art greenfield plant in {Ujjain|oo jane}." },
+      { "id": "a1_l3", "act": "act1", "start": 15.0, "text": "Two plants on one site, commissioned together. {22|Twenty-two} reactors. Around {6,900|sixty-nine hundred} tons of rated output, every month." },
+
+      { "id": "a2_l1", "act": "act2", "start": 31.875, "text": "Plant {1|one} specializes in high-volume liquid coating resins, driven by {16 KL|sixteen kiloliter} commercial powerhouses, on a site that scales from {2 KL|two kiloliter} pilot trials." },
+      { "id": "a2_l2", "act": "act2", "start": 43.125, "text": "Saturated polyester, alkyds, and modified epoxy: {4,373|four thousand, three hundred and seventy-three} tons a month, from day one." },
+
+      { "id": "a3_l1", "act": "act3", "start": 61.875, "text": "Plant {2|two} powers specialty and solid resins, backed by versatile finishing lines, including flakers, {pelletisers|pelletizers}, and product crushers." },
+      { "id": "a3_l2", "act": "act3", "start": 73.125, "text": "Reactive polyamide, powder polyester, acrylic polyols, phenolics, and {R&D|R and D} scale-up: {2,530|two thousand, five hundred and thirty} tons a month." },
+
+      { "id": "a4_l1", "act": "act4", "start": 91.875, "text": "Logistics are built for scale, with {600 KL|six hundred kiloliters} of underground {PESO|peso} solvent storage, and over {1,000 KL|one thousand kiloliters} of dedicated finished-goods tanks." },
+      { "id": "a4_l2", "act": "act4", "start": 105.0, "text": "Twelve blenders add {380 KL|three hundred and eighty kiloliters} of blending capacity, and grade-dedicated tanks keep every product clean." },
+
+      { "id": "a5_l1", "act": "act5", "start": 121.875, "text": "Built on eco-friendly power, driven by agro-waste thermic heaters, nitrogen blanketing, and zero-compromise {ETP|E T P} effluent treatment." },
+      { "id": "a5_l2", "act": "act5", "start": 133.125, "text": "Two {30 lakh kcal/h|thirty lack kilocalorie} thermic heaters, a {2,200 TR|twenty-two hundred T R} cooling tower, and on-site nitrogen generation, sized for full load." },
+
+      { "id": "a6_l1", "act": "act6", "start": 151.875, "text": "Whether you need toll conversion, full-service {jobwork|job work}, or dedicated plant capacity, partner with {MPD|M P D} Industries today." },
+      { "id": "a6_l2", "act": "act6", "start": 161.25, "text": "Every model comes with {NDA|N D A} confidentiality, segregated storage, and a scale-up path from {2 KL|two kiloliter} trials to {16 KL|sixteen kiloliter} production." },
+      { "id": "a6_l3", "act": "act6", "start": 172.5, "text": "{MPD|M P D} Industries. We innovate. We serve." }
+    ]
+  },
+
+  "camera": {
+    "$comment": "Orbit shots: position = target + r*(sin(az)cos(el), sin(el), cos(az)cos(el)); az 0 = camera south of target, +90 = east. Values given as [from, to] interpolate over the shot with 'ease'. blendIn smooths the hand-off from the previous shot. 'whoosh' drops a pneumatic sweep SFX at shot start.",
+    "shots": [
+      { "id": "a1_blueprint", "start": 0.0,   "end": 5.0,   "target": [[-3, 0, 2], [-3, 0, 2]],       "radius": [430, 400], "elev": [89, 84], "azim": [-6, -14],  "fov": [30, 30], "aperture": [0.0, 0.0], "ease": "linear" },
+      { "id": "a1_descend",   "start": 5.0,   "end": 14.0,  "target": [[-3, 0, 2], [-3, 0, 2]],       "radius": [400, 215], "elev": [84, 38], "azim": [-14, -38], "fov": [30, 34], "aperture": [0.0, 0.25], "ease": "inOutCubic", "blendIn": 0.6, "whoosh": true },
+      { "id": "a1_orbit",     "start": 14.0,  "end": 24.5,  "target": [[-3, 0, 2], [0, 0, -2]],       "radius": [215, 190], "elev": [38, 32], "azim": [-38, -10], "fov": [34, 34], "aperture": [0.25, 0.3], "ease": "inOutSine", "blendIn": 1.2 },
+      { "id": "a1_push",      "start": 24.5,  "end": 30.5,  "target": [[0, 0, -2], [6.1, 6, -17.6]], "radius": [190, 60],  "elev": [32, 34], "azim": [-10, -30], "fov": [34, 34], "aperture": [0.3, 0.45], "ease": "inOutCubic", "blendIn": 1.0, "whoosh": true, "whooshAt": 26.2 },
+
+      { "id": "a2_dive",      "start": 30.5,  "end": 35.0,  "target": [[6.1, 6, -17.6], [2.3, 6.2, -7]], "radius": [60, 15], "elev": [34, 18], "azim": [-30, -55], "fov": [34, 34], "aperture": [0.45, 0.9], "ease": "inOutCubic", "blendIn": 0.8, "whoosh": true },
+      { "id": "a2_hero",      "start": 35.0,  "end": 47.0,  "target": [[2.3, 6.2, -7], [2.3, 6.0, -7]],  "radius": [15, 13], "elev": [18, 11], "azim": [-55, 12], "fov": [34, 31], "aperture": [0.9, 1.1], "ease": "inOutSine", "blendIn": 1.0 },
+      { "id": "a2_hall",      "start": 47.0,  "end": 56.0,  "target": [[2.3, 6.0, -7], [6.1, 5.5, -17.6]], "radius": [13, 40], "elev": [11, 34], "azim": [12, -38], "fov": [31, 34], "aperture": [1.1, 0.5], "ease": "inOutSine", "blendIn": 1.0 },
+      { "id": "a2_exit",      "start": 56.0,  "end": 60.5,  "target": [[6.1, 5.5, -17.6], [29.5, 6, -24]], "radius": [40, 62], "elev": [34, 44], "azim": [-38, 18], "fov": [34, 34], "aperture": [0.5, 0.45], "ease": "inOutCubic", "blendIn": 0.8, "whoosh": true, "whooshAt": 56.4 },
+
+      { "id": "a3_p2",        "start": 60.5,  "end": 65.0,  "target": [[29.5, 6, -24], [29.5, 5, -27]], "radius": [62, 44], "elev": [44, 38], "azim": [18, 34], "fov": [34, 34], "aperture": [0.45, 0.6], "ease": "inOutSine", "blendIn": 0.8 },
+      { "id": "a3_flaker",    "start": 65.0,  "end": 78.0,  "target": [[26, 1.8, -11.5], [27, 1.6, -8.5]], "radius": [11, 8.5], "elev": [26, 18], "azim": [-20, 10], "fov": [34, 32], "aperture": [0.8, 1.0], "ease": "inOutSine", "blendIn": 1.6, "whoosh": true },
+      { "id": "a3_pellet",    "start": 78.0,  "end": 86.5,  "target": [[27, 1.6, -8.5], [33.4, 1.4, -9.5]], "radius": [8.5, 9.5], "elev": [18, 22], "azim": [10, 40], "fov": [32, 33], "aperture": [1.0, 0.9], "ease": "inOutSine", "blendIn": 1.0 },
+      { "id": "a3_exit",      "start": 86.5,  "end": 90.5,  "target": [[33.4, 1.4, -9.5], [-41, -1, 71]], "radius": [9.5, 72], "elev": [22, 50], "azim": [40, -20], "fov": [33, 34], "aperture": [0.9, 0.4], "ease": "inOutCubic", "blendIn": 0.6, "whoosh": true, "whooshAt": 86.8 },
+
+      { "id": "a4_peso",      "start": 90.5,  "end": 99.5,  "target": [[-41, -1, 71], [-41, -2.4, 71.6]], "radius": [72, 21], "elev": [50, 14], "azim": [-20, -40], "fov": [34, 36], "aperture": [0.4, 0.7], "ease": "inOutCubic", "blendIn": 0.8 },
+      { "id": "a4_fg",        "start": 99.5,  "end": 108.5, "target": [[-62, 1, 26], [-66, 2, -21]],   "radius": [44, 46], "elev": [24, 30], "azim": [-70, -112], "fov": [34, 34], "aperture": [0.6, 0.45], "ease": "inOutSine", "blendIn": 1.8, "whoosh": true },
+      { "id": "a4_rise",      "start": 108.5, "end": 113.0, "target": [[-66, 2, -21], [10, 2, -5]],    "radius": [46, 72], "elev": [30, 50], "azim": [-112, -160], "fov": [34, 34], "aperture": [0.45, 0.3], "ease": "inOutSine", "blendIn": 1.0, "whoosh": true, "whooshAt": 108.7 },
+      { "id": "a4_blend",     "start": 113.0, "end": 118.5, "target": [[10, 2, -5], [52.9, 3, 1.4]],   "radius": [72, 40], "elev": [50, 42], "azim": [-160, -200], "fov": [34, 34], "aperture": [0.3, 0.55], "ease": "inOutSine", "blendIn": 0.6 },
+      { "id": "a4_exit",      "start": 118.5, "end": 121.0, "target": [[52.9, 3, 1.4], [40, 4, 60]],   "radius": [40, 56], "elev": [42, 30], "azim": [-200, -200], "fov": [34, 34], "aperture": [0.55, 0.45], "ease": "inOutCubic", "blendIn": 0.6, "whoosh": true, "whooshAt": 118.6 },
+
+      { "id": "a5_boiler",    "start": 121.0, "end": 132.0, "target": [[40, 4, 60], [38, 5, 58]],      "radius": [56, 36], "elev": [30, 22], "azim": [-200, -238], "fov": [34, 34], "aperture": [0.45, 0.65], "ease": "inOutSine", "blendIn": 0.8 },
+      { "id": "a5_util",      "start": 132.0, "end": 142.0, "target": [[38, 5, 58], [22, 2, 18]],      "radius": [36, 118], "elev": [22, 42], "azim": [-238, -280], "fov": [34, 34], "aperture": [0.65, 0.3], "ease": "inOutSine", "blendIn": 1.0, "whoosh": true, "whooshAt": 132.3 },
+      { "id": "a5_wide",      "start": 142.0, "end": 150.5, "target": [[22, 2, 18], [0, 0, 0]],        "radius": [118, 200], "elev": [42, 50], "azim": [-280, -330], "fov": [34, 34], "aperture": [0.3, 0.25], "ease": "inOutSine", "blendIn": 1.0 },
+
+      { "id": "a6_overview",  "start": 150.5, "end": 180.0, "target": [[0, 0, 0], [-3, 0, 2]],         "radius": [200, 236], "elev": [50, 40], "azim": [-330, -382], "fov": [34, 33], "aperture": [0.25, 1.4], "ease": "inOutSine", "blendIn": 1.2, "whoosh": true, "whooshAt": 150.2 }
+    ]
+  },
+
+  "sceneStates": {
+    "$comment": "Scalar scene parameters as (time, value) keyframes, smoothstep-interpolated. 0..1 unless noted.",
+    "blueprint":        [[0, 1], [6.5, 1], [12, 0]],
+    "buildingsRise":    [[0, 0], [5.8, 0], [13.2, 1]],
+    "siteDim":          [[0, 0.55], [4.6, 0.55], [7.5, 0]],
+    "plant1Cutaway":    [[30.4, 0], [33.0, 1], [56.8, 1], [59.0, 0]],
+    "plant2Cutaway":    [[60.8, 0], [63.4, 1], [88.4, 1], [90.2, 0]],
+    "heroReactorFill":  [[35.4, 0.12], [44.6, 0.78]],
+    "heroReactorHeat":  [[34.5, 0], [37.5, 1], [57, 1], [59, 0.2]],
+    "finishingRun":     [[62.0, 0], [64.5, 1], [88, 1], [90, 0.3]],
+    "pesoXray":         [[90.8, 0], [94.0, 1], [99.6, 1], [102.0, 0]],
+    "pesoFill":         [[92.5, 0.2], [99.0, 0.85]],
+    "blenderCutaway":   [[109.5, 0], [111.8, 1], [118.6, 1], [120.2, 0]],
+    "tankGradeColors":  [[100.0, 0], [102.0, 1], [118.0, 1], [120.0, 0]],
+    "flowResin":        [[104.0, 0], [113.5, 1], [119.0, 1], [121.0, 0.35]],
+    "flowSolvent":      [[93.5, 0], [98.5, 1], [119.0, 1], [121.0, 0.35]],
+    "flowThermic":      [[123.0, 0], [130.0, 1]],
+    "flowCooling":      [[133.0, 0], [137.5, 1]],
+    "flowNitrogen":     [[136.0, 0], [140.5, 1]],
+    "flowEffluent":     [[139.0, 0], [143.5, 1]],
+    "flowsGlobalDim":   [[0, 1], [150.0, 1], [154.0, 0.55]],
+    "utilityGlow":      [[121.0, 0], [124.0, 1], [150, 1], [153, 0.5]],
+    "cardsBackdrop":    [[152.6, 0], [154.0, 1], [168.8, 1], [169.6, 0.9]],
+    "fadeToBlack":      [[0, 1], [0.5, 0], [179.3, 0], [180.0, 1]]
+  },
+
+  "overlays": [
+    { "id": "logo_card", "type": "logoCard", "in": { "at": 0.45 }, "out": { "at": 4.9 }, "sfx": "sting",
+      "props": { "eyebrow": "UJJAIN PLANT · JOBWORK CAPABILITIES", "tagline": "WE INNOVATE. WE SERVE." } },
+    { "id": "logo_bug", "type": "logoBug", "in": { "at": 5.0 }, "out": { "at": 169.0 }, "sfx": null },
+
+    { "id": "act1_title", "type": "actTitle", "act": "act1", "in": { "at": 5.6 }, "out": { "at": 13.6 }, "sfx": "click" },
+    { "id": "act2_title", "type": "actTitle", "act": "act2", "in": { "at": 30.7 }, "out": { "at": 58.6 }, "sfx": "click" },
+    { "id": "act3_title", "type": "actTitle", "act": "act3", "in": { "at": 60.7 }, "out": { "at": 88.6 }, "sfx": "click" },
+    { "id": "act4_title", "type": "actTitle", "act": "act4", "in": { "at": 90.7 }, "out": { "at": 118.6 }, "sfx": "click" },
+    { "id": "act5_title", "type": "actTitle", "act": "act5", "in": { "at": 120.7 }, "out": { "at": 148.6 }, "sfx": "click" },
+    { "id": "act6_title", "type": "actTitle", "act": "act6", "in": { "at": 150.7 }, "out": { "at": 168.6 }, "sfx": "click" },
+
+    { "id": "a1_sites", "type": "statChip", "in": { "anchor": { "line": "a1_l3", "word": "Two", "offset": -0.12 } }, "out": { "at": 23.95 }, "sfx": "click",
+      "props": { "slot": "leftTop", "text": "2 PLANTS · 1 GREENFIELD SITE · COMMISSIONED TOGETHER" } },
+    { "id": "a1_reactors", "type": "counter", "in": { "anchor": { "line": "a1_l3", "word": "22", "offset": -0.12 } }, "out": { "at": 23.95 }, "sfx": "thump", "major": true,
+      "props": { "slot": "left1", "value": 22, "decimals": 0, "prefix": "", "unit": "", "label": "REACTORS", "sub": "2 KL → 16 KL · 248 KL installed" } },
+    { "id": "a1_capacity", "type": "counter", "in": { "anchor": { "line": "a1_l3", "word": "6,900", "offset": -0.12 } }, "out": { "at": 23.95 }, "sfx": "thump", "major": true,
+      "props": { "slot": "left2", "value": 6900, "decimals": 0, "prefix": "~", "unit": " T/month", "label": "RATED CAPACITY", "sub": "≈ 82,800 T a year" } },
+    { "id": "a1_zones", "type": "zoneCallouts", "in": { "at": 24.1 }, "out": { "at": 28.3 }, "sfx": "click",
+      "props": { "stagger": 0.22, "items": [
+        { "anchor": "plant1", "text": "PLANT 1", "sub": "Liquid resins", "color": "plant1" },
+        { "anchor": "plant2", "text": "PLANT 2", "sub": "Solid & specialty", "color": "plant2" },
+        { "anchor": "fgTankFarm", "text": "FG TANK FARM", "sub": "22 tanks", "color": "steel" },
+        { "anchor": "peso", "text": "PESO UG FARM", "sub": "12 × 50 KL", "color": "steel" },
+        { "anchor": "boiler", "text": "UTILITIES", "sub": "Agro-waste heat", "color": "eco" }
+      ] } },
+
+    { "id": "a2_jacket", "type": "tag3d", "in": { "at": 36.4 }, "out": { "at": 46.6 }, "sfx": "click",
+      "props": { "anchor": "heroJacket", "text": "THERMIC-FLUID JACKET", "side": "left", "dx": -250, "dy": 70 } },
+    { "id": "a2_condenser", "type": "tag3d", "in": { "at": 37.3 }, "out": { "at": 46.6 }, "sfx": "click",
+      "props": { "anchor": "heroCondenser", "text": "REFLUX CONDENSER", "side": "left", "dx": -230, "dy": -40 } },
+    { "id": "a2_reactor", "type": "callout3d", "in": { "anchor": { "line": "a2_l1", "word": "16 KL", "offset": -0.1 } }, "out": { "at": 42.5 }, "sfx": "click",
+      "props": { "anchor": "heroReactor", "title": "16 KL REACTOR", "lines": ["16.2 T per batch", "24 h cycle"], "side": "right", "dx": 260, "dy": -150 } },
+    { "id": "a2_ladder", "type": "reactorLadder", "in": { "anchor": { "line": "a2_l1", "word": "2 KL", "offset": -0.1 } }, "out": { "at": 46.6 }, "sfx": "click",
+      "props": { "title": "SCALE-UP PATH ON ONE SITE", "sizes": [2, 4, 6, 10, 16] } },
+    { "id": "a2_split", "type": "barSplit", "in": { "anchor": { "line": "a2_l2", "word": "Saturated", "offset": -0.45 } }, "out": { "at": 57.6 }, "sfx": "click",
+      "props": { "title": "PLANT 1 · LIQUID COATING RESINS", "color": "plant1", "unit": "T/month",
+        "total": { "value": 4373, "label": "TONS PER MONTH", "anchor": { "line": "a2_l2", "word": "4,373", "offset": -0.12 } },
+        "rows": [
+          { "label": "Saturated Polyester", "value": 2430, "detail": "5 × 16 KL · 16.2 T batch · 24 h", "anchor": { "line": "a2_l2", "word": "Saturated", "offset": -0.1 } },
+          { "label": "Alkyds", "value": 1761, "detail": "3 × 16 KL + 10 KL · 24 h", "anchor": { "line": "a2_l2", "word": "alkyds", "offset": -0.1 } },
+          { "label": "Modified Epoxy", "value": 182, "detail": "1 × 6 KL · 6.05 T batch", "anchor": { "line": "a2_l2", "word": "epoxy", "offset": -0.1 } }
+        ],
+        "footer": "10 REACTORS · 144 KL · 11 BLENDERS" } },
+
+    { "id": "a3_chips", "type": "chips", "in": { "anchor": { "line": "a3_l1", "word": "flakers", "offset": -0.15 } }, "out": { "at": 73.4 }, "sfx": "click",
+      "props": { "items": [
+        { "icon": "flaker", "text": "DOUBLE-BELT FLAKER", "anchor": { "line": "a3_l1", "word": "flakers", "offset": -0.12 } },
+        { "icon": "pellet", "text": "PELLETISER", "anchor": { "line": "a3_l1", "word": "pelletisers", "offset": -0.12 } },
+        { "icon": "crusher", "text": "ROSIN & PRODUCT CRUSHING", "anchor": { "line": "a3_l1", "word": "crushers", "offset": -0.12 } },
+        { "icon": "tray", "text": "TRAY CASTING", "anchor": { "line": "a3_l1", "word": "crushers", "offset": 0.45 } }
+      ] } },
+    { "id": "a3_flaker_tag", "type": "tag3d", "in": { "at": 66.2 }, "out": { "at": 77.4 }, "sfx": null,
+      "props": { "anchor": "flakerBreaker", "text": "FLAKES · IN-LINE PACKING", "side": "right", "dx": 220, "dy": -120 } },
+    { "id": "a3_feed_tag", "type": "tag3d", "in": { "at": 66.8 }, "out": { "at": 77.4 }, "sfx": null,
+      "props": { "anchor": "flakerFeed", "text": "MOLTEN RESIN FEED", "side": "left", "dx": -220, "dy": -110 } },
+    { "id": "a3_pellet_tag", "type": "tag3d", "in": { "at": 79.6 }, "out": { "at": 86.2 }, "sfx": "click",
+      "props": { "anchor": "pelletiser", "text": "PELLETISER · FREE-FLOWING PELLETS", "side": "right", "dx": 200, "dy": -150 } },
+    { "id": "a3_matrix", "type": "matrix", "in": { "anchor": { "line": "a3_l2", "word": "Reactive", "offset": -0.45 } }, "out": { "at": 88.2 }, "sfx": "click",
+      "props": { "title": "PLANT 2 · SOLID & SPECIALTY RESINS", "color": "plant2",
+        "total": { "value": 2530, "label": "TONS PER MONTH", "anchor": { "line": "a3_l2", "word": "2,530", "offset": -0.12 } },
+        "rows": [
+          { "label": "Reactive Polyamide", "value": 960, "detail": "4 × 10 KL · pelletising", "anchor": { "line": "a3_l2", "word": "polyamide", "offset": -0.2 } },
+          { "label": "Powder Polyester", "value": 720, "detail": "3 × 10 KL · flaker", "anchor": { "line": "a3_l2", "word": "powder", "offset": -0.1 } },
+          { "label": "Acrylic Polyols", "value": 608, "detail": "2 × 6 KL + 4 KL · 12 h", "anchor": { "line": "a3_l2", "word": "acrylic", "offset": -0.1 } },
+          { "label": "Phenolic Resins", "value": 180, "detail": "1 × 16 KL · 48 h", "anchor": { "line": "a3_l2", "word": "phenolics", "offset": -0.1 } },
+          { "label": "R&D Scale-up", "value": 62, "detail": "1 × 2 KL · partner trials", "anchor": { "line": "a3_l2", "word": "R&D", "offset": -0.1 } }
+        ] } },
+
+    { "id": "a4_peso", "type": "capacityHud", "in": { "anchor": { "line": "a4_l1", "word": "600 KL", "offset": -0.12 } }, "out": { "at": 100.3 }, "sfx": "thump", "major": true,
+      "props": { "value": "600", "unit": "KL", "title": "PESO SOLVENT FARM", "sub": "12 × 50 KL underground tanks", "detail": "Xylene · Toluene · MTO · C9/C10 · Butyl glycol", "viz": "tankGrid", "count": 12, "color": "solvent" } },
+    { "id": "a4_peso_tag", "type": "tag3d", "in": { "at": 95.6 }, "out": { "at": 99.6 }, "sfx": null,
+      "props": { "anchor": "pesoTanks", "text": "UNDERGROUND · PESO TANK AREA", "side": "right", "dx": 210, "dy": -170 } },
+    { "id": "a4_fg", "type": "capacityHud", "in": { "anchor": { "line": "a4_l1", "word": "finished-goods", "offset": -0.1 } }, "out": { "at": 108.6 }, "sfx": "thump", "major": true,
+      "props": { "value": "~1,045", "unit": "KL", "title": "FINISHED-GOODS STORAGE", "sub": "22 grade-dedicated tanks", "viz": "stackedBar", "color": "resin",
+        "segments": [
+          { "label": "Polyester ×6", "value": 480 }, { "label": "Alkyd ×6", "value": 340 }, { "label": "Other grades ×10", "value": 225 }
+        ] } },
+    { "id": "a4_blend", "type": "capacityHud", "in": { "anchor": { "line": "a4_l2", "word": "blending", "offset": -0.12 } }, "out": { "at": 118.4 }, "sfx": "thump", "major": true,
+      "props": { "value": "380", "unit": "KL", "title": "BLENDING CAPACITY", "sub": "12 blenders · stainless & mild steel", "viz": "blenderRow", "count": 12, "color": "plant1",
+        "segments": [ { "label": "Polyester SS ×5", "value": 160 }, { "label": "Alkyd MS ×6", "value": 210 }, { "label": "Alkyd MS ×1", "value": 10 } ] } },
+
+    { "id": "a5_badges", "type": "ecoBadges", "in": { "anchor": { "line": "a5_l1", "word": "agro-waste", "offset": -0.2 } }, "out": { "at": 148.6 }, "sfx": "click",
+      "props": { "items": [
+        { "icon": "flame", "title": "2 × 30 LAKH kcal/h", "sub": "Agro-waste fired thermic heaters", "anchor": { "line": "a5_l1", "word": "agro-waste", "offset": -0.12 } },
+        { "icon": "n2", "title": "ON-SITE N₂ GENERATOR", "sub": "Inert blanketing for flammable service", "anchor": { "line": "a5_l1", "word": "nitrogen", "offset": -0.12 } },
+        { "icon": "drop", "title": "ETP / STP SITE-WIDE", "sub": "Effluent & sewage treatment", "anchor": { "line": "a5_l1", "word": "ETP", "offset": -0.12 } },
+        { "icon": "fan", "title": "2,200 TR COOLING TOWER", "sub": "Closed-loop water & thermic cooling", "anchor": { "line": "a5_l2", "word": "2,200 TR", "offset": -0.12 } }
+      ] } },
+    { "id": "a5_heater_tag", "type": "tag3d", "in": { "anchor": { "line": "a5_l1", "word": "thermic", "offset": 0.0 } }, "out": { "at": 131.8 }, "sfx": null,
+      "props": { "anchor": "heaters", "text": "THERMIC FLUID HEATERS", "side": "left", "dx": -220, "dy": -150 } },
+    { "id": "a5_silo_tag", "type": "tag3d", "in": { "at": 127.8 }, "out": { "at": 131.8 }, "sfx": null,
+      "props": { "anchor": "silo", "text": "AGRO-WASTE SILO · BAG FILTERS", "side": "left", "dx": -200, "dy": -90 } },
+
+    { "id": "a6_cards", "type": "partnerCards", "in": { "anchor": { "line": "a6_l1", "word": "toll", "offset": -0.12 } }, "out": { "at": 168.8 }, "sfx": "click",
+      "props": { "items": [
+        { "n": "01", "title": "Toll Conversion", "body": "You supply the formulation and key raw materials; we convert, test and pack for a per-ton fee.", "anchor": { "line": "a6_l1", "word": "toll", "offset": -0.12 } },
+        { "n": "02", "title": "Full-Service Jobwork", "body": "We source raw materials to your approved specs and deliver finished resin to your standard.", "anchor": { "line": "a6_l1", "word": "full-service", "offset": -0.12 } },
+        { "n": "03", "title": "Dedicated Capacity", "body": "Reactors, blenders and tanks reserved for your grades under a long-term agreement.", "anchor": { "line": "a6_l1", "word": "dedicated", "offset": -0.12 } }
+      ] } },
+    { "id": "a6_ribbon", "type": "ribbon", "in": { "anchor": { "line": "a6_l2", "word": "NDA", "offset": -0.15 } }, "out": { "at": 168.8 }, "sfx": "click",
+      "props": { "items": ["NDA CONFIDENTIALITY", "SEGREGATED STORAGE", "2 KL → 16 KL SCALE-UP"] } },
+    { "id": "a6_contact", "type": "contactCard", "in": { "at": 169.2 }, "out": { "at": 181.0 }, "sfx": "thump", "major": true,
+      "props": { "name": "Ayush Patel", "role": "Director", "phone": "+91 91317 97159", "email": "ayush@mpdyechem.com", "company": "MPD Industries P Ltd · Ujjain Plant", "cta": "PARTNER WITH US" } },
+
+    { "id": "captions", "type": "captions", "in": { "at": 0 }, "out": { "at": 180 }, "sfx": null, "props": { "maxChars": 58, "maxRows": 2 } }
+  ],
+
+  "sfx": {
+    "$comment": "Extra hand-placed cues. Pops/whooshes from overlays and camera shots are added automatically by resolve_timeline.py.",
+    "cues": [
+      { "type": "riser", "at": 28.125, "dur": 1.875 },
+      { "type": "impact", "at": 30.0 },
+      { "type": "riser", "at": 58.125, "dur": 1.875 },
+      { "type": "impact", "at": 60.0 },
+      { "type": "riser", "at": 88.125, "dur": 1.875 },
+      { "type": "impact", "at": 90.0 },
+      { "type": "riser", "at": 118.125, "dur": 1.875 },
+      { "type": "impact", "at": 120.0 },
+      { "type": "riser", "at": 148.125, "dur": 1.875 },
+      { "type": "impact", "at": 150.0 },
+      { "type": "rise_build", "at": 5.6, "dur": 7.2 },
+      { "type": "hiss", "at": 91.2, "dur": 2.6 },
+      { "type": "steam", "at": 123.4, "dur": 2.2 }
+    ]
+  },
+
+  "music": {
+    "$comment": "Procedural score at 128 BPM, 4/4. Bars are 1.875 s; each act is 16 bars. Progression is two bars per chord.",
+    "key": "D major",
+    "progression": ["Bm", "G", "D", "A"],
+    "sections": [
+      { "bars": [0, 2],   "name": "logo",       "layers": ["pad", "sub", "shimmer"], "energy": 0.30 },
+      { "bars": [2, 8],   "name": "aerial",     "layers": ["pad", "sub", "arp_filtered", "kick_soft"], "energy": 0.45 },
+      { "bars": [8, 16],  "name": "stats",      "layers": ["pad", "bass", "arp", "kick", "hats"], "energy": 0.60 },
+      { "bars": [16, 32], "name": "plant1",     "layers": ["pad", "bass", "arp", "kick", "clap", "hats"], "energy": 0.72 },
+      { "bars": [32, 48], "name": "plant2",     "layers": ["pad", "bass", "arp", "kick", "clap", "hats", "lead"], "energy": 0.78 },
+      { "bars": [48, 52], "name": "underground","layers": ["pad_dark", "sub", "arp_filtered"], "energy": 0.40 },
+      { "bars": [52, 64], "name": "tankfarm",   "layers": ["pad", "bass", "arp", "kick", "clap", "hats"], "energy": 0.72 },
+      { "bars": [64, 80], "name": "utilities",  "layers": ["pad", "bass", "arp", "kick", "clap", "hats", "shimmer"], "energy": 0.82 },
+      { "bars": [80, 92], "name": "partners",   "layers": ["pad", "bass", "arp", "kick", "clap", "hats", "lead", "shimmer"], "energy": 0.88 },
+      { "bars": [92, 96], "name": "outro",      "layers": ["pad_final", "sub", "shimmer"], "energy": 0.40 }
+    ]
+  }
+}
