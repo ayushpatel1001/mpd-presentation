@@ -192,9 +192,10 @@ export function createHud(canvas, tokens, timeline, assets) {
       const tw = Math.max(P.measure(pr.title, { size: 30, weight: 800, family: 'Montserrat', spacing: 1 }), ...pr.lines.map((l) => P.measure(l, { size: 26, weight: 500 })));
       const w = tw + 48, h = 64 + pr.lines.length * 36;
       const left = pr.side === 'left';
-      let bx = clamp(left ? an.x + pr.dx * k - w : an.x + pr.dx * k, SA.x0, SA.x1 - w);
-      const by = clamp(an.y + pr.dy * k - h / 2, SA.y0 + 84, 800 - h);
-      const lx = left ? bx + w : bx, ly = by + 34;
+      // props.pin = [x, y] fixes the panel on screen (clear of the side columns); the leader still finds the anchor
+      let bx = pr.pin ? pr.pin[0] : clamp(left ? an.x + pr.dx * k - w : an.x + pr.dx * k, SA.x0, SA.x1 - w);
+      const by = pr.pin ? pr.pin[1] + 30 * (1 - k) : clamp(an.y + pr.dy * k - h / 2, SA.y0 + 84, 800 - h);
+      const lx = pr.pin ? (an.x > bx + w / 2 ? bx + w : bx) : left ? bx + w : bx, ly = by + 34;
       P.group(a, () => {
         P.circle(an.x, an.y, 6, '#F59E0B');
         P.circle(an.x, an.y, 13, null, 0.7, '#F59E0B', 2);

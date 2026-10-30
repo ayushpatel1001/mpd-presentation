@@ -2362,8 +2362,8 @@
     {
       "id": "a7_solar",
       "type": "callout3d",
-      "in": 137.6,
-      "out": 147.8,
+      "in": 142.0,
+      "out": 148.4,
       "sfx": "click",
       "props": {
         "anchor": "solarWh1",
@@ -2374,7 +2374,11 @@
         ],
         "side": "left",
         "dx": -220,
-        "dy": -120
+        "dy": -120,
+        "pin": [
+          192,
+          300
+        ]
       }
     },
     {
@@ -4437,7 +4441,7 @@
     },
     {
       "type": "click",
-      "at": 137.6,
+      "at": 142.0,
       "src": "a7_solar"
     },
     {
