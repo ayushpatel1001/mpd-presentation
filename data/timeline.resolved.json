@@ -166,7 +166,7 @@
     {
       "id": "a1_orbit",
       "start": 8.0,
-      "end": 13.8,
+      "end": 14.4,
       "target": [
         [
           -3,
@@ -204,7 +204,7 @@
     },
     {
       "id": "a1_push",
-      "start": 13.8,
+      "start": 14.4,
       "end": 16.4,
       "target": [
         [
@@ -241,7 +241,7 @@
       "ease": "inOutCubic",
       "blendIn": 0.5,
       "whoosh": true,
-      "whooshAt": 14.0
+      "whooshAt": 14.6
     },
     {
       "id": "a2_wh",
@@ -4018,7 +4018,7 @@
     },
     {
       "type": "whoosh",
-      "at": 14.0,
+      "at": 14.6,
       "src": "a1_push"
     },
     {
