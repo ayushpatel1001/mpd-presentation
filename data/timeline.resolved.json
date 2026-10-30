@@ -1662,7 +1662,7 @@
       "id": "logo_card",
       "type": "logoCard",
       "in": 0.35,
-      "out": 4.4,
+      "out": 4.6,
       "sfx": "sting",
       "props": {
         "eyebrow": "UJJAIN PLANT · JOBWORK CAPABILITIES",
@@ -1672,7 +1672,7 @@
     {
       "id": "logo_bug",
       "type": "logoBug",
-      "in": 4.45,
+      "in": 4.65,
       "out": 167.0,
       "sfx": null
     },
@@ -1680,7 +1680,7 @@
       "id": "act1_title",
       "type": "actTitle",
       "act": "act1",
-      "in": 4.8,
+      "in": 4.9,
       "out": 11.0,
       "sfx": "click"
     },
@@ -1744,7 +1744,7 @@
       "id": "a1_sites",
       "type": "statChip",
       "in": 6.911,
-      "out": 11.8,
+      "out": 12.2,
       "sfx": "click",
       "props": {
         "slot": "leftTop",
@@ -1755,7 +1755,7 @@
       "id": "a1_reactors",
       "type": "counter",
       "in": 7.701,
-      "out": 11.8,
+      "out": 12.2,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1772,7 +1772,7 @@
       "id": "a1_capacity",
       "type": "counter",
       "in": 9.251,
-      "out": 11.8,
+      "out": 12.2,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1788,7 +1788,7 @@
     {
       "id": "a1_zones",
       "type": "zoneCallouts",
-      "in": 11.9,
+      "in": 12.3,
       "out": 15.0,
       "sfx": "click",
       "props": {
@@ -3976,7 +3976,7 @@
     },
     {
       "type": "click",
-      "at": 4.8,
+      "at": 4.9,
       "src": "act1_title"
     },
     {
@@ -4008,7 +4008,7 @@
     },
     {
       "type": "click",
-      "at": 11.9,
+      "at": 12.3,
       "src": "a1_zones"
     },
     {

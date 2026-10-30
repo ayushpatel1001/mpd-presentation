@@ -123,6 +123,8 @@ export function createHud(canvas, tokens, timeline, assets) {
 
     zoneCallouts(ov, t, frame) {
       const placed = [];
+      // every visible anchor dot is an obstacle too, so no label covers another zone's dot
+      const dots = ov.props.items.map((it) => frame.anchors[it.anchor]).filter((an) => an && an.visible);
       ov.props.items.forEach((it, i) => {
         const tin = ov.in + i * ov.props.stagger;
         const an = frame.anchors[it.anchor];
@@ -134,7 +136,8 @@ export function createHud(canvas, tokens, timeline, assets) {
         const w = tw + 40, h = 70;
         let bx = clamp(an.x - w / 2, SA.x0, SA.x1 - w), by = clamp(an.y - 90 * k - h, SA.y0 + 84, 800 - h);
         // first free spot near the anchor that stays inside the safe area and clear of earlier callouts
-        const free = (x, y) => !placed.some((p) => x < p.x1 + 8 && x + w > p.x0 - 8 && y < p.y1 + 8 && y + h > p.y0 - 8);
+        const free = (x, y) => !placed.some((p) => x < p.x1 + 8 && x + w > p.x0 - 8 && y < p.y1 + 8 && y + h > p.y0 - 8)
+          && !dots.some((d) => d.x > x - 22 && d.x < x + w + 22 && d.y > y - 22 && d.y < y + h + 22);
         search: for (const dy of [0, -80, 80, -160, 160, -240, 240]) {
           for (const dx of [0, -(w / 2 + 24), w / 2 + 24, -(w + 24), w + 24]) {
             const x = clamp(bx + dx, SA.x0, SA.x1 - w), y = clamp(by + dy, SA.y0 + 84, 800 - h);
