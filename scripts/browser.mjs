@@ -37,7 +37,10 @@ const withTimeout = (p, ms, what) => Promise.race([p, new Promise((_, rej) => se
 export async function openRenderer(srv, { quality = 94, frameTimeoutMs = 90000, query = '' } = {}) {
   const { chromium } = loadPlaywright();
   // launchServer gives a kill handle for wedged SwiftShader GPU processes
-  const server = await chromium.launchServer({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--disable-frame-rate-limit'] });
+  // ANGLE=metal (macOS) / ANGLE=gl uses the real GPU; default SwiftShader is CPU-only but portable.
+  const angle = process.env.ANGLE || 'swiftshader';
+  const gl = angle === 'swiftshader' ? ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] : [`--use-angle=${angle}`, '--enable-gpu'];
+  const server = await chromium.launchServer({ args: [...gl, '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--disable-frame-rate-limit'] });
   const browser = await chromium.connect(server.wsEndpoint());
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   const logs = [];

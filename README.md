@@ -9,7 +9,7 @@ with a Canvas 2D HUD on top, rendered frame-by-frame in headless Chromium and mu
 
 | Output | |
 |---|---|
-| `out/mpd_ujain_3min_3d2d_showcase.mp4` | narrated master (H.264 CRF 23 + AAC, −14 LUFS; kept under GitHub's 100 MB limit — `CRF=20 scripts/encode.sh` for a higher-quality local copy) |
+| `out/mpd_ujain_3min_3d2d_showcase.mp4` | narrated master (H.264 CRF 20 + AAC, −14 LUFS; built locally by `scripts/encode.sh`, not committed) |
 | `out/mpd_ujain_3min_3d2d_showcase_music_only.mp4` | same picture, score + SFX only (built locally, not committed) |
 | `out/validation_report.md` | automated contrast / legibility / safe-area / sync / loudness report |
 | `out/contact_sheet_*.jpg` | stills across the film |
@@ -67,6 +67,11 @@ Hugging Face and the Whisper model host are not reachable from the build environ
   It is intelligible but clearly synthetic. To use a professional voice-over, drop one WAV per line
   into `build/vo_override/<line id>.wav` (ids in `data/beat_grid.json`) and re-run `scripts/build.sh`;
   timing, captions, HUD cues and SFX all re-derive from the new recording.
+* **Gemini voice (current master).** `python3 scripts/tts_gemini.py` fills `build/vo_override/` with
+  Gemini TTS via OpenRouter (`OPENROUTER_API_KEY` in `.env`; default voice Charon, model
+  `google/gemini-3.1-flash-tts-preview`). `--voice Orus --force` swaps the voice, `--model` the model,
+  `--samples Charon,Orus,Kore` renders comparison clips to `build/vo_samples/`. Then re-run
+  `scripts/build.sh` (on macOS: `ANGLE=metal` renders on the GPU in ~10 min instead of hours).
 * **`data/whisper_timestamps.json`** uses Whisper's word-timestamp schema but is produced by
   PocketSphinx forced alignment against the known script (word posteriors 0.85–0.99), which is
   more exact than free ASR for a fixed script.

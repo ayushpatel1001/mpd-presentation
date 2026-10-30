@@ -1743,7 +1743,7 @@
     {
       "id": "a1_sites",
       "type": "statChip",
-      "in": 6.911,
+      "in": 7.614,
       "out": 12.2,
       "sfx": "click",
       "props": {
@@ -1754,7 +1754,7 @@
     {
       "id": "a1_reactors",
       "type": "counter",
-      "in": 7.701,
+      "in": 8.674,
       "out": 12.2,
       "sfx": "thump",
       "major": true,
@@ -1771,7 +1771,7 @@
     {
       "id": "a1_capacity",
       "type": "counter",
-      "in": 9.251,
+      "in": 10.604,
       "out": 12.2,
       "sfx": "thump",
       "major": true,
@@ -1836,8 +1836,8 @@
     {
       "id": "a2_wh",
       "type": "capacityHud",
-      "in": 17.163,
-      "out": 29.913,
+      "in": 17.563,
+      "out": 31.0,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -1878,7 +1878,7 @@
     {
       "id": "a2_depal_tag",
       "type": "tag3d",
-      "in": 25.313,
+      "in": 25.322,
       "out": 29.3,
       "sfx": "click",
       "props": {
@@ -1892,7 +1892,7 @@
     {
       "id": "a2_peso",
       "type": "capacityHud",
-      "in": 30.013,
+      "in": 32.132,
       "out": 39.2,
       "sfx": "thump",
       "major": true,
@@ -1924,7 +1924,7 @@
     {
       "id": "a3_bag_tag",
       "type": "tag3d",
-      "in": 42.168,
+      "in": 43.198,
       "out": 48.0,
       "sfx": "click",
       "props": {
@@ -1938,7 +1938,7 @@
     {
       "id": "a3_reactor",
       "type": "callout3d",
-      "in": 49.61,
+      "in": 49.93,
       "out": 55.2,
       "sfx": "click",
       "props": {
@@ -1970,7 +1970,7 @@
     {
       "id": "a3_split",
       "type": "barSplit",
-      "in": 50.47,
+      "in": 51.23,
       "out": 63.3,
       "sfx": "click",
       "props": {
@@ -1980,26 +1980,26 @@
         "total": {
           "value": 4373,
           "label": "TONS PER MONTH",
-          "t": 54.2
+          "t": 55.76
         },
         "rows": [
           {
             "label": "Saturated Polyester",
             "value": 2430,
             "detail": "5 × 16 KL · 16.2 T batch · 24 h",
-            "t": 50.82
+            "t": 51.58
           },
           {
             "label": "Alkyds",
             "value": 1761,
             "detail": "3 × 16 KL + 10 KL · 24 h",
-            "t": 52.18
+            "t": 53.28
           },
           {
             "label": "Modified Epoxy",
             "value": 182,
             "detail": "1 × 6 KL · 6.05 T batch",
-            "t": 53.49
+            "t": 54.55
           }
         ],
         "footer": "10 REACTORS · 144 KL · 11 BLENDERS"
@@ -2008,7 +2008,7 @@
     {
       "id": "a4_chips",
       "type": "chips",
-      "in": 66.859,
+      "in": 68.059,
       "out": 73.8,
       "sfx": "click",
       "props": {
@@ -2016,22 +2016,22 @@
           {
             "icon": "flaker",
             "text": "DOUBLE-BELT FLAKER",
-            "t": 66.889
+            "t": 68.089
           },
           {
             "icon": "pellet",
             "text": "PELLETISER",
-            "t": 67.429
+            "t": 68.809
           },
           {
             "icon": "crusher",
             "text": "ROSIN & PRODUCT CRUSHING",
-            "t": 68.449
+            "t": 69.999
           },
           {
             "icon": "tray",
             "text": "TRAY CASTING",
-            "t": 68.919
+            "t": 70.469
           }
         ]
       }
@@ -2067,7 +2067,7 @@
     {
       "id": "a4_matrix",
       "type": "matrix",
-      "in": 70.331,
+      "in": 70.8,
       "out": 84.2,
       "sfx": "click",
       "props": {
@@ -2076,38 +2076,38 @@
         "total": {
           "value": 2530,
           "label": "TONS PER MONTH",
-          "t": 75.931
+          "t": 78.33
         },
         "rows": [
           {
             "label": "Reactive Polyamide",
             "value": 960,
             "detail": "4 × 10 KL · pelletising",
-            "t": 70.681
+            "t": 71.15
           },
           {
             "label": "Powder Polyester",
             "value": 720,
             "detail": "3 × 10 KL · flaker",
-            "t": 71.601
+            "t": 72.26
           },
           {
             "label": "Acrylic Polyols",
             "value": 608,
             "detail": "2 × 6 KL + 4 KL · 12 h",
-            "t": 72.761
+            "t": 73.8
           },
           {
             "label": "Phenolic Resins",
             "value": 180,
             "detail": "1 × 16 KL · 48 h",
-            "t": 73.841
+            "t": 75.25
           },
           {
             "label": "R&D Scale-up",
             "value": 62,
             "detail": "1 × 2 KL · partner trials",
-            "t": 74.691
+            "t": 76.46
           }
         ]
       }
@@ -2115,7 +2115,7 @@
     {
       "id": "a5_labs",
       "type": "ecoBadges",
-      "in": 87.208,
+      "in": 87.538,
       "out": 100.4,
       "sfx": "click",
       "props": {
@@ -2126,25 +2126,25 @@
             "icon": "flask",
             "title": "STATE-OF-THE-ART QC LAB",
             "sub": "Wet chemistry · instruments · viscosity",
-            "t": 87.238
+            "t": 87.568
           },
           {
             "icon": "spray",
             "title": "APPLICATION LAB",
             "sub": "Powder booth · extruder · panel testing",
-            "t": 88.678
+            "t": 89.698
           },
           {
             "icon": "sun",
             "title": "WEATHERING & PHYSICAL TESTS",
             "sub": "Coating performance on real panels",
-            "t": 90.058
+            "t": 91.358
           },
           {
             "icon": "gauge",
             "title": "CENTRAL CONTROL ROOM",
             "sub": "Both plants run from one room",
-            "t": 97.335
+            "t": 98.155
           }
         ]
       }
@@ -2152,7 +2152,7 @@
     {
       "id": "a5_app_tag",
       "type": "tag3d",
-      "in": 88.698,
+      "in": 89.718,
       "out": 99.4,
       "sfx": null,
       "props": {
@@ -2166,7 +2166,7 @@
     {
       "id": "a5_wet_tag",
       "type": "tag3d",
-      "in": 87.558,
+      "in": 87.888,
       "out": 99.4,
       "sfx": null,
       "props": {
@@ -2180,8 +2180,8 @@
     {
       "id": "a6_blend",
       "type": "capacityHud",
-      "in": 104.133,
-      "out": 108.083,
+      "in": 105.013,
+      "out": 108.6,
       "sfx": "thump",
       "major": true,
       "props": {
@@ -2211,7 +2211,7 @@
     {
       "id": "a6_fg",
       "type": "capacityHud",
-      "in": 108.183,
+      "in": 110.093,
       "out": 119.4,
       "sfx": "thump",
       "major": true,
@@ -2241,7 +2241,7 @@
     {
       "id": "a6_totals",
       "type": "storageTotals",
-      "in": 111.278,
+      "in": 111.563,
       "out": 120.4,
       "sfx": "click",
       "props": {
@@ -2250,29 +2250,29 @@
           {
             "label": "Packed goods · 2 warehouses",
             "value": "2,904 pallets ≈ 1,500 t",
-            "t": 112.208
+            "t": 112.712
           },
           {
             "label": "Solvents · PESO underground",
             "value": "600 KL",
-            "t": 114.628
+            "t": 116.122
           },
           {
             "label": "Finished goods · 22 tanks",
             "value": "~1,045 KL",
-            "t": 114.978
+            "t": 116.472
           }
         ],
         "total": {
           "text": "1,500 t PACKED + 1,645 KL BULK",
-          "t": 116.058
+          "t": 117.952
         }
       }
     },
     {
       "id": "a7_badges",
       "type": "ecoBadges",
-      "in": 121.843,
+      "in": 122.503,
       "out": 148.6,
       "sfx": "click",
       "props": {
@@ -2282,37 +2282,37 @@
             "icon": "flame",
             "title": "2 × 30 LAKH kcal/h",
             "sub": "Agro-waste fired thermic heaters",
-            "t": 121.923
+            "t": 122.583
           },
           {
             "icon": "shed",
             "title": "COVERED FUEL SHED",
             "sub": "Agro-waste kept dry under roof",
-            "t": 124.183
+            "t": 125.323
           },
           {
             "icon": "fan",
             "title": "2,200 TR COOLING TOWER",
             "sub": "Closed-loop process cooling",
-            "t": 125.383
+            "t": 126.893
           },
           {
             "icon": "n2",
             "title": "ON-SITE N₂ GENERATION",
             "sub": "Inert blanketing for solvents",
-            "t": 130.408
+            "t": 130.558
           },
           {
             "icon": "drop",
             "title": "50 KLD ETP",
             "sub": "Effluent treated on site",
-            "t": 131.158
+            "t": 131.598
           },
           {
             "icon": "sun",
             "title": "0.70 MWp ROOFTOP SOLAR",
             "sub": "1,285 modules on every roof",
-            "t": 133.808
+            "t": 134.838
           }
         ]
       }
@@ -2320,7 +2320,7 @@
     {
       "id": "a7_heater_tag",
       "type": "tag3d",
-      "in": 123.043,
+      "in": 123.873,
       "out": 125.8,
       "sfx": null,
       "props": {
@@ -2399,13 +2399,13 @@
             "n": "02",
             "title": "Full-Service Jobwork",
             "body": "We source raw materials to your approved specs and deliver finished resin to your standard.",
-            "t": 151.882
+            "t": 152.222
           },
           {
             "n": "03",
             "title": "Dedicated Capacity",
             "body": "Reactors, blenders and tanks reserved for your grades under a long-term agreement.",
-            "t": 153.352
+            "t": 154.102
           }
         ]
       }
@@ -2413,7 +2413,7 @@
     {
       "id": "a8_ribbon",
       "type": "ribbon",
-      "in": 158.48,
+      "in": 159.588,
       "out": 166.8,
       "sfx": "click",
       "props": {
@@ -2451,103 +2451,103 @@
     {
       "id": "a1_l1",
       "start": 2.8125,
-      "end": 6.2925,
+      "end": 7.3725,
       "text": "Welcome to MPD Industries' greenfield resin plant in Ujjain."
     },
     {
       "id": "a1_l2",
-      "start": 7.03125,
-      "end": 11.84125,
+      "start": 7.73438,
+      "end": 14.00437,
       "text": "Two plants, 22 reactors, around 6,900 tons of output every month."
     },
     {
       "id": "a2_l1",
       "start": 15.70312,
-      "end": 23.01312,
+      "end": 24.29312,
       "text": "It starts with storage: two warehouses with mobile compact racking hold 2,904 pallets, about 1,500 tons."
     },
     {
       "id": "a2_l2",
       "start": 25.3125,
-      "end": 33.7725,
+      "end": 36.5725,
       "text": "A depalletiser turns bagged raw materials into one-tonne jumbo bags for fast charging, and 600 KL of underground PESO tanks hold the solvents."
     },
     {
       "id": "a3_l1",
       "start": 40.07812,
-      "end": 44.94812,
+      "end": 46.33812,
       "text": "In Plant 1, an overhead crane lifts each jumbo bag straight up to the reactor charging deck."
     },
     {
       "id": "a3_l2",
       "start": 48.75,
-      "end": 57.29,
+      "end": 59.19,
       "text": "Ten reactors up to 16 KL make saturated polyester, alkyds, and modified epoxy: 4,373 tons a month."
     },
     {
       "id": "a4_l1",
       "start": 64.21875,
-      "end": 69.22875,
+      "end": 70.85875,
       "text": "Plant 2 adds specialty and solid resins, finished on flakers, pelletisers, and crushers."
     },
     {
       "id": "a4_l2",
-      "start": 70.78125,
-      "end": 78.32125,
+      "start": 71.25,
+      "end": 80.81,
       "text": "Polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month."
     },
     {
       "id": "a5_l1",
       "start": 85.07812,
-      "end": 92.07812,
+      "end": 93.75813,
       "text": "Every batch is released by our state-of-the-art QC lab, with a dedicated application lab that tests coatings the way your customers use them."
     },
     {
       "id": "a5_l2",
       "start": 95.625,
-      "end": 98.345,
+      "end": 99.095,
       "text": "Both plants are run from one central control room."
     },
     {
       "id": "a6_l1",
       "start": 101.95312,
-      "end": 109.18313,
+      "end": 111.10313,
       "text": "Twelve blenders add 380 KL of blending, and 22 grade-dedicated tanks hold over 1,000 KL of finished goods."
     },
     {
       "id": "a6_l2",
-      "start": 111.32812,
-      "end": 117.02813,
+      "start": 111.5625,
+      "end": 119.1425,
       "text": "In total: about 1,500 tons of packed storage, and over 1,600 KL of bulk liquids."
     },
     {
       "id": "a7_l1",
       "start": 120.70312,
-      "end": 127.56312,
+      "end": 129.59312,
       "text": "Utilities run green: agro-waste fired thermic heaters, fed from a covered fuel shed, and a 2,200 TR cooling tower."
     },
     {
       "id": "a7_l2",
       "start": 130.07812,
-      "end": 136.02812,
+      "end": 137.50813,
       "text": "On-site nitrogen, a 50 KLD effluent treatment plant, and 0.7 MW of rooftop solar."
     },
     {
       "id": "a8_l1",
       "start": 151.17188,
-      "end": 156.66188,
+      "end": 158.04188,
       "text": "Toll conversion, full-service jobwork, or dedicated capacity: partner with MPD Industries."
     },
     {
       "id": "a8_l2",
-      "start": 157.5,
-      "end": 165.32,
+      "start": 158.4375,
+      "end": 167.9775,
       "text": "Every model comes with NDA confidentiality, segregated storage, and a scale-up path from 2 KL trials to 16 KL production."
     },
     {
       "id": "a8_l3",
       "start": 172.5,
-      "end": 175.12,
+      "end": 176.13,
       "text": "MPD Industries. We innovate. We serve."
     }
   ],
@@ -2558,51 +2558,51 @@
         {
           "text": "Welcome",
           "start": 2.812,
-          "end": 3.192
+          "end": 3.373
         },
         {
           "text": "to",
-          "start": 3.192,
-          "end": 3.343
+          "start": 3.373,
+          "end": 3.493
         },
         {
           "text": "MPD",
-          "start": 3.343,
-          "end": 3.792
+          "start": 3.493,
+          "end": 4.362
         },
         {
           "text": "Industries'",
-          "start": 3.792,
-          "end": 4.282
+          "start": 4.362,
+          "end": 4.963
         },
         {
           "text": "greenfield",
-          "start": 4.282,
-          "end": 4.832
+          "start": 4.963,
+          "end": 5.662
         },
         {
           "text": "resin",
-          "start": 4.832,
-          "end": 5.152
+          "start": 5.662,
+          "end": 6.072
         },
         {
           "text": "plant",
-          "start": 5.152,
-          "end": 5.482
+          "start": 6.072,
+          "end": 6.513
         },
         {
           "text": "in",
-          "start": 5.482,
-          "end": 5.582
+          "start": 6.513,
+          "end": 6.723
         },
         {
           "text": "Ujjain.",
-          "start": 5.582,
-          "end": 6.172
+          "start": 6.723,
+          "end": 7.362
         }
       ],
       "start": 2.692,
-      "end": 6.722,
+      "end": 7.912,
       "text": "Welcome to MPD Industries' greenfield resin plant in Ujjain."
     },
     {
@@ -2610,62 +2610,62 @@
       "words": [
         {
           "text": "Two",
-          "start": 7.031,
-          "end": 7.201
+          "start": 7.734,
+          "end": 7.974
         },
         {
           "text": "plants,",
-          "start": 7.201,
-          "end": 7.711
+          "start": 7.974,
+          "end": 8.564
         },
         {
           "text": "22",
-          "start": 7.821,
-          "end": 8.321
+          "start": 8.794,
+          "end": 9.354
         },
         {
           "text": "reactors,",
-          "start": 8.321,
-          "end": 8.961
+          "start": 9.354,
+          "end": 10.084
         },
         {
           "text": "around",
-          "start": 8.961,
-          "end": 9.371
+          "start": 10.384,
+          "end": 10.724
         },
         {
           "text": "6,900",
-          "start": 9.371,
-          "end": 10.371
+          "start": 10.724,
+          "end": 12.094
         },
         {
           "text": "tons",
-          "start": 10.371,
-          "end": 10.631
+          "start": 12.094,
+          "end": 12.434
         },
         {
           "text": "of",
-          "start": 10.631,
-          "end": 10.731
+          "start": 12.434,
+          "end": 12.514
         },
         {
           "text": "output",
-          "start": 10.731,
-          "end": 11.041
+          "start": 12.514,
+          "end": 13.044
         },
         {
           "text": "every",
-          "start": 11.041,
-          "end": 11.391
+          "start": 13.044,
+          "end": 13.404
         },
         {
           "text": "month.",
-          "start": 11.391,
-          "end": 11.831
+          "start": 13.404,
+          "end": 13.884
         }
       ],
-      "start": 6.911,
-      "end": 12.381,
+      "start": 7.614,
+      "end": 14.434,
       "text": "Two plants, 22 reactors, around 6,900 tons of output every month."
     },
     {
@@ -2679,41 +2679,41 @@
         {
           "text": "starts",
           "start": 15.843,
-          "end": 16.213
+          "end": 16.293
         },
         {
           "text": "with",
-          "start": 16.213,
-          "end": 16.363
+          "start": 16.293,
+          "end": 16.493
         },
         {
           "text": "storage:",
-          "start": 16.363,
-          "end": 16.903
+          "start": 16.493,
+          "end": 17.163
         },
         {
           "text": "two",
-          "start": 17.093,
-          "end": 17.263
+          "start": 17.453,
+          "end": 17.663
         },
         {
           "text": "warehouses",
-          "start": 17.263,
-          "end": 17.843
+          "start": 17.663,
+          "end": 18.403
         },
         {
           "text": "with",
-          "start": 17.843,
-          "end": 17.993
+          "start": 18.403,
+          "end": 18.573
         },
         {
           "text": "mobile",
-          "start": 17.993,
-          "end": 18.323
+          "start": 18.573,
+          "end": 19.013
         }
       ],
       "start": 15.583,
-      "end": 18.193,
+      "end": 18.883,
       "text": "It starts with storage: two warehouses with mobile"
     },
     {
@@ -2721,47 +2721,47 @@
       "words": [
         {
           "text": "compact",
-          "start": 18.323,
-          "end": 18.853
+          "start": 19.013,
+          "end": 19.523
         },
         {
           "text": "racking",
-          "start": 18.853,
-          "end": 19.243
+          "start": 19.523,
+          "end": 20.003
         },
         {
           "text": "hold",
-          "start": 19.243,
-          "end": 19.493
+          "start": 20.003,
+          "end": 20.353
         },
         {
           "text": "2,904",
-          "start": 19.493,
-          "end": 20.753
+          "start": 20.353,
+          "end": 21.863
         },
         {
           "text": "pallets,",
-          "start": 20.753,
-          "end": 21.303
+          "start": 21.863,
+          "end": 22.403
         },
         {
           "text": "about",
-          "start": 21.303,
-          "end": 21.633
+          "start": 22.733,
+          "end": 22.963
         },
         {
           "text": "1,500",
-          "start": 21.633,
-          "end": 22.413
+          "start": 22.963,
+          "end": 23.723
         },
         {
           "text": "tons.",
-          "start": 22.413,
-          "end": 22.913
+          "start": 23.723,
+          "end": 24.173
         }
       ],
-      "start": 18.203,
-      "end": 23.463,
+      "start": 18.893,
+      "end": 24.723,
       "text": "compact racking hold 2,904 pallets, about 1,500 tons."
     },
     {
@@ -2770,61 +2770,61 @@
         {
           "text": "A",
           "start": 25.312,
-          "end": 25.413
+          "end": 25.422
         },
         {
           "text": "depalletiser",
-          "start": 25.413,
-          "end": 26.262
+          "start": 25.422,
+          "end": 26.543
         },
         {
           "text": "turns",
-          "start": 26.262,
-          "end": 26.602
+          "start": 26.543,
+          "end": 26.933
         },
         {
           "text": "bagged",
-          "start": 26.602,
-          "end": 26.883
+          "start": 26.933,
+          "end": 27.433
         },
         {
           "text": "raw",
-          "start": 26.883,
-          "end": 27.032
+          "start": 27.433,
+          "end": 27.762
         },
         {
           "text": "materials",
-          "start": 27.032,
-          "end": 27.622
+          "start": 27.762,
+          "end": 28.523
         },
         {
           "text": "into",
-          "start": 27.622,
-          "end": 27.852
+          "start": 28.523,
+          "end": 28.812
         },
         {
           "text": "one-tonne",
-          "start": 27.852,
-          "end": 28.253
+          "start": 28.812,
+          "end": 29.642
         },
         {
           "text": "jumbo",
-          "start": 28.253,
-          "end": 28.663
+          "start": 29.642,
+          "end": 30.093
         },
         {
           "text": "bags",
-          "start": 28.663,
-          "end": 29.012
+          "start": 30.093,
+          "end": 30.503
         },
         {
           "text": "for",
-          "start": 29.012,
-          "end": 29.133
+          "start": 30.503,
+          "end": 30.623
         }
       ],
       "start": 25.192,
-      "end": 29.003,
+      "end": 30.493,
       "text": "A depalletiser turns bagged raw materials into one-tonne jumbo bags for"
     },
     {
@@ -2832,62 +2832,62 @@
       "words": [
         {
           "text": "fast",
-          "start": 29.133,
-          "end": 29.433
+          "start": 30.623,
+          "end": 31.133
         },
         {
           "text": "charging,",
-          "start": 29.433,
-          "end": 29.933
+          "start": 31.133,
+          "end": 31.613
         },
         {
           "text": "and",
-          "start": 29.933,
-          "end": 30.133
-        },
-        {
-          "text": "600 KL",
-          "start": 30.133,
-          "end": 31.212
-        },
-        {
-          "text": "of",
-          "start": 31.212,
-          "end": 31.312
-        },
-        {
-          "text": "underground",
-          "start": 31.312,
-          "end": 31.873
-        },
-        {
-          "text": "PESO",
-          "start": 31.873,
+          "start": 32.112,
           "end": 32.252
         },
         {
-          "text": "tanks",
+          "text": "600 KL",
           "start": 32.252,
-          "end": 32.653
+          "end": 33.683
+        },
+        {
+          "text": "of",
+          "start": 33.683,
+          "end": 33.763
+        },
+        {
+          "text": "underground",
+          "start": 33.892,
+          "end": 34.543
+        },
+        {
+          "text": "PESO",
+          "start": 34.543,
+          "end": 34.983
+        },
+        {
+          "text": "tanks",
+          "start": 34.983,
+          "end": 35.403
         },
         {
           "text": "hold",
-          "start": 32.653,
-          "end": 32.852
+          "start": 35.403,
+          "end": 35.763
         },
         {
           "text": "the",
-          "start": 32.852,
-          "end": 32.932
+          "start": 35.763,
+          "end": 35.822
         },
         {
           "text": "solvents.",
-          "start": 32.932,
-          "end": 33.672
+          "start": 35.822,
+          "end": 36.433
         }
       ],
-      "start": 29.013,
-      "end": 34.222,
+      "start": 30.503,
+      "end": 36.983,
       "text": "fast charging, and 600 KL of underground PESO tanks hold the solvents."
     },
     {
@@ -2896,91 +2896,91 @@
         {
           "text": "In",
           "start": 40.078,
-          "end": 40.238
+          "end": 40.248
         },
         {
           "text": "Plant",
-          "start": 40.238,
-          "end": 40.548
+          "start": 40.248,
+          "end": 40.618
         },
         {
           "text": "1,",
-          "start": 40.548,
-          "end": 40.868
+          "start": 40.618,
+          "end": 41.088
         },
         {
           "text": "an",
-          "start": 40.868,
-          "end": 41.028
+          "start": 41.368,
+          "end": 41.478
         },
         {
           "text": "overhead",
-          "start": 41.028,
-          "end": 41.468
+          "start": 41.478,
+          "end": 42.008
         },
         {
           "text": "crane",
-          "start": 41.468,
-          "end": 41.768
+          "start": 42.008,
+          "end": 42.488
         },
         {
           "text": "lifts",
-          "start": 41.768,
-          "end": 42.068
-        },
-        {
-          "text": "each",
-          "start": 42.068,
-          "end": 42.268
-        },
-        {
-          "text": "jumbo",
-          "start": 42.268,
-          "end": 42.678
-        },
-        {
-          "text": "bag",
-          "start": 42.678,
+          "start": 42.488,
           "end": 42.938
         },
         {
-          "text": "straight",
+          "text": "each",
           "start": 42.938,
-          "end": 43.268
+          "end": 43.298
         },
         {
-          "text": "up",
-          "start": 43.268,
-          "end": 43.418
+          "text": "jumbo",
+          "start": 43.298,
+          "end": 43.688
         },
         {
-          "text": "to",
-          "start": 43.418,
-          "end": 43.508
-        },
-        {
-          "text": "the",
-          "start": 43.508,
-          "end": 43.608
-        },
-        {
-          "text": "reactor",
-          "start": 43.608,
+          "text": "bag",
+          "start": 43.688,
           "end": 44.048
         },
         {
-          "text": "charging",
+          "text": "straight",
           "start": 44.048,
-          "end": 44.538
+          "end": 44.548
+        },
+        {
+          "text": "up",
+          "start": 44.548,
+          "end": 44.708
+        },
+        {
+          "text": "to",
+          "start": 44.708,
+          "end": 44.808
+        },
+        {
+          "text": "the",
+          "start": 44.808,
+          "end": 44.898
+        },
+        {
+          "text": "reactor",
+          "start": 44.898,
+          "end": 45.428
+        },
+        {
+          "text": "charging",
+          "start": 45.428,
+          "end": 45.918
         },
         {
           "text": "deck.",
-          "start": 44.538,
-          "end": 44.938
+          "start": 45.918,
+          "end": 46.328
         }
       ],
       "start": 39.958,
-      "end": 45.488,
+      "end": 46.878,
       "text": "In Plant 1, an overhead crane lifts each jumbo bag straight up to the reactor charging deck."
     },
     {
@@ -2989,86 +2989,86 @@
         {
           "text": "Ten",
           "start": 48.75,
-          "end": 48.98
+          "end": 49.08
         },
         {
           "text": "reactors",
-          "start": 48.98,
-          "end": 49.48
+          "start": 49.08,
+          "end": 49.8
         },
         {
           "text": "up",
-          "start": 49.48,
-          "end": 49.61
+          "start": 49.8,
+          "end": 49.92
         },
         {
           "text": "to",
-          "start": 49.61,
-          "end": 49.71
+          "start": 49.92,
+          "end": 50.03
         },
         {
           "text": "16 KL",
-          "start": 49.71,
-          "end": 50.69
+          "start": 50.03,
+          "end": 51.45
         },
         {
           "text": "make",
-          "start": 50.69,
-          "end": 50.92
+          "start": 51.45,
+          "end": 51.68
         },
         {
           "text": "saturated",
-          "start": 50.92,
-          "end": 51.54
+          "start": 51.68,
+          "end": 52.32
         },
         {
           "text": "polyester,",
-          "start": 51.54,
-          "end": 52.28
+          "start": 52.32,
+          "end": 53.15
         },
         {
           "text": "alkyds,",
-          "start": 52.28,
-          "end": 52.89
+          "start": 53.38,
+          "end": 54.02
         },
         {
           "text": "and",
-          "start": 52.89,
-          "end": 53.04
+          "start": 54.02,
+          "end": 54.16
         },
         {
           "text": "modified",
-          "start": 53.04,
-          "end": 53.59
+          "start": 54.16,
+          "end": 54.65
         },
         {
           "text": "epoxy:",
-          "start": 53.59,
-          "end": 54.15
+          "start": 54.65,
+          "end": 55.24
         },
         {
           "text": "4,373",
-          "start": 54.32,
-          "end": 56.5
+          "start": 55.88,
+          "end": 58.13
         },
         {
           "text": "tons",
-          "start": 56.5,
-          "end": 56.8
+          "start": 58.13,
+          "end": 58.62
         },
         {
           "text": "a",
-          "start": 56.8,
-          "end": 56.83
+          "start": 58.62,
+          "end": 58.66
         },
         {
           "text": "month.",
-          "start": 56.83,
-          "end": 57.28
+          "start": 58.66,
+          "end": 59.06
         }
       ],
       "start": 48.63,
-      "end": 57.83,
+      "end": 59.61,
       "text": "Ten reactors up to 16 KL make saturated polyester, alkyds, and modified epoxy: 4,373 tons a month."
     },
     {
@@ -3077,71 +3077,71 @@
         {
           "text": "Plant",
           "start": 64.219,
-          "end": 64.529
+          "end": 64.619
         },
         {
           "text": "2",
-          "start": 64.529,
-          "end": 64.709
+          "start": 64.619,
+          "end": 65.109
         },
         {
           "text": "adds",
-          "start": 64.709,
-          "end": 64.869
+          "start": 65.109,
+          "end": 65.429
         },
         {
           "text": "specialty",
-          "start": 64.869,
-          "end": 65.449
+          "start": 65.429,
+          "end": 66.199
         },
         {
           "text": "and",
-          "start": 65.449,
-          "end": 65.569
+          "start": 66.199,
+          "end": 66.379
         },
         {
           "text": "solid",
-          "start": 65.569,
-          "end": 65.989
-        },
-        {
-          "text": "resins,",
-          "start": 65.989,
-          "end": 66.429
-        },
-        {
-          "text": "finished",
-          "start": 66.429,
+          "start": 66.379,
           "end": 66.849
         },
         {
-          "text": "on",
+          "text": "resins,",
           "start": 66.849,
-          "end": 67.009
+          "end": 67.469
+        },
+        {
+          "text": "finished",
+          "start": 67.589,
+          "end": 68.069
+        },
+        {
+          "text": "on",
+          "start": 68.069,
+          "end": 68.209
         },
         {
           "text": "flakers,",
-          "start": 67.009,
-          "end": 67.549
+          "start": 68.209,
+          "end": 68.929
         },
         {
           "text": "pelletisers,",
-          "start": 67.549,
-          "end": 68.379
+          "start": 68.929,
+          "end": 69.879
         },
         {
           "text": "and",
-          "start": 68.379,
-          "end": 68.569
+          "start": 69.879,
+          "end": 70.119
         },
         {
           "text": "crushers.",
-          "start": 68.569,
-          "end": 69.129
+          "start": 70.119,
+          "end": 70.739
         }
       ],
       "start": 64.099,
-      "end": 69.679,
+      "end": 71.289,
       "text": "Plant 2 adds specialty and solid resins, finished on flakers, pelletisers, and crushers."
     },
     {
@@ -3149,72 +3149,72 @@
       "words": [
         {
           "text": "Polyamide,",
-          "start": 70.781,
-          "end": 71.601
+          "start": 71.25,
+          "end": 72.2
         },
         {
           "text": "powder",
-          "start": 71.701,
-          "end": 72.031
+          "start": 72.36,
+          "end": 72.72
         },
         {
           "text": "polyester,",
-          "start": 72.031,
-          "end": 72.781
+          "start": 72.72,
+          "end": 73.54
         },
         {
           "text": "acrylic",
-          "start": 72.861,
-          "end": 73.291
+          "start": 73.9,
+          "end": 74.42
         },
         {
           "text": "polyols,",
-          "start": 73.291,
-          "end": 73.851
+          "start": 74.42,
+          "end": 75.22
         },
         {
           "text": "phenolics,",
-          "start": 73.941,
-          "end": 74.611
+          "start": 75.35,
+          "end": 76.16
         },
         {
           "text": "and",
-          "start": 74.611,
-          "end": 74.791
+          "start": 76.35,
+          "end": 76.56
         },
         {
           "text": "R&D",
-          "start": 74.791,
-          "end": 75.241
+          "start": 76.56,
+          "end": 77.22
         },
         {
           "text": "scale-up:",
-          "start": 75.241,
-          "end": 75.831
+          "start": 77.22,
+          "end": 77.88
         },
         {
           "text": "2,530",
-          "start": 76.051,
-          "end": 77.531
+          "start": 78.45,
+          "end": 79.89
         },
         {
           "text": "tons",
-          "start": 77.531,
-          "end": 77.831
+          "start": 79.89,
+          "end": 80.27
         },
         {
           "text": "a",
-          "start": 77.831,
-          "end": 77.861
+          "start": 80.27,
+          "end": 80.31
         },
         {
           "text": "month.",
-          "start": 77.861,
-          "end": 78.311
+          "start": 80.31,
+          "end": 80.7
         }
       ],
-      "start": 70.661,
-      "end": 78.861,
+      "start": 71.13,
+      "end": 81.25,
       "text": "Polyamide, powder polyester, acrylic polyols, phenolics, and R&D scale-up: 2,530 tons a month."
     },
     {
@@ -3223,66 +3223,66 @@
         {
           "text": "Every",
           "start": 85.078,
-          "end": 85.458
+          "end": 85.418
         },
         {
           "text": "batch",
-          "start": 85.458,
-          "end": 85.748
+          "start": 85.418,
+          "end": 85.838
         },
         {
           "text": "is",
-          "start": 85.748,
-          "end": 85.888
+          "start": 85.838,
+          "end": 86.018
         },
         {
           "text": "released",
-          "start": 85.888,
-          "end": 86.298
+          "start": 86.018,
+          "end": 86.508
         },
         {
           "text": "by",
-          "start": 86.298,
-          "end": 86.488
+          "start": 86.508,
+          "end": 86.678
         },
         {
           "text": "our",
-          "start": 86.488,
-          "end": 86.638
+          "start": 86.678,
+          "end": 86.788
         },
         {
           "text": "state-of-the-art",
-          "start": 86.638,
-          "end": 87.358
+          "start": 86.788,
+          "end": 87.688
         },
         {
           "text": "QC",
-          "start": 87.358,
-          "end": 87.738
+          "start": 87.688,
+          "end": 88.228
         },
         {
           "text": "lab,",
-          "start": 87.738,
-          "end": 88.008
+          "start": 88.228,
+          "end": 88.598
         },
         {
           "text": "with",
-          "start": 88.008,
-          "end": 88.218
+          "start": 88.908,
+          "end": 89.048
         },
         {
           "text": "a",
-          "start": 88.218,
-          "end": 88.268
+          "start": 89.048,
+          "end": 89.088
         },
         {
           "text": "dedicated",
-          "start": 88.268,
-          "end": 88.798
+          "start": 89.088,
+          "end": 89.718
         }
       ],
       "start": 84.958,
-      "end": 88.668,
+      "end": 89.688,
       "text": "Every batch is released by our state-of-the-art QC lab, with a dedicated"
     },
     {
@@ -3290,62 +3290,62 @@
       "words": [
         {
           "text": "application",
-          "start": 88.798,
-          "end": 89.438
+          "start": 89.818,
+          "end": 90.488
         },
         {
           "text": "lab",
-          "start": 89.438,
-          "end": 89.688
+          "start": 90.488,
+          "end": 90.868
         },
         {
           "text": "that",
-          "start": 89.688,
-          "end": 89.848
+          "start": 90.868,
+          "end": 91.048
         },
         {
           "text": "tests",
-          "start": 89.848,
-          "end": 90.178
+          "start": 91.048,
+          "end": 91.478
         },
         {
           "text": "coatings",
-          "start": 90.178,
-          "end": 90.618
+          "start": 91.478,
+          "end": 91.988
         },
         {
           "text": "the",
-          "start": 90.618,
-          "end": 90.698
+          "start": 91.988,
+          "end": 92.068
         },
         {
           "text": "way",
-          "start": 90.698,
-          "end": 90.878
+          "start": 92.068,
+          "end": 92.298
         },
         {
           "text": "your",
-          "start": 90.878,
-          "end": 91.058
+          "start": 92.298,
+          "end": 92.488
         },
         {
           "text": "customers",
-          "start": 91.058,
-          "end": 91.568
+          "start": 92.488,
+          "end": 93.188
         },
         {
           "text": "use",
-          "start": 91.568,
-          "end": 91.758
+          "start": 93.188,
+          "end": 93.438
         },
         {
           "text": "them.",
-          "start": 91.758,
-          "end": 92.068
+          "start": 93.438,
+          "end": 93.578
         }
       ],
-      "start": 88.678,
-      "end": 92.618,
+      "start": 89.698,
+      "end": 94.128,
       "text": "application lab that tests coatings the way your customers use them."
     },
     {
@@ -3354,51 +3354,51 @@
         {
           "text": "Both",
           "start": 95.625,
-          "end": 95.885
+          "end": 96.085
         },
         {
           "text": "plants",
-          "start": 95.885,
-          "end": 96.305
+          "start": 96.085,
+          "end": 96.605
         },
         {
           "text": "are",
-          "start": 96.305,
-          "end": 96.395
+          "start": 96.605,
+          "end": 96.765
         },
         {
           "text": "run",
-          "start": 96.395,
-          "end": 96.595
+          "start": 96.765,
+          "end": 97.085
         },
         {
           "text": "from",
-          "start": 96.595,
-          "end": 96.805
+          "start": 97.085,
+          "end": 97.355
         },
         {
           "text": "one",
-          "start": 96.805,
-          "end": 97.025
+          "start": 97.355,
+          "end": 97.785
         },
         {
           "text": "central",
-          "start": 97.025,
-          "end": 97.455
+          "start": 97.785,
+          "end": 98.275
         },
         {
           "text": "control",
-          "start": 97.455,
-          "end": 97.875
+          "start": 98.275,
+          "end": 98.695
         },
         {
           "text": "room.",
-          "start": 97.875,
-          "end": 98.335
+          "start": 98.695,
+          "end": 99.085
         }
       ],
       "start": 95.505,
-      "end": 98.885,
+      "end": 99.635,
       "text": "Both plants are run from one central control room."
     },
     {
@@ -3407,36 +3407,36 @@
         {
           "text": "Twelve",
           "start": 101.953,
-          "end": 102.233
+          "end": 102.383
         },
         {
           "text": "blenders",
-          "start": 102.233,
-          "end": 102.613
+          "start": 102.383,
+          "end": 103.013
         },
         {
           "text": "add",
-          "start": 102.613,
-          "end": 102.713
+          "start": 103.013,
+          "end": 103.293
         },
         {
           "text": "380 KL",
-          "start": 102.713,
-          "end": 104.143
+          "start": 103.293,
+          "end": 105.073
         },
         {
           "text": "of",
-          "start": 104.143,
-          "end": 104.253
+          "start": 105.073,
+          "end": 105.133
         },
         {
           "text": "blending,",
-          "start": 104.253,
-          "end": 104.683
+          "start": 105.133,
+          "end": 105.603
         }
       ],
       "start": 101.833,
-      "end": 104.553,
+      "end": 105.773,
       "text": "Twelve blenders add 380 KL of blending,"
     },
     {
@@ -3444,57 +3444,57 @@
       "words": [
         {
           "text": "and",
-          "start": 104.683,
-          "end": 104.903
+          "start": 105.903,
+          "end": 106.093
         },
         {
           "text": "22",
-          "start": 104.903,
-          "end": 105.403
+          "start": 106.093,
+          "end": 106.693
         },
         {
           "text": "grade-dedicated",
-          "start": 105.403,
-          "end": 106.193
+          "start": 106.693,
+          "end": 107.613
         },
         {
           "text": "tanks",
-          "start": 106.193,
-          "end": 106.563
+          "start": 107.613,
+          "end": 108.003
         },
         {
           "text": "hold",
-          "start": 106.563,
-          "end": 106.773
+          "start": 108.003,
+          "end": 108.323
         },
         {
           "text": "over",
-          "start": 106.773,
-          "end": 107.023
+          "start": 108.323,
+          "end": 108.573
         },
         {
           "text": "1,000 KL",
-          "start": 107.023,
-          "end": 108.213
+          "start": 108.573,
+          "end": 110.113
         },
         {
           "text": "of",
-          "start": 108.213,
-          "end": 108.283
+          "start": 110.113,
+          "end": 110.193
         },
         {
           "text": "finished",
-          "start": 108.283,
-          "end": 108.653
+          "start": 110.193,
+          "end": 110.563
         },
         {
           "text": "goods.",
-          "start": 108.653,
-          "end": 109.093
+          "start": 110.563,
+          "end": 110.993
         }
       ],
-      "start": 104.563,
-      "end": 109.643,
+      "start": 105.783,
+      "end": 111.543,
       "text": "and 22 grade-dedicated tanks hold over 1,000 KL of finished goods."
     },
     {
@@ -3502,77 +3502,77 @@
       "words": [
         {
           "text": "In",
-          "start": 111.328,
-          "end": 111.478
+          "start": 111.562,
+          "end": 111.763
         },
         {
           "text": "total:",
-          "start": 111.478,
-          "end": 111.828
+          "start": 111.763,
+          "end": 112.243
         },
         {
           "text": "about",
-          "start": 112.008,
-          "end": 112.308
+          "start": 112.532,
+          "end": 112.812
         },
         {
           "text": "1,500",
-          "start": 112.308,
-          "end": 113.078
+          "start": 112.812,
+          "end": 113.963
         },
         {
           "text": "tons",
-          "start": 113.078,
-          "end": 113.338
+          "start": 113.963,
+          "end": 114.362
         },
         {
           "text": "of",
-          "start": 113.338,
-          "end": 113.428
+          "start": 114.362,
+          "end": 114.433
         },
         {
           "text": "packed",
-          "start": 113.428,
-          "end": 113.728
+          "start": 114.433,
+          "end": 114.843
         },
         {
           "text": "storage,",
-          "start": 113.728,
-          "end": 114.258
+          "start": 114.843,
+          "end": 115.422
         },
         {
           "text": "and",
-          "start": 114.258,
-          "end": 114.478
+          "start": 115.722,
+          "end": 115.942
         },
         {
           "text": "over",
-          "start": 114.478,
-          "end": 114.728
+          "start": 115.942,
+          "end": 116.222
         },
         {
           "text": "1,600 KL",
-          "start": 114.728,
-          "end": 116.058
+          "start": 116.222,
+          "end": 117.953
         },
         {
           "text": "of",
-          "start": 116.058,
-          "end": 116.158
+          "start": 117.953,
+          "end": 118.052
         },
         {
           "text": "bulk",
-          "start": 116.158,
-          "end": 116.408
+          "start": 118.052,
+          "end": 118.453
         },
         {
           "text": "liquids.",
-          "start": 116.408,
-          "end": 116.928
+          "start": 118.453,
+          "end": 119.043
         }
       ],
-      "start": 111.208,
-      "end": 117.478,
+      "start": 111.442,
+      "end": 119.593,
       "text": "In total: about 1,500 tons of packed storage, and over 1,600 KL of bulk liquids."
     },
     {
@@ -3581,41 +3581,41 @@
         {
           "text": "Utilities",
           "start": 120.703,
-          "end": 121.323
+          "end": 121.453
         },
         {
           "text": "run",
-          "start": 121.323,
-          "end": 121.533
+          "start": 121.453,
+          "end": 121.793
         },
         {
           "text": "green:",
-          "start": 121.533,
-          "end": 121.913
+          "start": 121.793,
+          "end": 122.283
         },
         {
           "text": "agro-waste",
-          "start": 122.043,
-          "end": 122.693
+          "start": 122.703,
+          "end": 123.493
         },
         {
           "text": "fired",
-          "start": 122.693,
-          "end": 123.043
+          "start": 123.493,
+          "end": 123.873
         },
         {
           "text": "thermic",
-          "start": 123.043,
-          "end": 123.423
+          "start": 123.873,
+          "end": 124.263
         },
         {
           "text": "heaters,",
-          "start": 123.423,
-          "end": 123.773
+          "start": 124.263,
+          "end": 124.853
         }
       ],
       "start": 120.583,
-      "end": 123.643,
+      "end": 124.823,
       "text": "Utilities run green: agro-waste fired thermic heaters,"
     },
     {
@@ -3623,62 +3623,62 @@
       "words": [
         {
           "text": "fed",
-          "start": 123.773,
-          "end": 124.053
+          "start": 124.953,
+          "end": 125.203
         },
         {
           "text": "from",
-          "start": 124.053,
-          "end": 124.253
+          "start": 125.203,
+          "end": 125.393
         },
         {
           "text": "a",
-          "start": 124.253,
-          "end": 124.303
+          "start": 125.393,
+          "end": 125.443
         },
         {
           "text": "covered",
-          "start": 124.303,
-          "end": 124.623
+          "start": 125.443,
+          "end": 125.823
         },
         {
           "text": "fuel",
-          "start": 124.623,
-          "end": 124.973
+          "start": 125.823,
+          "end": 126.103
         },
         {
           "text": "shed,",
-          "start": 124.973,
-          "end": 125.273
+          "start": 126.103,
+          "end": 126.463
         },
         {
           "text": "and",
-          "start": 125.273,
-          "end": 125.463
+          "start": 126.733,
+          "end": 126.953
         },
         {
           "text": "a",
-          "start": 125.463,
-          "end": 125.503
+          "start": 126.953,
+          "end": 127.013
         },
         {
           "text": "2,200 TR",
-          "start": 125.503,
-          "end": 126.723
+          "start": 127.013,
+          "end": 128.623
         },
         {
           "text": "cooling",
-          "start": 126.723,
-          "end": 127.103
+          "start": 128.623,
+          "end": 129.113
         },
         {
           "text": "tower.",
-          "start": 127.103,
-          "end": 127.503
+          "start": 129.113,
+          "end": 129.583
         }
       ],
-      "start": 123.653,
-      "end": 128.053,
+      "start": 124.833,
+      "end": 130.133,
       "text": "fed from a covered fuel shed, and a 2,200 TR cooling tower."
     },
     {
@@ -3687,66 +3687,66 @@
         {
           "text": "On-site",
           "start": 130.078,
-          "end": 130.528
+          "end": 130.678
         },
         {
           "text": "nitrogen,",
-          "start": 130.528,
-          "end": 131.128
+          "start": 130.678,
+          "end": 131.358
         },
         {
           "text": "a",
-          "start": 131.208,
-          "end": 131.278
+          "start": 131.658,
+          "end": 131.718
         },
         {
           "text": "50 KLD",
-          "start": 131.278,
-          "end": 132.418
+          "start": 131.718,
+          "end": 133.218
         },
         {
           "text": "effluent",
-          "start": 132.418,
-          "end": 132.958
+          "start": 133.318,
+          "end": 133.768
         },
         {
           "text": "treatment",
-          "start": 132.958,
-          "end": 133.348
+          "start": 133.768,
+          "end": 134.188
         },
         {
           "text": "plant,",
-          "start": 133.348,
-          "end": 133.728
+          "start": 134.188,
+          "end": 134.578
         },
         {
           "text": "and",
-          "start": 133.728,
-          "end": 133.928
+          "start": 134.778,
+          "end": 134.958
         },
         {
           "text": "0.7 MW",
-          "start": 133.928,
-          "end": 135.028
+          "start": 134.958,
+          "end": 136.268
         },
         {
           "text": "of",
-          "start": 135.028,
-          "end": 135.138
+          "start": 136.268,
+          "end": 136.478
         },
         {
           "text": "rooftop",
-          "start": 135.138,
-          "end": 135.528
+          "start": 136.478,
+          "end": 136.948
         },
         {
           "text": "solar.",
-          "start": 135.528,
-          "end": 136.018
+          "start": 136.948,
+          "end": 137.388
         }
       ],
       "start": 129.958,
-      "end": 136.568,
+      "end": 137.938,
       "text": "On-site nitrogen, a 50 KLD effluent treatment plant, and 0.7 MW of rooftop solar."
     },
     {
@@ -3755,61 +3755,61 @@
         {
           "text": "Toll",
           "start": 151.172,
-          "end": 151.392
+          "end": 151.482
         },
         {
           "text": "conversion,",
-          "start": 151.392,
-          "end": 151.902
+          "start": 151.482,
+          "end": 152.182
         },
         {
           "text": "full-service",
-          "start": 152.002,
-          "end": 152.632
+          "start": 152.342,
+          "end": 153.102
         },
         {
           "text": "jobwork,",
-          "start": 152.632,
-          "end": 153.282
+          "start": 153.102,
+          "end": 153.842
         },
         {
           "text": "or",
-          "start": 153.282,
-          "end": 153.472
+          "start": 153.992,
+          "end": 154.222
         },
         {
           "text": "dedicated",
-          "start": 153.472,
-          "end": 154.022
+          "start": 154.222,
+          "end": 154.842
         },
         {
           "text": "capacity:",
-          "start": 154.022,
-          "end": 154.682
+          "start": 154.842,
+          "end": 155.502
         },
         {
           "text": "partner",
-          "start": 154.862,
-          "end": 155.242
+          "start": 156.012,
+          "end": 156.362
         },
         {
           "text": "with",
-          "start": 155.242,
-          "end": 155.402
+          "start": 156.362,
+          "end": 156.552
         },
         {
           "text": "MPD",
-          "start": 155.402,
-          "end": 155.862
+          "start": 156.552,
+          "end": 157.302
         },
         {
           "text": "Industries.",
-          "start": 155.862,
-          "end": 156.542
+          "start": 157.302,
+          "end": 157.912
         }
       ],
       "start": 151.052,
-      "end": 157.092,
+      "end": 158.462,
       "text": "Toll conversion, full-service jobwork, or dedicated capacity: partner with MPD Industries."
     },
     {
@@ -3817,47 +3817,47 @@
       "words": [
         {
           "text": "Every",
-          "start": 157.5,
-          "end": 157.88
+          "start": 158.438,
+          "end": 158.768
         },
         {
           "text": "model",
-          "start": 157.88,
-          "end": 158.22
+          "start": 158.768,
+          "end": 159.167
         },
         {
           "text": "comes",
-          "start": 158.22,
-          "end": 158.48
+          "start": 159.167,
+          "end": 159.537
         },
         {
           "text": "with",
-          "start": 158.48,
-          "end": 158.63
+          "start": 159.537,
+          "end": 159.738
         },
         {
           "text": "NDA",
-          "start": 158.63,
-          "end": 158.91
+          "start": 159.738,
+          "end": 160.387
         },
         {
           "text": "confidentiality,",
-          "start": 158.91,
-          "end": 160.11
+          "start": 160.387,
+          "end": 161.458
         },
         {
           "text": "segregated",
-          "start": 160.15,
-          "end": 160.8
+          "start": 161.708,
+          "end": 162.347
         },
         {
           "text": "storage,",
-          "start": 160.8,
-          "end": 161.34
+          "start": 162.347,
+          "end": 162.877
         }
       ],
-      "start": 157.38,
-      "end": 161.26,
+      "start": 158.318,
+      "end": 162.977,
       "text": "Every model comes with NDA confidentiality, segregated storage,"
     },
     {
@@ -3865,57 +3865,57 @@
       "words": [
         {
           "text": "and",
-          "start": 161.39,
-          "end": 161.55
+          "start": 163.107,
+          "end": 163.357
         },
         {
           "text": "a",
-          "start": 161.55,
-          "end": 161.59
+          "start": 163.357,
+          "end": 163.387
         },
         {
           "text": "scale-up",
-          "start": 161.59,
-          "end": 162.09
+          "start": 163.387,
+          "end": 163.958
         },
         {
           "text": "path",
-          "start": 162.09,
-          "end": 162.35
+          "start": 163.958,
+          "end": 164.298
         },
         {
           "text": "from",
-          "start": 162.35,
-          "end": 162.56
+          "start": 164.387,
+          "end": 164.637
         },
         {
           "text": "2 KL",
-          "start": 162.56,
-          "end": 163.15
+          "start": 164.637,
+          "end": 165.447
         },
         {
           "text": "trials",
-          "start": 163.15,
-          "end": 163.61
+          "start": 165.447,
+          "end": 165.977
         },
         {
           "text": "to",
-          "start": 163.61,
-          "end": 163.71
+          "start": 165.977,
+          "end": 166.227
         },
         {
           "text": "16 KL",
-          "start": 163.71,
-          "end": 164.63
+          "start": 166.227,
+          "end": 167.357
         },
         {
           "text": "production.",
-          "start": 164.63,
-          "end": 165.22
+          "start": 167.357,
+          "end": 167.898
         }
       ],
-      "start": 161.27,
-      "end": 165.77,
+      "start": 162.987,
+      "end": 168.448,
       "text": "and a scale-up path from 2 KL trials to 16 KL production."
     },
     {
@@ -3924,36 +3924,36 @@
         {
           "text": "MPD",
           "start": 172.5,
-          "end": 172.99
+          "end": 173.35
         },
         {
           "text": "Industries.",
-          "start": 172.99,
-          "end": 173.69
+          "start": 173.35,
+          "end": 174.09
         },
         {
           "text": "We",
-          "start": 173.8,
-          "end": 173.95
+          "start": 174.42,
+          "end": 174.66
         },
         {
           "text": "innovate.",
-          "start": 173.95,
-          "end": 174.4
+          "start": 174.66,
+          "end": 175.08
         },
         {
           "text": "We",
-          "start": 174.52,
-          "end": 174.68
+          "start": 175.36,
+          "end": 175.61
         },
         {
           "text": "serve.",
-          "start": 174.68,
-          "end": 175.03
+          "start": 175.61,
+          "end": 176.12
         }
       ],
       "start": 172.38,
-      "end": 175.58,
+      "end": 176.67,
       "text": "MPD Industries. We innovate. We serve."
     }
   ],
@@ -3985,28 +3985,28 @@
     },
     {
       "type": "click",
-      "at": 6.911,
+      "at": 7.614,
       "src": "a1_sites"
     },
     {
       "type": "thump",
-      "at": 7.701,
+      "at": 8.674,
       "src": "a1_reactors"
     },
     {
       "type": "ticks",
-      "at": 7.851,
+      "at": 8.824,
       "dur": 1.35,
       "src": "a1_reactors"
     },
     {
       "type": "thump",
-      "at": 9.251,
+      "at": 10.604,
       "src": "a1_capacity"
     },
     {
       "type": "ticks",
-      "at": 9.401,
+      "at": 10.754,
       "dur": 1.35,
       "src": "a1_capacity"
     },
@@ -4036,12 +4036,12 @@
     },
     {
       "type": "swoosh",
-      "at": 17.043,
+      "at": 17.442999999999998,
       "src": "a2_wh"
     },
     {
       "type": "thump",
-      "at": 17.163,
+      "at": 17.563,
       "src": "a2_wh"
     },
     {
@@ -4061,7 +4061,7 @@
     },
     {
       "type": "click",
-      "at": 25.313,
+      "at": 25.322,
       "src": "a2_depal_tag"
     },
     {
@@ -4070,19 +4070,19 @@
       "src": "a2_fly"
     },
     {
+      "type": "hiss",
+      "at": 30.8,
+      "dur": 2.4
+    },
+    {
       "type": "swoosh",
-      "at": 29.893,
+      "at": 32.012,
       "src": "a2_peso"
     },
     {
       "type": "thump",
-      "at": 30.013,
+      "at": 32.132,
       "src": "a2_peso"
-    },
-    {
-      "type": "hiss",
-      "at": 30.8,
-      "dur": 2.4
     },
     {
       "type": "riser",
@@ -4110,7 +4110,7 @@
     },
     {
       "type": "click",
-      "at": 42.168,
+      "at": 43.198,
       "src": "a3_bag_tag"
     },
     {
@@ -4120,37 +4120,37 @@
     },
     {
       "type": "click",
-      "at": 49.61,
+      "at": 49.93,
       "src": "a3_reactor"
     },
     {
       "type": "swoosh",
-      "at": 50.35,
+      "at": 51.11,
       "src": "a3_split"
     },
     {
       "type": "click",
-      "at": 50.47,
+      "at": 51.23,
       "src": "a3_split"
     },
     {
       "type": "click",
-      "at": 50.82,
+      "at": 51.58,
       "src": "a3_split"
     },
     {
       "type": "click",
-      "at": 52.18,
+      "at": 53.28,
       "src": "a3_split"
     },
     {
       "type": "click",
-      "at": 53.49,
+      "at": 54.55,
       "src": "a3_split"
     },
     {
       "type": "thump",
-      "at": 54.2,
+      "at": 55.76,
       "src": "a3_split.total"
     },
     {
@@ -4179,52 +4179,47 @@
     },
     {
       "type": "click",
-      "at": 66.859,
+      "at": 68.059,
       "src": "a4_chips"
     },
     {
       "type": "click",
-      "at": 67.429,
+      "at": 68.809,
       "src": "a4_chips"
     },
     {
       "type": "click",
-      "at": 68.449,
+      "at": 69.999,
       "src": "a4_chips"
     },
     {
       "type": "click",
-      "at": 68.919,
+      "at": 70.469,
       "src": "a4_chips"
     },
     {
       "type": "swoosh",
-      "at": 70.211,
+      "at": 70.67999999999999,
       "src": "a4_matrix"
     },
     {
       "type": "click",
-      "at": 70.331,
+      "at": 70.8,
       "src": "a4_matrix"
     },
     {
       "type": "click",
-      "at": 70.681,
+      "at": 71.15,
       "src": "a4_matrix"
     },
     {
       "type": "click",
-      "at": 71.601,
+      "at": 72.26,
       "src": "a4_matrix"
     },
     {
       "type": "click",
-      "at": 72.761,
-      "src": "a4_matrix"
-    },
-    {
-      "type": "click",
-      "at": 73.841,
+      "at": 73.8,
       "src": "a4_matrix"
     },
     {
@@ -4234,12 +4229,17 @@
     },
     {
       "type": "click",
-      "at": 74.691,
+      "at": 75.25,
+      "src": "a4_matrix"
+    },
+    {
+      "type": "click",
+      "at": 76.46,
       "src": "a4_matrix"
     },
     {
       "type": "thump",
-      "at": 75.931,
+      "at": 78.33,
       "src": "a4_matrix.total"
     },
     {
@@ -4268,22 +4268,22 @@
     },
     {
       "type": "click",
-      "at": 87.208,
+      "at": 87.538,
       "src": "a5_labs"
     },
     {
       "type": "click",
-      "at": 88.678,
+      "at": 89.698,
       "src": "a5_labs"
     },
     {
       "type": "click",
-      "at": 90.058,
+      "at": 91.358,
       "src": "a5_labs"
     },
     {
       "type": "click",
-      "at": 97.335,
+      "at": 98.155,
       "src": "a5_labs"
     },
     {
@@ -4307,23 +4307,13 @@
     },
     {
       "type": "swoosh",
-      "at": 104.01299999999999,
+      "at": 104.893,
       "src": "a6_blend"
     },
     {
       "type": "thump",
-      "at": 104.133,
+      "at": 105.013,
       "src": "a6_blend"
-    },
-    {
-      "type": "swoosh",
-      "at": 108.063,
-      "src": "a6_fg"
-    },
-    {
-      "type": "thump",
-      "at": 108.183,
-      "src": "a6_fg"
     },
     {
       "type": "whoosh",
@@ -4331,34 +4321,44 @@
       "src": "a6_rise"
     },
     {
-      "type": "click",
-      "at": 111.278,
-      "src": "a6_totals"
-    },
-    {
-      "type": "click",
-      "at": 112.208,
-      "src": "a6_totals"
-    },
-    {
-      "type": "click",
-      "at": 114.628,
-      "src": "a6_totals"
-    },
-    {
-      "type": "click",
-      "at": 114.978,
-      "src": "a6_totals"
+      "type": "swoosh",
+      "at": 109.973,
+      "src": "a6_fg"
     },
     {
       "type": "thump",
-      "at": 116.058,
-      "src": "a6_totals.total"
+      "at": 110.093,
+      "src": "a6_fg"
+    },
+    {
+      "type": "click",
+      "at": 111.563,
+      "src": "a6_totals"
+    },
+    {
+      "type": "click",
+      "at": 112.712,
+      "src": "a6_totals"
     },
     {
       "type": "whoosh",
       "at": 116.1,
       "src": "a6_total"
+    },
+    {
+      "type": "click",
+      "at": 116.122,
+      "src": "a6_totals"
+    },
+    {
+      "type": "click",
+      "at": 116.472,
+      "src": "a6_totals"
+    },
+    {
+      "type": "thump",
+      "at": 117.952,
+      "src": "a6_totals.total"
     },
     {
       "type": "riser",
@@ -4386,17 +4386,12 @@
     },
     {
       "type": "click",
-      "at": 121.843,
+      "at": 122.503,
       "src": "a7_badges"
     },
     {
       "type": "click",
-      "at": 124.183,
-      "src": "a7_badges"
-    },
-    {
-      "type": "click",
-      "at": 125.383,
+      "at": 125.323,
       "src": "a7_badges"
     },
     {
@@ -4411,7 +4406,12 @@
     },
     {
       "type": "click",
-      "at": 130.408,
+      "at": 126.893,
+      "src": "a7_badges"
+    },
+    {
+      "type": "click",
+      "at": 130.558,
       "src": "a7_badges"
     },
     {
@@ -4421,7 +4421,7 @@
     },
     {
       "type": "click",
-      "at": 131.158,
+      "at": 131.598,
       "src": "a7_badges"
     },
     {
@@ -4431,7 +4431,7 @@
     },
     {
       "type": "click",
-      "at": 133.808,
+      "at": 134.838,
       "src": "a7_badges"
     },
     {
@@ -4475,17 +4475,17 @@
     },
     {
       "type": "click",
-      "at": 151.882,
+      "at": 152.222,
       "src": "a8_cards"
     },
     {
       "type": "click",
-      "at": 153.352,
+      "at": 154.102,
       "src": "a8_cards"
     },
     {
       "type": "click",
-      "at": 158.48,
+      "at": 159.588,
       "src": "a8_ribbon"
     },
     {
@@ -4688,377 +4688,377 @@
       "ctx": "a1_sites.in",
       "line": "a1_l2",
       "word": "Two",
-      "wordStart": 7.031,
+      "wordStart": 7.734,
       "offset": -0.12,
-      "cue": 6.911
+      "cue": 7.614
     },
     {
       "ctx": "a1_reactors.in",
       "line": "a1_l2",
       "word": "22",
-      "wordStart": 7.821,
+      "wordStart": 8.794,
       "offset": -0.12,
-      "cue": 7.701
+      "cue": 8.674
     },
     {
       "ctx": "a1_capacity.in",
       "line": "a1_l2",
       "word": "6,900",
-      "wordStart": 9.371,
+      "wordStart": 10.724,
       "offset": -0.12,
-      "cue": 9.251
+      "cue": 10.604
     },
     {
       "ctx": "a2_wh.in",
       "line": "a2_l1",
       "word": "warehouses",
-      "wordStart": 17.263,
+      "wordStart": 17.663,
       "offset": -0.1,
-      "cue": 17.163
+      "cue": 17.563
     },
     {
       "ctx": "a2_depal_tag.in",
       "line": "a2_l2",
       "word": "depalletiser",
-      "wordStart": 25.413,
+      "wordStart": 25.422,
       "offset": -0.1,
-      "cue": 25.313
+      "cue": 25.322
     },
     {
       "ctx": "a2_peso.in",
       "line": "a2_l2",
       "word": "600 KL",
-      "wordStart": 30.133,
+      "wordStart": 32.252,
       "offset": -0.12,
-      "cue": 30.013
+      "cue": 32.132
     },
     {
       "ctx": "a3_bag_tag.in",
       "line": "a3_l1",
       "word": "jumbo",
-      "wordStart": 42.268,
+      "wordStart": 43.298,
       "offset": -0.1,
-      "cue": 42.168
+      "cue": 43.198
     },
     {
       "ctx": "a3_reactor.in",
       "line": "a3_l2",
       "word": "16 KL",
-      "wordStart": 49.71,
+      "wordStart": 50.03,
       "offset": -0.1,
-      "cue": 49.61
+      "cue": 49.93
     },
     {
       "ctx": "a3_split.in",
       "line": "a3_l2",
       "word": "saturated",
-      "wordStart": 50.92,
+      "wordStart": 51.68,
       "offset": -0.45,
-      "cue": 50.47
+      "cue": 51.23
     },
     {
       "ctx": "a3_split.total",
       "line": "a3_l2",
       "word": "4,373",
-      "wordStart": 54.32,
+      "wordStart": 55.88,
       "offset": -0.12,
-      "cue": 54.2
+      "cue": 55.76
     },
     {
       "ctx": "a3_split.rows[0]",
       "line": "a3_l2",
       "word": "saturated",
-      "wordStart": 50.92,
+      "wordStart": 51.68,
       "offset": -0.1,
-      "cue": 50.82
+      "cue": 51.58
     },
     {
       "ctx": "a3_split.rows[1]",
       "line": "a3_l2",
       "word": "alkyds",
-      "wordStart": 52.28,
+      "wordStart": 53.38,
       "offset": -0.1,
-      "cue": 52.18
+      "cue": 53.28
     },
     {
       "ctx": "a3_split.rows[2]",
       "line": "a3_l2",
       "word": "epoxy",
-      "wordStart": 53.59,
+      "wordStart": 54.65,
       "offset": -0.1,
-      "cue": 53.49
+      "cue": 54.55
     },
     {
       "ctx": "a4_chips.in",
       "line": "a4_l1",
       "word": "flakers",
-      "wordStart": 67.009,
+      "wordStart": 68.209,
       "offset": -0.15,
-      "cue": 66.859
+      "cue": 68.059
     },
     {
       "ctx": "a4_chips.items[0]",
       "line": "a4_l1",
       "word": "flakers",
-      "wordStart": 67.009,
+      "wordStart": 68.209,
       "offset": -0.12,
-      "cue": 66.889
+      "cue": 68.089
     },
     {
       "ctx": "a4_chips.items[1]",
       "line": "a4_l1",
       "word": "pelletisers",
-      "wordStart": 67.549,
+      "wordStart": 68.929,
       "offset": -0.12,
-      "cue": 67.429
+      "cue": 68.809
     },
     {
       "ctx": "a4_chips.items[2]",
       "line": "a4_l1",
       "word": "crushers",
-      "wordStart": 68.569,
+      "wordStart": 70.119,
       "offset": -0.12,
-      "cue": 68.449
+      "cue": 69.999
     },
     {
       "ctx": "a4_chips.items[3]",
       "line": "a4_l1",
       "word": "crushers",
-      "wordStart": 68.569,
+      "wordStart": 70.119,
       "offset": 0.35,
-      "cue": 68.919
+      "cue": 70.469
     },
     {
       "ctx": "a4_matrix.in",
       "line": "a4_l2",
       "word": "Polyamide",
-      "wordStart": 70.781,
+      "wordStart": 71.25,
       "offset": -0.45,
-      "cue": 70.331
+      "cue": 70.8
     },
     {
       "ctx": "a4_matrix.total",
       "line": "a4_l2",
       "word": "2,530",
-      "wordStart": 76.051,
+      "wordStart": 78.45,
       "offset": -0.12,
-      "cue": 75.931
+      "cue": 78.33
     },
     {
       "ctx": "a4_matrix.rows[0]",
       "line": "a4_l2",
       "word": "Polyamide",
-      "wordStart": 70.781,
+      "wordStart": 71.25,
       "offset": -0.1,
-      "cue": 70.681
+      "cue": 71.15
     },
     {
       "ctx": "a4_matrix.rows[1]",
       "line": "a4_l2",
       "word": "powder",
-      "wordStart": 71.701,
+      "wordStart": 72.36,
       "offset": -0.1,
-      "cue": 71.601
+      "cue": 72.26
     },
     {
       "ctx": "a4_matrix.rows[2]",
       "line": "a4_l2",
       "word": "acrylic",
-      "wordStart": 72.861,
+      "wordStart": 73.9,
       "offset": -0.1,
-      "cue": 72.761
+      "cue": 73.8
     },
     {
       "ctx": "a4_matrix.rows[3]",
       "line": "a4_l2",
       "word": "phenolics",
-      "wordStart": 73.941,
+      "wordStart": 75.35,
       "offset": -0.1,
-      "cue": 73.841
+      "cue": 75.25
     },
     {
       "ctx": "a4_matrix.rows[4]",
       "line": "a4_l2",
       "word": "R&D",
-      "wordStart": 74.791,
+      "wordStart": 76.56,
       "offset": -0.1,
-      "cue": 74.691
+      "cue": 76.46
     },
     {
       "ctx": "a5_labs.in",
       "line": "a5_l1",
       "word": "QC",
-      "wordStart": 87.358,
+      "wordStart": 87.688,
       "offset": -0.15,
-      "cue": 87.208
+      "cue": 87.538
     },
     {
       "ctx": "a5_labs.items[0]",
       "line": "a5_l1",
       "word": "QC",
-      "wordStart": 87.358,
+      "wordStart": 87.688,
       "offset": -0.12,
-      "cue": 87.238
+      "cue": 87.568
     },
     {
       "ctx": "a5_labs.items[1]",
       "line": "a5_l1",
       "word": "application",
-      "wordStart": 88.798,
+      "wordStart": 89.818,
       "offset": -0.12,
-      "cue": 88.678
+      "cue": 89.698
     },
     {
       "ctx": "a5_labs.items[2]",
       "line": "a5_l1",
       "word": "coatings",
-      "wordStart": 90.178,
+      "wordStart": 91.478,
       "offset": -0.12,
-      "cue": 90.058
+      "cue": 91.358
     },
     {
       "ctx": "a5_labs.items[3]",
       "line": "a5_l2",
       "word": "control",
-      "wordStart": 97.455,
+      "wordStart": 98.275,
       "offset": -0.12,
-      "cue": 97.335
+      "cue": 98.155
     },
     {
       "ctx": "a5_app_tag.in",
       "line": "a5_l1",
       "word": "application",
-      "wordStart": 88.798,
+      "wordStart": 89.818,
       "offset": -0.1,
-      "cue": 88.698
+      "cue": 89.718
     },
     {
       "ctx": "a5_wet_tag.in",
       "line": "a5_l1",
       "word": "QC",
-      "wordStart": 87.358,
+      "wordStart": 87.688,
       "offset": 0.2,
-      "cue": 87.558
+      "cue": 87.888
     },
     {
       "ctx": "a6_blend.in",
       "line": "a6_l1",
       "word": "blending",
-      "wordStart": 104.253,
+      "wordStart": 105.133,
       "offset": -0.12,
-      "cue": 104.133
+      "cue": 105.013
     },
     {
       "ctx": "a6_fg.in",
       "line": "a6_l1",
       "word": "finished",
-      "wordStart": 108.283,
+      "wordStart": 110.193,
       "offset": -0.1,
-      "cue": 108.183
+      "cue": 110.093
     },
     {
       "ctx": "a6_totals.in",
       "line": "a6_l2",
       "word": "total",
-      "wordStart": 111.478,
+      "wordStart": 111.763,
       "offset": -0.2,
-      "cue": 111.278
+      "cue": 111.563
     },
     {
       "ctx": "a6_totals.rows[0]",
       "line": "a6_l2",
       "word": "1,500",
-      "wordStart": 112.308,
+      "wordStart": 112.812,
       "offset": -0.1,
-      "cue": 112.208
+      "cue": 112.712
     },
     {
       "ctx": "a6_totals.rows[1]",
       "line": "a6_l2",
       "word": "1,600 KL",
-      "wordStart": 114.728,
+      "wordStart": 116.222,
       "offset": -0.1,
-      "cue": 114.628
+      "cue": 116.122
     },
     {
       "ctx": "a6_totals.rows[2]",
       "line": "a6_l2",
       "word": "1,600 KL",
-      "wordStart": 114.728,
+      "wordStart": 116.222,
       "offset": 0.25,
-      "cue": 114.978
+      "cue": 116.472
     },
     {
       "ctx": "a6_totals.total",
       "line": "a6_l2",
       "word": "bulk",
-      "wordStart": 116.158,
+      "wordStart": 118.052,
       "offset": -0.1,
-      "cue": 116.058
+      "cue": 117.952
     },
     {
       "ctx": "a7_badges.in",
       "line": "a7_l1",
       "word": "agro-waste",
-      "wordStart": 122.043,
+      "wordStart": 122.703,
       "offset": -0.2,
-      "cue": 121.843
+      "cue": 122.503
     },
     {
       "ctx": "a7_badges.items[0]",
       "line": "a7_l1",
       "word": "agro-waste",
-      "wordStart": 122.043,
+      "wordStart": 122.703,
       "offset": -0.12,
-      "cue": 121.923
+      "cue": 122.583
     },
     {
       "ctx": "a7_badges.items[1]",
       "line": "a7_l1",
       "word": "covered",
-      "wordStart": 124.303,
+      "wordStart": 125.443,
       "offset": -0.12,
-      "cue": 124.183
+      "cue": 125.323
     },
     {
       "ctx": "a7_badges.items[2]",
       "line": "a7_l1",
       "word": "2,200 TR",
-      "wordStart": 125.503,
+      "wordStart": 127.013,
       "offset": -0.12,
-      "cue": 125.383
+      "cue": 126.893
     },
     {
       "ctx": "a7_badges.items[3]",
       "line": "a7_l2",
       "word": "nitrogen",
-      "wordStart": 130.528,
+      "wordStart": 130.678,
       "offset": -0.12,
-      "cue": 130.408
+      "cue": 130.558
     },
     {
       "ctx": "a7_badges.items[4]",
       "line": "a7_l2",
       "word": "50 KLD",
-      "wordStart": 131.278,
+      "wordStart": 131.718,
       "offset": -0.12,
-      "cue": 131.158
+      "cue": 131.598
     },
     {
       "ctx": "a7_badges.items[5]",
       "line": "a7_l2",
       "word": "0.7 MW",
-      "wordStart": 133.928,
+      "wordStart": 134.958,
       "offset": -0.12,
-      "cue": 133.808
+      "cue": 134.838
     },
     {
       "ctx": "a7_heater_tag.in",
       "line": "a7_l1",
       "word": "thermic",
-      "wordStart": 123.043,
+      "wordStart": 123.873,
       "offset": 0.0,
-      "cue": 123.043
+      "cue": 123.873
     },
     {
       "ctx": "a8_cards.in",
@@ -5080,25 +5080,25 @@
       "ctx": "a8_cards.items[1]",
       "line": "a8_l1",
       "word": "full-service",
-      "wordStart": 152.002,
+      "wordStart": 152.342,
       "offset": -0.12,
-      "cue": 151.882
+      "cue": 152.222
     },
     {
       "ctx": "a8_cards.items[2]",
       "line": "a8_l1",
       "word": "dedicated",
-      "wordStart": 153.472,
+      "wordStart": 154.222,
       "offset": -0.12,
-      "cue": 153.352
+      "cue": 154.102
     },
     {
       "ctx": "a8_ribbon.in",
       "line": "a8_l2",
       "word": "NDA",
-      "wordStart": 158.63,
+      "wordStart": 159.738,
       "offset": -0.15,
-      "cue": 158.48
+      "cue": 159.588
     }
   ]
 }

@@ -1,20 +1,39 @@
 # Dependencies (restore with `npm install`)
 node_modules/
 
+# Rendered videos: rebuilt by scripts/encode.sh, never committed
+*.mp4
+*.mov
+*.mkv
+*.webm
+
 # Heavy, regenerable build artefacts:
 # mix stems are 50-70 MB WAVs each, rebuilt by scripts/audio.py in ~1 min
 build/audio/
 # 5,400 rendered JPEG frames, rebuilt by scripts/render_frames.mjs
 build/frames/
+build/frames_*/
 # validation captures + report, rebuilt by scripts/validate.mjs
 build/validation/
-# render / validation logs
-build/logs/
-# encoder outputs over GitHub's 100 MB limit (the committed master is re-encoded below it)
-out/*_music_only.mp4
-out/*_crf20.mp4
+# voice comparison clips from scripts/tts_gemini.py --samples
+build/vo_samples/
 
-# Scratch
+# Logs
+build/logs/
+*.log
+
+# Secrets (copy .env.example to .env)
+.env
+.env.*
+!.env.example
+
+# Scratch / editor / OS
 *.tmp
 __pycache__/
+*.pyc
 .DS_Store
+.vscode/
+.idea/
+
+# Build artefacts
+build/
