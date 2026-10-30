@@ -1,4 +1,5 @@
-// Mehidpurwala logo sting — "हम फर्नीचर बनाते हैं... दिल से." — 5 s, 1920×1080 Canvas 2D.
+// Mehidpurwala logo sting — "हम फर्नीचर बनाते हैं... दिल से." — Canvas 2D.
+// The timeline file sets the format: timeline.json (5 s, 1920×1080) or timeline_reel.json (reel end card, 1080×1920).
 // Every frame is a pure function of t (window.renderFrame(t)), so the renderer can capture frames in
 // any order and the live preview (index.html) can follow the music's clock.
 //
@@ -6,7 +7,7 @@
 // the tagline is written out, and on "दिल से." the heart winks (its right hump squeezes shut like an
 // eyelid and springs back) with a sparkle.
 
-const W = 1920, H = 1080;
+let W = 1920, H = 1080;
 const RED = [237, 46, 51], INK = [17, 17, 17];
 const rgb = (c, a = 1) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
 
@@ -74,22 +75,38 @@ function smooth(ctrl, per = 16) {
 // paths the ribbon reveal sweeps along (source-image px): from inside each heart lobe outwards
 const SWEEP_L = smooth([[205, 60], [172, 92], [138, 128], [112, 166], [101, 204], [114, 238], [148, 258], [196, 250], [246, 232], [302, 204]]);
 const SWEEP_R = smooth([[352, 72], [366, 100], [395, 122], [428, 150], [458, 175], [478, 192]]);
-// the wink: the right hump folds down towards this line (source px), centred on the hump's crest
-// a flat-topped weight across the hump (cosine shoulders) so the crest flattens evenly and blends
-// into the cleft on one side and the band's straight edge on the other
-const WINK = { pivot: 98, top: 36, x0: 292, x1: 388, fadeL: 24, fadeR: 46, depth: 0.8 };
-function winkWeight(x) {
-  const up = clamp((x - (WINK.x0 - WINK.fadeL)) / WINK.fadeL), down = clamp(((WINK.x1 + WINK.fadeR) - x) / WINK.fadeR);
-  return ease.inOutSine(up) * ease.inOutSine(down);
+// The wink closes the right hump like an eyelid: between the cleft (xa) and a point on the band's
+// straight top edge (xb) the mark's top edge morphs onto a "lid" — a Hermite curve leaving the cleft
+// level and meeting the band edge at its own slope — while everything below `base` stays put.
+// depth 1 shuts it completely; timings in seconds.
+const WINK = { xa: 285, xb: 420, base: 118, depth: 1, close: 0.08, hold: 0.07, open: 0.3 };
+const TOP = { x0: 80, res: 4, y: [] };          // the mark's top edge, sampled every 1/res source px
+const topAt = (x) => { const i = clamp((x - TOP.x0) * TOP.res, 0, TOP.y.length - 1), f = i - Math.floor(i); return lerp(TOP.y[Math.floor(i)], TOP.y[Math.ceil(i)], f); };
+function lid(x) {
+  const d = WINK.xb - WINK.xa, u = (x - WINK.xa) / d;
+  const ya = topAt(WINK.xa), yb = topAt(WINK.xb), mb = (topAt(WINK.xb + 1) - topAt(WINK.xb - 1)) / 2;
+  return (2 * u ** 3 - 3 * u ** 2 + 1) * ya + (-2 * u ** 3 + 3 * u ** 2) * yb + (u ** 3 - u ** 2) * d * mb;
 }
 
-async function load() {
+async function load(timeline) {
   const j = (f) => fetch(f, { cache: 'no-store' }).then((r) => r.json());
-  [TL, G, TXT] = await Promise.all([j('timeline.json'), j('trace/mark.json'), j('trace/text.json')]);
+  [TL, G, TXT] = await Promise.all([j(timeline), j('trace/mark.json'), j('trace/text.json')]);
+  [W, H] = TL.size || [1920, 1080];
+  Object.assign(WINK, TL.winkStyle || {});
   P = {
     outline: new Path2D(G.outline), foldL: new Path2D(G.foldL), foldR: new Path2D(G.foldR), heart: new Path2D(G.heartClip),
     sweepL: poly(SWEEP_L), sweepR: poly(SWEEP_R),
   };
+  // sample the mark's top edge once, for the wink
+  const c = document.createElement('canvas'); c.width = 400 * TOP.res; c.height = 160 * TOP.res;
+  const cx = c.getContext('2d', { willReadFrequently: true });
+  cx.setTransform(TOP.res, 0, 0, TOP.res, -TOP.x0 * TOP.res, 0); cx.fill(P.outline);
+  const px = cx.getImageData(0, 0, c.width, c.height).data;
+  for (let i = 0; i < c.width; i++) {
+    let y = 0;
+    while (y < c.height && px[(y * c.width + i) * 4 + 3] < 128) y++;
+    TOP.y.push(y / TOP.res);
+  }
   const sil = [...chaikin(G.heartLeft), ...chaikin(G.heartRight).reverse()];
   const hx = sil.map((p) => p[0]), hy = sil.map((p) => p[1]);
   P.heartC = [(Math.min(...hx) + Math.max(...hx)) / 2, (Math.min(...hy) + Math.max(...hy)) / 2];
@@ -100,9 +117,9 @@ async function load() {
   P.reg = glyph(TXT.parts.reg);
   P.since = TXT.parts.since.map(glyph);
   P.tag = TXT.parts.tag.map(glyph);
-  // final framing: whole lockup centred, ~800 px tall
+  // framing: opens close on the heart (k0), settles on the whole lockup (k1) centred at cy of the frame height
   const xs = [G.box[0], G.box[2], P.reg.box[2], ...P.tag.map((g) => g.box[0])], ys = [G.box[1], ...P.tag.map((g) => g.box[3])];
-  CAM = { k0: 2.7, k1: 1.7, c1: [(Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...ys) + Math.max(...ys)) / 2] };
+  CAM = { k0: 2.7, k1: 1.7, cy: 0.5, ...TL.frame, c1: [(Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...ys) + Math.max(...ys)) / 2] };
 }
 
 // --------------------------------------------------------------------------- layers
@@ -122,7 +139,8 @@ function camera(t) {
   const hold = 1 + 0.02 * ease.inOutSine(prog(t, TL.camera[1], TL.duration));   // a slow breath on the lockup
   const s = Math.exp(lerp(Math.log(CAM.k0), Math.log(CAM.k1), e)) * hold;
   const f = [lerp(P.heartC[0], CAM.c1[0], e), lerp(P.heartC[1], CAM.c1[1], e)];
-  const m = [s, 0, 0, s, W / 2 - f[0] * s, H / 2 - f[1] * s];
+  const cy = lerp(0.5, CAM.cy, e);
+  const m = [s, 0, 0, s, W / 2 - f[0] * s, H * cy - f[1] * s];
   return { s, m, map: (p) => [p[0] * s + m[4], p[1] * s + m[5]] };
 }
 
@@ -130,13 +148,13 @@ function camera(t) {
 const thump = (x) => (x < 0 ? 0 : x < 0.045 ? x / 0.045 : Math.exp(-(x - 0.045) / 0.15));
 const beat = (t, at) => thump(t - at) + 0.6 * thump(t - at - TL.dub);
 
-// wink: 0 open … 1 shut. Closes fast, holds a beat, springs open with a little overshoot.
+// wink: 0 open … 1 shut. Closes fast, holds, springs open with a little overshoot.
 function wink(t) {
-  const x = t - TL.wink;
+  const x = t - TL.wink, { close, hold, open } = WINK;
   if (x < 0) return 0;
-  if (x < 0.08) return (x / 0.08) ** 2;
-  if (x < 0.15) return 1;
-  if (x < 0.45) return 1 - ease.outBack((x - 0.15) / 0.3, 2.4);
+  if (x < close) return (x / close) ** 2;
+  if (x < close + hold) return 1;
+  if (x < close + hold + open) return 1 - ease.outBack((x - close - hold) / open, 2.4);
   return 0;
 }
 
@@ -151,7 +169,7 @@ function fillMark(g) {
 
 function background(g) {
   g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
-  const vg = g.createRadialGradient(W / 2, H / 2, 380, W / 2, H / 2, 1180);
+  const R = Math.max(W, H) * 0.62, vg = g.createRadialGradient(W / 2, H / 2, R * 0.32, W / 2, H / 2, R);
   vg.addColorStop(0, 'rgba(120,80,80,0)'); vg.addColorStop(1, 'rgba(120,80,80,0.07)');
   g.fillStyle = vg; g.fillRect(0, 0, W, H);
 }
@@ -232,22 +250,24 @@ function mark(g, t, cam) {
   if (Math.abs(w) < 0.002) {
     g.drawImage(M, 0, 0);
   } else {
-    // the wink: above the pivot line each 1-px column of the mark is squashed down towards it,
-    // fully across the right hump, easing out to either side — the hump closes like an eyelid
-    const yp = Math.round(cam.map([0, WINK.pivot])[1]), yt = Math.floor(cam.map([0, WINK.top])[1]), hgt = yp - yt;
-    g.drawImage(M, 0, yp, W, H - yp, 0, yp, W, H - yp);
-    const [x0] = cam.map([G.box[0] - 4, 0]), [x1] = cam.map([G.box[2] + 4, 0]);
-    for (let x = Math.floor(x0); x < x1; x++) {
+    // the wink: each 1-px column between the cleft and the band has its top edge moved onto the lid
+    // curve, the column stretched between that edge and the fixed base line
+    const [xa] = cam.map([WINK.xa, 0]), [xb] = cam.map([WINK.xb, 0]);
+    const x0 = Math.floor(xa), x1 = Math.ceil(xb), yb = cam.map([0, WINK.base])[1];
+    g.drawImage(M, 0, 0, x0, H, 0, 0, x0, H);
+    g.drawImage(M, x1, 0, W - x1, H, x1, 0, W - x1, H);
+    g.drawImage(M, x0, yb, x1 - x0, H - yb, x0, yb, x1 - x0, H - yb);
+    for (let x = x0; x < x1; x++) {
       const xs = (x + 0.5 - cam.m[4]) / cam.s;
-      const k = 1 - WINK.depth * w * winkWeight(xs);
-      g.drawImage(M, x, yt, 1, hgt, x, yp - hgt * k, 1, hgt * k);
+      const y0 = cam.map([0, topAt(xs) - 1])[1], yT = cam.map([0, lerp(topAt(xs), lid(xs), WINK.depth * w) - 1])[1];
+      g.drawImage(M, x, y0, 1, yb - y0, x, yT, 1, yb - yT);
     }
   }
   g.shadowColor = 'transparent'; g.shadowBlur = 0; g.shadowOffsetY = 0;
 
   // sparkles as the eye springs open
-  for (const [dt, sx, sy, size] of [[0.1, 384, 38, 46], [0.2, 410, 62, 24]]) {
-    const v = prog(t, TL.wink + dt, TL.wink + dt + 0.5);
+  for (const [ts, sx, sy, size] of [[TL.sparkles[0], 384, 38, 46], [TL.sparkles[1], 410, 62, 24]]) {
+    const v = prog(t, ts, ts + 0.5);
     if (v <= 0 || v >= 1) continue;
     const [x, y] = cam.map([sx, sy]);
     sparkle(g, x, y, size * cam.s / 1.7 * Math.sin(Math.PI * v) ** 0.6, v * Math.PI * 0.5, 1);
@@ -325,8 +345,9 @@ function renderFrame(t) {
 }
 
 window.renderFrame = renderFrame;
-window.boot = async (canvas) => {
+window.boot = async (canvas, timeline = 'timeline.json') => {
+  await load(timeline);
+  canvas.width = W; canvas.height = H;
   window.ctx = canvas.getContext('2d');
-  await load();
   window.TL = TL;
 };

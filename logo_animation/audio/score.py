@@ -1,6 +1,8 @@
 """Original 5-second score for the Mehidpurwala logo sting, synthesized from timeline.json.
 
-    python3 audio/score.py build/score.wav
+    python3 audio/score.py [timeline.json] build/score.wav
+
+The timeline picks the cut (timeline.json: 5 s landscape; timeline_reel.json: 4.5 s reel end card).
 
 D major. Every hit sits on a timestamp the picture uses:
   0.1 s      the heart beats in: lub-dub + a soft bell
@@ -19,7 +21,8 @@ from scipy.io import wavfile
 
 SR = 48000
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TL = json.load(open(os.path.join(ROOT, 'timeline.json')))
+ARGS = [a for a in sys.argv[1:] if a.endswith('.json')]
+TL = json.load(open(os.path.join(ROOT, ARGS[0] if ARGS else 'timeline.json')))
 DUR = TL['duration']
 RNG = np.random.default_rng(1885)
 N = int(DUR * SR)
@@ -242,9 +245,9 @@ def build():
     verb.add(piano(m('F#5'), 0.42, ring + 0.6), wk + 0.03, 0.85)
     verb.add(strings([m(x) for x in ['D3', 'A3', 'D4', 'F#4', 'A4', 'D5']], ring - 0.3, attack=0.12, release=0.8, cutoff=2600, vel=0.24), wk)
     fx.add(sub_boom(1.4), wk, 0.4)
-    verb.add(bell(m('D7'), 0.22, 2.0), wk + 0.1, pan=0.45)
-    verb.add(bell(m('A7'), 0.14, 1.5), wk + 0.2, pan=0.6)
-    verb.add(glint(0.5), wk + 0.08, 0.035)
+    verb.add(bell(m('D7'), 0.22, 2.0), TL['sparkles'][0], pan=0.45)
+    verb.add(bell(m('A7'), 0.14, 1.5), TL['sparkles'][1], pan=0.6)
+    verb.add(glint(0.5), TL['sparkles'][0] - 0.02, 0.035)
 
     out = reverb(verb.x, 2.2, wet=0.38) + dry.x + reverb(fx.x, 1.0, wet=0.12)
     out = hp(out, 34, 2)
@@ -255,7 +258,8 @@ def build():
 
 
 if __name__ == '__main__':
-    dst = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, 'build', 'score.wav')
+    outs = [a for a in sys.argv[1:] if not a.endswith('.json')]
+    dst = outs[0] if outs else os.path.join(ROOT, 'build', 'score.wav')
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     wavfile.write(dst, SR, build().astype(np.float32))
     print('wrote', dst)

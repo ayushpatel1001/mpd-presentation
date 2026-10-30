@@ -1,7 +1,9 @@
 {
-  "_": "Shared by anim.js (picture) and audio/score.py (music). Seconds.",
+  "_": "Landscape sting. Shared by anim.js (picture) and audio/score.py (music). Seconds.",
+  "size": [1920, 1080],
   "fps": 60,
   "duration": 5.0,
+  "audio": "out/mehidpurwala_logo_score.m4a",
   "heartIn": [0.06, 0.46],
   "heartbeats": [0.1],
   "dub": 0.22,
@@ -15,5 +17,6 @@
   "tag1": [2.5, 3.3],
   "dots": [3.36, 3.46],
   "tag2": [3.55, 3.95],
-  "wink": 4.0
+  "wink": 4.0,
+  "sparkles": [4.1, 4.2]
 }
