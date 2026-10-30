@@ -48,6 +48,17 @@ Run everything with `scripts/build.sh` (needs Node 22, Python 3 with numpy/scipy
 FFmpeg, Playwright's Chromium, and the `rhvoice rhvoice-english` apt packages).
 `node scripts/preview_stills.mjs 12 40 95` renders individual frames to `build/preview/` for quick looks.
 
+### View in a browser (interactive)
+
+```bash
+npm install
+npm run view
+```
+
+Open http://127.0.0.1:5173/src/index.html — after the scene boots you get Play/Pause and a
+scrubber across the 180s timeline (`?t=45` jumps to a time; `?play=0` starts paused). Headless
+frame capture is unchanged: `preview.js` stays idle when Playwright sets `navigator.webdriver`.
+
 * **Deterministic rendering.** Every animation (camera, liquid level, flakes, pellets, plumes, flow
   pulses) is a pure function of `t`, so frames can be rendered in any order or in parallel.
 * **Renderer.** Headless Chromium + SwiftShader WebGL. The 3D layer renders at 1600×900 into an HDR

@@ -7,6 +7,7 @@
   "scripts": {
     "render": "node scripts/render_frames.mjs",
     "preview": "node scripts/preview_stills.mjs",
+    "view": "node scripts/view.mjs",
     "validate": "node scripts/validate.mjs"
   },
   "dependencies": {
