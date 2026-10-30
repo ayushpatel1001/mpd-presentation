@@ -1789,10 +1789,10 @@
       "id": "a1_zones",
       "type": "zoneCallouts",
       "in": 12.3,
-      "out": 15.0,
+      "out": 15.2,
       "sfx": "click",
       "props": {
-        "stagger": 0.14,
+        "stagger": 0.08,
         "items": [
           {
             "anchor": "wh1",
