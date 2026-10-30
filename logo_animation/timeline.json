@@ -1,0 +1,19 @@
+{
+  "_": "Shared by anim.js (picture) and audio/score.py (music). Seconds.",
+  "fps": 60,
+  "duration": 5.0,
+  "heartIn": [0.06, 0.46],
+  "heartbeats": [0.1],
+  "dub": 0.22,
+  "camera": [0.5, 1.7],
+  "ribbonL": [0.6, 1.5],
+  "ribbonR": [0.72, 1.48],
+  "sheen": [1.45, 2.05],
+  "word": [1.6, 0.03, 0.55],
+  "reg": 2.05,
+  "since": [2.05, 0.02, 0.6],
+  "tag1": [2.5, 3.3],
+  "dots": [3.36, 3.46],
+  "tag2": [3.55, 3.95],
+  "wink": 4.0
+}

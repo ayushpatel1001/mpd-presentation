@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mehidpurwala Logo Reveal</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #fff; overflow: hidden; }
+  canvas { position: absolute; inset: 0; margin: auto; width: 100vw; height: 56.25vw; max-height: 100vh; max-width: 177.78vh; display: block; }
+  button { position: absolute; left: 50%; bottom: 6vh; transform: translateX(-50%); font: 600 15px/1 system-ui, sans-serif; letter-spacing: .08em;
+    color: #fff; background: #ED2E33; border: 0; border-radius: 999px; padding: 14px 26px; cursor: pointer; }
+  body.render button { display: none; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<button id="play" hidden>▶ PLAY WITH MUSIC</button>
+<script src="anim.js"></script>
+<script>
+  // ?render: the frame renderer drives window.renderFrame(t) itself.
+  // Otherwise play live, clocked by the music so picture and sound stay locked.
+  const render = new URLSearchParams(location.search).has('render');
+  if (render) document.body.classList.add('render');
+  boot(document.getElementById('c')).then(() => {
+    window.ready = true;
+    if (render) return;
+    renderFrame(TL.duration - 0.01);
+    const btn = document.getElementById('play'), audio = new Audio('out/mehidpurwala_logo_score.m4a');
+    btn.hidden = false;
+    btn.onclick = () => {
+      btn.hidden = true; audio.currentTime = 0; audio.play();
+      const tick = () => {
+        renderFrame(Math.min(audio.currentTime, TL.duration));
+        if (!audio.ended && audio.currentTime < TL.duration) requestAnimationFrame(tick); else btn.hidden = false;
+      };
+      requestAnimationFrame(tick);
+    };
+  }).catch((e) => { window.bootError = String(e && e.stack || e); });
+</script>
+</body>
+</html>
