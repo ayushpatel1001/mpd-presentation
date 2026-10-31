@@ -1,0 +1,9 @@
+item,use,qty
+"Extension spring, ~150 N preload, 200 mm extended",crank returns (input A),2
+"Compression spring OD 24, wire 3, free length 55, ~6 N/mm","shot bolt (input B), inside housing bore",1
+Light torsion/extension spring (optional),hook return (hooks are gravity-biased already),4
+"Release cable, 6 mm galvanised wire rope + T-handle",input A to cab (red handle),1
+"Release cable, 6 mm galvanised wire rope + T-handle",input B to cab (yellow handle),1
+Cable guide sheave 75 mm,redirect cable A upward,1
+Grease nipple M6,"hinges, hooks, rollers, lever",16
+"Safety chain, grade 80, 8 mm + hook",to forklift mast,1

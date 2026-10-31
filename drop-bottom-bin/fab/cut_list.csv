@@ -1,0 +1,24 @@
+section,use,qty,length_mm,note
+50x50x5 equal angle,"top rim, long sides",2,1300.0,45 deg mitre corners
+50x50x5 equal angle,"top rim, ends",2,1000.0,
+50x50x5 equal angle,"mid band (z=480-530), long sides",2,1300.0,
+50x50x5 equal angle,"mid band, ends",2,1000.0,
+50x50x5 equal angle,side wall vertical stiffeners,4,720,stop 130 above ground (door swing)
+50x50x5 equal angle,end wall vertical stiffeners,4,590,stop above cross shaft
+50x50x5 equal angle,corner posts,4,720,
+50x8 flat bar,end wall bottom edge,2,1000.0,door seats against it
+150x75x5 RHS,fork pockets,2,1300,multi-pass fillet to rim + gussets
+50x50x5 SHS,"door frame, long members",4,1230.0,2 per door
+50x50x5 SHS,"door frame, end + cross members",10,395.0,5 per door
+CHS / thick tube 40 OD x 21 ID,"hinge knuckles (tub 12, door 6)",18,80,or machined from 40 bar
+Bright bar dia 20 (EN8),hinge pins,6,260,"with grease nipples, R-clip / weld collar"
+Bright bar dia 40 (EN8),end cross shafts,2,820,
+Bright bar dia 25 (EN19/EN8 HT),roller pins,4,74,washer + split pin outer end
+Tube / bush 40 OD x 26 ID,rollers,4,40,"machined, greased"
+Bright bar dia 16,dog drive pins,4,26,pressed + welded into dog
+Bright bar dia 20,link pins,4,30,head + R-clip
+Bright bar dia 30,central lever pivot pin,1,88,
+"Bright bar dia 25 (EN19, hardened)",SHOT BOLT (input B),1,60,chamfer tip 3x45
+Bright bar dia 8,shot-bolt cross pin,1,81,
+Bright bar dia 16,release-lever pivot pin,1,40,
+Solid/fabricated block,"lever pivot post, bolt housing + stop, release-lever bracket, 2 spring anchors",1,0,see STEP tub_weldment; bore 26 in housing

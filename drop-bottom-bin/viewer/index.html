@@ -1,0 +1,379 @@
+<title>1-Tonne Drop-Bottom Bin</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: workshop bench - a full-height 3D stage on the left, a control card on the right (stacks under the stage on phones). */
+:root {
+  --bg: #eef0f3;
+  --stage: #e3e6eb;
+  --panel: #ffffff;
+  --ink: #1d2128;
+  --muted: #5b6370;
+  --rule: #d5d9e0;
+  --steel: #7b3fa0;
+  --a: #c99a00;
+  --a-ink: #3a2c00;
+  --a-soft: #fff4c7;
+  --b: #c62828;
+  --b-ink: #ffffff;
+  --b-soft: #fde4e4;
+  --ok: #1f7a4d;
+  --ok-soft: #ddf3e7;
+  --warn: #a35a00;
+  --warn-soft: #fff0d9;
+  --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171c; --stage: #1b1e24; --panel: #20242b; --ink: #e8eaee; --muted: #9aa3b0; --rule: #333944;
+    --steel: #b07fd6; --a: #e8c21a; --a-ink: #241b00; --a-soft: #3a3110; --b: #ef5350; --b-ink: #1a0000; --b-soft: #3d1d1d;
+    --ok: #4cc38a; --ok-soft: #173326; --warn: #f0a742; --warn-soft: #3a2a12; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171c; --stage: #1b1e24; --panel: #20242b; --ink: #e8eaee; --muted: #9aa3b0; --rule: #333944;
+  --steel: #b07fd6; --a: #e8c21a; --a-ink: #241b00; --a-soft: #3a3110; --b: #ef5350; --b-ink: #1a0000; --b-soft: #3d1d1d;
+  --ok: #4cc38a; --ok-soft: #173326; --warn: #f0a742; --warn-soft: #3a2a12; color-scheme: dark;
+}
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45; }
+.app { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 360px; }
+.stage { position: relative; background: var(--stage); min-height: 0; }
+#gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+.views { position: absolute; left: max(12px, env(safe-area-inset-left, 0px)); bottom: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+.views button { font: 500 12px/1 var(--mono); letter-spacing: .02em; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--rule);
+  background: var(--panel); color: var(--ink); cursor: pointer; }
+.views button[aria-pressed="true"] { border-color: var(--steel); color: var(--steel); }
+.loading[hidden] { display: none; }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; font: 500 13px var(--mono); color: var(--muted); }
+.panel { background: var(--panel); border-left: 1px solid var(--rule); overflow-y: auto; min-width: 0;
+  padding-block: 22px 28px; padding-left: 22px; padding-right: max(22px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 18px; }
+.eyebrow { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 30px/1.05 var(--display); margin: 4px 0 0; text-wrap: balance; letter-spacing: .005em; }
+.lede { color: var(--muted); margin: 6px 0 0; }
+.inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.in { border-radius: 10px; padding: 12px 12px 11px; text-align: left; cursor: pointer; border: 2px solid; font-family: var(--body);
+  display: flex; flex-direction: column; gap: 4px; transition: transform .08s ease; user-select: none; -webkit-user-select: none; }
+.in:active { transform: translateY(1px); }
+.in .k { font: 700 22px/1 var(--display); }
+.in .t { font-weight: 600; font-size: 14px; }
+.in .s { font: 500 11px var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+#btnA { border-color: var(--a); background: var(--a-soft); color: var(--ink); }
+#btnA[aria-pressed="true"] { background: var(--a); color: var(--a-ink); }
+#btnB { border-color: var(--b); background: var(--b-soft); color: var(--ink); }
+#btnB[aria-pressed="true"] { background: var(--b); color: var(--b-ink); }
+.in:focus-visible, .views button:focus-visible, .ground:focus-visible { outline: 3px solid var(--steel); outline-offset: 2px; }
+.hint { font-size: 12.5px; color: var(--muted); margin: -8px 0 0; }
+.status { border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; }
+.status[data-tone="ok"] { background: var(--ok-soft); }
+.status[data-tone="warn"] { background: var(--warn-soft); }
+.status[data-tone="open"] { background: var(--b-soft); }
+.status .big { font: 700 22px/1.1 var(--display); letter-spacing: .01em; }
+.status[data-tone="ok"] .big { color: var(--ok); }
+.status[data-tone="warn"] .big { color: var(--warn); }
+.status[data-tone="open"] .big { color: var(--b); }
+.status .why { font-size: 13.5px; }
+.ground { font: 600 14px var(--body); padding: 10px 12px; border-radius: 8px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.ground:disabled { opacity: .4; cursor: not-allowed; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th { font: 500 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0 6px 6px; border-bottom: 1px solid var(--rule); }
+td { padding: 7px 6px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.c { font: 500 13px var(--mono); text-align: center; width: 28px; }
+tr.on td { background: color-mix(in srgb, var(--steel) 12%, transparent); font-weight: 600; }
+h2 { font: 600 16px var(--display); letter-spacing: .02em; margin: 0 0 6px; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; font-size: 13.5px; }
+dt { color: var(--muted); }
+dd { margin: 0; font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; text-align: right; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12.5px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; grid-template-rows: 58vh auto; height: auto; }
+  .panel { border-left: 0; border-top: 1px solid var(--rule); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) { .in { transition: none; } }
+</style>
+
+<div class="app">
+  <div class="stage">
+    <canvas id="gl" aria-label="3D model of the drop-bottom bin. Drag to orbit, scroll or pinch to zoom."></canvas>
+    <div class="loading" id="loading">Loading model…</div>
+    <div class="views" role="group" aria-label="Camera views">
+      <button id="v-all" aria-pressed="true">Whole bin</button>
+      <button id="v-side" aria-pressed="false">Side mechanism</button>
+      <button id="v-end" aria-pressed="false">End latch</button>
+      <button id="v-under" aria-pressed="false">Underside</button>
+    </div>
+  </div>
+
+  <aside class="panel">
+    <div>
+      <div class="eyebrow">1000 kg SWL · 1.0 m³ · drop-bottom forklift bin</div>
+      <h1>Two inputs open the doors</h1>
+      <p class="lede">Pull the release lever (A) and withdraw the safety bolt (B) together. Either one alone leaves the doors latched.</p>
+    </div>
+
+    <div class="inputs">
+      <button class="in" id="btnA" aria-pressed="false"><span class="k">A</span><span class="t">Release lever</span><span class="s" id="sA">Released</span></button>
+      <button class="in" id="btnB" aria-pressed="false"><span class="k">B</span><span class="t">Safety bolt</span><span class="s" id="sB">Released</span></button>
+    </div>
+    <p class="hint">Click to pull or release, or hold the A and B keys. In the cab these are two spring-return T-handles mounted apart, so one hand can't pull both.</p>
+
+    <div class="status" id="status" data-tone="ok" aria-live="polite">
+      <div class="big" id="stBig">Locked</div>
+      <div class="why" id="stWhy">Hooks sit under the door rollers and the shot bolt pins lever A.</div>
+    </div>
+
+    <button class="ground" id="btnGround" disabled>Set the bin down to close the doors</button>
+
+    <div>
+      <h2>Interlock logic</h2>
+      <table>
+        <thead><tr><th>A</th><th>B</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr id="r00"><td class="c">–</td><td class="c">–</td><td>Locked</td></tr>
+          <tr id="r10"><td class="c">✓</td><td class="c">–</td><td>Blocked. The bolt pins lever A</td></tr>
+          <tr id="r01"><td class="c">–</td><td class="c">✓</td><td>Locked. Springs keep A on its stop</td></tr>
+          <tr id="r11"><td class="c">✓</td><td class="c">✓</td><td>Hooks swing out and the doors drop</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>Key numbers</h2>
+      <dl>
+        <dt>Safe working load</dt><dd>1000 kg</dd>
+        <dt>Volume</dt><dd>1.00 m³</dd>
+        <dt>Body (L × W × H)</dt><dd>1200 × 1000 × 900 mm</dd>
+        <dt>Over pockets</dt><dd>1410 × 1300 × 975 mm</dd>
+        <dt>Steel tare (from CAD)</dt><dd>≈ 411 kg</dd>
+        <dt>Hook release</dt><dd>25° at 31° lever</dd>
+        <dt>Cable A stroke / pull</dt><dd>≈ 140 mm / 140 N</dd>
+        <dt>Cable B stroke</dt><dd>30 mm</dd>
+        <dt>Self-lock offset</dt><dd>3 mm outboard</dd>
+      </dl>
+    </div>
+
+    <div class="legend" aria-label="Colour key">
+      <span><i style="background:#7b3fa0"></i>Tub</span>
+      <span><i style="background:#3a3f44"></i>Doors</span>
+      <span><i style="background:#f28c28"></i>Hooks</span>
+      <span><i style="background:#e8c21a"></i>Input A linkage</span>
+      <span><i style="background:#d62828"></i>Input B bolt</span>
+    </div>
+  </aside>
+</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+const canvas = document.getElementById("gl");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(32, 1, 10, 20000);
+camera.up.set(0, 0, 1);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8f99, 1.6));
+const sun = new THREE.DirectionalLight(0xffffff, 1.9);
+sun.position.set(1800, 2600, 3200);
+scene.add(sun);
+const fill = new THREE.DirectionalLight(0xffffff, 0.6);
+fill.position.set(-2500, -1500, 800);
+scene.add(fill);
+
+const ground = new THREE.Mesh(new THREE.CircleGeometry(1500, 64), new THREE.MeshLambertMaterial({ color: 0x888888, transparent: true, opacity: 0.18 }));
+ground.position.z = -0.5;
+scene.add(ground);
+
+function themeColors() {
+  const cs = getComputedStyle(document.documentElement);
+  renderer.setClearColor(new THREE.Color(cs.getPropertyValue("--stage").trim() || "#e3e6eb"));
+}
+themeColors();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", themeColors);
+new MutationObserver(themeColors).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+function resize() {
+  const r = canvas.getBoundingClientRect();
+  renderer.setSize(r.width, r.height, false);
+  camera.aspect = r.width / Math.max(1, r.height);
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(canvas);
+
+function dec(b64, T) {
+  const bin = atob(b64); const u = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+  return new T(u.buffer);
+}
+
+// --- rig -------------------------------------------------------------------------
+const rigs = {};
+let R;
+function pivotY(x, z) { const g = new THREE.Group(); g.position.set(x, 0, z); const inner = new THREE.Group(); inner.position.set(-x, 0, -z); g.add(inner); scene.add(g); return { g, inner }; }
+function pivotX(y, z) { const g = new THREE.Group(); g.position.set(0, y, z); const inner = new THREE.Group(); inner.position.set(0, -y, -z); g.add(inner); scene.add(g); return { g, inner }; }
+
+function rot(c, p, a) { const x = p[0] - c[0], z = p[1] - c[1]; return [c[0] + x * Math.cos(a) - z * Math.sin(a), c[1] + x * Math.sin(a) + z * Math.cos(a)]; }
+function dist(a, b) { return Math.hypot(a[0] - b[0], a[1] - b[1]); }
+function bis(f, lo, hi) { let flo = f(lo); if (Math.abs(flo) < 1e-9) return lo; for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2, fm = f(m); if ((fm > 0) === (flo > 0)) { lo = m; flo = fm; } else hi = m; } return (lo + hi) / 2; }
+function solve(phi) {
+  const up = rot(R.lev, R.lev_up, phi), dn = rot(R.lev, R.lev_dn, phi);
+  const Sf = [R.sx, R.sz], Sr = [-R.sx, R.sz], tf = R.crank_top, tr = [-R.crank_top[0], R.crank_top[1]];
+  const thf = bis(t => dist(rot(Sf, tf, t), up) - R.Lf, 0, 1.2);
+  const thr = bis(t => dist(rot(Sr, tr, t), dn) - R.Lr, 0, -1.2);
+  return { thf, thr, up, dn, cf: rot(Sf, tf, thf), cr: rot(Sr, tr, thr) };
+}
+
+// --- load ------------------------------------------------------------------------
+const res = await fetch("scene.json");
+const data = await res.json();
+R = data.rig;
+if (R.bolt_face) FACE = R.bolt_face;
+rigs.door_p = pivotX(R.hy, R.hz);
+rigs.door_n = pivotX(-R.hy, R.hz);
+rigs.shaft_f = pivotY(R.sx, R.sz);
+rigs.hook_f = pivotY(R.sx, R.sz);
+rigs.shaft_r = pivotY(-R.sx, R.sz);
+rigs.hook_r = pivotY(-R.sx, R.sz);
+rigs.lever = pivotY(R.lev[0], R.lev[1]);
+rigs.rl = pivotX(R.rl_piv[0], R.rl_piv[1]);
+rigs.bolt = { g: new THREE.Group() }; rigs.bolt.inner = rigs.bolt.g; scene.add(rigs.bolt.g);
+rigs.link_front = { g: new THREE.Group() }; rigs.link_front.inner = rigs.link_front.g; scene.add(rigs.link_front.g);
+rigs.link_rear = { g: new THREE.Group() }; rigs.link_rear.inner = rigs.link_rear.g; scene.add(rigs.link_rear.g);
+rigs.static = { g: scene, inner: scene };
+
+for (const p of data.parts) {
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.BufferAttribute(dec(p.pos, Float32Array), 3));
+  geo.setIndex(new THREE.BufferAttribute(dec(p.idx, p.idx16 ? Uint16Array : Uint32Array), 1));
+  const mat = new THREE.MeshStandardMaterial({ color: p.color, flatShading: true, metalness: 0.15, roughness: 0.7, side: THREE.DoubleSide });
+  const m = new THREE.Mesh(geo, mat);
+  (rigs[p.rig] || rigs.static).inner.add(m);
+}
+document.getElementById("loading").hidden = true;
+
+// --- state -----------------------------------------------------------------------
+const S = { A: false, B: false, bolt: 0, phi: 0, door: 0, doorV: 0, open: false, closing: false, cam: 0, shake: 0 };
+const deg = Math.PI / 180;
+let FACE = 20 / 30;     // bolt fraction at which its tip rides on the lever face
+
+function apply() {
+  const k = solve(S.phi);
+  rigs.shaft_f.g.rotation.y = -k.thf;
+  rigs.shaft_r.g.rotation.y = -k.thr;
+  rigs.hook_f.g.rotation.y = -Math.max(k.thf, S.cam);
+  rigs.hook_r.g.rotation.y = -Math.min(k.thr, -S.cam);
+  rigs.lever.g.rotation.y = -(S.phi + S.shake);
+  const lf = rigs.link_front.g, lr = rigs.link_rear.g;
+  lf.position.set(k.up[0], 0, k.up[1]); lf.rotation.set(0, -Math.atan2(k.cf[1] - k.up[1], k.cf[0] - k.up[0]), 0);
+  lr.position.set(k.dn[0], 0, k.dn[1]); lr.rotation.set(0, -Math.atan2(k.cr[1] - k.dn[1], k.cr[0] - k.dn[0]), 0);
+  const shift = -R.bolt_travel * S.bolt;
+  rigs.bolt.g.position.y = shift;
+  const pv = R.rl_piv, lz = R.lobe[1];
+  rigs.rl.g.rotation.x = Math.atan2(lz - pv[1], R.cross_y + shift - pv[0]) - Math.atan2(lz - pv[1], R.cross_y - pv[0]);
+  rigs.door_p.g.rotation.x = S.door * deg;
+  rigs.door_n.g.rotation.x = -S.door * deg;
+  return k;
+}
+
+function step(dt) {
+  // input B: spring-loaded bolt
+  const bTarget = S.B ? 1 : (S.phi > 0.02 ? FACE : 0);
+  S.bolt += Math.sign(bTarget - S.bolt) * Math.min(Math.abs(bTarget - S.bolt), dt * 4);
+  // input A: lever, only free when the bolt is clear of the lobe hole
+  const free = S.bolt >= FACE - 1e-3;
+  const pTarget = S.A && free ? R.phi_max : 0;
+  if (S.A && !free && S.phi < 0.02) S.shake = Math.sin(performance.now() / 30) * 0.6 * deg; else S.shake = 0;
+  S.phi += Math.sign(pTarget - S.phi) * Math.min(Math.abs(pTarget - S.phi), dt * 1.4);
+  const k = apply();
+  // doors drop once the hooks have cleared the rollers
+  if (!S.open && !S.closing && k.thf > 18 * deg) { S.open = true; S.doorV = 0; }
+  if (S.open && !S.closing && S.door < R.door_open) {
+    S.doorV += dt * 260; S.door = Math.min(R.door_open, S.door + S.doorV * dt);
+  }
+  if (S.closing) {
+    S.door = Math.max(0, S.door - dt * 45);
+    S.cam = S.door < 7 ? 25 * deg * Math.sin(Math.PI * (7 - S.door) / 7) : 0;
+    if (S.door <= 0) { S.closing = false; S.open = false; S.cam = 0; }
+  }
+  ui(k);
+}
+
+const $ = id => document.getElementById(id);
+let lastKey = "";
+function ui(k) {
+  const key = [S.A, S.B, S.open, S.closing, k.thf > 0.02, S.bolt >= FACE - 1e-3].join();
+  if (key === lastKey) return; lastKey = key;
+  $("btnA").setAttribute("aria-pressed", S.A); $("sA").textContent = S.A ? "Pulled" : "Released";
+  $("btnB").setAttribute("aria-pressed", S.B); $("sB").textContent = S.B ? "Pulled" : "Released";
+  for (const r of ["r00", "r10", "r01", "r11"]) $(r).classList.remove("on");
+  $("r" + (+S.A) + (+S.B)).classList.add("on");
+  let tone = "ok", big = "Locked", why = "Hooks sit under the door rollers and the shot bolt pins lever A.";
+  if (S.closing) { tone = "warn"; big = "Closing"; why = "The ground pushes the doors up. Each roller cams its hook aside, then the hook drops back under it by gravity."; }
+  else if (S.open) {
+    tone = "open"; big = "Doors open";
+    why = S.A || S.B ? "Load discharged. Release both handles, then set the bin down to close." : "Linkage is back on its stop and the bolt has re-armed. Set the bin down to close the doors.";
+  }
+  else if (S.A && !S.B) { tone = "warn"; big = "Blocked"; why = "Lever A is pinned by the shot bolt. Nothing moves until B is pulled as well."; }
+  else if (!S.A && S.B) { why = "Bolt withdrawn, but the return springs hold lever A on its stop and the hooks stay under the rollers."; }
+  else if (S.A && S.B) { tone = "open"; big = "Releasing"; why = "Bolt clear, lever turning, hooks swinging out."; }
+  else if (S.bolt > 0.02 && S.bolt < 1) { why = "Bolt springing back into the lever. The bin is re-armed."; }
+  $("status").dataset.tone = tone; $("stBig").textContent = big; $("stWhy").textContent = why;
+  const canGround = S.open && !S.closing && !S.A && S.phi < 0.02;
+  $("btnGround").disabled = !canGround;
+}
+
+$("btnA").addEventListener("click", () => { S.A = !S.A; lastKey = ""; });
+$("btnB").addEventListener("click", () => { S.B = !S.B; lastKey = ""; });
+$("btnGround").addEventListener("click", () => { S.closing = true; lastKey = ""; });
+addEventListener("keydown", e => { if (e.repeat) return; if (e.key === "a" || e.key === "A") { S.A = true; lastKey = ""; } if (e.key === "b" || e.key === "B") { S.B = true; lastKey = ""; } });
+addEventListener("keyup", e => { if (e.key === "a" || e.key === "A") { S.A = false; lastKey = ""; } if (e.key === "b" || e.key === "B") { S.B = false; lastKey = ""; } });
+
+// --- views -----------------------------------------------------------------------
+const VIEWS = {
+  all:   { pos: [2600, 3300, 1900], tgt: [0, 0, 420] },
+  side:  { pos: [-250, 3700, 900], tgt: [60, 560, 360] },
+  end:   { pos: [2700, 1250, 650], tgt: [660, 0, 150] },
+  under: { pos: [2200, 2600, -1100], tgt: [0, 0, 250] },
+};
+function view(name) {
+  const v = VIEWS[name];
+  camera.position.set(...v.pos); controls.target.set(...v.tgt); controls.update();
+  for (const n of Object.keys(VIEWS)) $("v-" + n).setAttribute("aria-pressed", n === name);
+}
+for (const n of Object.keys(VIEWS)) $("v-" + n).addEventListener("click", () => view(n));
+resize(); view("all");
+
+let last = performance.now();
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function loop(t) {
+  const dt = Math.min(0.05, (t - last) / 1000); last = t;
+  step(reduce ? 0.05 : dt);
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+// hook for offline renders
+window.binApi = {
+  set(a, b) { S.A = a; S.B = b; lastKey = ""; },
+  settle(n = 400) { for (let i = 0; i < n; i++) step(0.02); renderer.render(scene, camera); },
+  ground() { S.closing = true; },
+  view, ready: true,
+};
+</script>

@@ -1,0 +1,14 @@
+dxf_file,thickness_mm,qty,bbox_x_mm,bbox_y_mm,mass_each_kg,note
+hook_12mm_x4,12,4,106,193,0.98,"S355 plate, flame/laser cut; bore 42 reamed, grease nipple"
+drive_dog_12mm_x4,12,4,70,100,0.31,"S355; weld to shaft; press dia-16 pin through, weld"
+crank_12mm_x2,12,2,70,235,0.91,S355; weld to shaft end
+central_lever_A_12mm_x1,12,1,180,420,2.7,S355; input A lever
+link_front_10mm_x1,10,1,730,50,2.77,S355 flat bar 50x10 or cut
+link_rear_10mm_x1,10,1,721,50,2.73,S355 flat bar 50x10 or cut
+release_lever_B_12mm_x1,12,1,43,141,0.4,S355; input B lever
+door_lug_12mm_x4,12,4,100,115,0.95,S355; weld to door frame ends
+bearing_gusset_12mm_x8,12,8,105,165,0.98,"S355; 4 per end wall, line-bore 42 after welding"
+side_wall_3mm_x2,3,2,1200,844,23.85,S275 sheet; ends 3 mm over end-wall edge
+end_wall_3mm_x2,3,2,994,844,19.76,S275 sheet; fits between side walls
+door_plate_6mm_x2,6,2,1230,495,28.68,S355 plate (or Hardox 400 for abrasive loads)
+pocket_gusset_10mm_x8,10,8,150,150,0.88,S355 right-angle triangle
