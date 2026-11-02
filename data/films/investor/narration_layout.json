@@ -1,0 +1,1690 @@
+{
+  "sampleRate": 48000,
+  "voice": {
+    "engine": "gemini",
+    "voice": "Charon"
+  },
+  "speechSec": 124.03,
+  "lines": [
+    {
+      "id": "a1_l1",
+      "act": "act1",
+      "start": 2.8125,
+      "end": 6.9125,
+      "duration": 4.1,
+      "source": "override",
+      "display": "MPD Industries: specialty resins, built for scale.",
+      "tts": "M P D Industries: specialty resins, built for scale.",
+      "tokens": [
+        {
+          "display": "MPD",
+          "spoken": [
+            "m",
+            "p",
+            "d"
+          ]
+        },
+        {
+          "display": "Industries:",
+          "spoken": [
+            "industries"
+          ]
+        },
+        {
+          "display": "specialty",
+          "spoken": [
+            "specialty"
+          ]
+        },
+        {
+          "display": "resins,",
+          "spoken": [
+            "resins"
+          ]
+        },
+        {
+          "display": "built",
+          "spoken": [
+            "built"
+          ]
+        },
+        {
+          "display": "for",
+          "spoken": [
+            "for"
+          ]
+        },
+        {
+          "display": "scale.",
+          "spoken": [
+            "scale"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a1_l2",
+      "act": "act1",
+      "start": 7.26562,
+      "end": 12.80562,
+      "duration": 5.54,
+      "source": "override",
+      "display": "Two plants, 22 reactors, nearly 83,000 tons a year.",
+      "tts": "Two plants, twenty-two reactors, nearly eighty-three thousand tons a year.",
+      "tokens": [
+        {
+          "display": "Two",
+          "spoken": [
+            "two"
+          ]
+        },
+        {
+          "display": "plants,",
+          "spoken": [
+            "plants"
+          ]
+        },
+        {
+          "display": "22",
+          "spoken": [
+            "twenty",
+            "two"
+          ]
+        },
+        {
+          "display": "reactors,",
+          "spoken": [
+            "reactors"
+          ]
+        },
+        {
+          "display": "nearly",
+          "spoken": [
+            "nearly"
+          ]
+        },
+        {
+          "display": "83,000",
+          "spoken": [
+            "eighty",
+            "three",
+            "thousand"
+          ]
+        },
+        {
+          "display": "tons",
+          "spoken": [
+            "tons"
+          ]
+        },
+        {
+          "display": "a",
+          "spoken": [
+            "a"
+          ]
+        },
+        {
+          "display": "year.",
+          "spoken": [
+            "year"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2_l1",
+      "act": "act2",
+      "start": 15.70312,
+      "end": 22.95312,
+      "duration": 7.25,
+      "source": "override",
+      "display": "Scale starts with storage: 2,904 pallet positions let us buy raw materials in bulk.",
+      "tts": "Scale starts with storage: twenty-nine hundred and four pallet positions let us buy raw materials in bulk.",
+      "tokens": [
+        {
+          "display": "Scale",
+          "spoken": [
+            "scale"
+          ]
+        },
+        {
+          "display": "starts",
+          "spoken": [
+            "starts"
+          ]
+        },
+        {
+          "display": "with",
+          "spoken": [
+            "with"
+          ]
+        },
+        {
+          "display": "storage:",
+          "spoken": [
+            "storage"
+          ]
+        },
+        {
+          "display": "2,904",
+          "spoken": [
+            "twenty",
+            "nine",
+            "hundred",
+            "and",
+            "four"
+          ]
+        },
+        {
+          "display": "pallet",
+          "spoken": [
+            "pallet"
+          ]
+        },
+        {
+          "display": "positions",
+          "spoken": [
+            "positions"
+          ]
+        },
+        {
+          "display": "let",
+          "spoken": [
+            "let"
+          ]
+        },
+        {
+          "display": "us",
+          "spoken": [
+            "us"
+          ]
+        },
+        {
+          "display": "buy",
+          "spoken": [
+            "buy"
+          ]
+        },
+        {
+          "display": "raw",
+          "spoken": [
+            "raw"
+          ]
+        },
+        {
+          "display": "materials",
+          "spoken": [
+            "materials"
+          ]
+        },
+        {
+          "display": "in",
+          "spoken": [
+            "in"
+          ]
+        },
+        {
+          "display": "bulk.",
+          "spoken": [
+            "bulk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2_l2",
+      "act": "act2",
+      "start": 25.3125,
+      "end": 33.4925,
+      "duration": 8.18,
+      "source": "override",
+      "display": "Jumbo-bag handling and 600 KL of underground solvent tanks keep every reactor fed, so capacity never sits idle.",
+      "tts": "Jumbo-bag handling and six hundred kiloliters of underground solvent tanks keep every reactor fed, so capacity never sits idle.",
+      "tokens": [
+        {
+          "display": "Jumbo-bag",
+          "spoken": [
+            "jumbo",
+            "bag"
+          ]
+        },
+        {
+          "display": "handling",
+          "spoken": [
+            "handling"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "600 KL",
+          "spoken": [
+            "six",
+            "hundred",
+            "kiloliters"
+          ]
+        },
+        {
+          "display": "of",
+          "spoken": [
+            "of"
+          ]
+        },
+        {
+          "display": "underground",
+          "spoken": [
+            "underground"
+          ]
+        },
+        {
+          "display": "solvent",
+          "spoken": [
+            "solvent"
+          ]
+        },
+        {
+          "display": "tanks",
+          "spoken": [
+            "tanks"
+          ]
+        },
+        {
+          "display": "keep",
+          "spoken": [
+            "keep"
+          ]
+        },
+        {
+          "display": "every",
+          "spoken": [
+            "every"
+          ]
+        },
+        {
+          "display": "reactor",
+          "spoken": [
+            "reactor"
+          ]
+        },
+        {
+          "display": "fed,",
+          "spoken": [
+            "fed"
+          ]
+        },
+        {
+          "display": "so",
+          "spoken": [
+            "so"
+          ]
+        },
+        {
+          "display": "capacity",
+          "spoken": [
+            "capacity"
+          ]
+        },
+        {
+          "display": "never",
+          "spoken": [
+            "never"
+          ]
+        },
+        {
+          "display": "sits",
+          "spoken": [
+            "sits"
+          ]
+        },
+        {
+          "display": "idle.",
+          "spoken": [
+            "idle"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_l1",
+      "act": "act3",
+      "start": 40.07812,
+      "end": 46.99813,
+      "duration": 6.92,
+      "source": "override",
+      "display": "Automation drives throughput: an overhead crane lifts each jumbo bag straight to the reactor charging deck.",
+      "tts": "Automation drives throughput: an overhead crane lifts each jumbo bag straight to the reactor charging deck.",
+      "tokens": [
+        {
+          "display": "Automation",
+          "spoken": [
+            "automation"
+          ]
+        },
+        {
+          "display": "drives",
+          "spoken": [
+            "drives"
+          ]
+        },
+        {
+          "display": "throughput:",
+          "spoken": [
+            "throughput"
+          ]
+        },
+        {
+          "display": "an",
+          "spoken": [
+            "an"
+          ]
+        },
+        {
+          "display": "overhead",
+          "spoken": [
+            "overhead"
+          ]
+        },
+        {
+          "display": "crane",
+          "spoken": [
+            "crane"
+          ]
+        },
+        {
+          "display": "lifts",
+          "spoken": [
+            "lifts"
+          ]
+        },
+        {
+          "display": "each",
+          "spoken": [
+            "each"
+          ]
+        },
+        {
+          "display": "jumbo",
+          "spoken": [
+            "jumbo"
+          ]
+        },
+        {
+          "display": "bag",
+          "spoken": [
+            "bag"
+          ]
+        },
+        {
+          "display": "straight",
+          "spoken": [
+            "straight"
+          ]
+        },
+        {
+          "display": "to",
+          "spoken": [
+            "to"
+          ]
+        },
+        {
+          "display": "the",
+          "spoken": [
+            "the"
+          ]
+        },
+        {
+          "display": "reactor",
+          "spoken": [
+            "reactor"
+          ]
+        },
+        {
+          "display": "charging",
+          "spoken": [
+            "charging"
+          ]
+        },
+        {
+          "display": "deck.",
+          "spoken": [
+            "deck"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_l2",
+      "act": "act3",
+      "start": 48.75,
+      "end": 58.5,
+      "duration": 9.75,
+      "source": "override",
+      "display": "Ten reactors up to 16 KL make polyester, alkyds, and epoxy around the clock: 4,373 tons a month.",
+      "tts": "Ten reactors up to sixteen kiloliters make polyester, alkyds, and epoxy around the clock: four thousand, three hundred and seventy-three tons a month.",
+      "tokens": [
+        {
+          "display": "Ten",
+          "spoken": [
+            "ten"
+          ]
+        },
+        {
+          "display": "reactors",
+          "spoken": [
+            "reactors"
+          ]
+        },
+        {
+          "display": "up",
+          "spoken": [
+            "up"
+          ]
+        },
+        {
+          "display": "to",
+          "spoken": [
+            "to"
+          ]
+        },
+        {
+          "display": "16 KL",
+          "spoken": [
+            "sixteen",
+            "kiloliters"
+          ]
+        },
+        {
+          "display": "make",
+          "spoken": [
+            "make"
+          ]
+        },
+        {
+          "display": "polyester,",
+          "spoken": [
+            "polyester"
+          ]
+        },
+        {
+          "display": "alkyds,",
+          "spoken": [
+            "alkyds"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "epoxy",
+          "spoken": [
+            "epoxy"
+          ]
+        },
+        {
+          "display": "around",
+          "spoken": [
+            "around"
+          ]
+        },
+        {
+          "display": "the",
+          "spoken": [
+            "the"
+          ]
+        },
+        {
+          "display": "clock:",
+          "spoken": [
+            "clock"
+          ]
+        },
+        {
+          "display": "4,373",
+          "spoken": [
+            "four",
+            "thousand",
+            "three",
+            "hundred",
+            "and",
+            "seventy",
+            "three"
+          ]
+        },
+        {
+          "display": "tons",
+          "spoken": [
+            "tons"
+          ]
+        },
+        {
+          "display": "a",
+          "spoken": [
+            "a"
+          ]
+        },
+        {
+          "display": "month.",
+          "spoken": [
+            "month"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a4_l1",
+      "act": "act4",
+      "start": 64.21875,
+      "end": 70.57875,
+      "duration": 6.36,
+      "source": "override",
+      "display": "Plant 2 adds higher-margin specialty resins, finished on automated flakers and pelletisers.",
+      "tts": "Plant two adds higher-margin specialty resins, finished on automated flakers and pelletizers.",
+      "tokens": [
+        {
+          "display": "Plant",
+          "spoken": [
+            "plant"
+          ]
+        },
+        {
+          "display": "2",
+          "spoken": [
+            "two"
+          ]
+        },
+        {
+          "display": "adds",
+          "spoken": [
+            "adds"
+          ]
+        },
+        {
+          "display": "higher-margin",
+          "spoken": [
+            "higher",
+            "margin"
+          ]
+        },
+        {
+          "display": "specialty",
+          "spoken": [
+            "specialty"
+          ]
+        },
+        {
+          "display": "resins,",
+          "spoken": [
+            "resins"
+          ]
+        },
+        {
+          "display": "finished",
+          "spoken": [
+            "finished"
+          ]
+        },
+        {
+          "display": "on",
+          "spoken": [
+            "on"
+          ]
+        },
+        {
+          "display": "automated",
+          "spoken": [
+            "automated"
+          ]
+        },
+        {
+          "display": "flakers",
+          "spoken": [
+            "flakers"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "pelletisers.",
+          "spoken": [
+            "pelletizers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a4_l2",
+      "act": "act4",
+      "start": 71.01562,
+      "end": 80.76562,
+      "duration": 9.75,
+      "source": "override",
+      "display": "Polyamide, powder polyester, acrylic polyols, phenolics: a diversified mix worth 2,530 tons a month.",
+      "tts": "Polyamide, powder polyester, acrylic polyols, phenolics: a diversified mix worth twenty-five hundred and thirty tons a month.",
+      "tokens": [
+        {
+          "display": "Polyamide,",
+          "spoken": [
+            "polyamide"
+          ]
+        },
+        {
+          "display": "powder",
+          "spoken": [
+            "powder"
+          ]
+        },
+        {
+          "display": "polyester,",
+          "spoken": [
+            "polyester"
+          ]
+        },
+        {
+          "display": "acrylic",
+          "spoken": [
+            "acrylic"
+          ]
+        },
+        {
+          "display": "polyols,",
+          "spoken": [
+            "polyols"
+          ]
+        },
+        {
+          "display": "phenolics:",
+          "spoken": [
+            "phenolics"
+          ]
+        },
+        {
+          "display": "a",
+          "spoken": [
+            "a"
+          ]
+        },
+        {
+          "display": "diversified",
+          "spoken": [
+            "diversified"
+          ]
+        },
+        {
+          "display": "mix",
+          "spoken": [
+            "mix"
+          ]
+        },
+        {
+          "display": "worth",
+          "spoken": [
+            "worth"
+          ]
+        },
+        {
+          "display": "2,530",
+          "spoken": [
+            "twenty",
+            "five",
+            "hundred",
+            "and",
+            "thirty"
+          ]
+        },
+        {
+          "display": "tons",
+          "spoken": [
+            "tons"
+          ]
+        },
+        {
+          "display": "a",
+          "spoken": [
+            "a"
+          ]
+        },
+        {
+          "display": "month.",
+          "spoken": [
+            "month"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a5_l1",
+      "act": "act5",
+      "start": 85.07812,
+      "end": 94.63813,
+      "duration": 9.56,
+      "source": "override",
+      "display": "Fully automated, recipe-driven batches deliver the same quality every time, verified by our state-of-the-art QC and application labs.",
+      "tts": "Fully automated, recipe-driven batches deliver the same quality every time, verified by our state-of-the-art Q C and application labs.",
+      "tokens": [
+        {
+          "display": "Fully",
+          "spoken": [
+            "fully"
+          ]
+        },
+        {
+          "display": "automated,",
+          "spoken": [
+            "automated"
+          ]
+        },
+        {
+          "display": "recipe-driven",
+          "spoken": [
+            "recipe",
+            "driven"
+          ]
+        },
+        {
+          "display": "batches",
+          "spoken": [
+            "batches"
+          ]
+        },
+        {
+          "display": "deliver",
+          "spoken": [
+            "deliver"
+          ]
+        },
+        {
+          "display": "the",
+          "spoken": [
+            "the"
+          ]
+        },
+        {
+          "display": "same",
+          "spoken": [
+            "same"
+          ]
+        },
+        {
+          "display": "quality",
+          "spoken": [
+            "quality"
+          ]
+        },
+        {
+          "display": "every",
+          "spoken": [
+            "every"
+          ]
+        },
+        {
+          "display": "time,",
+          "spoken": [
+            "time"
+          ]
+        },
+        {
+          "display": "verified",
+          "spoken": [
+            "verified"
+          ]
+        },
+        {
+          "display": "by",
+          "spoken": [
+            "by"
+          ]
+        },
+        {
+          "display": "our",
+          "spoken": [
+            "our"
+          ]
+        },
+        {
+          "display": "state-of-the-art",
+          "spoken": [
+            "state",
+            "of",
+            "the",
+            "art"
+          ]
+        },
+        {
+          "display": "QC",
+          "spoken": [
+            "q",
+            "c"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "application",
+          "spoken": [
+            "application"
+          ]
+        },
+        {
+          "display": "labs.",
+          "spoken": [
+            "labs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a5_l2",
+      "act": "act5",
+      "start": 95.625,
+      "end": 98.935,
+      "duration": 3.31,
+      "source": "override",
+      "display": "Both plants run from one central control room.",
+      "tts": "Both plants run from one central control room.",
+      "tokens": [
+        {
+          "display": "Both",
+          "spoken": [
+            "both"
+          ]
+        },
+        {
+          "display": "plants",
+          "spoken": [
+            "plants"
+          ]
+        },
+        {
+          "display": "run",
+          "spoken": [
+            "run"
+          ]
+        },
+        {
+          "display": "from",
+          "spoken": [
+            "from"
+          ]
+        },
+        {
+          "display": "one",
+          "spoken": [
+            "one"
+          ]
+        },
+        {
+          "display": "central",
+          "spoken": [
+            "central"
+          ]
+        },
+        {
+          "display": "control",
+          "spoken": [
+            "control"
+          ]
+        },
+        {
+          "display": "room.",
+          "spoken": [
+            "room"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a6_l1",
+      "act": "act6",
+      "start": 101.95312,
+      "end": 109.89312,
+      "duration": 7.94,
+      "source": "override",
+      "display": "Twelve blenders and 22 grade-dedicated tanks hold over 1,000 KL of finished goods, ready to ship.",
+      "tts": "Twelve blenders and twenty-two grade-dedicated tanks hold over one thousand kiloliters of finished goods, ready to ship.",
+      "tokens": [
+        {
+          "display": "Twelve",
+          "spoken": [
+            "twelve"
+          ]
+        },
+        {
+          "display": "blenders",
+          "spoken": [
+            "blenders"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "22",
+          "spoken": [
+            "twenty",
+            "two"
+          ]
+        },
+        {
+          "display": "grade-dedicated",
+          "spoken": [
+            "grade",
+            "dedicated"
+          ]
+        },
+        {
+          "display": "tanks",
+          "spoken": [
+            "tanks"
+          ]
+        },
+        {
+          "display": "hold",
+          "spoken": [
+            "hold"
+          ]
+        },
+        {
+          "display": "over",
+          "spoken": [
+            "over"
+          ]
+        },
+        {
+          "display": "1,000 KL",
+          "spoken": [
+            "one",
+            "thousand",
+            "kiloliters"
+          ]
+        },
+        {
+          "display": "of",
+          "spoken": [
+            "of"
+          ]
+        },
+        {
+          "display": "finished",
+          "spoken": [
+            "finished"
+          ]
+        },
+        {
+          "display": "goods,",
+          "spoken": [
+            "goods"
+          ]
+        },
+        {
+          "display": "ready",
+          "spoken": [
+            "ready"
+          ]
+        },
+        {
+          "display": "to",
+          "spoken": [
+            "to"
+          ]
+        },
+        {
+          "display": "ship.",
+          "spoken": [
+            "ship"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a6_l2",
+      "act": "act6",
+      "start": 111.32812,
+      "end": 119.09812,
+      "duration": 7.77,
+      "source": "override",
+      "display": "Bigger buffers mean faster dispatch: about 1,500 tons packed, and over 1,600 KL in bulk.",
+      "tts": "Bigger buffers mean faster dispatch: about fifteen hundred tons packed, and over sixteen hundred kiloliters in bulk.",
+      "tokens": [
+        {
+          "display": "Bigger",
+          "spoken": [
+            "bigger"
+          ]
+        },
+        {
+          "display": "buffers",
+          "spoken": [
+            "buffers"
+          ]
+        },
+        {
+          "display": "mean",
+          "spoken": [
+            "mean"
+          ]
+        },
+        {
+          "display": "faster",
+          "spoken": [
+            "faster"
+          ]
+        },
+        {
+          "display": "dispatch:",
+          "spoken": [
+            "dispatch"
+          ]
+        },
+        {
+          "display": "about",
+          "spoken": [
+            "about"
+          ]
+        },
+        {
+          "display": "1,500",
+          "spoken": [
+            "fifteen",
+            "hundred"
+          ]
+        },
+        {
+          "display": "tons",
+          "spoken": [
+            "tons"
+          ]
+        },
+        {
+          "display": "packed,",
+          "spoken": [
+            "packed"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "over",
+          "spoken": [
+            "over"
+          ]
+        },
+        {
+          "display": "1,600 KL",
+          "spoken": [
+            "sixteen",
+            "hundred",
+            "kiloliters"
+          ]
+        },
+        {
+          "display": "in",
+          "spoken": [
+            "in"
+          ]
+        },
+        {
+          "display": "bulk.",
+          "spoken": [
+            "bulk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a7_l1",
+      "act": "act7",
+      "start": 120.70312,
+      "end": 128.72313,
+      "duration": 8.02,
+      "source": "override",
+      "display": "Our heat comes from soya husk, agro-waste from the farms around Ujjain, burned in thermic heaters instead of coal.",
+      "tts": "Our heat comes from soya husk, agro-waste from the farms around oo jane, burned in thermic heaters instead of coal.",
+      "tokens": [
+        {
+          "display": "Our",
+          "spoken": [
+            "our"
+          ]
+        },
+        {
+          "display": "heat",
+          "spoken": [
+            "heat"
+          ]
+        },
+        {
+          "display": "comes",
+          "spoken": [
+            "comes"
+          ]
+        },
+        {
+          "display": "from",
+          "spoken": [
+            "from"
+          ]
+        },
+        {
+          "display": "soya",
+          "spoken": [
+            "soya"
+          ]
+        },
+        {
+          "display": "husk,",
+          "spoken": [
+            "husk"
+          ]
+        },
+        {
+          "display": "agro-waste",
+          "spoken": [
+            "agro",
+            "waste"
+          ]
+        },
+        {
+          "display": "from",
+          "spoken": [
+            "from"
+          ]
+        },
+        {
+          "display": "the",
+          "spoken": [
+            "the"
+          ]
+        },
+        {
+          "display": "farms",
+          "spoken": [
+            "farms"
+          ]
+        },
+        {
+          "display": "around",
+          "spoken": [
+            "around"
+          ]
+        },
+        {
+          "display": "Ujjain,",
+          "spoken": [
+            "oo",
+            "jane"
+          ]
+        },
+        {
+          "display": "burned",
+          "spoken": [
+            "burned"
+          ]
+        },
+        {
+          "display": "in",
+          "spoken": [
+            "in"
+          ]
+        },
+        {
+          "display": "thermic",
+          "spoken": [
+            "thermic"
+          ]
+        },
+        {
+          "display": "heaters",
+          "spoken": [
+            "heaters"
+          ]
+        },
+        {
+          "display": "instead",
+          "spoken": [
+            "instead"
+          ]
+        },
+        {
+          "display": "of",
+          "spoken": [
+            "of"
+          ]
+        },
+        {
+          "display": "coal.",
+          "spoken": [
+            "coal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a7_l2",
+      "act": "act7",
+      "start": 131.01562,
+      "end": 140.17562,
+      "duration": 9.16,
+      "source": "override",
+      "display": "Add 0.7 MW of rooftop solar and a zero liquid discharge effluent plant: lower energy costs, and a cleaner footprint.",
+      "tts": "Add point seven megawatts of rooftop solar and a zero liquid discharge effluent plant: lower energy costs, and a cleaner footprint.",
+      "tokens": [
+        {
+          "display": "Add",
+          "spoken": [
+            "add"
+          ]
+        },
+        {
+          "display": "0.7 MW",
+          "spoken": [
+            "point",
+            "seven",
+            "megawatts"
+          ]
+        },
+        {
+          "display": "of",
+          "spoken": [
+            "of"
+          ]
+        },
+        {
+          "display": "rooftop",
+          "spoken": [
+            "rooftop"
+          ]
+        },
+        {
+          "display": "solar",
+          "spoken": [
+            "solar"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "a",
+          "spoken": [
+            "a"
+          ]
+        },
+        {
+          "display": "zero",
+          "spoken": [
+            "zero"
+          ]
+        },
+        {
+          "display": "liquid",
+          "spoken": [
+            "liquid"
+          ]
+        },
+        {
+          "display": "discharge",
+          "spoken": [
+            "discharge"
+          ]
+        },
+        {
+          "display": "effluent",
+          "spoken": [
+            "effluent"
+          ]
+        },
+        {
+          "display": "plant:",
+          "spoken": [
+            "plant"
+          ]
+        },
+        {
+          "display": "lower",
+          "spoken": [
+            "lower"
+          ]
+        },
+        {
+          "display": "energy",
+          "spoken": [
+            "energy"
+          ]
+        },
+        {
+          "display": "costs,",
+          "spoken": [
+            "costs"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "a",
+          "spoken": [
+            "a"
+          ]
+        },
+        {
+          "display": "cleaner",
+          "spoken": [
+            "cleaner"
+          ]
+        },
+        {
+          "display": "footprint.",
+          "spoken": [
+            "footprint"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a7_l3",
+      "act": "act7",
+      "start": 143.20312,
+      "end": 145.83312,
+      "duration": 2.63,
+      "source": "override",
+      "display": "Sustainability that pays for itself.",
+      "tts": "Sustainability that pays for itself.",
+      "tokens": [
+        {
+          "display": "Sustainability",
+          "spoken": [
+            "sustainability"
+          ]
+        },
+        {
+          "display": "that",
+          "spoken": [
+            "that"
+          ]
+        },
+        {
+          "display": "pays",
+          "spoken": [
+            "pays"
+          ]
+        },
+        {
+          "display": "for",
+          "spoken": [
+            "for"
+          ]
+        },
+        {
+          "display": "itself.",
+          "spoken": [
+            "itself"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a8_l1",
+      "act": "act8",
+      "start": 151.17188,
+      "end": 161.78188,
+      "duration": 10.61,
+      "source": "override",
+      "display": "This is our flywheel: scale lowers cost, lower cost wins partners, partners fill capacity, and full plants fund the next expansion.",
+      "tts": "This is our flywheel: scale lowers cost, lower cost wins partners, partners fill capacity, and full plants fund the next expansion.",
+      "tokens": [
+        {
+          "display": "This",
+          "spoken": [
+            "this"
+          ]
+        },
+        {
+          "display": "is",
+          "spoken": [
+            "is"
+          ]
+        },
+        {
+          "display": "our",
+          "spoken": [
+            "our"
+          ]
+        },
+        {
+          "display": "flywheel:",
+          "spoken": [
+            "flywheel"
+          ]
+        },
+        {
+          "display": "scale",
+          "spoken": [
+            "scale"
+          ]
+        },
+        {
+          "display": "lowers",
+          "spoken": [
+            "lowers"
+          ]
+        },
+        {
+          "display": "cost,",
+          "spoken": [
+            "cost"
+          ]
+        },
+        {
+          "display": "lower",
+          "spoken": [
+            "lower"
+          ]
+        },
+        {
+          "display": "cost",
+          "spoken": [
+            "cost"
+          ]
+        },
+        {
+          "display": "wins",
+          "spoken": [
+            "wins"
+          ]
+        },
+        {
+          "display": "partners,",
+          "spoken": [
+            "partners"
+          ]
+        },
+        {
+          "display": "partners",
+          "spoken": [
+            "partners"
+          ]
+        },
+        {
+          "display": "fill",
+          "spoken": [
+            "fill"
+          ]
+        },
+        {
+          "display": "capacity,",
+          "spoken": [
+            "capacity"
+          ]
+        },
+        {
+          "display": "and",
+          "spoken": [
+            "and"
+          ]
+        },
+        {
+          "display": "full",
+          "spoken": [
+            "full"
+          ]
+        },
+        {
+          "display": "plants",
+          "spoken": [
+            "plants"
+          ]
+        },
+        {
+          "display": "fund",
+          "spoken": [
+            "fund"
+          ]
+        },
+        {
+          "display": "the",
+          "spoken": [
+            "the"
+          ]
+        },
+        {
+          "display": "next",
+          "spoken": [
+            "next"
+          ]
+        },
+        {
+          "display": "expansion.",
+          "spoken": [
+            "expansion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a8_l2",
+      "act": "act8",
+      "start": 163.125,
+      "end": 166.575,
+      "duration": 3.45,
+      "source": "override",
+      "display": "A greenfield platform, built to compound.",
+      "tts": "A greenfield platform, built to compound.",
+      "tokens": [
+        {
+          "display": "A",
+          "spoken": [
+            "a"
+          ]
+        },
+        {
+          "display": "greenfield",
+          "spoken": [
+            "greenfield"
+          ]
+        },
+        {
+          "display": "platform,",
+          "spoken": [
+            "platform"
+          ]
+        },
+        {
+          "display": "built",
+          "spoken": [
+            "built"
+          ]
+        },
+        {
+          "display": "to",
+          "spoken": [
+            "to"
+          ]
+        },
+        {
+          "display": "compound.",
+          "spoken": [
+            "compound"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a8_l3",
+      "act": "act8",
+      "start": 172.5,
+      "end": 176.23,
+      "duration": 3.73,
+      "source": "override",
+      "display": "MPD Industries. We innovate. We serve.",
+      "tts": "M P D Industries. We innovate. We serve.",
+      "tokens": [
+        {
+          "display": "MPD",
+          "spoken": [
+            "m",
+            "p",
+            "d"
+          ]
+        },
+        {
+          "display": "Industries.",
+          "spoken": [
+            "industries"
+          ]
+        },
+        {
+          "display": "We",
+          "spoken": [
+            "we"
+          ]
+        },
+        {
+          "display": "innovate.",
+          "spoken": [
+            "innovate"
+          ]
+        },
+        {
+          "display": "We",
+          "spoken": [
+            "we"
+          ]
+        },
+        {
+          "display": "serve.",
+          "spoken": [
+            "serve"
+          ]
+        }
+      ]
+    }
+  ]
+}

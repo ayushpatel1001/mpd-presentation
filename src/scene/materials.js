@@ -105,6 +105,9 @@ export function createMaterials(tokens) {
     treeDark: std({ color: '#1F5E2A', roughness: 0.9, flatShading: true }),
     trunk: std({ color: '#4A3B2A', roughness: 0.9 }),
     grass: std({ color: '#6B8A3E', roughness: 1.0 }),
+    lawn: std({ color: '#6FA845', roughness: 1.0 }),
+    // white base: instanced trees and shrubs carry their own green per instance
+    foliage: std({ color: '#FFFFFF', roughness: 0.9, flatShading: true }),
     biomass: std({ color: '#6B5A2E', roughness: 1.0, flatShading: true }),
     biomassGreen: std({ color: '#4E6B2C', roughness: 1.0, flatShading: true }),
     water: std({ color: '#0C3F52', emissive: '#0E7490', emissiveIntensity: 0.35, roughness: 0.12, metalness: 0.3 }),
@@ -118,7 +121,7 @@ export function createMaterials(tokens) {
     glowCyan: new THREE.MeshBasicMaterial({ color: new THREE.Color(B.greenfieldCyan).multiplyScalar(2.2), toneMapped: false }),
     flame: std({ color: '#7C2D12', emissive: F.thermicOil, emissiveIntensity: 2.4 }),
   };
-  for (const k of ['wall', 'wallDark', 'roof', 'roofP1', 'roofP2', 'glass', 'concrete', 'concreteLight', 'steel', 'steelDark', 'msPaint', 'pipe', 'yellow', 'tree', 'treeDark', 'trunk', 'biomass', 'biomassGreen', 'car', 'carDark', 'water', 'statusGreen', 'statusCyan', 'flame', 'bag', 'bagBlue', 'wood'])
+  for (const k of ['wall', 'wallDark', 'roof', 'roofP1', 'roofP2', 'glass', 'concrete', 'concreteLight', 'steel', 'steelDark', 'msPaint', 'pipe', 'yellow', 'tree', 'treeDark', 'trunk', 'lawn', 'foliage', 'biomass', 'biomassGreen', 'car', 'carDark', 'water', 'statusGreen', 'statusCyan', 'flame', 'bag', 'bagBlue', 'wood'])
     patchRise(m[k]);
   return m;
 }

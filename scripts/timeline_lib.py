@@ -5,14 +5,22 @@ import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "data")
-BUILD = os.path.join(ROOT, "build")
+# FILM=<name> selects an alternate cut: its beat grid and derived data live in
+# data/films/<name>/, its build output in build/<name>/. Shared files such as
+# style_tokens.json fall back to data/.
+FILM = os.environ.get("FILM", "")
+DATA_ROOT = os.path.join(ROOT, "data")
+DATA = os.path.join(DATA_ROOT, "films", FILM) if FILM else DATA_ROOT
+BUILD = os.path.join(ROOT, "build", FILM) if FILM else os.path.join(ROOT, "build")
 
 BRACE = re.compile(r"\{([^{}|]+)\|([^{}]+)\}")
 
 
 def load_json(name):
-    with open(os.path.join(DATA, name), encoding="utf-8") as f:
+    path = os.path.join(DATA, name)
+    if not os.path.exists(path):
+        path = os.path.join(DATA_ROOT, name)
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 

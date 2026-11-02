@@ -31,9 +31,11 @@ function loadImage(src) {
 }
 
 async function boot() {
+  const film = new URLSearchParams(location.search).get('film');
   const [tokens, timeline] = await Promise.all([
     fetch('/data/style_tokens.json').then((r) => r.json()),
-    fetch('/data/timeline.resolved.json').then((r) => r.json()),
+    // ?film=<name> plays an alternate cut from data/films/<name>/
+    fetch(`/data/${film ? `films/${film}/` : ''}timeline.resolved.json`).then((r) => r.json()),
   ]);
   await Promise.all(FONTS.map(async ([fam, w]) => {
     const f = new FontFace(fam, `url(/assets/fonts/${fam.replace(' ', '')}-${w}.ttf)`, { weight: String(w) });

@@ -31,6 +31,22 @@ on the narrated word they illustrate (resolved from word timestamps).
 | 07 | Green utilities & EHS | 2:00–2:30 | thermic heaters, covered agro-waste fuel shed, 50 KLD ETP, rooftop solar wide | heaters, fuel shed, 2,200 TR cooling, N₂, 50 KLD ETP, 0.70 MWp solar |
 | 08 | Partnership | 2:30–3:00 | isometric orbit | toll / full-service / dedicated cards, closing logo card |
 
+## Investor cut (`FILM=investor`)
+
+A second 3-minute film on the same 3D model and camera path, written for investors: bulk storage as
+economies of scale, automated throughput and quality, soya-husk biomass heat, rooftop solar and zero
+liquid discharge, closing on an animated **flywheel** (scale → lower cost → more partners → full
+utilisation → reinvest). Its beat grid lives in `data/films/investor/`, its build output in
+`build/investor/`, and it encodes to `out/mpd_ujain_investor.mp4`. Every step takes `FILM=investor`:
+
+```
+export FILM=investor
+python3 scripts/tts_gemini.py            # Gemini narration -> build/investor/vo_override/
+python3 scripts/narration.py && python3 scripts/align.py && python3 scripts/resolve_timeline.py && python3 scripts/audio.py
+ANGLE=metal node scripts/render_frames.mjs --workers 3
+TITLE="MPD Industries – Ujjain: Built for Scale" bash scripts/encode.sh
+```
+
 ## Pipeline
 
 ```

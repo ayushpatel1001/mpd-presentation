@@ -1,15 +1,16 @@
 // Renders individual frames for visual QA: node scripts/preview_stills.mjs 3 12.5 40 ...
-// Writes build/preview/t<time>.jpg and reports per-frame render time.
+// Writes build/preview/t<time>.jpg (FILM=<name>: build/<name>/preview/) and reports per-frame render time.
 import fs from 'node:fs';
 import path from 'node:path';
 import { serve, openRenderer, ROOT } from './browser.mjs';
 
 const times = process.argv.slice(2).map(Number);
 if (!times.length) { console.error('usage: preview_stills.mjs <t> [t...]'); process.exit(1); }
-const out = path.join(ROOT, 'build', 'preview');
+const FILM = process.env.FILM || '';
+const out = path.join(ROOT, 'build', FILM, 'preview');
 fs.mkdirSync(out, { recursive: true });
 const srv = await serve();
-const r = await openRenderer(srv);
+const r = await openRenderer(srv, FILM ? { query: `?film=${FILM}` } : {});
 try {
   for (const t of times) {
     const t0 = Date.now();

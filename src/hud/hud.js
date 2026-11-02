@@ -417,6 +417,82 @@ export function createHud(canvas, tokens, timeline, assets) {
       });
     },
 
+    // Virtuous-cycle diagram: nodes pop on their narrated word, the ring draws from node to node,
+    // and once the loop closes a glow pulse keeps circling so the wheel reads as "spinning".
+    flywheel(ov, t) {
+      const items = ov.props.items, n = items.length;
+      // elliptical ring so five nodes fit side by side without touching the hub or each other
+      const cx = 960, cy = 520, RX = 430, RY = 250, nodeW = 380, nodeH = 104;
+      const angle = (i) => -Math.PI / 2 + (i / n) * Math.PI * 2;
+      const at = (a) => [cx + Math.cos(a) * RX, cy + Math.sin(a) * RY];
+      const a = envelope(t, ov.in, ov.out, 0.4, 0.5);
+      const shown = items.filter((it) => t >= it.t).length;
+      const closeT = items[n - 1].t + 0.6;
+      P.group(a, () => {
+        const g = ctx.createRadialGradient(cx, cy, 120, cx, cy, 760);
+        g.addColorStop(0, 'rgba(3,10,20,0.72)'); g.addColorStop(1, 'rgba(3,10,20,0.0)');
+        ctx.globalAlpha = P.alpha; ctx.fillStyle = g; ctx.fillRect(0, 0, W, HH);
+
+        // ring: faint full track, then the bright arc grows node to node
+        ctx.save(); ctx.globalAlpha = P.alpha * 0.18; ctx.strokeStyle = '#38BDF8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.ellipse(cx, cy, RX, RY, 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+        ctx.save();
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#00A3E0'; ctx.lineWidth = 10; ctx.globalAlpha = P.alpha;
+        items.forEach((it, i) => {
+          if (i === 0) return;
+          const k = ease.inOutCubic(inv(it.t - 0.35, it.t + 0.15, t));
+          if (k <= 0) return;
+          ctx.beginPath(); ctx.ellipse(cx, cy, RX, RY, 0, angle(i - 1), angle(i - 1) + (angle(i) - angle(i - 1)) * k); ctx.stroke();
+        });
+        const kc = ease.inOutCubic(inv(items[n - 1].t + 0.1, closeT, t));
+        if (kc > 0) { ctx.beginPath(); ctx.ellipse(cx, cy, RX, RY, 0, angle(n - 1), angle(n - 1) + (Math.PI * 2 / n) * kc); ctx.stroke(); }
+        ctx.restore();
+        // arrowheads at the midpoint of every drawn segment show the direction of travel
+        for (let i = 0; i < n; i++) {
+          const segK = i < n - 1 ? inv(items[i + 1].t - 0.1, items[i + 1].t + 0.2, t) : inv(closeT - 0.2, closeT, t);
+          if (segK <= 0) continue;
+          const am = angle(i) + Math.PI / n, [ax, ay] = at(am);
+          P.group(segK, () => {
+            ctx.save(); ctx.translate(ax, ay); ctx.rotate(Math.atan2(Math.cos(am) * RY, -Math.sin(am) * RX));
+            ctx.globalAlpha = P.alpha; ctx.fillStyle = '#F59E0B';
+            ctx.beginPath(); ctx.moveTo(14, 0); ctx.lineTo(-10, -13); ctx.lineTo(-10, 13); ctx.closePath(); ctx.fill();
+            ctx.restore();
+          });
+        }
+        // spinning pulse once the loop is closed
+        if (t > closeT) {
+          const ph = angle(0) + (t - closeT) * 1.6;
+          for (let k = 0; k < 6; k++) P.circle(...at(ph - k * 0.05), 11 - k * 1.5, '#FFFFFF', (1 - k / 6) * 0.9 * inv(closeT, closeT + 0.4, t));
+        }
+
+        // hub
+        const kh = inv(ov.in, ov.in + 0.6, t);
+        P.group(1, () => {
+          P.circle(cx, cy, 128, '#00529B', 0.97);
+          P.circle(cx, cy, 128, null, 1, '#38BDF8', 3);
+          const [l1, l2] = ov.props.hub;
+          P.text(l1, cx, cy - 8, { size: 30, weight: 800, family: 'Montserrat', spacing: 3, align: 'center', color: '#7DD3FC' });
+          P.text(l2, cx, cy + 36, { size: 40, weight: 900, family: 'Montserrat', align: 'center', color: '#FFFFFF' });
+        }, { px: cx, py: cy, scale: 0.7 + 0.3 * ease.outBack(kh) });
+
+        // nodes
+        items.forEach((it, i) => {
+          if (t < it.t) return;
+          const k = inv(it.t, it.t + 0.45, t);
+          const [nx, ny] = at(angle(i));
+          const latest = i === shown - 1 && t < closeT;
+          P.group(Math.min(1, k * 2), () => {
+            P.panel(nx - nodeW / 2, ny - nodeH / 2, nodeW, nodeH, { fill: '#FFFFFF', alpha: 1, radius: 18, shadow: latest ? 40 : 18, shadowColor: latest ? 'rgba(245,158,11,0.7)' : 'rgba(0,0,0,0.45)' });
+            P.circle(nx - nodeW / 2 + 38, ny, 22, latest ? '#F59E0B' : '#00529B');
+            P.text(String(i + 1), nx - nodeW / 2 + 38, ny + 10, { size: 28, weight: 900, family: 'Montserrat', align: 'center', color: '#FFFFFF' });
+            P.text(it.title, nx - nodeW / 2 + 74, ny - 6, { ...P.fit(it.title, nodeW - 92, { size: 28, weight: 800, family: 'Montserrat' }), color: '#0B2545' });
+            P.text(it.sub, nx - nodeW / 2 + 74, ny + 30, { ...P.fit(it.sub, nodeW - 92, { size: 24, weight: 600 }, 20), color: '#334155' });
+          }, { px: nx, py: ny, scale: 0.8 + 0.2 * ease.outBack(k) });
+        });
+      });
+    },
+
     ribbon(ov, t) {
       const k = inv(ov.in, ov.in + 0.5, t);
       const a = envelope(t, ov.in, ov.out, 0.35, 0.4);

@@ -1,6 +1,7 @@
 // Static site: ground, site pad, boundary, roads, generic buildings, trees, parking,
 // frontage roads and the blueprint overlay the plant "rises" out of.
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { Batcher, withRise, patchRise, riseDepthMaterial } from './materials.js';
 import { BOUNDARY, BUILDINGS, ROADS, PESO, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER, FUTURE, insideBoundary,
   PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, QAQC_KEEPOUT, WAREHOUSE_KEEPOUT } from './layout.js';
@@ -133,33 +134,71 @@ export function buildSite(world, M, tokens, planTexture) {
   transformerYard(B, M, TRANSFORMER);
   futurePlant(root, B, M, tokens);
 
-  // ---- trees: green belt along the boundary + clusters
+  // ---- landscaping: lawns on every open patch of the site, a double green belt along the boundary
+  // (tall Ashoka-style columns against the wall, broadleaf canopy inside), shade trees and shrubs in
+  // the open areas, and soya fields + farm trees around the site
   const keepOut = [
     ...BUILDINGS, ...WAREHOUSE_KEEPOUT, QAQC_KEEPOUT, PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, FUTURE,
     { x: PESO.x, z: PESO.z, w: PESO.w, d: PESO.d }, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER,
   ];
   const roadBoxes = ROADS.map(([x0, z0, x1, z1, w]) => ({ x: (x0 + x1) / 2, z: (z0 + z1) / 2, w: Math.abs(x1 - x0) + w, d: Math.abs(z1 - z0) + w }));
-  const trees = [];
+  const trees = [];   // [x, z, scale, kind]  kind: 'broad' | 'ashoka' | 'shrub'
+  const LAWN = 3;
+  for (let x = -88; x < 90; x += LAWN) {
+    for (let z = -94; z < 97; z += LAWN) {
+      const cx = x + LAWN / 2, cz = z + LAWN / 2;
+      if (!insideBoundary(cx, cz, 0.8) || blocked(cx, cz, keepOut, roadBoxes, 1.0)) continue;
+      B.box(M.lawn, cx, 0.025, cz, LAWN, 0.05, LAWN, riseDelay(cx, cz), { cast: false });
+      // scattered shade trees and shrubs on the larger lawns, clear of buildings and roads
+      const r = R();
+      if (r < 0.07 && !blocked(cx, cz, keepOut, roadBoxes, 3.5)) trees.push([cx + (R() - 0.5) * 2, cz + (R() - 0.5) * 2, 0.8 + R() * 0.45, 'broad']);
+      else if (r < 0.16 && !blocked(cx, cz, keepOut, roadBoxes, 1.8)) trees.push([cx + (R() - 0.5) * 2, cz + (R() - 0.5) * 2, 0.7 + R() * 0.5, 'shrub']);
+    }
+  }
   for (let i = 0; i < 4; i++) {
     const [ax, az] = BOUNDARY[i], [bx, bz] = BOUNDARY[(i + 1) % 4];
     const len = Math.hypot(bx - ax, bz - az);
     const nx = -(bz - az) / len, nz = (bx - ax) / len; // inward normal (boundary is CCW in x/z)
-    for (let s = 4; s < len - 4; s += 6.5) {
-      const x = ax + (bx - ax) * (s / len) + nx * 3.4, z = az + (bz - az) * (s / len) + nz * 3.4;
-      if (!blocked(x, z, keepOut, roadBoxes, 1.5)) trees.push([x, z, 0.85 + R() * 0.4]);
+    for (let s = 3; s < len - 3; s += 3.6) {
+      const x = ax + (bx - ax) * (s / len) + nx * 2.2, z = az + (bz - az) * (s / len) + nz * 2.2;
+      if (!blocked(x, z, keepOut, roadBoxes, 1.2)) trees.push([x, z, 0.9 + R() * 0.3, 'ashoka']);
+    }
+    for (let s = 5; s < len - 5; s += 5.5) {
+      const x = ax + (bx - ax) * (s / len) + nx * 6.0, z = az + (bz - az) * (s / len) + nz * 6.0;
+      if (!blocked(x, z, keepOut, roadBoxes, 2.0)) trees.push([x, z, 0.85 + R() * 0.4, 'broad']);
     }
   }
-  for (const [cx, cz, n] of [[-72, -40, 5], [30, -70, 6], [52, -62, 4], [-30, 55, 5], [66, 10, 4], [-5, 30, 3]]) {
+  for (const [cx, cz, n] of [[-72, -40, 8], [30, -70, 9], [52, -62, 6], [-30, 55, 8], [66, 10, 6], [-5, 30, 5]]) {
     for (let k = 0; k < n; k++) {
-      const x = cx + (R() - 0.5) * 14, z = cz + (R() - 0.5) * 10;
-      if (insideBoundary(x, z, 2.5) && !blocked(x, z, keepOut, roadBoxes, 1.5)) trees.push([x, z, 0.8 + R() * 0.5]);
+      const x = cx + (R() - 0.5) * 16, z = cz + (R() - 0.5) * 12;
+      if (insideBoundary(x, z, 2.5) && !blocked(x, z, keepOut, roadBoxes, 1.5)) trees.push([x, z, 0.85 + R() * 0.5, 'broad']);
     }
   }
-  // sparse trees outside the site for context
-  for (let k = 0; k < 140; k++) {
-    const x = (R() - 0.5) * 520, z = (R() - 0.5) * 520;
-    if (insideBoundary(x, z, -40)) continue;
-    trees.push([x, z, 0.9 + R() * 0.7]);
+  // soya fields and farm trees outside the boundary, kept off the frontage roads
+  const fieldMats = [soyaField(renderer, '#5E9B35', '#4C8429'), soyaField(renderer, '#7CB342', '#689F38'), soyaField(renderer, '#8DB54A', '#A3C25E')];
+  for (let gx = -300; gx <= 300; gx += 75) {
+    for (let gz = -300; gz <= 300; gz += 75) {
+      const w = 58 + R() * 12, d = 58 + R() * 12, x = gx + (R() - 0.5) * 6, z = gz + (R() - 0.5) * 6;
+      const corners = [[x - w / 2, z - d / 2], [x + w / 2, z - d / 2], [x - w / 2, z + d / 2], [x + w / 2, z + d / 2], [x, z]];
+      if (corners.some(([px, pz]) => insideBoundary(px, pz, -8) || onFrontage(px, pz, 6))) continue;
+      if (R() < 0.15) continue;   // a few fallow plots keep the patchwork natural
+      const field = new THREE.Mesh(new THREE.PlaneGeometry(w, d), fieldMats[Math.floor(R() * 3)]);
+      field.rotation.x = -Math.PI / 2;
+      if (R() < 0.5) field.rotation.z = Math.PI / 2;
+      field.position.set(x, -0.05, z);
+      field.receiveShadow = true;
+      root.add(field);
+      // farm trees along one field edge
+      for (let k = 0; k < 4; k++) {
+        const tx = x - w / 2 + R() * w, tz = z + d / 2 + 4;
+        if (!insideBoundary(tx, tz, -6) && !onFrontage(tx, tz, 4)) trees.push([tx, tz, 1.0 + R() * 0.6, 'broad']);
+      }
+    }
+  }
+  for (let k = 0; k < 260; k++) {
+    const x = (R() - 0.5) * 560, z = (R() - 0.5) * 560;
+    if (insideBoundary(x, z, -12) || onFrontage(x, z, 4)) continue;
+    trees.push([x, z, 0.95 + R() * 0.75, R() < 0.8 ? 'broad' : 'ashoka']);
   }
   instancedTrees(root, M, trees);
 
@@ -273,32 +312,83 @@ function futurePlant(root, B, M, tokens) {
   }
 }
 
+// Low-poly trees with per-instance greens: broadleaf (neem / mango-like clustered crown), tall Ashoka
+// columns for the boundary belt, and round shrubs. One instanced mesh per part keeps it cheap.
+const GREENS = ['#2E7D32', '#388E3C', '#43A047', '#2F6B2A', '#4C8C2B', '#5A9E3A', '#3B7A3A'];
+function crownGeometry() {
+  const parts = [[0, 4.0, 0, 2.1], [1.2, 3.5, 0.5, 1.5], [-1.1, 3.6, -0.4, 1.6], [0.2, 3.3, -1.2, 1.4], [-0.3, 5.0, 0.3, 1.5]];
+  return mergeGeometries(parts.map(([x, y, z, r]) => new THREE.IcosahedronGeometry(r, 1).translate(x, y, z)), false);
+}
+function ashokaGeometry() {
+  const tiers = [[0, 3.4, 1.35, 3.2], [0, 5.6, 1.05, 2.8], [0, 7.6, 0.7, 2.4]];
+  return mergeGeometries(tiers.map(([x, y, r, h]) => new THREE.ConeGeometry(r, h, 7).translate(x, y, 0)), false);
+}
+function shrubGeometry() {
+  return mergeGeometries([[0, 0.55, 0, 0.75], [0.6, 0.45, 0.2, 0.55], [-0.5, 0.45, -0.25, 0.6]]
+    .map(([x, y, z, r]) => new THREE.IcosahedronGeometry(r, 1).translate(x, y, z)), false);
+}
+
 function instancedTrees(root, M, trees) {
-  const foliage = withRise(new THREE.ConeGeometry(1.9, 4.6, 7), 0);
-  foliage.translate(0, 3.6, 0);
-  const crown2 = withRise(new THREE.IcosahedronGeometry(1.7, 0), 0);
-  crown2.translate(0, 3.2, 0);
-  const trunk = new THREE.CylinderGeometry(0.18, 0.24, 1.6, 6);
-  trunk.translate(0, 0.8, 0);
-  const groups = [[foliage, M.tree, trees.filter((_, i) => i % 3 !== 0)], [crown2, M.treeDark, trees.filter((_, i) => i % 3 === 0)]];
+  const R = rng(19);
+  const trunk = new THREE.CylinderGeometry(0.16, 0.26, 2.6, 6).translate(0, 1.3, 0);
+  const kinds = {
+    broad: { crown: crownGeometry(), trunk },
+    ashoka: { crown: ashokaGeometry(), trunk: new THREE.CylinderGeometry(0.12, 0.18, 2.0, 6).translate(0, 1.0, 0) },
+    shrub: { crown: shrubGeometry(), trunk: null },
+  };
   const depth = riseDepthMaterial();
-  for (const [geo, mat, list] of groups) {
-    const im = new THREE.InstancedMesh(geo, mat, list.length);
-    const rises = new Float32Array(list.length);
-    const m4 = new THREE.Matrix4();
-    list.forEach(([x, z, s], i) => {
-      m4.compose(new THREE.Vector3(x, 0, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, (x * 7 + z) % 6.28, 0)), new THREE.Vector3(s, s, s));
-      im.setMatrixAt(i, m4);
-      rises[i] = Math.min(0.8, riseDelay(x, z) + 0.05);
-    });
-    geo.setAttribute('aRise', new THREE.InstancedBufferAttribute(rises, 1));
-    im.castShadow = true; im.receiveShadow = true;
-    im.customDepthMaterial = depth;
-    im.frustumCulled = false;
-    root.add(im);
-    const tr = new THREE.InstancedMesh(trunk, M.trunk, list.length);
-    list.forEach(([x, z, s], i) => { m4.compose(new THREE.Vector3(x, 0, z), new THREE.Quaternion(), new THREE.Vector3(s, s, s)); tr.setMatrixAt(i, m4); });
-    tr.frustumCulled = false;
-    root.add(tr);
+  const m4 = new THREE.Matrix4(), col = new THREE.Color();
+  for (const [kind, { crown, trunk: trunkGeo }] of Object.entries(kinds)) {
+    const list = trees.filter((tr) => tr[3] === kind);
+    if (!list.length) continue;
+    const mats = list.map(([x, z, s]) => m4.compose(new THREE.Vector3(x, 0, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, R() * 6.28, 0)),
+      new THREE.Vector3(s * (0.9 + R() * 0.2), s, s * (0.9 + R() * 0.2))).clone());
+    const rises = new Float32Array(list.map(([x, z]) => Math.min(0.8, riseDelay(x, z) + 0.05)));
+    const parts = [[crown, M.foliage, true]];
+    if (trunkGeo) parts.push([trunkGeo, M.trunk, false]);
+    for (const [geo0, mat, tinted] of parts) {
+      const geo = withRise(geo0.clone(), 0);
+      geo.setAttribute('aRise', new THREE.InstancedBufferAttribute(rises, 1));
+      const im = new THREE.InstancedMesh(geo, mat, list.length);
+      mats.forEach((mm, i) => {
+        im.setMatrixAt(i, mm);
+        if (tinted) im.setColorAt(i, col.set(GREENS[Math.floor(R() * GREENS.length)]).offsetHSL(0, 0, (R() - 0.5) * 0.06));
+      });
+      im.castShadow = kind !== 'shrub'; im.receiveShadow = true;
+      im.customDepthMaterial = depth;
+      im.frustumCulled = false;
+      root.add(im);
+    }
   }
+}
+
+function soyaField(renderer, a, b) {
+  // crop rows: alternating stripes with a little noise so the fields read as planted rows from the air
+  const c = document.createElement('canvas');
+  c.width = c.height = 256;
+  const g = c.getContext('2d');
+  g.fillStyle = a; g.fillRect(0, 0, 256, 256);
+  g.fillStyle = b;
+  for (let y = 0; y < 256; y += 16) g.fillRect(0, y, 256, 7);
+  const R = rng(a.length + parseInt(a.slice(1), 16) % 997);   // deterministic: every render worker gets the same texture
+  for (let i = 0; i < 900; i++) { g.globalAlpha = 0.12; g.fillStyle = i % 2 ? '#2E5E1E' : '#B5D07A'; g.fillRect(R() * 256, R() * 256, 3, 3); }
+  const t = new THREE.CanvasTexture(c);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.repeat.set(4, 4);
+  t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  t.colorSpace = THREE.SRGBColorSpace;
+  return new THREE.MeshLambertMaterial({ map: t });
+}
+
+function onFrontage(x, z, margin) {
+  // the 30 m north and 24 m east frontage roads (see frontageRoad)
+  for (const [a, b, width, offset] of [[BOUNDARY[0], BOUNDARY[1], 30, 19], [BOUNDARY[1], BOUNDARY[2], 24, 16]]) {
+    const [ax, az] = a, [bx, bz] = b;
+    const len = Math.hypot(bx - ax, bz - az);
+    const ux = (bx - ax) / len, uz = (bz - az) / len;
+    const along = (x - (ax + bx) / 2) * ux + (z - (az + bz) / 2) * uz;
+    const across = (x - (ax + bx) / 2) * uz - (z - (az + bz) / 2) * ux;   // outward normal is (uz, -ux)
+    if (Math.abs(along) < (len + 260) / 2 + margin && Math.abs(across - offset) < width / 2 + margin) return true;
+  }
+  return false;
 }
