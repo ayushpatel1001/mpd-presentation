@@ -1,0 +1,8 @@
+uharfbuzz>=0.40
+fonttools>=4.50
+# optional: scan-tests every QR code after rendering
+zxing-cpp
+pillow
+numpy
+# optional: also scan-test with OpenCV's QR readers
+opencv-python-headless

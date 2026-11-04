@@ -1,0 +1,21 @@
+{
+  "defaults": {
+    "phone": "+91-731-2973326"
+  },
+  "people": [
+    {
+      "name": "Ayush Patel",
+      "title": "Director",
+      "mobile": "+91-9131797159",
+      "email": "ayush@mpdyechem.com"
+    },
+    {
+      "name": "Another Person",
+      "title": "Sales Manager",
+      "mobile": "+91-90000-00000",
+      "phone": "-",
+      "email": "name@mpdyechem.com",
+      "web2": "-"
+    }
+  ]
+}

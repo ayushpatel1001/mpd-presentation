@@ -1,0 +1,4 @@
+# generated cards - rebuild with: python3 generate.py
+output*/
+.render_manifest.json
+__pycache__/
