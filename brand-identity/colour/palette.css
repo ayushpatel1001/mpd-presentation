@@ -1,0 +1,12 @@
+:root {
+  --mpd-mpd-blue: #1b64ad;   /* Primary. The logo letters and emblem, headings, the logo side of the card. */
+  --mpd-deep-blue: #124a8d;   /* Dark end of gradients, footer bands, QR squares on light grounds. */
+  --mpd-bright-blue: #2f84d6;   /* Light end of gradients and highlights. */
+  --mpd-ink-blue: #0f3f7a;   /* Darkest blue: QR codes, small text on light grounds. */
+  --mpd-mpd-green: #6fae2c;   /* Accent. The diamond in the emblem, rules and small markers. */
+  --mpd-leaf-green: #4c8a1c;   /* Green for text (job titles, labels) - passes contrast on white. */
+  --mpd-lime-green: #a6d65a;   /* Green on blue backgrounds (tagline on the blue card side). */
+  --mpd-ink: #26323f;   /* Body text. */
+  --mpd-slate: #5d6c80;   /* Secondary text, captions, certifications. */
+  --mpd-pearl: #f8f7f3;   /* Warm off-white background for light surfaces. */
+}

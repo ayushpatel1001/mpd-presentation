@@ -1,0 +1,165 @@
+{
+  "note": "CMYK values are simple estimates without a colour profile. Match blue and green to the logo on a printed proof.",
+  "colours": [
+    {
+      "name": "MPD Blue",
+      "hex": "#1b64ad",
+      "rgb": [
+        27,
+        100,
+        173
+      ],
+      "cmyk_estimate": [
+        84,
+        42,
+        0,
+        32
+      ],
+      "use": "Primary. The logo letters and emblem, headings, the logo side of the card."
+    },
+    {
+      "name": "Deep Blue",
+      "hex": "#124a8d",
+      "rgb": [
+        18,
+        74,
+        141
+      ],
+      "cmyk_estimate": [
+        87,
+        48,
+        0,
+        45
+      ],
+      "use": "Dark end of gradients, footer bands, QR squares on light grounds."
+    },
+    {
+      "name": "Bright Blue",
+      "hex": "#2f84d6",
+      "rgb": [
+        47,
+        132,
+        214
+      ],
+      "cmyk_estimate": [
+        78,
+        38,
+        0,
+        16
+      ],
+      "use": "Light end of gradients and highlights."
+    },
+    {
+      "name": "Ink Blue",
+      "hex": "#0f3f7a",
+      "rgb": [
+        15,
+        63,
+        122
+      ],
+      "cmyk_estimate": [
+        88,
+        48,
+        0,
+        52
+      ],
+      "use": "Darkest blue: QR codes, small text on light grounds."
+    },
+    {
+      "name": "MPD Green",
+      "hex": "#6fae2c",
+      "rgb": [
+        111,
+        174,
+        44
+      ],
+      "cmyk_estimate": [
+        36,
+        0,
+        75,
+        32
+      ],
+      "use": "Accent. The diamond in the emblem, rules and small markers."
+    },
+    {
+      "name": "Leaf Green",
+      "hex": "#4c8a1c",
+      "rgb": [
+        76,
+        138,
+        28
+      ],
+      "cmyk_estimate": [
+        45,
+        0,
+        80,
+        46
+      ],
+      "use": "Green for text (job titles, labels) - passes contrast on white."
+    },
+    {
+      "name": "Lime Green",
+      "hex": "#a6d65a",
+      "rgb": [
+        166,
+        214,
+        90
+      ],
+      "cmyk_estimate": [
+        22,
+        0,
+        58,
+        16
+      ],
+      "use": "Green on blue backgrounds (tagline on the blue card side)."
+    },
+    {
+      "name": "Ink",
+      "hex": "#26323f",
+      "rgb": [
+        38,
+        50,
+        63
+      ],
+      "cmyk_estimate": [
+        40,
+        21,
+        0,
+        75
+      ],
+      "use": "Body text."
+    },
+    {
+      "name": "Slate",
+      "hex": "#5d6c80",
+      "rgb": [
+        93,
+        108,
+        128
+      ],
+      "cmyk_estimate": [
+        27,
+        16,
+        0,
+        50
+      ],
+      "use": "Secondary text, captions, certifications."
+    },
+    {
+      "name": "Pearl",
+      "hex": "#f8f7f3",
+      "rgb": [
+        248,
+        247,
+        243
+      ],
+      "cmyk_estimate": [
+        0,
+        0,
+        2,
+        3
+      ],
+      "use": "Warm off-white background for light surfaces."
+    }
+  ]
+}

@@ -107,3 +107,8 @@ All figures come from the capabilities deck (slides 1–16). Two wording choices
 `business-cards/` holds the MPD business-card generator: put people in `business-cards/people.csv`,
 run `python3 business-cards/generate.py`, and each person gets print-ready SVG/PNG files (with a
 3 mm-bleed version for the printer) and a contact-saving QR code. See `business-cards/README.md`.
+
+## Brand identity
+
+`brand-identity/` is the MPD brand kit: logo files in every variant (SVG + transparent PNG), the colour
+palette (JSON/CSS), typefaces, the alkyd-molecule pattern and a one-page brand board. See `brand-identity/README.md`.

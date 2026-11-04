@@ -8,6 +8,11 @@ python3 generate.py                 # reads people.csv  ->  output/
 python3 generate.py staff.csv       # or any other CSV / JSON file
 ```
 
+## Finished cards
+
+The current cards for everyone in `people.csv` are committed in `cards/` (rebuilt with
+`python3 generate.py --out cards --no-zip`). The brand kit (logo files, colours, fonts) is in `../brand-identity/`.
+
 ## What you get
 
 ```
