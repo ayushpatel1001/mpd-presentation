@@ -2,72 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MPD Ujjain Showcase Renderer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MPD Industries · Ujjain Plant — 3D Model</title>
   <style>
-    /* Default / headless: full-bleed 1920×1080 canvases for Playwright capture */
-    html, body { margin: 0; padding: 0; background: #000; overflow: hidden; }
-    canvas { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; display: block; }
-    #preview, #status { display: none; }
-    body:not(.interactive) #viewport,
-    body:not(.interactive) #stage { display: contents; }
-
-    /* Interactive browser preview (body.interactive set by preview.js) */
-    body.interactive {
-      background: #0a0a0a; height: 100%; font-family: system-ui, sans-serif;
+    :root { --panel: rgba(9, 22, 38, 0.88); --line: rgba(255, 255, 255, 0.12); --text: #e8eef6; --muted: #9fb3c8; --accent: #00a3e0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #0b1a2b; color: var(--text); font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
+    canvas#gl { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; touch-action: none; cursor: grab; }
+    canvas#gl:active { cursor: grabbing; }
+    #status { position: fixed; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 15px; pointer-events: none; text-align: center; padding: 24px; }
+    #status.hidden { display: none; }
+    #panel {
+      position: fixed; top: 12px; left: 12px; width: 232px; max-height: calc(100vh - 24px); overflow: auto;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+      backdrop-filter: blur(6px); display: none;
     }
-    body.interactive #viewport {
-      display: flex; align-items: center; justify-content: center;
-      width: 100vw; height: 100vh; padding-bottom: 56px; box-sizing: border-box;
+    #panel.ready { display: block; }
+    #panel h1 { font-size: 14px; margin: 0 0 2px; letter-spacing: 0.02em; }
+    #panel .sub { color: var(--muted); font-size: 11.5px; margin-bottom: 10px; }
+    #panel h2 { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin: 14px 0 6px; }
+    #views { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    button {
+      appearance: none; border: 1px solid var(--line); border-radius: 6px; background: rgba(255, 255, 255, 0.06); color: var(--text);
+      font: 600 12px/1 inherit; padding: 8px 6px; cursor: pointer;
     }
-    body.interactive #stage {
-      display: block; width: 1920px; height: 1080px; position: relative;
-      transform-origin: center center; background: #000;
-    }
-    body.interactive #stage canvas {
-      position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; display: block;
-    }
-    body.interactive #preview {
-      display: flex; position: fixed; left: 0; right: 0; bottom: 0; height: 56px;
-      align-items: center; gap: 12px; padding: 0 16px; box-sizing: border-box;
-      background: rgba(12, 14, 18, 0.92); color: #e8eaed;
-      border-top: 1px solid rgba(255,255,255,0.08); z-index: 10;
-    }
-    body.interactive #preview.hidden { display: none; }
-    body.interactive #preview button {
-      appearance: none; border: 0; border-radius: 6px;
-      background: #1f6feb; color: #fff; font: 600 13px/1 system-ui, sans-serif;
-      padding: 8px 14px; cursor: pointer; min-width: 72px;
-    }
-    body.interactive #preview button:hover { background: #2a7fff; }
-    body.interactive #preview input[type="range"] { flex: 1; accent-color: #1f6feb; }
-    body.interactive #preview #time {
-      font: 500 12px/1 ui-monospace, Menlo, monospace; min-width: 88px; opacity: 0.85;
-    }
-    body.interactive #status {
-      display: grid; place-items: center; position: fixed; inset: 0;
-      color: #9aa0a6; font: 500 14px/1.4 system-ui, sans-serif; z-index: 5;
-      pointer-events: none;
-    }
-    body.interactive #status.hidden { display: none; }
+    button:hover { background: rgba(0, 163, 224, 0.28); border-color: var(--accent); }
+    label { display: flex; align-items: center; gap: 8px; padding: 3px 0; cursor: pointer; user-select: none; }
+    label i { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+    input[type="checkbox"] { accent-color: var(--accent); margin: 0; }
+    #help { color: var(--muted); font-size: 11px; margin-top: 12px; line-height: 1.5; }
+    #collapse { position: fixed; top: 12px; left: 252px; z-index: 3; display: none; padding: 8px 10px; }
+    #collapse.ready { display: block; }
+    #panel.min { display: none; }
+    #info { position: fixed; right: 12px; bottom: 12px; color: rgba(255, 255, 255, 0.75); font-size: 11.5px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; display: none; }
+    #info.ready { display: block; }
+    @media (max-width: 560px) { #panel { width: 200px; } #collapse { left: 220px; } }
   </style>
   <script type="importmap">
-    { "imports": { "three": "/node_modules/three/build/three.module.js", "three/addons/": "/node_modules/three/examples/jsm/" } }
+    { "imports": { "three": "../vendor/three/three.module.js", "three/addons/": "../vendor/three/addons/" } }
   </script>
 </head>
 <body>
-  <div id="status">Loading 3D scene…</div>
-  <div id="viewport">
-    <div id="stage">
-      <canvas id="gl" width="1920" height="1080"></canvas>
-      <canvas id="hud" width="1920" height="1080"></canvas>
-    </div>
-  </div>
-  <div id="preview" class="hidden">
-    <button id="play" type="button">Play</button>
-    <input id="scrub" type="range" min="0" max="180" step="0.1" value="15" />
-    <span id="time">0:15.0</span>
-  </div>
-  <script type="module" src="/src/main.js"></script>
-  <script type="module" src="/src/preview.js"></script>
+  <canvas id="gl"></canvas>
+  <div id="status">Loading 3D model…</div>
+  <aside id="panel" aria-label="Model controls">
+    <h1>MPD Industries · Ujjain</h1>
+    <div class="sub">Interactive 3D plant model</div>
+    <h2>Views</h2>
+    <div id="views"></div>
+    <h2>Open up</h2>
+    <div id="cutaways"></div>
+    <h2>Layers</h2>
+    <div id="layers"></div>
+    <h2>Pipe flows</h2>
+    <div id="flows"></div>
+    <div style="margin-top:12px"><button id="replay" type="button" style="width:100%">Replay build-up</button></div>
+    <div id="help">Drag to orbit · right-drag / two fingers to pan · scroll or pinch to zoom · double-click to focus a point</div>
+  </aside>
+  <button id="collapse" type="button" aria-label="Toggle panel">☰</button>
+  <div id="info"></div>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>

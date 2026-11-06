@@ -1,5 +1,4 @@
-// Static site: ground, site pad, boundary, roads, generic buildings, trees, parking,
-// frontage roads and the blueprint overlay the plant "rises" out of.
+// Static site: ground, site pad, boundary, roads, generic buildings, trees, parking and frontage roads.
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { Batcher, withRise, patchRise, riseDepthMaterial } from './materials.js';
@@ -29,19 +28,7 @@ function gridTexture(renderer, base, line) {
   return t;
 }
 
-const BLUEPRINT_FRAG = /* glsl */`
-uniform sampler2D tPlan; uniform float uOpacity; uniform vec3 uColor; uniform float uScan;
-varying vec2 vUv;
-void main(){
-  float l = texture2D(tPlan, vUv).r;
-  float line = smoothstep(0.92, 0.35, l);
-  float sd = (vUv.y - uScan) * 40.0;
-  float scan = exp(-sd * sd);
-  float a = clamp(line * 0.85 + scan * 0.35 * line + scan * 0.06, 0.0, 1.0);
-  gl_FragColor = vec4(uColor * (1.0 + scan * 0.8), a * uOpacity);
-}`;
-
-export function buildSite(world, M, tokens, planTexture) {
+export function buildSite(world, M, tokens) {
   const { scene, renderer } = world;
   const root = new THREE.Group();
   scene.add(root);
@@ -68,17 +55,6 @@ export function buildSite(world, M, tokens, planTexture) {
   pad.rotation.x = -Math.PI / 2;
   pad.receiveShadow = true;
   root.add(pad);
-
-  // ---- blueprint overlay (site plan drawing)
-  const blueprint = new THREE.Mesh(new THREE.PlaneGeometry(213.74, 205.67), new THREE.ShaderMaterial({
-    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
-    fragmentShader: BLUEPRINT_FRAG, transparent: true, depthWrite: false,
-    uniforms: { tPlan: { value: planTexture }, uOpacity: { value: 1 }, uColor: { value: new THREE.Color(tokens.color.scene.blueprint) }, uScan: { value: 0 } },
-  }));
-  blueprint.rotation.x = -Math.PI / 2;
-  blueprint.position.set(-5.94, 0.12, -1.51);
-  blueprint.renderOrder = 5;
-  root.add(blueprint);
 
   // ---- boundary wall with a glowing cap; gaps at gates and material exits
   const gaps = [[-51, -72.5], [23.5, -87.0], [72.0, 17.8], [78.0, 44.0]];
@@ -206,11 +182,6 @@ export function buildSite(world, M, tokens, planTexture) {
 
   return {
     root,
-    update(t, s) {
-      blueprint.material.uniforms.uOpacity.value = s.blueprint;
-      blueprint.visible = s.blueprint > 0.002;
-      blueprint.material.uniforms.uScan.value = ((t * 0.18) % 1.4) - 0.2;
-    },
   };
 }
 

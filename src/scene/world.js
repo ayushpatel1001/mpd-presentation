@@ -1,7 +1,7 @@
 // Renderer, lights, sky/ground and the post-processing chain.
-// Scene renders into a linear HDR target with a depth texture, then:
+// Scene renders into a linear HDR target, then:
 //   bright-pass + blur at 1/4 res (glow on emissive energy lines)
-//   composite: depth-of-field gather, bloom, ACES tone map, grade, vignette, grain
+//   composite: bloom, ACES tone map, vignette, grain
 //   FXAA to the canvas.
 import * as THREE from 'three';
 import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
@@ -34,14 +34,9 @@ void main(){
 }`;
 
 const COMPOSITE_FRAG = /* glsl */`
-uniform sampler2D tColor; uniform sampler2D tDepth; uniform sampler2D tBloom;
-uniform vec2 uRes; uniform float uNear; uniform float uFar; uniform float uFocus; uniform float uAperture;
-uniform float uBloom; uniform float uExposure; uniform float uDim; uniform vec3 uDimColor;
-uniform float uFade; uniform float uTime; uniform float uVignette;
+uniform sampler2D tColor; uniform sampler2D tBloom;
+uniform vec2 uRes; uniform float uBloom; uniform float uExposure; uniform float uTime; uniform float uVignette;
 varying vec2 vUv;
-
-float linZ(vec2 uv){ float d = texture2D(tDepth, uv).x; return uNear*uFar / (uFar - d*(uFar-uNear)); }
-float coc(float z){ return clamp(uAperture * 12.5 * abs(z - uFocus) / max(z, 1e-3), 0.0, 11.0); }
 
 vec3 RRTAndODTFit(vec3 v){ vec3 a = v*(v+0.0245786)-0.000090537; vec3 b = v*(0.983729*v+0.4329510)+0.238081; return a/b; }
 vec3 aces(vec3 color){
@@ -55,29 +50,11 @@ float hash12(vec2 p){ vec3 p3 = fract(vec3(p.xyx)*0.1031); p3 += dot(p3, p3.yzx+
 
 void main(){
   vec3 col = texture2D(tColor, vUv).rgb;
-  if (uAperture > 0.01) {
-    float cc = coc(linZ(vUv));
-    if (cc > 0.75) {
-      vec3 acc = col; float wsum = 1.0;
-      for (int i = 0; i < 12; i++) {
-        float fi = float(i) + 0.5;
-        float r = sqrt(fi / 12.0);
-        float a = fi * 2.39996323;
-        vec2 uv2 = vUv + vec2(cos(a), sin(a)) * r * cc / uRes;
-        float cs = coc(linZ(uv2));
-        float w = clamp(cs - r*cc + 1.0, 0.0, 1.0);
-        acc += texture2D(tColor, uv2).rgb * w; wsum += w;
-      }
-      col = acc / wsum;
-    }
-  }
   col += texture2D(tBloom, vUv).rgb * uBloom;
   col = toSRGB(aces(col * uExposure));
-  col = mix(col, uDimColor, uDim);
   vec2 q = (vUv - 0.5) * vec2(1.0, 0.72);
   col *= mix(1.0 - uVignette, 1.0, smoothstep(0.78, 0.18, length(q)*1.35));
   col += (hash12(vUv*uRes + fract(uTime)*137.0) - 0.5) * 0.010;
-  col *= 1.0 - uFade;
   gl_FragColor = vec4(col, 1.0);
 }`;
 
@@ -103,14 +80,11 @@ function fsPass(frag, uniforms) {
   return { scene, mat, uniforms };
 }
 
-export function createWorld(canvas, tokens, { renderScale = 1600 / 1920 } = {}) {
-  const OW = tokens.canvas.width, OH = tokens.canvas.height;
-  // the 3D layer renders below output resolution and is upscaled in the FXAA pass; the HUD stays native
-  const W = Math.round(OW * renderScale), H = Math.round(OH * renderScale);
+export function createWorld(canvas, tokens) {
   const C = tokens.color.scene;
+  let W = 1280, H = 720;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
   renderer.setPixelRatio(1);
-  renderer.setSize(OW, OH, false);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.shadowMap.autoUpdate = false;
@@ -147,31 +121,42 @@ export function createWorld(canvas, tokens, { renderScale = 1600 / 1920 } = {}) 
   rim.position.set(-200, 160, -220);
   scene.add(rim);
 
-  // render targets
-  const rtScene = new THREE.WebGLRenderTarget(W, H, { type: THREE.HalfFloatType, depthTexture: new THREE.DepthTexture(W, H), minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
+  // render targets (sized in resize())
+  const rtScene = new THREE.WebGLRenderTarget(W, H, { type: THREE.HalfFloatType, depthBuffer: true, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
   const rtLdr = new THREE.WebGLRenderTarget(W, H, { type: THREE.UnsignedByteType, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
-  const bw = W / 4, bh = H / 4;
-  const rtBloomA = new THREE.WebGLRenderTarget(bw, bh, { type: THREE.HalfFloatType, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
+  const rtBloomA = new THREE.WebGLRenderTarget(W / 4, H / 4, { type: THREE.HalfFloatType, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter });
   const rtBloomB = rtBloomA.clone();
 
   const bright = fsPass(BRIGHT_FRAG, { tColor: { value: rtScene.texture }, uTexel: { value: new THREE.Vector2(1 / W, 1 / H) }, uThreshold: { value: 2.4 } });
   const blur = fsPass(BLUR_FRAG, { tInput: { value: null }, uDir: { value: new THREE.Vector2() } });
   const comp = fsPass(COMPOSITE_FRAG, {
-    tColor: { value: rtScene.texture }, tDepth: { value: rtScene.depthTexture }, tBloom: { value: rtBloomA.texture },
-    uRes: { value: new THREE.Vector2(W, H) }, uNear: { value: camera.near }, uFar: { value: camera.far },
-    uFocus: { value: 50 }, uAperture: { value: 0 }, uBloom: { value: 0.9 }, uExposure: { value: 1.0 },
-    uDim: { value: 0 }, uDimColor: { value: new THREE.Color('#050D18') }, uFade: { value: 0 }, uTime: { value: 0 }, uVignette: { value: 0.16 },
+    tColor: { value: rtScene.texture }, tBloom: { value: rtBloomA.texture },
+    uRes: { value: new THREE.Vector2(W, H) }, uBloom: { value: 0.85 }, uExposure: { value: 1.12 }, uTime: { value: 0 }, uVignette: { value: 0.16 },
   });
   const fxaa = fsPass(FXAAShader.fragmentShader, THREE.UniformsUtils.clone(FXAAShader.uniforms));
   fxaa.mat.vertexShader = FS_VERT;
   fxaa.uniforms.tDiffuse.value = rtLdr.texture;
-  fxaa.uniforms.resolution.value.set(1 / W, 1 / H);
   const fsCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-  function render(post) {
+  // size the drawing buffer to the canvas' CSS size × device pixel ratio (capped to keep the HDR chain affordable)
+  function resize(cssW, cssH, pixelRatio = 1) {
+    W = Math.max(2, Math.round(cssW * pixelRatio)); H = Math.max(2, Math.round(cssH * pixelRatio));
+    renderer.setSize(W, H, false);
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
+    rtScene.setSize(W, H); rtLdr.setSize(W, H);
+    rtBloomA.setSize(W / 4, H / 4); rtBloomB.setSize(W / 4, H / 4);
+    bright.uniforms.uTexel.value.set(1 / W, 1 / H);
+    comp.uniforms.uRes.value.set(W, H);
+    fxaa.uniforms.resolution.value.set(1 / W, 1 / H);
+  }
+  resize(W, H);
+
+  function render(time = 0) {
     renderer.setRenderTarget(rtScene);
     renderer.render(scene, camera);
     // glow
+    const bw = W / 4, bh = H / 4;
     renderer.setRenderTarget(rtBloomA);
     renderer.render(bright.scene, fsCam);
     for (const [src, dst, dx, dy] of [[rtBloomA, rtBloomB, 2 / bw, 0], [rtBloomB, rtBloomA, 0, 2 / bh], [rtBloomA, rtBloomB, 4 / bw, 0], [rtBloomB, rtBloomA, 0, 4 / bh]]) {
@@ -180,15 +165,12 @@ export function createWorld(canvas, tokens, { renderScale = 1600 / 1920 } = {}) 
       renderer.setRenderTarget(dst);
       renderer.render(blur.scene, fsCam);
     }
-    const u = comp.uniforms;
-    u.uNear.value = camera.near; u.uFar.value = camera.far;
-    u.uFocus.value = post.focus; u.uAperture.value = post.aperture; u.uBloom.value = post.bloom ?? 0.9;
-    u.uExposure.value = post.exposure ?? 1.0; u.uDim.value = post.dim ?? 0; u.uFade.value = post.fade ?? 0; u.uTime.value = post.time ?? 0;
+    comp.uniforms.uTime.value = time;
     renderer.setRenderTarget(rtLdr);
     renderer.render(comp.scene, fsCam);
     renderer.setRenderTarget(null);
     renderer.render(fxaa.scene, fsCam);
   }
 
-  return { renderer, scene, camera, sun, render, W, H };
+  return { renderer, scene, camera, sun, render, resize };
 }

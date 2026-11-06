@@ -1,7 +1,7 @@
 // Colour-coded energy / product flows along pipe-rack routes. Each route is a physical steel
 // pipe plus an additive glow tube that reveals along its length and carries moving pulses.
 import * as THREE from 'three';
-import { keyframes, keyframesMax, clamp } from '../lib/util.js';
+import { clamp } from '../lib/util.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
@@ -100,19 +100,15 @@ export function buildFlows(world, M, B, tokens) {
     }
   }
   return {
-    update(t, s, states) {
-      const dim = s.flowsGlobalDim;
+    // s[f.state] is 0..1 (how far along the route the flow has been switched on)
+    update(t, s) {
       for (const f of flows) {
-        const kf = states[f.state];
-        const reached = keyframesMax(kf, t);
-        const now = keyframes(kf, t);
         const [a, b] = f.range;
-        const reveal = clamp((reached - a) / (b - a));
-        const intensity = reached > 0 ? (now / Math.max(reached, 1e-3)) : 0;
+        const reveal = clamp(((s[f.state] ?? 0) - a) / (b - a));
         f.mat.uniforms.uReveal.value = reveal;
-        f.mat.uniforms.uIntensity.value = reveal > 0 ? intensity * dim : 0;
+        f.mat.uniforms.uIntensity.value = reveal > 0 ? 1 : 0;
         f.mat.uniforms.uTime.value = t;
-        f.mesh.visible = reveal > 0.001 && intensity * dim > 0.001;
+        f.mesh.visible = reveal > 0.001;
       }
     },
   };

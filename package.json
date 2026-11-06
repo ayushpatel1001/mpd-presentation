@@ -1,16 +1,8 @@
 {
-  "name": "mpd-ujjain-showcase",
+  "name": "mpd-ujjain-3d-model",
   "version": "1.0.0",
   "private": true,
-  "description": "MPD Industries Ujjain Plant - 180s hybrid 2D/3D jobwork capabilities showcase video (Three.js + Canvas HUD, rendered with Playwright + FFmpeg)",
+  "description": "Interactive Three.js 3D model of the MPD Industries Ujjain plant, viewable in any modern browser",
   "type": "module",
-  "scripts": {
-    "render": "node scripts/render_frames.mjs",
-    "preview": "node scripts/preview_stills.mjs",
-    "view": "node scripts/view.mjs",
-    "validate": "node scripts/validate.mjs"
-  },
-  "dependencies": {
-    "three": "0.170.0"
-  }
+  "scripts": { "start": "node serve.mjs" }
 }

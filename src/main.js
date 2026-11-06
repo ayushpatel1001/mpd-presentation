@@ -1,5 +1,7 @@
-// Boots the scene + HUD and exposes window.renderFrame(t) for deterministic frame capture.
+// MPD Ujjain plant: interactive 3D model viewer (orbit / pan / zoom + cutaways, layers and pipe flows).
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { tokens } from './scene/tokens.js';
 import { createWorld } from './scene/world.js';
 import { createMaterials, Batcher, riseUniform } from './scene/materials.js';
 import { buildSite } from './scene/site.js';
@@ -11,48 +13,57 @@ import { buildFlows } from './scene/flows.js';
 import { buildQaqc } from './scene/qaqc.js';
 import { buildWarehouses } from './scene/warehouse.js';
 import { buildSolar, siteRoofs, MODULE } from './scene/solar.js';
-import { drawModelLabels } from './hud/modelLabels.js';
-import { createRig } from './scene/camera.js';
-import { createHud } from './hud/hud.js';
-import { keyframes } from './lib/util.js';
+import { PLANT1, PLANT2, BLENDER, QAQC, FG_FARM, PESO, BOILER } from './scene/layout.js';
+import { smooth } from './lib/util.js';
 
-const FONTS = [['Inter', 400], ['Inter', 500], ['Inter', 600], ['Inter', 700], ['Inter', 800], ['Inter', 900],
-  ['Montserrat', 600], ['Montserrat', 700], ['Montserrat', 800], ['Montserrat', 900], ['JetBrains Mono', 500], ['JetBrains Mono', 700]];
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => n.toLocaleString('en-IN');
 
-function orbitCam({ target, radius, elev, azim, fov = 34, aperture = 0 }) {
+// ---- UI model: every control drives one or more scene "state" channels (0..1) that are eased toward their target
+const CUTAWAYS = [
+  ['plant1Cutaway', 'Plant 1 — liquid resins'], ['plant2Cutaway', 'Plant 2 — solid & specialty'], ['wh1Cutaway', 'Warehouse-1'],
+  ['wh2Cutaway', 'Warehouse-2'], ['qaCutaway', 'QA / QC building'], ['blenderCutaway', 'Blender house'], ['pesoXray', 'PESO tank pit (x-ray)'],
+];
+const LAYERS = [['solarPanels', 'Rooftop solar'], ['running', 'Equipment running'], ['utilityGlow', 'Utilities glow']];
+const FLOWS = [
+  ['flowThermic', 'Thermic oil', 'thermicOil'], ['flowCooling', 'Cooling water', 'coolingWater'], ['flowNitrogen', 'Nitrogen', 'nitrogen'],
+  ['flowEffluent', 'Effluent', 'effluent'], ['flowResin', 'Resin', 'resin'], ['flowSolvent', 'Solvent', 'solvent'],
+];
+const target = {};
+const cur = {};
+for (const [k] of [...CUTAWAYS, ...LAYERS, ...FLOWS]) { target[k] = 0; cur[k] = 0; }
+for (const k of ['solarPanels', 'running', 'utilityGlow']) { target[k] = 1; cur[k] = 1; }
+
+// camera presets: [label, target, radius, elevation°, azimuth°, cutaways to open]
+const VIEWS = [
+  ['Aerial', [-3, 0, 2], 235, 38, -32, []],
+  ['Top plan', [-3, 0, 2], 250, 86, 0, []],
+  ['Plant 1', [PLANT1.x, 8, PLANT1.z], 62, 28, -40, ['plant1Cutaway']],
+  ['Plant 2', [PLANT2.x, 8, PLANT2.z], 70, 30, -35, ['plant2Cutaway']],
+  ['Warehouses', [-26, 4, 8], 135, 40, -58, ['wh1Cutaway', 'wh2Cutaway']],
+  ['QA / QC', [QAQC.x, 7, QAQC.z], 38, 22, 150, ['qaCutaway']],
+  ['Blender + FG', [BLENDER.x - 10, 4, BLENDER.z], 105, 32, 40, ['blenderCutaway']],
+  ['Tank farms', [FG_FARM.x, 4, 3], 120, 34, -100, []],
+  ['Utilities', [BOILER.x - 10, 4, 52], 100, 32, 20, []],
+  ['PESO pit', [PESO.x, -1, PESO.z - 4], 85, 40, -20, ['pesoXray']],
+];
+
+function applyView(v, camState) {
+  const [, tg, radius, elev, azim, open] = v;
+  for (const [k] of CUTAWAYS) target[k] = open.includes(k) ? 1 : 0;
+  for (const el of document.querySelectorAll('#cutaways input')) el.checked = target[el.dataset.k] > 0.5;
   const el = (elev * Math.PI) / 180, az = (azim * Math.PI) / 180;
-  const tg = new THREE.Vector3(...target);
-  const position = tg.clone().add(new THREE.Vector3(Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el)).multiplyScalar(radius));
-  return { target: tg, position, radius, fov, aperture, shot: 'preview' };
-}
-
-function loadImage(src) {
-  return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
+  const to = new THREE.Vector3(...tg);
+  const pos = to.clone().add(new THREE.Vector3(Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el)).multiplyScalar(radius));
+  camState.fly = { t: 0, dur: 1.6, fromPos: camState.camera.position.clone(), fromTgt: camState.controls.target.clone(), toPos: pos, toTgt: to };
 }
 
 async function boot() {
-  const film = new URLSearchParams(location.search).get('film');
-  const [tokens, timeline] = await Promise.all([
-    fetch('/data/style_tokens.json').then((r) => r.json()),
-    // ?film=<name> plays an alternate cut from data/films/<name>/
-    fetch(`/data/${film ? `films/${film}/` : ''}timeline.resolved.json`).then((r) => r.json()),
-  ]);
-  await Promise.all(FONTS.map(async ([fam, w]) => {
-    const f = new FontFace(fam, `url(/assets/fonts/${fam.replace(' ', '')}-${w}.ttf)`, { weight: String(w) });
-    await f.load();
-    document.fonts.add(f);
-  }));
-  await document.fonts.ready;
-  const logo = await loadImage('/assets/brand/mpd_logo.jpg');
-  const plan = await new THREE.TextureLoader().loadAsync('/assets/reference/site_plan_layout.png');
-  plan.anisotropy = 8;
-
-  // ?scale=0.5 renders the 3D layer at lower resolution for quick draft renders
-  const scale = Number(new URLSearchParams(location.search).get('scale'));
-  const world = createWorld(document.getElementById('gl'), tokens, scale ? { renderScale: scale } : undefined);
+  const canvas = $('gl');
+  const world = createWorld(canvas, tokens);
   const M = createMaterials(tokens);
   const B = new Batcher();
-  const site = buildSite(world, M, tokens, plan);
+  const site = buildSite(world, M, tokens);
   const plants = buildPlants(world, M, B);
   const finishing = buildFinishing(world, M);
   const tanks = buildTanks(world, M, B, tokens);
@@ -61,84 +72,129 @@ async function boot() {
   const qaqc = buildQaqc(world, M);
   const warehouses = buildWarehouses(world, M);
   const solar = buildSolar(world, M, siteRoofs({ ...plants.envs, ...warehouses.envs, fuel: utilities.fuelShed }), B);
-  window.__model = { solar: { modules: solar.count, kwp: solar.kwp, candidates: solar.available, perRoof: solar.perRoof }, storage: warehouses.storage };
   const statics = new THREE.Group();
   world.scene.add(statics);
   B.build(statics);
-  const anchors = { ...plants.anchors, ...finishing.anchors, ...tanks.anchors, ...utilities.anchors, ...qaqc.anchors, ...warehouses.anchors };
-  anchors.solarWh1 = anchors.wh1.clone().add(new THREE.Vector3(-7, 0, -12));
-  const st = warehouses.storage, fmt = (n) => n.toLocaleString('en-IN');
-  const labels = [];
-  labels.push(
-    { anchor: 'wh1', offset: [70, -170], title: 'WAREHOUSE-1 · MOBILE COMPACT RACKING',
-      lines: [`${fmt(st.wh1.pallets)} pallet positions ≈ ${fmt(st.wh1.tonnes)} t`, `7 mobile units: ${fmt(st.wh1.byKg[500])} × 500 kg · static row: ${fmt(st.wh1.byKg[1000])} × 1 t`] },
-    { anchor: 'wh2', offset: [70, -150], title: 'WAREHOUSE-2 · MOBILE COMPACT RACKING',
-      lines: [`${fmt(st.wh2.pallets)} pallet positions ≈ ${fmt(st.wh2.tonnes)} t`, `6 mobile units × 10 bays × 6 levels · 500 kg`] },
-    { anchor: 'solarWh1', offset: [-80, -150], color: '#F59E0B', title: `${(solar.kwp / 1000).toFixed(2)} MWp ROOFTOP SOLAR`,
-      lines: [`${fmt(solar.count)} × ${MODULE.wp} Wp modules on every roof`] },
-    { anchor: 'depalletiser', offset: [-70, -150], title: 'DEPALLETISER → JUMBO-BAG FILLING',
-      lines: ['25 kg bags → 1 t FIBC for fast reactor charging'] },
-    { anchor: 'p1Hoist', offset: [70, -120], title: 'EOT CRANE · JUMBO BAG TO REACTOR',
-      lines: ['hoist through the cut-out → discharger on MEZZ-2 → P1-R-101'] },
-  );
-  // the same storage call-outs anchored on the racks for cut-away views
-  for (const k of ['wh1', 'wh2']) labels.push({ ...labels.find((l) => l.anchor === k), anchor: `${k}Racks` });
-  const hudCtx = document.getElementById('hud').getContext('2d');
-  const rig = createRig(timeline.camera);
-  const hud = createHud(document.getElementById('hud'), tokens, timeline, { logo });
-  const states = timeline.sceneStates;
-  let shadowsReady = false;
-  const v = new THREE.Vector3();
 
-  window.renderFrame = (t, opts = {}) => {
-    const S = {};
-    for (const [k, kf] of Object.entries(states)) S[k] = keyframes(kf, t);
-    Object.assign(S, opts.states);   // preview overrides, e.g. { plant1Cutaway: 1 }
-    riseUniform.value = S.buildingsRise;
-    site.update(t, S);
+  // ---- camera + controls
+  const camera = world.camera;
+  const controls = new OrbitControls(camera, canvas);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+  controls.maxPolarAngle = Math.PI * 0.495;   // stay above ground
+  controls.minDistance = 6;
+  controls.maxDistance = 520;
+  controls.screenSpacePanning = false;
+  const camState = { camera, controls, fly: null };
+  applyView(VIEWS[0], camState);
+  camera.position.copy(camState.fly.toPos);
+  controls.target.copy(camState.fly.toTgt);
+  camState.fly = null;
+  controls.update();
+
+  // double-click / double-tap: re-centre the orbit on the surface point under the cursor
+  const ray = new THREE.Raycaster();
+  canvas.addEventListener('dblclick', (e) => {
+    const nd = new THREE.Vector2((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+    ray.setFromCamera(nd, camera);
+    const hit = ray.intersectObject(statics, true)[0];
+    const p = hit ? hit.point : (() => { const q = new THREE.Vector3(); return ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), q) && q; })();
+    if (!p) return;
+    camState.fly = { t: 0, dur: 1.0, fromPos: camera.position.clone(), fromTgt: controls.target.clone(),
+      toPos: camera.position.clone().add(p.clone().sub(controls.target)), toTgt: p.clone() };
+  });
+
+  // ---- sizing
+  const pr = () => Math.min(window.devicePixelRatio || 1, 2);
+  const onResize = () => { world.resize(innerWidth, innerHeight, pr()); shadowDirty = true; };
+  let shadowDirty = true;
+  onResize();
+  addEventListener('resize', onResize);
+
+  // ---- UI
+  const mk = (parent, key, label, color) => {
+    const l = document.createElement('label');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.dataset.k = key; cb.checked = target[key] > 0.5;
+    cb.addEventListener('change', () => { target[key] = cb.checked ? 1 : 0; shadowDirty = true; });
+    l.append(cb);
+    if (color) { const d = document.createElement('i'); d.style.background = color; l.append(d); }
+    l.append(label);
+    parent.append(l);
+  };
+  VIEWS.forEach((v) => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = v[0];
+    b.addEventListener('click', () => applyView(v, camState));
+    $('views').append(b);
+  });
+  CUTAWAYS.forEach(([k, l]) => mk($('cutaways'), k, l));
+  LAYERS.forEach(([k, l]) => mk($('layers'), k, l));
+  FLOWS.forEach(([k, l, c]) => mk($('flows'), k, l, tokens.color.flow[c]));
+  let buildT = 1;   // 0..1 greenfield build-up animation
+  $('replay').addEventListener('click', () => { buildT = 0; });
+  $('collapse').addEventListener('click', () => $('panel').classList.toggle('min'));
+  const st = warehouses.storage;
+  $('info').textContent = `${(solar.kwp / 1000).toFixed(2)} MWp rooftop solar · ${fmt(solar.count)} × ${MODULE.wp} Wp · storage ${fmt(st.wh1.pallets + st.wh2.pallets)} pallets ≈ ${fmt(Math.round(st.wh1.tonnes + st.wh2.tonnes))} t`;
+
+  // ---- frame loop
+  const clock = new THREE.Clock();
+  let t = 0, shadowAcc = 0;
+  const S = {};
+  const frame = () => {
+    const dt = Math.min(0.1, clock.getDelta());
+    t += dt;
+    // ease every state channel toward its target
+    let moving = false;
+    for (const k of Object.keys(target)) {
+      const d = target[k] - cur[k];
+      if (Math.abs(d) > 1e-4) { cur[k] += Math.sign(d) * Math.min(Math.abs(d), dt / 0.9); moving = true; } else cur[k] = target[k];
+      S[k] = smooth(cur[k]);
+    }
+    if (buildT < 1) { buildT = Math.min(1, buildT + dt / 7); moving = true; }
+    riseUniform.value = buildT;
+    const run = S.running;
+    Object.assign(S, {
+      buildingsRise: smooth(buildT), finishingRun: run, heroReactorHeat: run, heroReactorFill: 0.12 + 0.66 * run,
+      tankGradeColors: 1, pesoFill: 0.85,
+    });
     finishing.update(t, S);
     utilities.update(t, S);
-    flows.update(t, S, states);
-    const c1 = plants.update(t, S);
-    const c2 = tanks.update(t, S);
-    const c3 = qaqc.update(t, S.qaCutaway ?? 0);
-    const c4 = warehouses.update(t, S);
+    flows.update(t, S);
+    const changed = [plants.update(t, S), tanks.update(t, S), qaqc.update(t, S.qaCutaway), warehouses.update(t, S)].some(Boolean);
     solar.update(t, S);
 
-    // opts.cam overrides the timeline camera for model previews: { target, radius, elev, azim, fov, aperture }
-    const cam = opts.cam ? orbitCam(opts.cam) : rig(t);
-    const camera = world.camera;
-    camera.position.copy(cam.position);
-    camera.fov = cam.fov;
-    // near plane scales with orbit radius: ~10x more depth precision on the high aerials (no z-fighting on
-    // road markings and pads) while close interior shots keep a 0.3 m near plane
-    camera.near = Math.min(4, Math.max(0.3, cam.radius / 110));
-    camera.updateProjectionMatrix();
-    camera.lookAt(cam.target);
-    camera.updateMatrixWorld();
-    world.scene.fog.density = 0.45 / (cam.radius + 150);
-
-    const rising = S.buildingsRise > 0.0005 && S.buildingsRise < 0.9995;
-    if (!shadowsReady || rising || c1 || c2 || c3 || c4 || opts.states) world.renderer.shadowMap.needsUpdate = true;
-    shadowsReady = true;
-
-    if (!opts.hudOnly) world.render({
-      focus: camera.position.distanceTo(cam.target), aperture: cam.aperture,
-      dim: Math.max(S.siteDim, S.cardsBackdrop * 0.5), fade: S.fadeToBlack, time: t, exposure: 1.12, bloom: 0.85,
-    });
-
-    const screen = {};
-    for (const [k, p] of Object.entries(anchors)) {
-      v.copy(p).project(camera);
-      screen[k] = { x: (v.x + 1) / 2 * 1920, y: (1 - v.y) / 2 * 1080, visible: v.z > -1 && v.z < 1 && Math.abs(v.x) < 1.02 && Math.abs(v.y) < 1.02 };
+    // camera fly-to
+    const f = camState.fly;
+    if (f) {
+      f.t = Math.min(1, f.t + dt / f.dur);
+      const k = smooth(f.t);
+      camera.position.lerpVectors(f.fromPos, f.toPos, k);
+      controls.target.lerpVectors(f.fromTgt, f.toTgt, k);
+      if (f.t >= 1) camState.fly = null;
     }
-    hud.setHideText(!!opts.hideText);
-    const manifest = opts.noHud ? hud.clear() : hud.draw(t, { anchors: screen, fade: S.fadeToBlack });
-    if ((S.modelLabels ?? 0) > 0.5) drawModelLabels(hudCtx, labels.filter((l) => !opts.labels || opts.labels.includes(l.anchor)), screen, tokens);
-    return { manifest, shot: cam.shot };
+    controls.update();
+    const dist = camera.position.distanceTo(controls.target);
+    camera.near = Math.min(4, Math.max(0.3, dist / 110));
+    camera.updateProjectionMatrix();
+    world.scene.fog.density = 0.45 / (dist + 150);
+
+    // shadows are re-rendered when geometry changes and ~10×/s while machinery moves (cranes, agitators)
+    shadowAcc += dt;
+    if (shadowDirty || changed || moving || shadowAcc > 0.1) { world.renderer.shadowMap.needsUpdate = true; shadowDirty = false; shadowAcc = 0; }
+    world.render(t);
+    requestAnimationFrame(frame);
   };
-  window.__debug = { world, hud, THREE };
+
+  $('status').classList.add('hidden');
+  for (const id of ['panel', 'collapse', 'info']) $(id).classList.add('ready');
+  window.__model = { solar: { modules: solar.count, kwp: solar.kwp }, storage: warehouses.storage };
+  window.__viewer = { world, camera, controls, target, applyView: (i) => applyView(VIEWS[i], camState), VIEWS };
   window.ready = true;
+  requestAnimationFrame(frame);
 }
 
-boot().catch((e) => { window.bootError = String(e && e.stack ? e.stack : e); console.error(e); });
+boot().catch((e) => {
+  window.bootError = String(e && e.stack ? e.stack : e);
+  console.error(e);
+  $('status').textContent = `Failed to load: ${e && e.message ? e.message : e}`;
+});
