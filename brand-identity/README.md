@@ -18,6 +18,7 @@ Playwright for the PNG exports).
 
 | File | Use it for |
 |---|---|
+| `logo/mpd-logo-original.svg` | The original MPD artwork (logo + tagline) redrawn as vectors and matched to it: its colours, gloss and tagline. Use wherever the original logo was used. |
 | `logo/mpd-logo.svg` | The primary logo, full colour. Light backgrounds: documents, website, signage. |
 | `logo/mpd-logo-tagline.svg` | Primary logo with "WE INNOVATE. WE SERVE." underneath, as in the original artwork. |
 | `logo/mpd-logo-white.svg` | Reversed logo for MPD Blue or other dark backgrounds. The green diamond stays green. |

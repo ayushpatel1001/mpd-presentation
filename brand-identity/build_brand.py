@@ -83,6 +83,79 @@ WORD_VB = (326, 86, 676, 180)        # wordmark only
 TAG_VB = (0, 0, 1000, 420)           # with the tagline underneath
 
 
+ORIG_VB = (0, 0, 1024, 337)          # the original artwork's own canvas
+
+
+def _path_bounds(d):
+    """Bounds of an absolute SVG path (M, L, H, V, C, Q, Z), control points included."""
+    xs, ys, cx, cy = [], [], 0.0, 0.0
+    for cmd, args in re.findall(r'([MLHVCQZ])([^MLHVCQZ]*)', d):
+        v = [float(t) for t in re.findall(r'-?\d+(?:\.\d+)?', args)]
+        if cmd == 'H':
+            for x in v:
+                cx = x; xs.append(cx); ys.append(cy)
+        elif cmd == 'V':
+            for y in v:
+                cy = y; xs.append(cx); ys.append(cy)
+        elif cmd != 'Z':
+            for i in range(0, len(v) - 1, 2):
+                cx, cy = v[i], v[i + 1]; xs.append(cx); ys.append(cy)
+    return min(xs), min(ys), max(xs), max(ys)
+
+
+def _emblem_parts():
+    """Split the emblem into its outer contour and its two windows (largest subpath = outer)."""
+    subs = ['M' + x for x in C.LOGO['emblem'].split('M') if x.strip()]
+    area = lambda d: (lambda b: (b[2] - b[0]) * (b[3] - b[1]))(_path_bounds(d))
+    subs.sort(key=area, reverse=True)
+    return subs[0], ''.join(subs[1:])
+
+
+def original_logo():
+    """The original MPD artwork, redrawn as vectors and matched to it: its colours (sampled from the
+    original image), its gloss splits, and its tagline (Saira Condensed, olive green, same position)."""
+    L, dm = C.LOGO['letters'], C.LOGO['diamond']
+    em = C.LOGO['emblem']
+    defs = (
+        # letters: flat light blue on top, hard gloss split, then deepening blue (sampled row by row)
+        '<linearGradient id="oLt" x1="0" y1="0" x2="0" y2="1">'
+        '<stop offset="0" stop-color="#5e99c4"/><stop offset=".38" stop-color="#5c97c2"/>'
+        '<stop offset=".385" stop-color="#2d76ab"/><stop offset=".55" stop-color="#226ca3"/>'
+        '<stop offset=".8" stop-color="#1b5a90"/><stop offset="1" stop-color="#185288"/></linearGradient>'
+        # emblem: dark base, with the light upper part laid over it along the original's curved split
+        '<linearGradient id="oEmD" gradientUnits="userSpaceOnUse" x1="0" y1="140" x2="0" y2="334">'
+        '<stop offset="0" stop-color="#1f6ca4"/><stop offset=".5" stop-color="#175a91"/><stop offset="1" stop-color="#12508a"/></linearGradient>'
+        '<linearGradient id="oEmL" gradientUnits="userSpaceOnUse" x1="0" y1="3" x2="0" y2="160">'
+        '<stop offset="0" stop-color="#3f7fb3"/><stop offset=".12" stop-color="#4c8dbc"/><stop offset="1" stop-color="#5897c3"/></linearGradient>'
+        # diamond: light green over dark green, split level through its middle
+        f'<linearGradient id="oDi" gradientUnits="userSpaceOnUse" x1="0" y1="{dm["cy"] - 34:.1f}" x2="0" y2="{dm["cy"] + 34:.1f}">'
+        '<stop offset="0" stop-color="#b2d077"/><stop offset=".47" stop-color="#9dbc62"/>'
+        '<stop offset=".5" stop-color="#6e9a2f"/><stop offset="1" stop-color="#557e22"/></linearGradient>'
+        f'<clipPath id="oEc"><path d="{em}" clip-rule="evenodd"/></clipPath>')
+    split = 'M-10,-10H345V150C262,148 132,151 -10,166Z'
+    outer, windows = _emblem_parts()
+    # emblem: dark base + light upper part, a dark rim on the outside and a pale line around the windows
+    body = (f'<path d="{em}" fill="url(#oEmD)" fill-rule="evenodd"/>'
+            f'<g clip-path="url(#oEc)"><path d="{split}" fill="url(#oEmL)"/>'
+            f'<path d="{outer}" fill="none" stroke="#1d5890" stroke-width="7"/>'
+            f'<path d="{windows}" fill="none" stroke="#e3eef8" stroke-opacity=".9" stroke-width="4"/></g>'
+            # letters with a thin darker outline
+            f'<g fill="url(#oLt)" fill-rule="evenodd" stroke="#2f6aa0" stroke-width="2" stroke-linejoin="round">'
+            f'<path d="{L["M"]}"/><path d="{L["P"]}"/><path d="{L["D"]}"/></g>')
+    # the diamond: a rotated rounded square used as a clip, so its light/dark split stays level
+    dia_shape = (f'<path d="M-26.5 -15.5V15.5A11 11 0 0 0 -15.5 26.5H15.5A11 11 0 0 0 26.5 15.5V-15.5A11 11 0 0 0 15.5 -26.5H-15.5'
+                 f'A11 11 0 0 0 -26.5 -15.5Z" transform="translate({dm["cx"]:.2f} {dm["cy"]:.2f}) rotate(42)"/>')
+    defs += f'<clipPath id="oDc">{dia_shape}</clipPath>'
+    body += (f'<rect x="{dm["cx"] - 40:.1f}" y="{dm["cy"] - 40:.1f}" width="80" height="80" fill="url(#oDi)" clip-path="url(#oDc)"/>')
+    # tagline, fitted to the original's position (x 336-1017, y 280-332 in the original artwork)
+    raw = C._text_path('SairaCondensed-Regular.ttf', None, 'WE INNOVATE.  WE SERVE.', 100, 0, 0, 'start', 0)
+    bx0, by0, bx1, by1 = _path_bounds(raw)
+    sx, sy = (1017 - 336) / (bx1 - bx0), (332 - 280) / (by1 - by0)
+    body += (f'<path d="{raw}" fill="#586e3e" transform="translate({336 - bx0 * sx:.3f} {280 - by0 * sy:.3f}) '
+             f'scale({sx:.5f} {sy:.5f})"/>')
+    return svg(1024, 337, body, defs, 'MPD logo - original artwork, vectorised', ' '.join(map(str, ORIG_VB)))
+
+
 def logo_variants():
     out = {}
     d_c, b_c = C._logo('c', 1, 0, 0)
@@ -93,6 +166,7 @@ def logo_variants():
     d_m, b_m = C._logo('m', 1, 0, 0, emblem=False)
     tag = C.T(*C.FONT['tag'], 'WE INNOVATE.  WE SERVE.', 64, 664, 392, '#4c8a1c', 'middle', 0.10)
     vb = lambda v: ' '.join(str(x) for x in v)
+    out['mpd-logo-original'] = (original_logo(), ORIG_VB)
     out['mpd-logo'] = (svg(1000, 337, b_c, d_c, 'MPD logo - full colour', vb(FULL_VB)), FULL_VB)
     out['mpd-logo-tagline'] = (svg(1000, 420, b_c + tag, d_c, 'MPD logo with tagline - full colour', vb(TAG_VB)), TAG_VB)
     out['mpd-logo-white'] = (svg(1000, 337, b_w, d_w, 'MPD logo - reversed, for blue or dark backgrounds', vb(FULL_VB)), FULL_VB)
