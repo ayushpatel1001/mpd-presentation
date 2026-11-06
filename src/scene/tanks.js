@@ -1,6 +1,6 @@
-// Tank farms (FG / RM / day tanks), blender building and the underground PESO solvent farm.
+// Tank farms (FG / RM / day tanks), the open-air blender area and the underground PESO solvent farm.
 import * as THREE from 'three';
-import { Batcher, patchRise, makeMat } from './materials.js';
+import { patchRise, makeMat } from './materials.js';
 import { riseDelay } from './site.js';
 import { FG_FARM, RM_FARM, DAYTANK, BLENDER, PESO, FG_TANKS, BLENDERS } from './layout.js';
 
@@ -86,37 +86,26 @@ export function buildTanks(world, M, B, tokens) {
     B.mesh(new THREE.CylinderGeometry(0.97, 0.97, 0.35, 16), capMats[i], [x, 3.6, z], [0, 0, 0], [1, 1, 1], r);
   }
 
-  // ---- blender building: frame + 12 blenders, fading shell
+  // ---- blender area (09): open-air pad like the day tanks — BL-01…12 on legs where drawn, the filtration area
+  // (sparkler filters) and the walkway / pipe rack between the two rows; no building
   const BB = BLENDER;
-  B.box(M.concreteLight, BB.x, 0.1, BB.z, BB.w, 0.2, BB.d, -1, { cast: false });
-  for (const sx of [-1, 1]) for (let k = 0; k <= 5; k++) B.box(M.steelDark, BB.x + sx * (BB.w / 2 - 0.4), BB.h / 2, BB.z - BB.d / 2 + 0.4 + k * (BB.d - 0.8) / 5, 0.35, BB.h, 0.35);
-  BLENDERS.forEach((bl, i) => {
-    const col = i < 6 ? 0 : 1, row = i % 6;
-    const x = BB.x - 1.2 + (col === 0 ? -3.0 : 3.0), z = BB.z - BB.d / 2 + 2.6 + row * 4.25;
-    const d = bl.kl >= 30 ? 3.2 : 2.2, h = bl.kl >= 30 ? 4.2 : 2.6;
-    B.mesh(new THREE.CylinderGeometry(d / 2, d / 2, h, 20), bl.ss ? M.steel : M.msPaint, [x, 1.2 + h / 2, z]);
-    B.mesh(new THREE.SphereGeometry(d / 2, 20, 8, 0, Math.PI * 2, 0, Math.PI / 2), bl.ss ? M.steel : M.msPaint, [x, 1.2 + h, z], [0, 0, 0], [1, 0.35, 1]);
-    B.box(M.msPaint, x, 1.2 + h + d * 0.17 + 0.5, z, 0.5, 0.8, 0.5);
-    for (const lx of [-1, 1]) B.box(M.steelDark, x + lx * d * 0.35, 0.6, z, 0.15, 1.2, 0.15);
-  });
-  // filtration area on the west side (sparkler filters)
-  for (let k = 0; k < 4; k++) B.mesh(new THREE.CylinderGeometry(0.42, 0.42, 1.2, 12), M.steel, [BB.x + BB.w / 2 - 1.6, 0.8, BB.z - 6 + k * 2.6]);
-  const shellMats = { wall: patchRise(M.wall.clone()), roof: patchRise(M.roof.clone()), glass: patchRise(M.glass.clone()) };
-  const SB = new Batcher();
-  const r0 = riseDelay(BB.x, BB.z);
-  SB.box(shellMats.wall, BB.x, BB.h / 2, BB.z - BB.d / 2, BB.w, BB.h, 0.25, r0);
-  SB.box(shellMats.wall, BB.x, BB.h / 2, BB.z + BB.d / 2, BB.w, BB.h, 0.25, r0);
-  SB.box(shellMats.wall, BB.x - BB.w / 2, BB.h / 2, BB.z, 0.25, BB.h, BB.d, r0);
-  SB.box(shellMats.wall, BB.x + BB.w / 2, BB.h / 2, BB.z, 0.25, BB.h, BB.d, r0);
-  SB.box(shellMats.roof, BB.x, BB.h + 0.2, BB.z, BB.w + 0.5, 0.4, BB.d + 0.5, r0);
-  for (const y of [3, 8]) {
-    SB.box(shellMats.glass, BB.x - BB.w / 2 - 0.14, y, BB.z, 0.06, 1.2, BB.d * 0.9, r0, { cast: false });
-    SB.box(shellMats.glass, BB.x + BB.w / 2 + 0.14, y, BB.z, 0.06, 1.2, BB.d * 0.9, r0, { cast: false });
+  for (const P of [BB, BB.annex]) B.box(M.concrete, P.x, 0.06, P.z, P.w, 0.12, P.d, -1, { cast: false });
+  for (const bl of BLENDERS) {
+    const r = riseDelay(bl.x, bl.z, bl.z / 30);
+    const h = (4 * bl.kl) / (Math.PI * bl.d * bl.d), mat = bl.ss ? M.steel : M.msPaint;
+    B.mesh(new THREE.CylinderGeometry(bl.d / 2, bl.d / 2, h, 20), mat, [bl.x, 1.2 + h / 2, bl.z], [0, 0, 0], [1, 1, 1], r);
+    B.mesh(new THREE.SphereGeometry(bl.d / 2, 20, 8, 0, Math.PI * 2, 0, Math.PI / 2), mat, [bl.x, 1.2 + h, bl.z], [0, 0, 0], [1, 0.35, 1], r);
+    B.box(M.msPaint, bl.x, 1.2 + h + bl.d * 0.17 + 0.45, bl.z, 0.45, 0.7, 0.45, r);          // agitator drive
+    for (const [lx, lz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) B.box(M.steelDark, bl.x + lx * bl.d * 0.3, 0.6, bl.z + lz * bl.d * 0.3, 0.15, 1.2, 0.15, r);
   }
-  const shellGroup = new THREE.Group();
-  root.add(shellGroup);
-  SB.build(shellGroup);
-  let shellTransparent = false, shellCast = true;
+  const FA = BB.filtration, WK = BB.walkway;
+  const rf = riseDelay(BB.x, BB.z);
+  B.box(M.concreteLight, (FA.x0 + FA.x1) / 2, 0.16, (FA.z0 + FA.z1) / 2, FA.x1 - FA.x0, 0.08, FA.z1 - FA.z0, -1, { cast: false });
+  for (let k = 0; k < 4; k++) for (const dx of [-1.2, 1.2]) B.mesh(new THREE.CylinderGeometry(0.42, 0.42, 1.2, 12), M.steel, [(FA.x0 + FA.x1) / 2 + dx, 0.8, FA.z0 + 1.5 + k * 2.4], [0, 0, 0], [1, 1, 1], rf);
+  for (let z = WK.z0 + 1; z <= WK.z1 - 0.5; z += 4.4) for (const x of [WK.x0 + 0.1, WK.x1 - 0.1]) B.box(M.steelDark, x, 1.6, z, 0.15, 3.2, 0.15, rf);
+  B.box(M.grating, (WK.x0 + WK.x1) / 2, 3.2, (WK.z0 + WK.z1) / 2, WK.x1 - WK.x0, 0.06, WK.z1 - WK.z0, rf, { cast: false });
+  for (const x of [WK.x0 + 0.05, WK.x1 - 0.05]) B.box(M.yellow, x, 4.2, (WK.z0 + WK.z1) / 2, 0.05, 0.05, WK.z1 - WK.z0, rf, { cast: false });
+  B.box(M.pipe, (WK.x0 + WK.x1) / 2, 2.6, (WK.z0 + WK.z1) / 2, 0.25, 0.25, WK.z1 - WK.z0, rf);
 
   // ---- PESO underground solvent farm
   const pit = PESO.pit;
@@ -186,23 +175,12 @@ export function buildTanks(world, M, B, tokens) {
       rmTankFarm: new THREE.Vector3(RM_FARM.x, 8, RM_FARM.z),
       peso: new THREE.Vector3(PESO.x, 1.5, PESO.z),
       pesoTanks: new THREE.Vector3(-41.6, -1.6, 66.7),
-      blender: new THREE.Vector3(BB.x, BB.h + 1, BB.z),
+      blender: new THREE.Vector3(BB.x, 7, BB.z),
       dayTank: new THREE.Vector3(DAYTANK.x, 4.5, DAYTANK.z),
     },
     update(t, s) {
       // grade colours on FG tank bands
       for (const m of Object.values(bandMats)) m.emissiveIntensity = 0.15 + 1.6 * s.tankGradeColors;
-      // blender shell
-      const c = s.blenderCutaway, op = 1 - 0.94 * c, tr = op < 0.999;
-      for (const m of Object.values(shellMats)) {
-        m.opacity = op;
-        if (tr !== shellTransparent) { m.transparent = tr; m.depthWrite = !tr; m.needsUpdate = true; }
-      }
-      shellTransparent = tr;
-      shellGroup.visible = c < 0.985;
-      let changed = false;
-      const cast = c < 0.5;
-      if (cast !== shellCast) { shellGroup.traverse((o) => { if (o.isMesh) o.castShadow = cast; }); shellCast = cast; changed = true; }
       // PESO x-ray
       const x = s.pesoXray;
       xrayMat.uniforms.uXray.value = x;
@@ -217,7 +195,7 @@ export function buildTanks(world, M, B, tokens) {
       pesoShell.depthWrite = pesoShell.opacity > 0.99;
       const level = -2.75 - TR + 2 * TR * s.pesoFill;
       fillPlanes.forEach((p, i) => { p.constant = level + Math.sin(t * 1.3 + i) * 0.02; });
-      return changed;
+      return false;
     },
   };
 }

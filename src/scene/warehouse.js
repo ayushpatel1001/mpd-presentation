@@ -7,11 +7,10 @@
 //   rails, and one static type-B row on the north wall (10 bays × 6 levels × 2 pallets, 1,000 kg).
 // Added for fast reactor charging: a depalletiser → bag emptying → jumbo-bag (FIBC) filling cell beside a new
 // east shutter; filled bags go by forklift across road R3 to Plant 1's crane hoisting bay.
-// Warehouse-2 has no drawing yet: an assumed PEB shed on the site-plan footprint with 6 mobile units.
 import * as THREE from 'three';
 import { Batcher, makeMat } from './materials.js';
 import { pebEnvelope } from './peb.js';
-import { WAREHOUSE1, WAREHOUSE2 } from './layout.js';
+import { WAREHOUSE1 } from './layout.js';
 import { forklift, fibc, pallet, truck, placeAt, tube, polyline } from './props.js';
 import { riseDelay } from './site.js';
 import { hash } from '../lib/util.js';
@@ -103,13 +102,14 @@ function palletInstances(group, R, F, slots, seed) {
 const WH1_FRAMES = [0, 5, 11.45, 17.9, 24.35, 30.35, 37.35, 43.35, 49.35, 55.35, 61.35];
 const WH1_DOCKS = [14.7, 27.35, 40.35, 52.35];
 const RS_EAST = { y0: 19.2, y1: 22.8 };
+const DOCK_DEPTH = 1.6;   // dock platforms stop at the edge of road R2 (site plan: 4.5 m platforms inside the shed envelope)
 
 function buildWH1(root, M, R, OB) {
   const mid = WH1_FRAMES.slice(1).map((y, i) => (y + WH1_FRAMES[i]) / 2);
   const env = pebEnvelope(root, M, WAREHOUSE1, {
     eave: 10, ridge: 11.5, baseH: 3.0, windowRows: [[1.2, 2.4]], ventRows: [[7.8, 8.6]], gableRows: [[7.8, 8.6, 'louver']],
-    roofColor: '#64748B', roofRib: '#4B5B70', stripe: '#00A3E0', frameLines: WH1_FRAMES, skylights: mid, turbo: mid,
-    docks: WH1_DOCKS.map((y) => ({ side: 'W', y, depth: 3.8 })),
+    roofColor: '#00529B', roofRib: '#003F7A', stripe: '#00A3E0', frameLines: WH1_FRAMES, skylights: mid, turbo: mid,
+    docks: WH1_DOCKS.map((y) => ({ side: 'W', y, depth: DOCK_DEPTH })),
     shutters: [{ side: 'E', ...RS_EAST, h: 4.0 }], endDoors: false,
   });
   const F = env.F, W = F.W, D = F.D;
@@ -272,10 +272,10 @@ function buildWH1(root, M, R, OB) {
 
   IB.build(inner);
 
-  // ---- outside: trucks reversed onto docks 3 and 4, angled as drawn
+  // ---- outside: trucks reversed onto docks 3 and 4, angled steeply as drawn (clear of the tanker lane)
   for (const dy of [WH1_DOCKS[0], WH1_DOCKS[1]]) {
-    const rear = F.world(-0.115 - 3.8 - 0.75, 0, dy);
-    truck(OB, M, placeAt(rear.x, 0, rear.z, Math.PI - 0.52), riseDelay(rear.x, rear.z) + 0.05, dy === WH1_DOCKS[0] ? M.bagBlue : M.wallDark);
+    const rear = F.world(-0.115 - DOCK_DEPTH - 0.75, 0, dy);
+    truck(OB, M, placeAt(rear.x, 0, rear.z, Math.PI - 1.05), riseDelay(rear.x, rear.z) + 0.05, dy === WH1_DOCKS[0] ? M.bagBlue : M.wallDark);
   }
   return {
     env, inner, slots, F,
@@ -288,66 +288,27 @@ function buildWH1(root, M, R, OB) {
   };
 }
 
-// ---------------------------------------------------------------------------- Warehouse-2 (assumed)
-function buildWH2(root, M, R) {
-  const D0 = WAREHOUSE2.d - 0.23;
-  const frames = Array.from({ length: 7 }, (_, i) => (i * D0) / 6);
-  const mid = frames.slice(1).map((y, i) => (y + frames[i]) / 2);
-  const env = pebEnvelope(root, M, WAREHOUSE2, {
-    rotY: Math.PI / 2, eave: 10, ridge: 11.2, baseH: 3.0, windowRows: [[1.2, 2.4]], ventRows: [[7.8, 8.6]], gableRows: [[7.8, 8.6, 'louver']],
-    roofColor: '#64748B', roofRib: '#4B5B70', stripe: '#00A3E0', frameLines: frames, skylights: mid, turbo: mid,
-    shutters: [{ side: 'E', y0: 2.4, y1: 6.0, h: 4.5 }, { side: 'W', y0: 2.4, y1: 6.0, h: 4.5 }],
-  });
-  const F = env.F, W = F.W, D = F.D;
-  const inner = new THREE.Group();
-  root.add(inner);
-  const IB = new Batcher();
-  F.box(IB, R.floor, 0, 0, W, D, 0, FL, -1, { cast: false });
-  const slots = [];
-  const a0 = 9.2;
-  let x = 2.4;
-  const units = [];
-  for (let k = 0; k < 6; k++) { if (k === 3) x += 3.0; units.push(x); x += PITCH; }
-  for (const c0 of units) rackRow(IB, R, F, { a0, c0, bays: 10, faces: 2, along: 'y', mobile: true, kg: 500 }, slots);
-  for (let i = 0; i <= 10; i++) F.box(IB, R.rail, 2.2, a0 + i * BAY + 0.015, units[5] + UNIT + 0.2, a0 + i * BAY + 0.085, FL, FL + 0.025, -1, { cast: false });
-  palletInstances(inner, R, F, slots, 2);
-  // receiving / dispatch bay at the east end
-  for (let k = 0; k < 8; k++) {
-    const px = 4.0 + (k % 4) * 1.4, py = 3.0 + Math.floor(k / 4) * 1.6;
-    pallet(IB, M.wood, F.matrix(px, FL, py, [0, Math.PI / 2, 0]));
-    F.box(IB, k % 3 ? R.load : R.kraft, px - 0.58, py - 0.49, px + 0.58, py + 0.49, FL + 0.15, FL + 1.1, -1);
-  }
-  forklift(IB, M, F.matrix(12.0, FL, 4.6, [0, Math.PI, 0]), -1, 0.15);
-  F.box(IB, M.yellow, 0.8, 8.4, W - 0.8, 8.5, FL, FL + 0.01, -1, { cast: false });
-  IB.build(inner);
-  return { env, inner, slots, F, anchors: { wh2: F.world(W / 2, 12.2, D / 2), wh2Racks: F.world(W / 2, 9.2, 23.0) } };
-}
-
 export function buildWarehouses(world, M) {
   const root = new THREE.Group();
   world.scene.add(root);
   const R = rackMats();
   const OB = new Batcher();
   const wh1 = buildWH1(root, M, R, OB);
-  const wh2 = buildWH2(root, M, R);
   OB.build(root);
   const tally = (slots) => {
     const by = {};
     for (const s of slots) by[s.kg] = (by[s.kg] || 0) + 1;
     return { pallets: slots.length, byKg: by, tonnes: slots.reduce((a, s) => a + s.kg, 0) / 1000 };
   };
-  const storage = { wh1: tally(wh1.slots), wh2: tally(wh2.slots) };
+  const storage = { wh1: tally(wh1.slots) };
   return {
     storage,
-    envs: { wh1: wh1.env, wh2: wh2.env },
-    anchors: { ...wh1.anchors, ...wh2.anchors },
+    envs: { wh1: wh1.env },
+    anchors: { ...wh1.anchors },
     update(t, s) {
-      const c1 = s.wh1Cutaway ?? 0, c2 = s.wh2Cutaway ?? 0;
+      const c1 = s.wh1Cutaway ?? 0;
       wh1.inner.visible = c1 > 0.01;
-      wh2.inner.visible = c2 > 0.01;
-      const a = wh1.env.setCutaway(c1);
-      const b = wh2.env.setCutaway(c2);
-      return a || b;
+      return wh1.env.setCutaway(c1);
     },
   };
 }

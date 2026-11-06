@@ -88,6 +88,7 @@ export function buildQaqc(world, M) {
     coping: fade(makeMat({ color: '#8C9DB0', roughness: 0.7 })),
     door: fade(makeMat({ color: '#1E3A52', emissive: '#0E3A5A', emissiveIntensity: 0.3, roughness: 0.2, metalness: 0.3 })),
     louver: fade(makeMat({ color: '#475569', roughness: 0.6, metalness: 0.3 })),
+    roof: fade(makeMat({ color: '#00529B', roughness: 0.5, metalness: 0.25 })),
   };
   const mats = {
     concrete: M.concreteLight, steel: M.steelDark, pipe: M.pipe,
@@ -126,8 +127,8 @@ export function buildQaqc(world, M) {
   lbox(SB, shellMats.panel, W0, S0, U.B + HT, S0 + T, 0, 2.27, rise);                 // south A–B below curtain wall
   lbox(SB, shellMats.panel, W0, S0, U.B + HT, S0 + T, 15.93, CABIN, rise);            // band above curtain wall
   // terrace + cabin roof slabs, parapets with coping
-  lbox(SB, shellMats.frame, U.B, S0, W1, N1, TERR - 0.2, TERR, rise);
-  lbox(SB, shellMats.frame, W0, S0, U.B + HT, N1, CABIN - 0.2, CABIN, rise);
+  lbox(SB, shellMats.roof, U.B, S0, W1, N1, TERR - 0.2, TERR, rise);
+  lbox(SB, shellMats.roof, W0, S0, U.B + HT, N1, CABIN - 0.2, CABIN, rise);
   const parapet = (u0, v0, u1, v1, y) => {
     lbox(SB, shellMats.panel, u0, v0, u1, v1, y, y + PARAPET, rise);
     lbox(SB, shellMats.coping, u0 - 0.04, v0 - 0.04, u1 + 0.04, v1 + 0.04, y + PARAPET, y + PARAPET + 0.06, rise);
@@ -194,7 +195,7 @@ export function buildQaqc(world, M) {
   // ---------------------------------------------------------------- emergency stair (east, grids 1A–03)
   const E0 = U.D + HT, E1 = E0 + 2.0, ES0 = V['1A'], ES1 = 9.25, EROOF = 11.7;
   for (const [u, v] of [[E0 + 0.1, ES0 + 0.1], [E1 - 0.1, ES0 + 0.1], [E0 + 0.1, ES1 - 0.1], [E1 - 0.1, ES1 - 0.1]]) lbox(CB, mats.steel, u - 0.1, v - 0.1, u + 0.1, v + 0.1, -PL, EROOF, rise);
-  lbox(CB, shellMats.frame, E0 - 0.05, ES0 - 0.1, E1 + 0.1, ES1 + 0.1, EROOF, EROOF + 0.2, rise);
+  lbox(CB, shellMats.roof, E0 - 0.05, ES0 - 0.1, E1 + 0.1, ES1 + 0.1, EROOF, EROOF + 0.2, rise);
   const um = (E0 + E1) / 2;
   for (const base of [0, 4.5]) {
     flight(CB, mats.steel, mats.tread, E0 + 0.05, um - 0.02, 4.9, 8.55, base, base + 2.25, rise, 13);

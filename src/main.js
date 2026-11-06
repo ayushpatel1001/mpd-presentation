@@ -7,6 +7,8 @@ import { buildPlants } from './scene/process.js';
 import { buildFinishing } from './scene/finishing.js';
 import { buildTanks } from './scene/tanks.js';
 import { buildUtilities } from './scene/utilities.js';
+import { buildBoilerHouse } from './scene/boiler.js';
+import { buildGates, logoReady } from './scene/gate.js';
 import { buildFlows } from './scene/flows.js';
 import { buildQaqc } from './scene/qaqc.js';
 import { buildWarehouses } from './scene/warehouse.js';
@@ -46,6 +48,7 @@ async function boot() {
   const logo = await loadImage('/assets/brand/mpd_logo.jpg');
   const plan = await new THREE.TextureLoader().loadAsync('/assets/reference/site_plan_layout.png');
   plan.anisotropy = 8;
+  await logoReady;   // the gate signs bake the MPD logo into a canvas texture; frames must never see them logo-less
 
   // ?scale=0.5 renders the 3D layer at lower resolution for quick draft renders
   const scale = Number(new URLSearchParams(location.search).get('scale'));
@@ -57,23 +60,26 @@ async function boot() {
   const finishing = buildFinishing(world, M);
   const tanks = buildTanks(world, M, B, tokens);
   const utilities = buildUtilities(world, M, B);
+  const boiler = buildBoilerHouse(world, M, B);
+  buildGates(world, M, B);
   const flows = buildFlows(world, M, B, tokens);
   const qaqc = buildQaqc(world, M);
   const warehouses = buildWarehouses(world, M);
-  const solar = buildSolar(world, M, siteRoofs({ ...plants.envs, ...warehouses.envs, fuel: utilities.fuelShed }), B);
+  const solar = buildSolar(world, M, siteRoofs({ ...plants.envs, ...warehouses.envs }, boiler.roofs), B);
   window.__model = { solar: { modules: solar.count, kwp: solar.kwp, candidates: solar.available, perRoof: solar.perRoof }, storage: warehouses.storage };
   const statics = new THREE.Group();
   world.scene.add(statics);
   B.build(statics);
-  const anchors = { ...plants.anchors, ...finishing.anchors, ...tanks.anchors, ...utilities.anchors, ...qaqc.anchors, ...warehouses.anchors };
+  const anchors = { ...plants.anchors, ...finishing.anchors, ...tanks.anchors, ...utilities.anchors, ...boiler.anchors, ...qaqc.anchors, ...warehouses.anchors };
+  // the boiler house and agro-waste fuel store moved into the new boiler-house model; keep the film's anchor names
+  anchors.boiler = anchors.boilerHouse;
+  anchors.fuelShed = anchors.fuelStore;
   anchors.solarWh1 = anchors.wh1.clone().add(new THREE.Vector3(-7, 0, -12));
   const st = warehouses.storage, fmt = (n) => n.toLocaleString('en-IN');
   const labels = [];
   labels.push(
     { anchor: 'wh1', offset: [70, -170], title: 'WAREHOUSE-1 · MOBILE COMPACT RACKING',
       lines: [`${fmt(st.wh1.pallets)} pallet positions ≈ ${fmt(st.wh1.tonnes)} t`, `7 mobile units: ${fmt(st.wh1.byKg[500])} × 500 kg · static row: ${fmt(st.wh1.byKg[1000])} × 1 t`] },
-    { anchor: 'wh2', offset: [70, -150], title: 'WAREHOUSE-2 · MOBILE COMPACT RACKING',
-      lines: [`${fmt(st.wh2.pallets)} pallet positions ≈ ${fmt(st.wh2.tonnes)} t`, `6 mobile units × 10 bays × 6 levels · 500 kg`] },
     { anchor: 'solarWh1', offset: [-80, -150], color: '#F59E0B', title: `${(solar.kwp / 1000).toFixed(2)} MWp ROOFTOP SOLAR`,
       lines: [`${fmt(solar.count)} × ${MODULE.wp} Wp modules on every roof`] },
     { anchor: 'depalletiser', offset: [-70, -150], title: 'DEPALLETISER → JUMBO-BAG FILLING',
@@ -82,7 +88,7 @@ async function boot() {
       lines: ['hoist through the cut-out → discharger on MEZZ-2 → P1-R-101'] },
   );
   // the same storage call-outs anchored on the racks for cut-away views
-  for (const k of ['wh1', 'wh2']) labels.push({ ...labels.find((l) => l.anchor === k), anchor: `${k}Racks` });
+  for (const k of ['wh1']) labels.push({ ...labels.find((l) => l.anchor === k), anchor: `${k}Racks` });
   const hudCtx = document.getElementById('hud').getContext('2d');
   const rig = createRig(timeline.camera);
   const hud = createHud(document.getElementById('hud'), tokens, timeline, { logo });
@@ -103,6 +109,7 @@ async function boot() {
     const c2 = tanks.update(t, S);
     const c3 = qaqc.update(t, S.qaCutaway ?? 0);
     const c4 = warehouses.update(t, S);
+    const c5 = boiler.update(t, S);
     solar.update(t, S);
 
     // opts.cam overrides the timeline camera for model previews: { target, radius, elev, azim, fov, aperture }
@@ -119,7 +126,7 @@ async function boot() {
     world.scene.fog.density = 0.45 / (cam.radius + 150);
 
     const rising = S.buildingsRise > 0.0005 && S.buildingsRise < 0.9995;
-    if (!shadowsReady || rising || c1 || c2 || c3 || c4 || opts.states) world.renderer.shadowMap.needsUpdate = true;
+    if (!shadowsReady || rising || c1 || c2 || c3 || c4 || c5 || opts.states) world.renderer.shadowMap.needsUpdate = true;
     shadowsReady = true;
 
     if (!opts.hudOnly) world.render({

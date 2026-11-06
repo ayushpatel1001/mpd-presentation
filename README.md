@@ -14,6 +14,25 @@ with a Canvas 2D HUD on top, rendered frame-by-frame in headless Chromium and mu
 | `out/validation_report.md` | automated contrast / legibility / safe-area / sync / loudness report |
 | `out/contact_sheet_*.jpg` | stills across the film |
 
+## Updated 3D model (synced from `mpd-ujjain-3d`)
+
+The Three.js scene in `src/scene/` was refreshed from the latest `mpd-ujjain-3d` (commit `97ecc8e`), keeping this
+repo's film-specific code (deterministic `renderFrame(t)`, blueprint rise, depth-of-field post, timeline-driven flows).
+What changed in the model:
+
+* **Site layout** re-laid from drawing PP-A-DR-SP-001-2525 **R1** (`layout.js`), all roofs MPD deep blue.
+* **Three gates** with MPD-logo signs (`gate.js`; logo in `src/assets/mpd-logo.png`) and tanker props.
+* **Boiler house** (`boiler.js`) from the PP-A-DR-UT-101/102/301 drawings: boiler hall, agro-waste fuel store, feed pits,
+  ash silo / ash yard, stack and plume, with a `boilerCutaway` scene state. It replaces the old agro-waste shed and boiler block.
+* **Warehouse-2 and the blender-house cut-away are no longer modelled**; the `wh2Cutaway` / `blenderCutaway` states are ignored.
+  Storage figures reported by the model are now Warehouse-1 only (1,464 pallets ≈ 792 t).
+* Anchor aliases keep the film's HUD working: `boiler` → boiler house, `fuelShed` → fuel store.
+
+**Not yet updated:** the narration, captions and HUD figures in `data/` still describe the previous model
+(e.g. 2,904 pallets ≈ 1,500 t across Warehouse-1 + Warehouse-2, and shots that open Warehouse-2 or the blender house).
+Review those lines and the camera shots in `data/beat_grid.json` / `data/films/investor/` before a final render.
+`node scripts/model_views.mjs gate1 boiler_ext boiler_cut` renders the new areas for checking.
+
 ## Structure of the film (beat grid)
 
 128 BPM; eight sections follow the material flow through the plant, with short shots (3–7 s), quick

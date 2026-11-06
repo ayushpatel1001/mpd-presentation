@@ -3,8 +3,10 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { Batcher, withRise, patchRise, riseDepthMaterial } from './materials.js';
-import { BOUNDARY, BUILDINGS, ROADS, PESO, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER, FUTURE, insideBoundary,
-  PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, QAQC_KEEPOUT, WAREHOUSE_KEEPOUT } from './layout.js';
+import { BOUNDARY, BUILDINGS, ROADS, GATES, PESO, BOILER_HOLE, ASH_YARD_KEEPOUT, PARK_NORTH, WEIGHBRIDGE, TRANSFORMER, insideBoundary,
+  PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, QAQC_KEEPOUT, WAREHOUSE_KEEPOUT, FUTURE_EXP,
+  TANKER_PARK, CAR_PARK, BIKE_STAND, TANKERS, FIRE_TANKS, FIRE_TANK } from './layout.js';
+import { tanker, placeAt } from './props.js';
 import { rng } from '../lib/util.js';
 
 const SITE_C = new THREE.Vector2(-3, 2);
@@ -48,10 +50,10 @@ export function buildSite(world, M, tokens, planTexture) {
   const B = new Batcher();
   const R = rng(7);
 
-  // ---- ground (with a hole over the PESO pit so the x-ray view can see below)
+  // ---- ground (with holes over the PESO pit, so the x-ray view can see below, and the sunken boiler area / ash yard)
   const pit = PESO.pit;
   const groundShape = new THREE.Shape([new THREE.Vector2(-2500, -2500), new THREE.Vector2(2500, -2500), new THREE.Vector2(2500, 2500), new THREE.Vector2(-2500, 2500)]);
-  groundShape.holes.push(rectPath(pit.x0, pit.z0, pit.x1, pit.z1));
+  groundShape.holes.push(rectPath(pit.x0, pit.z0, pit.x1, pit.z1), polyPath(BOILER_HOLE));
   const groundMat = M.ground.clone();
   groundMat.map = gridTexture(renderer, tokens.color.scene.ground, tokens.color.scene.groundGrid);
   groundMat.map.repeat.set(1 / 10, 1 / 10);
@@ -63,7 +65,7 @@ export function buildSite(world, M, tokens, planTexture) {
 
   // ---- site pad
   const padShape = new THREE.Shape(BOUNDARY.map(([x, z]) => new THREE.Vector2(x, -z)));
-  padShape.holes.push(rectPath(pit.x0, pit.z0, pit.x1, pit.z1));
+  padShape.holes.push(rectPath(pit.x0, pit.z0, pit.x1, pit.z1), polyPath(BOILER_HOLE));
   const pad = new THREE.Mesh(new THREE.ShapeGeometry(padShape), M.pad);
   pad.rotation.x = -Math.PI / 2;
   pad.receiveShadow = true;
@@ -80,8 +82,8 @@ export function buildSite(world, M, tokens, planTexture) {
   blueprint.renderOrder = 5;
   root.add(blueprint);
 
-  // ---- boundary wall with a glowing cap; gaps at gates and material exits
-  const gaps = [[-51, -72.5], [23.5, -87.0], [72.0, 17.8], [78.0, 44.0]];
+  // ---- boundary wall with a glowing cap; gaps at the gates (gate 3 stands 1.2 m inside, on the ash-yard wall)
+  const gaps = GATES.map((G) => [G.x + (G.closed ? -1.2 * Math.sin(G.ry) : 0), G.z + (G.closed ? -1.2 * Math.cos(G.ry) : 0), G.open / 2 + 1.0]);
   for (let i = 0; i < 4; i++) {
     const [ax, az] = BOUNDARY[i], [bx, bz] = BOUNDARY[(i + 1) % 4];
     const len = Math.hypot(bx - ax, bz - az);
@@ -89,7 +91,7 @@ export function buildSite(world, M, tokens, planTexture) {
     for (let k = 0; k < n; k++) {
       const u0 = k / n, u1 = (k + 1) / n;
       const mx = ax + (bx - ax) * (u0 + u1) / 2, mz = az + (bz - az) * (u0 + u1) / 2;
-      if (gaps.some(([gx, gz]) => Math.hypot(mx - gx, mz - gz) < 5)) continue;
+      if (gaps.some(([gx, gz, gr]) => Math.hypot(mx - gx, mz - gz) < gr)) continue;
       const ry = -Math.atan2(bz - az, bx - ax);
       const seg = len / n;
       B.box(M.concreteLight, mx, 1.0, mz, seg, 2.0, 0.3, riseDelay(mx, mz), {}, ry);
@@ -98,12 +100,13 @@ export function buildSite(world, M, tokens, planTexture) {
   }
 
   // ---- roads, curbs, markings
-  for (const [x0, z0, x1, z1, w] of ROADS) {
+  for (const [x0, z0, x1, z1, w, noMark] of ROADS) {
     const horiz = z0 === z1;
     const len = horiz ? Math.abs(x1 - x0) : Math.abs(z1 - z0);
     const cx = (x0 + x1) / 2, cz = (z0 + z1) / 2;
     const [sx, sz] = horiz ? [len + w, w] : [w, len + w];
-    B.box(M.road, cx, 0.03, cz, sx, 0.06, sz, -1, { cast: false });
+    B.box(M.road, cx, noMark ? 0.028 : 0.03, cz, sx, 0.06, sz, -1, { cast: false });
+    if (noMark) continue;
     const dash = 3, gap = 3.5;
     for (let s = -len / 2 + 2; s < len / 2 - 2; s += dash + gap) {
       const px = horiz ? cx + s + dash / 2 : cx, pz = horiz ? cz : cz + s + dash / 2;
@@ -117,32 +120,34 @@ export function buildSite(world, M, tokens, planTexture) {
 
   // ---- generic buildings
   for (const b of BUILDINGS) building(B, M, b);
-  // flat pads: UG water tank, parking, weighbridge, transformer yard, future plant ghost
-  B.box(M.concrete, UG_WATER.x, 0.12, UG_WATER.z, UG_WATER.w, 0.24, UG_WATER.d, -1, { cast: false }, UG_WATER.ry);
-  for (let i = 0; i < 4; i++) {
-    const off = (i - 1.5) * 8;
-    const mx = UG_WATER.x + off * Math.cos(UG_WATER.ry), mz = UG_WATER.z - off * Math.sin(UG_WATER.ry);
-    B.box(M.steelDark, mx, 0.5, mz, 1.2, 0.8, 1.2, riseDelay(mx, mz));
+  // car park on the former UG tank footprint, with tree islands (trees are added with the landscaping below)
+  const parkTrees = carParkNorth(B, M, R);
+  // tanker yard (27) and the car park south of the UG tank: paver pads; tankers parked / queued as drawn
+  const paver = patchRise(M.concrete.clone());
+  paver.color.set('#B7B2A6');
+  for (const P of [TANKER_PARK, CAR_PARK]) {
+    const g = new THREE.ShapeGeometry(new THREE.Shape(P.poly.map(([x, z]) => new THREE.Vector2(x, -z))));
+    B.mesh(g, paver, [0, 0.07, 0], [-Math.PI / 2, 0, 0], [1, 1, 1], -1, { cast: false });
   }
-  B.box(M.concrete, PARKING.x, 0.08, PARKING.z, PARKING.w, 0.16, PARKING.d, -1, { cast: false }, PARKING.ry);
-  for (let i = 0; i < 8; i++) {
-    const off = -9 + i * 2.6;
-    const mx = PARKING.x + off * Math.cos(PARKING.ry), mz = PARKING.z - off * Math.sin(PARKING.ry) + 2.6;
-    B.box(i % 3 === 0 ? M.carDark : M.car, mx, 0.75, mz, 1.8, 1.3, 4.3, riseDelay(mx, mz, R()), {}, PARKING.ry);
-  }
-  B.box(M.concreteLight, WEIGHBRIDGE.x, 0.16, WEIGHBRIDGE.z, WEIGHBRIDGE.w, 0.3, WEIGHBRIDGE.d, -1, { cast: false });
+  CAR_PARK.cars.forEach(([x, z], i) => car(localFrame(B, x, z), M, 0, 0, [M.carDark, M.car, M.bagBlue][i % 3], riseDelay(x, z, R())));
+  for (const [x, z, head] of TANKERS) tanker(B, M, placeAt(x, 0, z, head === 'S' ? -Math.PI / 2 : Math.PI / 2), riseDelay(x, z) + 0.05);
+  weighbridge(B, M, WEIGHBRIDGE);
+  bikeStand(B, M, R);
   transformerYard(B, M, TRANSFORMER);
-  futurePlant(root, B, M, tokens);
 
   // ---- landscaping: lawns on every open patch of the site, a double green belt along the boundary
   // (tall Ashoka-style columns against the wall, broadleaf canopy inside), shade trees and shrubs in
   // the open areas, and soya fields + farm trees around the site
   const keepOut = [
-    ...BUILDINGS, ...WAREHOUSE_KEEPOUT, QAQC_KEEPOUT, PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, COOLING, N2GEN, DAYTANK, FUTURE,
-    { x: PESO.x, z: PESO.z, w: PESO.w, d: PESO.d }, UG_WATER, PARKING, WEIGHBRIDGE, TRANSFORMER,
+    ...BUILDINGS, ...WAREHOUSE_KEEPOUT, QAQC_KEEPOUT, PLANT1, PLANT2, BLENDER, FG_FARM, RM_FARM, ETP, FUEL, BOILER, ASH_YARD_KEEPOUT, COOLING, N2GEN, DAYTANK, ...FUTURE_EXP.keepout,
+    { x: PESO.x, z: PESO.z, w: PESO.w, d: PESO.d }, PARK_NORTH, TANKER_PARK, CAR_PARK, WEIGHBRIDGE, TRANSFORMER,
+    ...BIKE_STAND.map((b) => ({ x: (b.x0 + b.x1) / 2, z: (b.z0 + b.z1) / 2, w: b.x1 - b.x0, d: b.z1 - b.z0 })),
+    ...FIRE_TANKS.map((t) => ({ x: t.x, z: t.z, w: FIRE_TANK.d + 1, d: FIRE_TANK.d + 1 })),
+    ...GATES.filter((G) => G.wings).map((G) => ({ x: G.x + 3.5 * Math.sin(G.ry), z: G.z + 3.5 * Math.cos(G.ry), w: G.open + 17, d: 9 })),   // gate aprons, wing walls
   ];
   const roadBoxes = ROADS.map(([x0, z0, x1, z1, w]) => ({ x: (x0 + x1) / 2, z: (z0 + z1) / 2, w: Math.abs(x1 - x0) + w, d: Math.abs(z1 - z0) + w }));
-  const trees = [];   // [x, z, scale, kind]  kind: 'broad' | 'ashoka' | 'shrub'
+  const trees = [...parkTrees];   // [x, z, scale, kind]  kind: 'broad' | 'ashoka' | 'shrub'
+  futureExpansion(root, B, M);
   const LAWN = 3;
   for (let x = -88; x < 90; x += LAWN) {
     for (let z = -94; z < 97; z += LAWN) {
@@ -214,8 +219,33 @@ export function buildSite(world, M, tokens, planTexture) {
   };
 }
 
+// Area for future expansion: empty lawn with "FUTURE EXPANSION" marked on the grass.
+function futureExpansion(root, B, M) {
+  const A = FUTURE_EXP;
+  const rise = riseDelay(A.x, A.z);
+  for (const p of A.parts) B.box(M.lawn, (p.x0 + p.x1) / 2, 0.03, (p.z0 + p.z1) / 2, p.x1 - p.x0, 0.06, p.z1 - p.z0, rise, { cast: false });
+  const c = document.createElement('canvas');
+  c.width = 2048; c.height = 256;
+  const g = c.getContext('2d');
+  g.fillStyle = 'rgba(255,255,255,0.82)'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.font = 'bold 190px system-ui, sans-serif';
+  g.fillText('FUTURE EXPANSION', 1024, 136);
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
+  const text = new THREE.Mesh(new THREE.PlaneGeometry(72, 9), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false }));
+  text.rotation.x = -Math.PI / 2;
+  text.position.set(3, 0.08, 31.5);   // along the band both parts of the area share
+  text.renderOrder = 2;
+  root.add(text);
+}
+
 function rectPath(x0, z0, x1, z1) {
   return new THREE.Path([new THREE.Vector2(x0, -z0), new THREE.Vector2(x0, -z1), new THREE.Vector2(x1, -z1), new THREE.Vector2(x1, -z0)]);
+}
+
+function polyPath(pts) {
+  return new THREE.Path(pts.map(([x, z]) => new THREE.Vector2(x, -z)));
 }
 
 function blocked(x, z, boxes, roads, m) {
@@ -240,17 +270,24 @@ function frontageRoad(B, M, a, b, width, offset) {
   }
 }
 
+// Box helper in a rotated local frame (centre cx, cz; rotation ry about Y, same convention as Batcher.box)
+function localFrame(B, cx, cz, ry = 0) {
+  const c = Math.cos(ry), s = Math.sin(ry);
+  return (mat, lx, y, lz, w, h, d, rise, opts) => B.box(mat, cx + lx * c + lz * s, y, cz - lx * s + lz * c, w, h, d, rise, opts, ry);
+}
+
 export function building(B, M, b) {
   const rise = riseDelay(b.x, b.z);
   const { x, z, w, d, h } = b;
+  const L = localFrame(B, x, z, b.ry || 0);
   const wallMat = b.style === 'shed' ? M.wallDark : M.wall;
   if (b.style === 'canopy') {
-    for (const [px, pz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) B.box(M.steelDark, x + px * (w / 2 - 0.4), h / 2, z + pz * (d / 2 - 0.4), 0.4, h, 0.4, rise);
-    B.box(M[b.roof], x, h, z, w + 1, 0.4, d + 1, rise);
-    B.box(M.concreteLight, x, 0.1, z, w, 0.2, d, -1, { cast: false });
+    for (const [px, pz] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) L(M.steelDark, px * (w / 2 - 0.4), h / 2, pz * (d / 2 - 0.4), 0.4, h, 0.4, rise);
+    L(M[b.roof], 0, h, 0, w + 1, 0.4, d + 1, rise);
+    L(M.concreteLight, 0, 0.1, 0, w, 0.2, d, -1, { cast: false });
     return;
   }
-  B.box(wallMat, x, h / 2, z, w, h, d, rise);
+  L(wallMat, 0, h / 2, 0, w, h, d, rise);
   if (b.style === 'shed') {
     const alongZ = d >= w;
     const span = alongZ ? w : d, len = alongZ ? d : w;
@@ -270,44 +307,126 @@ export function building(B, M, b) {
     }
     return;
   }
-  B.box(M[b.roof], x, h + 0.2, z, w + 0.5, 0.4, d + 0.5, rise);
+  L(M[b.roof], 0, h + 0.2, 0, w + 0.5, 0.4, d + 0.5, rise);
   // glazing bands
   const floors = Math.max(1, Math.round(h / 4));
   for (let f = 0; f < floors; f++) {
     const y = 2 + f * (h / floors);
-    B.box(M.glass, x, y, z + d / 2 + 0.03, w * 0.86, 1.1, 0.06, rise, { cast: false });
-    B.box(M.glass, x, y, z - d / 2 - 0.03, w * 0.86, 1.1, 0.06, rise, { cast: false });
-    B.box(M.glass, x + w / 2 + 0.03, y, z, 0.06, 1.1, d * 0.8, rise, { cast: false });
-    B.box(M.glass, x - w / 2 - 0.03, y, z, 0.06, 1.1, d * 0.8, rise, { cast: false });
+    L(M.glass, 0, y, d / 2 + 0.03, w * 0.86, 1.1, 0.06, rise, { cast: false });
+    L(M.glass, 0, y, -d / 2 - 0.03, w * 0.86, 1.1, 0.06, rise, { cast: false });
+    L(M.glass, w / 2 + 0.03, y, 0, 0.06, 1.1, d * 0.8, rise, { cast: false });
+    L(M.glass, -w / 2 - 0.03, y, 0, 0.06, 1.1, d * 0.8, rise, { cast: false });
   }
   if (b.style === 'office' && w > 8) {
-    B.box(M.steelDark, x - w / 4, h + 1.0, z, 2.2, 1.2, 1.6, rise);
-    B.box(M.steelDark, x + w / 5, h + 0.9, z + d / 5, 1.6, 1.0, 1.6, rise);
+    L(M.steelDark, -w / 4, h + 1.0, 0, 2.2, 1.2, 1.6, rise);
+    L(M.steelDark, w / 5, h + 0.9, d / 5, 1.6, 1.0, 1.6, rise);
   }
 }
 
+// Six-pole structure, transformer and HT panel (03) in a fenced yard set square to the north boundary
 function transformerYard(B, M, y) {
   const r = riseDelay(y.x, y.z);
-  B.box(M.concreteLight, y.x, 0.1, y.z, y.w, 0.2, y.d, -1, { cast: false });
-  for (const dx of [-3, 3]) {
-    B.box(M.steelDark, y.x + dx, 1.4, y.z + 2, 2.4, 2.8, 2.0, r);
-    for (let f = -1; f <= 1; f += 0.5) B.box(M.steelDark, y.x + dx + f, 1.4, y.z + 3.1, 0.12, 2.2, 0.4, r);
+  const L = localFrame(B, y.x, y.z, y.ry || 0);
+  L(M.concreteLight, 0, 0.1, 0, y.w, 0.2, y.d, -1, { cast: false });
+  L(M.concrete, -2.4, 0.4, 1.0, 4.2, 0.4, 3.6, r);                         // transformer plinth
+  L(M.steelDark, -2.4, 1.9, 1.0, 2.8, 2.6, 2.2, r);                        // transformer
+  for (let f = -1.2; f <= 1.2; f += 0.4) L(M.steelDark, -2.4 + f, 1.7, 2.25, 0.1, 2.0, 0.35, r);   // radiator fins
+  for (const dx of [-0.8, 0, 0.8]) L(M.pipe, -2.4 + dx, 3.6, 1.0, 0.18, 0.8, 0.18, r);            // bushings
+  for (let i = 0; i < 6; i++) L(M.pipe, -5.5 + i * 2.2, 5, -5.0, 0.28, 10, 0.28, r);               // six-pole structure
+  for (const yy of [7.0, 9.5]) L(M.steelDark, 0, yy, -5.0, 12.0, 0.2, 0.2, r);
+  L(M.msPaint, 4.2, 1.2, 3.8, 1.2, 2.2, 3.4, r);                           // HT panel
+  // chain-link fence with a gate on the road side
+  const e = [y.w / 2 - 0.2, y.d / 2 - 0.2];
+  for (const s of [-1, 1]) {
+    L(M.grating, 0, 1.1, s * e[1], y.w - 0.4, 2.2, 0.04, r, { cast: false });
+    L(M.grating, s * e[0], 1.1, 0, 0.04, 2.2, y.d - 0.4, r, { cast: false });
+    for (let k = -3; k <= 3; k++) {
+      L(M.steelDark, k * (e[0] / 3), 1.15, s * e[1], 0.08, 2.3, 0.08, r);
+      L(M.steelDark, s * e[0], 1.15, k * (e[1] / 3), 0.08, 2.3, 0.08, r);
+    }
   }
-  for (let i = 0; i < 6; i++) B.box(M.pipe, y.x - 5 + i * 2, 5, y.z - 4, 0.25, 10, 0.25, r);
-  B.box(M.pipe, y.x, 9.5, y.z - 4, 11, 0.2, 0.2, r);
 }
 
-function futurePlant(root, B, M, tokens) {
-  // reserved pad with a dashed glowing outline
-  B.box(M.concrete, FUTURE.x, 0.05, FUTURE.z, FUTURE.w, 0.1, FUTURE.d, -1, { cast: false });
-  const pts = [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([a, b]) => [FUTURE.x + a * FUTURE.w / 2, FUTURE.z + b * FUTURE.d / 2]);
-  for (let i = 0; i < 4; i++) {
-    const [ax, az] = pts[i], [bx, bz] = pts[(i + 1) % 4];
-    const len = Math.hypot(bx - ax, bz - az);
-    for (let s = 0; s < len - 1; s += 3) {
-      const u = (s + 0.9) / len;
-      const horiz = az === bz;
-      B.box(M.glowCyan, ax + (bx - ax) * u, 0.13, az + (bz - az) * u, horiz ? 1.8 : 0.18, 0.05, horiz ? 0.18 : 1.8, -1, { cast: false, receive: false });
+// Hatchback / sedan, long axis along local z, in a localFrame L
+function car(L, M, lx, lz, body, r) {
+  L(body, lx, 0.62, lz, 1.8, 0.75, 4.3, r);
+  L(M.glass, lx, 1.2, lz + 0.15, 1.62, 0.44, 2.2, r);                 // glasshouse
+  L(body, lx, 1.45, lz + 0.25, 1.64, 0.06, 1.7, r);                   // roof
+  for (const dx of [-0.82, 0.82]) for (const dz of [-1.3, 1.3]) L(M.carDark, lx + dx, 0.32, lz + dz, 0.2, 0.64, 0.64, r, { cast: false });
+}
+
+// Car park on the former UG tank footprint (set square to the boundary): a north row of 90° bays the full length,
+// a south row on the west half (the east half faces the existing stepped car row), a one-way aisle between them,
+// tree islands every five bays and a planted bed at each end. Returns the island trees.
+function carParkNorth(B, M, R) {
+  const P = PARK_NORTH, L = localFrame(B, P.x, P.z, P.ry), r = riseDelay(P.x, P.z);
+  const hw = P.w / 2, hd = P.d / 2, BAY = 2.5, DEPTH = 5.0;
+  const paint = patchRise(M.concreteLight.clone());
+  paint.color.set('#F1F5F9');
+  const world = (lx, lz) => [P.x + lx * Math.cos(P.ry) + lz * Math.sin(P.ry), P.z - lx * Math.sin(P.ry) + lz * Math.cos(P.ry)];
+  L(M.road, 0, 0.05, 0, P.w, 0.06, P.d, -1, { cast: false });
+  const out = [];
+  const bodies = [M.carDark, M.car, M.bagBlue, M.car, M.wallDark];
+  const row = (x0, x1, z0, sideNorth) => {
+    const n = Math.floor((x1 - x0) / BAY);
+    for (let i = 0; i < n; i++) {
+      const lx = x0 + (i + 0.5) * BAY, lz = z0 + DEPTH / 2;
+      if (i % 5 === 2) {   // tree island
+        L(M.concreteLight, lx, 0.12, lz, BAY - 0.2, 0.2, DEPTH - 0.4, r, { cast: false });
+        L(M.lawn, lx, 0.23, lz, BAY - 0.5, 0.04, DEPTH - 0.7, r, { cast: false });
+        const [wx, wz] = world(lx, lz);
+        out.push([wx, wz, 0.75 + R() * 0.25, 'broad']);
+        continue;
+      }
+      L(paint, lx - BAY / 2, 0.085, lz, 0.12, 0.02, DEPTH, -1, { cast: false });
+      if (R() < 0.78) car(L, M, lx, lz + (sideNorth ? 0.2 : -0.2), bodies[Math.floor(R() * bodies.length)], riseDelay(...world(lx, lz), R()));
+    }
+    L(paint, x0 + n * BAY, 0.085, z0 + DEPTH / 2, 0.12, 0.02, DEPTH, -1, { cast: false });
+  };
+  // planted beds at both ends (with trees), then the bay rows between them
+  // (the east bed stops at the aisle: the existing stepped car row runs into the south-east corner)
+  for (const [a, b, z0, z1] of [[-hw, -hw + 3.2, -hd, hd], [hw - 2.6, hw, -hd, -hd + DEPTH + 1.0]]) {
+    L(M.concreteLight, (a + b) / 2, 0.12, (z0 + z1) / 2, b - a, 0.2, z1 - z0, r, { cast: false });
+    L(M.lawn, (a + b) / 2, 0.23, (z0 + z1) / 2, b - a - 0.3, 0.04, z1 - z0 - 0.3, r, { cast: false });
+    for (let lz = z0 + 3.4; lz < z1 - 1.0; lz += 4.6) out.push([...world((a + b) / 2, lz), 0.8 + R() * 0.3, R() < 0.7 ? 'broad' : 'ashoka']);
+  }
+  row(-hw + 3.4, hw - 2.8, -hd, true);
+  row(-hw + 3.4, 1.0, hd - DEPTH, false);
+  // aisle arrows
+  for (const lx of [-10, 0, 10]) L(paint, lx, 0.085, -hd + DEPTH + 1.95, 2.2, 0.02, 0.18, -1, { cast: false });
+  return out;
+}
+
+// Pit-type weighbridge (17): steel deck flush with the lane, kerb guides and approach plates
+function weighbridge(B, M, w) {
+  const r = riseDelay(w.x, w.z);
+  B.box(M.concrete, w.x, 0.07, w.z, w.w + 0.8, 0.06, w.d + 0.8, -1, { cast: false });
+  B.box(M.steelDark, w.x, 0.11, w.z, w.w, 0.04, w.d, -1, { cast: false });
+  for (let k = 1; k < 6; k++) B.box(M.pipe, w.x, 0.135, w.z - w.d / 2 + (k * w.d) / 6, w.w - 0.2, 0.01, 0.08, -1, { cast: false });
+  for (const s of [-1, 1]) {
+    B.box(M.yellow, w.x + s * (w.w / 2 + 0.25), 0.25, w.z, 0.2, 0.4, w.d, r);
+    for (let k = 0; k < 7; k++) B.box(M.carDark, w.x + s * (w.w / 2 + 0.25), 0.25, w.z - w.d / 2 + 1.3 + k * 2.6, 0.21, 0.41, 1.0, r, { cast: false });
+  }
+  B.box(M.statusGreen, w.x + w.w / 2 + 0.6, 1.6, w.z - w.d / 2 + 0.6, 0.15, 0.5, 0.3, r, { cast: false });   // traffic lights
+  B.box(M.steelDark, w.x + w.w / 2 + 0.6, 0.7, w.z - w.d / 2 + 0.6, 0.08, 1.4, 0.08, r);
+}
+
+// Two-wheeler stand (28): paved bays under a sheet canopy with parked bikes
+function bikeStand(B, M, R) {
+  const bodyMats = [M.carDark, M.bagBlue, M.car, M.carDark];
+  for (const s of BIKE_STAND) {
+    const cx = (s.x0 + s.x1) / 2, cz = (s.z0 + s.z1) / 2, w = s.x1 - s.x0, d = s.z1 - s.z0;
+    const r = riseDelay(cx, cz);
+    B.box(M.concreteLight, cx, 0.06, cz, w, 0.12, d, -1, { cast: false });
+    for (let x = s.x0 + 0.3; x <= s.x1 - 0.2; x += (w - 0.5) / Math.max(1, Math.round(w / 4))) for (const z of [s.z0 + 0.25, s.z1 - 0.25]) B.box(M.steelDark, x, 1.3, z, 0.1, 2.6, 0.1, r);
+    B.box(M.roof, cx, 2.65, cz, w + 0.4, 0.1, d + 0.4, r);
+    const lines = d > 3 ? [s.z0 + 1.05, s.z1 - 1.05] : [cz];
+    for (const zl of lines) for (let x = s.x0 + 0.5; x < s.x1 - 0.3; x += 0.9) {
+      if (R() < 0.3) continue;
+      const m = bodyMats[Math.floor(R() * bodyMats.length)];
+      B.box(m, x, 0.62, zl, 0.32, 0.5, 1.6, r);
+      B.box(M.carDark, x, 0.95, zl + 0.15, 0.26, 0.12, 0.6, r, { cast: false });
+      for (const dz of [-0.62, 0.62]) B.box(M.carDark, x, 0.33, zl + dz, 0.12, 0.6, 0.6, r, { cast: false });
     }
   }
 }

@@ -7,13 +7,13 @@ const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
 // [id, colour key, state key, reveal range within the state, points]
 const ROUTES = [
-  ['thermic_trunk', 'thermicOil', 'flowThermic', [0, 0.7], [V(34, 3.8, 55.4), V(34, 6.9, 55.4), V(34, 6.9, 44.6), V(18.8, 6.9, 44.6), V(18.8, 6.9, -24)]],
+  ['thermic_trunk', 'thermicOil', 'flowThermic', [0, 0.7], [V(31.52, 2.8, 52.55), V(31.52, 6.9, 52.55), V(31.52, 6.9, 44.6), V(18.8, 6.9, 44.6), V(18.8, 6.9, -24)]],
   ['thermic_p1', 'thermicOil', 'flowThermic', [0.6, 1], [V(18.8, 6.9, -16), V(8, 6.9, -16), V(8, 5.0, -16)]],
   ['thermic_p2', 'thermicOil', 'flowThermic', [0.66, 1], [V(18.8, 6.9, -24), V(29.5, 6.9, -24), V(29.5, 5.0, -24)]],
   ['cooling_trunk', 'coolingWater', 'flowCooling', [0, 0.72], [V(55, 3, 23.6), V(55, 6.3, 23.6), V(55, 6.3, 19.4), V(17.2, 6.3, 19.4), V(17.2, 6.3, -30)]],
   ['cooling_p1', 'coolingWater', 'flowCooling', [0.62, 1], [V(17.2, 6.3, -10), V(9, 6.3, -10), V(9, 5.2, -10)]],
   ['cooling_p2', 'coolingWater', 'flowCooling', [0.7, 1], [V(17.2, 6.3, -30), V(26, 6.3, -30), V(26, 5.2, -30)]],
-  ['n2_trunk', 'nitrogen', 'flowNitrogen', [0, 0.85], [V(46, 3.8, -41), V(46, 7.6, -41), V(18, 7.6, -41), V(18, 7.6, -28), V(6, 7.6, -28), V(6, 6.2, -28)]],
+  ['n2_trunk', 'nitrogen', 'flowNitrogen', [0, 0.85], [V(45.4, 3.4, -59.2), V(45.4, 7.6, -59.2), V(45.4, 7.6, -41), V(18, 7.6, -41), V(18, 7.6, -28), V(6, 7.6, -28), V(6, 6.2, -28)]],
   ['n2_p2', 'nitrogen', 'flowNitrogen', [0.45, 1], [V(33.4, 7.6, -41), V(33.4, 6.4, -41)]],
   ['eff_p1', 'effluent', 'flowEffluent', [0, 1], [V(6, 0.3, -0.6), V(6, 0.3, 22.5), V(-2.5, 0.3, 22.5), V(-2.5, 0.3, 56), V(-6, 0.3, 60)]],
   ['eff_p2', 'effluent', 'flowEffluent', [0, 0.6], [V(30, 0.3, -1.0), V(30, 0.3, 22.5), V(6, 0.3, 22.5)]],
@@ -83,10 +83,9 @@ export function buildFlows(world, M, B, tokens) {
   // pipe-rack posts with cross beams
   const racks = [
     { from: V(18, 0, -46), to: V(18, 0, 2), y: 7.9 },
-    { from: V(18, 0, 22), to: V(18, 0, 44.6), y: 7.9 },
-    { from: V(-46, 0, 21.4), to: V(54, 0, 21.4), y: 7.0, cross: 'z' },
-    { from: V(20, 0, 47.3), to: V(34, 0, 47.3), y: 7.6, cross: 'z' },
-    { from: V(-3.4, 0, 25), to: V(-3.4, 0, 50), y: 6.6 },   // clear of Warehouse-2's east gable
+    { from: V(18, 0, 22.9), to: V(18, 0, 40.6), y: 7.9 },
+    { from: V(-46, 0, 22.9), to: V(54, 0, 22.9), y: 7.0, cross: 'z' },
+    { from: V(-3.4, 0, 25), to: V(-3.4, 0, 48.0), y: 6.6 },
     { from: V(8, 0, 1), to: V(8, 0, 17), y: 6.6 },
   ];
   for (const r of racks) {

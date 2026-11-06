@@ -5,7 +5,7 @@
 // first reaches 700 kWp. Panels hide while their building is cut away and until the buildings have risen.
 import * as THREE from 'three';
 import { makeMat } from './materials.js';
-import { BUILDINGS, BLENDER, BOILER, ETP } from './layout.js';
+import { BUILDINGS, ETP, QAQC } from './layout.js';
 
 export const MODULE = { L: 2.278, W: 1.134, T: 0.04, wp: 545 };
 export const TARGET_KWP = 700;
@@ -73,14 +73,14 @@ function flatPanels({ x0, x1, z0, z1, h, avoid = [], pitch = ROW_PITCH }) {
   return out;
 }
 
-// roofs: [{ name, key (cut-away state that hides it), peb: { env, r0, skylights } | flat: {...}, trim }]
+// roofs: [{ name, key (cut-away state that hides it), peb: { env, r0, skylights } | flat: {...} | panels: [{ m, row, end }], trim }]
 export function buildSolar(world, M, roofs, B) {
   const root = new THREE.Group();
   world.scene.add(root);
   const mat = makeMat({ color: '#9FB0C8', map: cellTexture(), metalness: 0.3, roughness: 0.28 });
   const legMat = makeMat({ color: '#94A3B8', metalness: 0.5, roughness: 0.4 });
   const target = Math.ceil((TARGET_KWP * 1000) / MODULE.wp);
-  const sets = roofs.map((r) => ({ ...r, panels: r.peb ? slopePanels(r.peb.env, r.peb) : flatPanels(r.flat) }));
+  const sets = roofs.map((r) => ({ ...r, panels: r.panels ?? (r.peb ? slopePanels(r.peb.env, r.peb) : flatPanels(r.flat)) }));
   const available = sets.reduce((a, s) => a + s.panels.length, 0);
   let excess = available - target;
   for (const s of sets.filter((r) => r.trim)) {
@@ -128,20 +128,17 @@ export function buildSolar(world, M, roofs, B) {
 }
 
 // Every roof on site: PEB slopes from their envelopes, flat roofs from the layout (rooftop units avoided).
-export function siteRoofs(envs) {
+export function siteRoofs(envs, extra = []) {
   const roofs = [
     { name: 'Warehouse-1', key: 'wh1Cutaway', peb: { env: envs.wh1, r0: 0.45, skylights: envs.wh1.skylights }, trim: true },
-    { name: 'Warehouse-2', key: 'wh2Cutaway', peb: { env: envs.wh2, r0: 0.45, skylights: envs.wh2.skylights } },
     { name: 'Plant 1', key: 'plant1Cutaway', peb: { env: envs.p1, r0: 1.55 } },
     { name: 'Plant 2', key: 'plant2Cutaway', peb: { env: envs.p2, r0: 1.55 } },
-    { name: 'QA & QC terrace', key: 'qaCutaway', flat: { x0: 2.1, x1: 13.35, z0: -48.0, z1: -40.05, h: 13.8, pitch: 2.85, avoid: [[4.7, 6.1, -47.5, -46.0]] } },
-    { name: 'Blender house', key: 'blenderCutaway', flat: { x0: BLENDER.x - BLENDER.w / 2 + 0.6, x1: BLENDER.x + BLENDER.w / 2 - 0.6, z0: BLENDER.z - BLENDER.d / 2 + 0.6, z1: BLENDER.z + BLENDER.d / 2 - 0.6, h: BLENDER.h + 0.4 } },
-    { name: 'Boiler house', flat: { x0: BOILER.x + 1.5, x1: BOILER.x + 14.5, z0: BOILER.z - BOILER.d / 2 + 0.2, z1: BOILER.z + BOILER.d / 2, h: 11.4 } },
+    { name: 'QA & QC terrace', key: 'qaCutaway', flat: { x0: QAQC.x - 4.0, x1: QAQC.x + 7.25, z0: QAQC.z - 4.0, z1: QAQC.z + 3.95, h: 13.8, pitch: 2.85, avoid: [[QAQC.x - 1.4, QAQC.x, QAQC.z - 3.5, QAQC.z - 2.0]] } },
     { name: 'ETP', flat: { x0: ETP.x - 8.5, x1: ETP.x - 3.5, z0: ETP.z + 6.3, z1: ETP.z + 9.7, h: 3.9, pitch: 3 } },
-    { name: 'Agro-waste shed', peb: { env: envs.fuel, r0: 0.45 } },
+    ...extra,
     { name: 'PESO pump house', flat: { x0: -70.0, x1: -63.0, z0: 62.4, z1: 69.6, h: 4.8 } },
   ];
-  for (const b of BUILDINGS) {
+  for (const b of BUILDINGS.filter((b) => !b.ry)) {
     const top = b.style === 'canopy' ? b.h + 0.2 : b.h + 0.4, inset = b.style === 'canopy' ? 0.2 : 0.45;
     const avoid = b.style === 'office' && b.w > 8 ? [[b.x - b.w / 4 - 1.3, b.x - b.w / 4 + 1.3, b.z - 1.0, b.z + 1.0], [b.x + b.w / 5 - 1.0, b.x + b.w / 5 + 1.0, b.z + b.d / 5 - 1.0, b.z + b.d / 5 + 1.0]] : [];
     roofs.push({ name: `${b.label} ${b.no}`, flat: { x0: b.x - b.w / 2 + inset, x1: b.x + b.w / 2 - inset, z0: b.z - b.d / 2 + inset, z1: b.z + b.d / 2 - inset, h: top, avoid } });

@@ -61,3 +61,20 @@ export function polyline(B, mat, pts, r, rise = -1) {
   for (let i = 0; i < pts.length - 1; i++) tube(B, mat, pts[i], pts[i + 1], r, rise);
   for (let i = 1; i < pts.length - 1; i++) B.mesh(new THREE.SphereGeometry(r * 1.25, 10, 8), mat, pts[i].toArray(), [0, 0, 0], [1, 1, 1], rise);
 }
+
+// Road tanker (~12 m): rear of the tank at the origin, cab toward +X.
+export function tanker(B, M, base, rise = -1) {
+  box(B, M.carDark, base, 6.0, 0.85, 0, 12.0, 0.3, 2.0, rise);                      // chassis
+  part(B, M.steel, base, new THREE.CylinderGeometry(1.1, 1.1, 8.4, 20), 4.6, 2.15, 0, [0, 0, Math.PI / 2], rise);   // barrel
+  for (const x of [0.4, 8.8]) {   // dished ends
+    tmp.compose(new THREE.Vector3(x, 2.15, 0), new THREE.Quaternion(), new THREE.Vector3(0.35, 1, 1));
+    B.add(new THREE.SphereGeometry(1.1, 18, 10), M.steel, base.clone().multiply(tmp), rise);
+  }
+  part(B, M.yellow, base, new THREE.CylinderGeometry(1.12, 1.12, 0.35, 20), 4.6, 2.15, 0, [0, 0, Math.PI / 2], rise, { cast: false });
+  for (const x of [2.4, 4.6, 6.8]) part(B, M.steelDark, base, new THREE.CylinderGeometry(0.3, 0.3, 0.2, 12), x, 3.3, 0, [0, 0, 0], rise);   // manholes
+  box(B, M.steelDark, base, 4.6, 3.38, 0.75, 7.8, 0.05, 0.05, rise, { cast: false });                              // top handrail
+  box(B, M.car, base, 10.8, 1.95, 0, 2.2, 2.4, 2.4, rise);                         // cab
+  box(B, M.glass, base, 11.92, 2.5, 0, 0.04, 0.9, 2.1, rise, { cast: false });    // windscreen
+  const wheel = new THREE.CylinderGeometry(0.5, 0.5, 0.4, 14);
+  for (const x of [1.4, 2.5, 3.6, 10.6]) for (const z of [-1.0, 1.0]) part(B, M.carDark, base, wheel, x, 0.5, z, [Math.PI / 2, 0, 0], rise);
+}

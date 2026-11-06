@@ -453,7 +453,7 @@ export function buildPlants(world, M, OB) {
   // ---- Plant 2: same envelope; decks over the reactor rows, double-height finishing bay to the south
   const p2Frames = Array.from({ length: 11 }, (_, i) => (i * (PLANT2.d - 0.23)) / 10);
   const env2 = pebEnvelope(root, M, PLANT2, {
-    ...PLANT_ENV, roofColor: '#2E7D32', roofRib: '#1F5E23', stripe: '#4ADE80', frameLines: p2Frames,
+    ...PLANT_ENV, roofColor: '#00529B', roofRib: '#003F7A', stripe: '#4ADE80', frameLines: p2Frames,
     stairs: [[0.4, 44.0, 3.8, 47.4]],
     shutters: [{ side: 'S', x0: PLANT2.w / 2 - 2.2, x1: PLANT2.w / 2 + 2.2, h: 4.5 }],   // dispatch shutter at the finishing bay
   });

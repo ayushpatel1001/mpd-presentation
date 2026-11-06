@@ -1,10 +1,9 @@
-// Utilities & EHS block: thermic fluid heaters (agro-waste fired), steam generator, stacks,
-// agro-waste silo + bag filters, covered agro-waste fuel shed, 2,200 TR cooling tower, N2 generator, 50 KLD ETP.
+// Utilities & EHS block: 2,200 TR cooling tower, N2 generator, fire water tanks, 50 KLD ETP
+// (the boiler house and fuel store are in boiler.js).
 import * as THREE from 'three';
-import { makeMat, patchRise } from './materials.js';
-import { frameOf, ribTexture, ribbedBox } from './peb.js';
+import { makeMat } from './materials.js';
 import { riseDelay } from './site.js';
-import { BOILER, FUEL, COOLING, N2GEN, ETP } from './layout.js';
+import { COOLING, N2GEN, ETP, FIRE_TANKS, FIRE_TANK, BUILDINGS } from './layout.js';
 import { hash } from '../lib/util.js';
 
 function softSprite() {
@@ -18,7 +17,7 @@ function softSprite() {
 }
 
 // Rising plume as point sprites; positions are a function of t only.
-function plume(root, origin, n, opts) {
+export function plume(root, origin, n, opts) {
   const geo = new THREE.BufferGeometry();
   const pos = new Float32Array(n * 3);
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
@@ -44,57 +43,6 @@ function plume(root, origin, n, opts) {
 export function buildUtilities(world, M, B) {
   const root = new THREE.Group();
   world.scene.add(root);
-  const rb = riseDelay(BOILER.x, BOILER.z);
-  const { x, z, w, d } = BOILER;
-
-  // boiler house: open shed on columns
-  B.box(M.concreteLight, x, 0.1, z, w, 0.2, d, -1, { cast: false });
-  for (let i = 0; i <= 6; i++) for (const sz of [-1, 1]) B.box(M.steelDark, x - w / 2 + 1 + i * (w - 2) / 6, 5.5, z + sz * (d / 2 - 0.6), 0.45, 11, 0.45, rb);
-  for (let i = 0; i < 6; i++) B.box(M.steelDark, x - w / 2 + 2 + i * 4.6, 11.2, z, 0.3, 0.45, d, rb);
-  B.box(M.roof, x + 8, 11.2, z, 14, 0.4, d + 0.6, rb);
-  B.box(M.wallDark, x - w / 2 + 0.2, 5.5, z, 0.3, 11, d, rb);
-
-  // two thermic fluid heaters + thermic-heated steam generator
-  const heaterMat = makeMat({ color: '#475569', metalness: 0.55, roughness: 0.45 });
-  const flameMats = [];
-  const heaters = [];
-  for (const [hz, L, Rr] of [[z - 6.0, 9, 1.6], [z + 0.5, 9, 1.6], [z + 7.0, 6, 1.2]]) {
-    const hx = x - 8;
-    B.mesh(new THREE.CylinderGeometry(Rr, Rr, L, 24), heaterMat, [hx, Rr + 0.6, hz], [0, 0, Math.PI / 2], [1, 1, 1], rb);
-    B.box(M.steelDark, hx, 0.4, hz, L - 1, 0.8, Rr * 1.6, rb);
-    const fm = makeMat({ color: '#7C2D12', emissive: '#F59E0B', emissiveIntensity: 0.6 });
-    flameMats.push(fm);
-    const door = new THREE.Mesh(new THREE.CircleGeometry(Rr * 0.55, 20), fm);
-    door.position.set(hx - L / 2 - 0.02, Rr + 0.6, hz);
-    door.rotation.y = -Math.PI / 2;
-    root.add(door);
-    // feed hopper above the furnace
-    B.mesh(new THREE.CylinderGeometry(0.9, 0.35, 1.6, 4), M.steelDark, [hx - L / 2 + 1.2, 2 * Rr + 1.6, hz], [0, Math.PI / 4, 0], [1, 1, 1], rb);
-    heaters.push(new THREE.Vector3(hx, Rr + 0.6, hz));
-  }
-  // flue ducts to bag filters, then to stacks
-  for (const hz of [z - 6.0, z + 0.5]) {
-    B.box(M.steelDark, x + 3.5, 5.6, hz, 14, 0.9, 0.9, rb);
-    // bag filter
-    B.box(M.msPaint, x + 11, 4.2, hz, 3.2, 4.2, 3.2, rb);
-    B.mesh(new THREE.ConeGeometry(2.2, 2.0, 4), M.msPaint, [x + 11, 1.3, hz], [Math.PI, Math.PI / 4, 0], [1, 1, 1], rb);
-    // stack
-    B.mesh(new THREE.CylinderGeometry(0.75, 0.95, 30, 18), M.steel, [x + 17, 15, hz], [0, 0, 0], [1, 1, 1], rb);
-    B.mesh(new THREE.CylinderGeometry(0.8, 0.8, 0.6, 18), M.yellow, [x + 17, 26, hz], [0, 0, 0], [1, 1, 1], rb);
-  }
-  // ash handling conveyor
-  B.box(M.steelDark, x + 2, 1.0, z + d / 2 - 2.2, 20, 0.35, 0.8, rb);
-  // agro-waste silo with front-loader charging
-  const sx = x - w / 2 + 4.5, sz = z - d / 2 + 4.5;
-  B.mesh(new THREE.CylinderGeometry(2.6, 2.6, 13, 24), M.steel, [sx, 7.5, sz], [0, 0, 0], [1, 1, 1], rb);
-  B.mesh(new THREE.ConeGeometry(2.7, 1.6, 24), M.steel, [sx, 14.8, sz], [0, 0, 0], [1, 1, 1], rb);
-  B.mesh(new THREE.ConeGeometry(2.6, 1.0, 24), M.steel, [sx, 0.5, sz], [Math.PI, 0, 0], [1, 1, 1], rb);
-  for (const [lx, lz] of [[-1.8, -1.8], [1.8, -1.8], [-1.8, 1.8], [1.8, 1.8]]) B.box(M.steelDark, sx + lx, 0.6, sz + lz, 0.3, 1.2, 0.3, rb);
-  B.box(M.steelDark, (sx + x - 8) / 2, 9.0, sz, Math.abs(x - 8 - sx), 0.6, 0.9, rb);
-
-  // agro-waste fuel shed over the fuel yard
-  const shed = fuelShed(B, M);
-
   // cooling tower: 2 fan cells
   const rc = riseDelay(COOLING.x, COOLING.z);
   B.box(M.wallDark, COOLING.x, COOLING.h / 2, COOLING.z, COOLING.w, COOLING.h, COOLING.d, rc);
@@ -120,13 +68,34 @@ export function buildUtilities(world, M, B) {
     fans.push(fan);
   }
 
-  // N2 generator skid: two PSA columns, receiver, compressor
+  // N2 generator skid (assumed position): compressor, receiver and two PSA columns in a row along Z
   const rn = riseDelay(N2GEN.x, N2GEN.z);
   B.box(M.concreteLight, N2GEN.x, 0.15, N2GEN.z, N2GEN.w, 0.3, N2GEN.d, -1, { cast: false });
   const psaMat = makeMat({ color: '#7DD3FC', metalness: 0.3, roughness: 0.4 });
-  for (const dx of [-1.2, 0]) B.mesh(new THREE.CylinderGeometry(0.45, 0.45, 3.4, 16), psaMat, [N2GEN.x + dx, 2.0, N2GEN.z - 2], [0, 0, 0], [1, 1, 1], rn);
-  B.mesh(new THREE.CylinderGeometry(0.75, 0.75, 3.8, 18), M.steel, [N2GEN.x + 1.6, 2.2, N2GEN.z - 1.5], [0, 0, 0], [1, 1, 1], rn);
-  B.box(M.msPaint, N2GEN.x, 1.0, N2GEN.z + 2.2, 3.0, 1.6, 2.2, rn);
+  B.box(M.msPaint, N2GEN.x, 1.1, N2GEN.z + 2.3, 2.4, 1.6, 2.2, rn);                                   // compressor
+  B.mesh(new THREE.CylinderGeometry(0.7, 0.7, 3.6, 18), M.steel, [N2GEN.x, 2.1, N2GEN.z - 0.1], [0, 0, 0], [1, 1, 1], rn);   // receiver
+  for (const dx of [-0.6, 0.6]) B.mesh(new THREE.CylinderGeometry(0.42, 0.42, 3.2, 16), psaMat, [N2GEN.x + dx, 1.9, N2GEN.z - 2.6], [0, 0, 0], [1, 1, 1], rn);
+
+  // fire water: two above-ground steel tanks Ø8.74 (height assumed) with suction lines to the fire pump room
+  const fireMat = makeMat({ color: '#B91C1C', roughness: 0.5, metalness: 0.2 });
+  const pumpRoom = BUILDINGS.find((b) => b.id === 'firepump');
+  for (const t of FIRE_TANKS) {
+    const r = riseDelay(t.x, t.z), R = FIRE_TANK.d / 2, H = FIRE_TANK.h;
+    B.mesh(new THREE.CylinderGeometry(R + 0.4, R + 0.5, 0.4, 32), M.concrete, [t.x, 0.2, t.z], [0, 0, 0], [1, 1, 1], -1);
+    B.mesh(new THREE.CylinderGeometry(R, R, H, 32), M.steel, [t.x, 0.4 + H / 2, t.z], [0, 0, 0], [1, 1, 1], r);
+    B.mesh(new THREE.ConeGeometry(R + 0.1, 0.9, 32), M.steel, [t.x, 0.4 + H + 0.45, t.z], [0, 0, 0], [1, 1, 1], r);
+    for (const y of [H * 0.62, H * 0.62 + 0.9]) B.mesh(new THREE.CylinderGeometry(R + 0.02, R + 0.02, 0.45, 32, 1, true), fireMat, [t.x, 0.4 + y, t.z], [0, 0, 0], [1, 1, 1], r, { cast: false });
+    B.box(M.steelDark, t.x - R - 0.25, 0.4 + H / 2 + 0.5, t.z, 0.5, H + 1.0, 0.06, r);               // cage ladder
+    B.box(M.yellow, t.x, 0.4 + H + 0.95, t.z, 1.2, 0.08, 1.2, r, { cast: false });                     // roof manway
+    // suction line from the tank bottom to the pump room
+    const y = 0.9, px = pumpRoom.x - pumpRoom.w / 2 + 1.0, pz = pumpRoom.z + pumpRoom.d / 2;
+    const a = new THREE.Vector3(t.x - R * 0.7, y, t.z - R * 0.7);
+    for (const [p0, p1] of [[a, new THREE.Vector3(px, y, a.z)], [new THREE.Vector3(px, y, a.z), new THREE.Vector3(px, y, pz)]]) {
+      const len = p0.distanceTo(p1);
+      if (len < 0.05) continue;
+      B.mesh(new THREE.CylinderGeometry(0.15, 0.15, len, 10), fireMat, p0.clone().add(p1).multiplyScalar(0.5).toArray(), p0.x === p1.x ? [Math.PI / 2, 0, 0] : [0, 0, Math.PI / 2], [1, 1, 1], r);
+    }
+  }
 
   // 50 KLD ETP: oil & grease trap + equalisation, flash mixer / primary settler, MBBR aeration, secondary
   // clarifier, pressure sand + activated carbon filters, treated-water tank, filter press, sludge drying beds
@@ -176,62 +145,21 @@ export function buildUtilities(world, M, B) {
   B.box(M.roof, ETP.x - 6.0, 3.75, ETP.z + 8.0, 5.4, 0.3, 3.6, re);
 
   // plumes
-  const stackPlumes = [z - 6.0, z + 0.5].map((hz) => plume(root, new THREE.Vector3(x + 17, 30.5, hz), 70, { color: '#CBD5E1', size: 2.4, opacity: 0.28, life: 7, rise: 2.6, spread: 4, drift: [1.6, -0.6] }));
   const towerPlumes = [COOLING.z - 4, COOLING.z + 4].map((fz) => plume(root, new THREE.Vector3(COOLING.x, COOLING.h + 2.6, fz), 60, { color: '#E2E8F0', size: 2.5, opacity: 0.24, life: 4.5, rise: 2.2, spread: 3.2, drift: [0.8, -0.4] }));
 
   return {
-    fuelShed: shed,
     anchors: {
-      boiler: new THREE.Vector3(x, 13, z),
-      heaters: new THREE.Vector3(x - 8, 4.2, z - 2.5),
-      silo: new THREE.Vector3(sx, 12, sz),
       coolingTower: new THREE.Vector3(COOLING.x, COOLING.h + 3, COOLING.z),
       n2: new THREE.Vector3(N2GEN.x, 4.5, N2GEN.z),
       etp: new THREE.Vector3(ETP.x + 2.5, 3.2, ETP.z - 4.5),
-      fuelShed: new THREE.Vector3(FUEL.x, 9.5, FUEL.z),
     },
     update(t, s) {
       const glow = s.utilityGlow;
-      flameMats.forEach((m, i) => { m.emissiveIntensity = 0.5 + glow * (1.8 + 0.5 * Math.sin(t * 7.3 + i * 2) + 0.3 * Math.sin(t * 13.1 + i)); });
       for (const f of fans) f.rotation.y = t * 2.2;
       ripples.forEach((b, i) => { b.rotation.y = t * 0.12 + i; });
       waterMat.emissiveIntensity = 0.25 + 0.35 * glow;
       const plumeOn = 0.55 + 0.45 * glow;
-      for (const p of stackPlumes) p(t, plumeOn);
       for (const p of towerPlumes) p(t, plumeOn);
     },
   };
-}
-
-// Agro-waste fuel shed (site plan item 23): open-fronted portal-frame shed over the fuel yard with RCC bunker
-// walls on the west side and south end; open to the east (front loader to the boiler-house silo) and the north
-// (truck tipping). Returns the roof geometry so the rooftop solar can use it.
-function fuelShed(B, M) {
-  const F = frameOf(FUEL);
-  const W = F.W, D = F.D, eave = 8.0, ridge = 9.4, half = W / 2, pitch = Math.atan2(ridge - eave, half);
-  const rise = riseDelay(FUEL.x, FUEL.z);
-  const roofMat = patchRise(makeMat({ color: '#FFFFFF', map: ribTexture('#5B7088', '#4A5D73', false), roughness: 0.5, metalness: 0.3 }));
-  B.box(M.concrete, FUEL.x, 0.06, FUEL.z, FUEL.w, 0.12, FUEL.d, -1, { cast: false });
-  const frames = Array.from({ length: 6 }, (_, i) => (i * D) / 5);
-  for (const y of frames) {
-    for (const x of [0.2, W - 0.2]) F.box(B, M.steelDark, x - 0.2, y - 0.15, x + 0.2, y + 0.15, 0, eave, rise);
-    for (const s of [-1, 1]) F.mesh(B, new THREE.BoxGeometry(half / Math.cos(pitch), 0.5, 0.2), M.steelDark, half + s * half / 2, (eave + ridge) / 2 - 0.4, y, [0, 0, -s * pitch], rise);
-  }
-  for (const x of [0.2, W - 0.2]) F.box(B, M.steelDark, x - 0.12, 0, x + 0.12, D, eave - 0.35, eave, rise);      // eave beams
-  const slope = Math.hypot(half, ridge - eave) + 0.55;
-  for (const s of [-1, 1]) {
-    F.mesh(B, ribbedBox(slope, 0.14, D + 0.9, 0.6), roofMat, half + s * (half / 2 - 0.25), (eave + ridge) / 2 + 0.12, D / 2, [0, 0, -s * pitch], rise);
-    F.box(B, M.pipe, s < 0 ? -0.7 : W + 0.4, -0.45, s < 0 ? -0.4 : W + 0.7, D + 0.45, eave - 0.25, eave + 0.05, rise);   // gutters
-  }
-  F.box(B, M.pipe, half - 0.3, -0.45, half + 0.3, D + 0.45, ridge + 0.12, ridge + 0.3, rise);                  // ridge cap
-  F.box(B, M.concreteLight, -0.15, 0, 0.25, D, 0, 3.2, rise);                                                   // bunker walls
-  F.box(B, M.concreteLight, -0.15, -0.15, W, 0.25, 0, 3.2, rise);
-  for (let k = 1; k < 4; k++) F.box(B, M.concreteLight, 0.25, (k * D) / 4 - 0.15, 4.5, (k * D) / 4 + 0.15, 0, 2.4, rise);   // bay dividers
-  // agro-waste piles (rice husk, soya husk, mustard stalk briquettes) and the front loader
-  for (const [px, pz, sc, mat] of [[FUEL.x - 2.8, FUEL.z - 8.5, 1, M.biomass], [FUEL.x - 2.2, FUEL.z + 0.5, 1.15, M.biomassGreen], [FUEL.x - 2.6, FUEL.z + 8.8, 0.95, M.biomass]]) {
-    B.mesh(new THREE.IcosahedronGeometry(4.0, 1), mat, [px, 0, pz], [0, px, 0], [sc * 1.0, sc * 0.6, sc * 1.4], rise);
-  }
-  B.box(M.yellow, FUEL.x + 4.5, 1.1, FUEL.z - 4, 2.2, 1.8, 3.6, rise);
-  B.box(M.steelDark, FUEL.x + 4.5, 0.9, FUEL.z - 6.4, 2.4, 0.5, 0.9, rise);
-  return { F, half, pitch, eave, ridge, skylights: [], roofTop: (x) => eave + (ridge - eave) * (1 - Math.abs(x - half) / half) + 0.2 };
 }

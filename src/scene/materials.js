@@ -89,9 +89,10 @@ export function createMaterials(tokens) {
     curb: std({ color: '#A8AFB8', roughness: 0.8 }),
     wall: std({ color: S.buildingWall, roughness: 0.78, metalness: 0.05 }),
     wallDark: std({ color: '#8C9DB0', roughness: 0.75, metalness: 0.1 }),
-    roof: std({ color: '#3E5670', roughness: 0.6, metalness: 0.3 }),
+    // every roof on site is MPD deep blue
+    roof: std({ color: B.mpdDeepBlue, roughness: 0.5, metalness: 0.25 }),
     roofP1: std({ color: B.mpdDeepBlue, roughness: 0.5, metalness: 0.25 }),
-    roofP2: std({ color: B.ecoGreen, roughness: 0.5, metalness: 0.25 }),
+    roofP2: std({ color: B.mpdDeepBlue, roughness: 0.5, metalness: 0.25 }),
     glass: std({ color: '#0B2A44', emissive: B.greenfieldCyan, emissiveIntensity: 0.55, roughness: 0.2, metalness: 0.4 }),
     concrete: std({ color: '#A3ABB4', roughness: 0.9 }),
     concreteLight: std({ color: '#BCC3CB', roughness: 0.9 }),
