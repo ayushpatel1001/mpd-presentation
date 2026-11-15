@@ -1,0 +1,316 @@
+1
+00:00:01,399 --> 00:00:03,669
+A fire spirit has set a forest alight.
+
+2
+00:00:03,789 --> 00:00:08,398
+And two nature spirits, Summer and Winter, are racing to be the one who saves it.
+
+3
+00:00:08,849 --> 00:00:16,856
+This is Living Forest Duel: a two-player game of recruiting animal spirits, planting trees and fighting fire. Here's how to play.
+
+4
+00:00:17,657 --> 00:00:19,317
+There are no points in this game.
+
+5
+00:00:19,867 --> 00:00:25,442
+Instead, there are four ways to win, and the first player to reach any one of them wins on the spot.
+
+6
+00:00:25,562 --> 00:00:27,800
+One: collect eight fire tokens.
+
+7
+00:00:27,920 --> 00:00:31,951
+Two: fill the recruitment line with nothing but animals of your season.
+
+8
+00:00:32,070 --> 00:00:35,528
+Three: plant nine protective trees in a three-by-three grid.
+
+9
+00:00:35,648 --> 00:00:42,133
+And four: push the fire spirit, Onibi, all the way to your opponent while they're already holding the Onibi card.
+
+10
+00:00:42,253 --> 00:00:45,973
+Keep those four in mind, because everything you do feeds one of them.
+
+11
+00:00:46,773 --> 00:00:48,595
+Here's how the table is set up.
+
+12
+00:00:49,145 --> 00:00:51,765
+It looks busy, so let's take it row by row.
+
+13
+00:00:51,884 --> 00:00:59,253
+In the middle is the clearing: seven cards in a row. Each one shows a fire value of two, three or four, and a bonus action.
+
+14
+00:00:59,372 --> 00:01:04,394
+Onibi starts on the middle card, and the two cards beside it start with a fire token.
+
+15
+00:01:04,515 --> 00:01:07,615
+Above the clearing are four piles of protective trees.
+
+16
+00:01:07,736 --> 00:01:14,484
+Below it is the recruitment line: the stag in the middle, with three animals from each player's own deck on either side.
+
+17
+00:01:14,605 --> 00:01:20,534
+Then comes an empty space called the shared help line, which fills up during play, and the shared draw pile.
+
+18
+00:01:20,653 --> 00:01:26,400
+At the front, each player has a starting tree, which is their personal forest, and two action tokens.
+
+19
+00:01:26,850 --> 00:01:33,441
+Each player also gets their own deck of fifteen guardian animals in their season, and seven fire varan cards.
+
+20
+00:01:33,561 --> 00:01:38,112
+The shared draw pile holds eighteen common animals that belong to nobody.
+
+21
+00:01:38,233 --> 00:01:47,521
+Before you start, if your three cards in the recruitment line cost twelve or less in total, swap the cheapest one for a new card, until the total is more than twelve.
+
+22
+00:01:47,971 --> 00:01:53,484
+Summer and Winter play exactly the same way. The only difference is which cards are yours.
+
+23
+00:01:54,284 --> 00:01:58,079
+Everything runs on guardian animal cards, so let's read one.
+
+24
+00:01:58,629 --> 00:02:03,278
+Down the left side are elements. There are four of them, and each one powers an action.
+
+25
+00:02:03,397 --> 00:02:09,646
+Sun recruits animals. Water puts out fire. Sprouts plant trees. And spirals move Onibi.
+
+26
+00:02:09,766 --> 00:02:18,968
+At the top, some animals show a symbol. A black one means the animal is solitary. A white one means it's gregarious. No symbol means it's neutral.
+
+27
+00:02:19,088 --> 00:02:23,576
+At the bottom is the season symbol, and, on animals you can recruit, a cost.
+
+28
+00:02:24,377 --> 00:02:25,912
+Now, how a round works.
+
+29
+00:02:26,462 --> 00:02:33,350
+Each player has two action tokens. Summer goes first, and in later rounds, whoever didn't play last goes first.
+
+30
+00:02:33,471 --> 00:02:39,857
+On your go, you do one of two things: reveal the top card of the shared draw pile, or spend an action token.
+
+31
+00:02:39,978 --> 00:02:44,754
+Revealing doesn't use up a token, so you can keep revealing, card after card.
+
+32
+00:02:44,875 --> 00:02:49,980
+A common animal or the stag goes into the shared help line, where both players can use it.
+
+33
+00:02:50,100 --> 00:02:58,418
+An animal or fire varan of your season goes into your personal line, and only you can use it. One of your opponent's season goes into theirs.
+
+34
+00:02:58,868 --> 00:03:05,618
+But there's a catch. Every solitary symbol you can see counts against you: the ones in the help line, plus your own line.
+
+35
+00:03:05,739 --> 00:03:12,082
+The moment you can see a third one, you lose one of your unused action tokens. A fourth costs you another.
+
+36
+00:03:12,203 --> 00:03:19,923
+Each gregarious symbol cancels one solitary symbol. So the same reveal can cost one player a token, and not the other.
+
+37
+00:03:20,043 --> 00:03:24,990
+Players take turns like this until both have used up their tokens. That ends the round.
+
+38
+00:03:25,790 --> 00:03:28,646
+Spending a token is the clever part of the game.
+
+39
+00:03:29,197 --> 00:03:35,381
+You place it so it points at the last element of one type in the help line. Let's say, the last water drop.
+
+40
+00:03:35,502 --> 00:03:41,632
+Count every water drop from the start of the line up to your token. That total is the strength of your action.
+
+41
+00:03:41,752 --> 00:03:45,708
+Those drops are now used up, for both players, for the rest of the round.
+
+42
+00:03:45,829 --> 00:03:52,620
+Then add the water in your own personal line and on your trees. Those are only yours, and you can count them again later.
+
+43
+00:03:52,741 --> 00:04:01,964
+If a token already points at water, the next count starts after it. And to do the same action twice, you need at least one fresh drop between your two tokens.
+
+44
+00:04:02,085 --> 00:04:06,998
+So the help line is a shared well, and every action you take drains it for your opponent.
+
+45
+00:04:07,799 --> 00:04:09,918
+Here's what each element lets you do.
+
+46
+00:04:10,468 --> 00:04:16,120
+Water puts out fire. Take fire tokens off the clearing, with a total value up to your water.
+
+47
+00:04:16,240 --> 00:04:25,058
+Each token is worth the fire value of the card it sits on. So with five water, you could take a three and a two. Collect eight tokens, and you win.
+
+48
+00:04:25,509 --> 00:04:31,330
+Sun recruits animals. Take cards from the recruitment line with a total cost up to your sun.
+
+49
+00:04:31,451 --> 00:04:38,360
+An animal of your season goes into your personal line. Anything else, including the stag, goes to the discard pile.
+
+50
+00:04:38,810 --> 00:04:46,149
+Then you refill the gaps from your own personal deck. So every time you recruit your opponent's animals, you replace them with yours.
+
+51
+00:04:46,269 --> 00:04:52,413
+Fill the line with only your season, and you win. The stag is neutral, so it has to be recruited too.
+
+52
+00:04:52,863 --> 00:05:01,790
+Sprouts plant protective trees. Take one to four trees from the tops of different piles, with a total cost up to your sprouts, and plant them straight away.
+
+53
+00:05:02,240 --> 00:05:05,843
+And spirals move Onibi. We'll come back to that in a moment.
+
+54
+00:05:06,644 --> 00:05:10,278
+Trees go into your personal forest, and they follow a few rules.
+
+55
+00:05:10,829 --> 00:05:17,418
+Every tree card has a river on it. You must always be able to trace that river back to the lake on your starting tree.
+
+56
+00:05:17,538 --> 00:05:23,189
+Trees always stand upright. And you can cover an old tree with a new one, but never your starting tree.
+
+57
+00:05:23,310 --> 00:05:28,449
+Plant a tree next to one with the same bonus action, and you trigger that bonus right away.
+
+58
+00:05:28,569 --> 00:05:36,737
+Best of all, a tree's elements count towards every action you take, every round. And nine trees in a three-by-three grid wins the game.
+
+59
+00:05:37,187 --> 00:05:39,927
+Here's what a growing forest looks like in the rulebook.
+
+60
+00:05:40,728 --> 00:05:41,887
+Now, Onibi.
+
+61
+00:05:42,437 --> 00:05:47,108
+Spirals move the fire spirit toward your opponent, up to one card per spiral.
+
+62
+00:05:47,228 --> 00:05:50,351
+Wherever it lands, you get that card's bonus action.
+
+63
+00:05:50,471 --> 00:05:54,545
+When Onibi runs off the end of the clearing, one of three things happens.
+
+64
+00:05:54,665 --> 00:06:01,029
+If the Onibi card is still in the supply, your opponent takes it, and Onibi carries on from the far end.
+
+65
+00:06:01,149 --> 00:06:05,914
+If you're the one holding the Onibi card, you put it back, and Onibi carries on.
+
+66
+00:06:06,035 --> 00:06:08,841
+And if your opponent is already holding it, you win.
+
+67
+00:06:09,290 --> 00:06:17,545
+Holding the Onibi card hurts, too. Any animal of your season that's revealed goes into the shared help line instead of your personal line.
+
+68
+00:06:17,665 --> 00:06:28,052
+Some bonus actions give you a Sanki card. Spend it to send a fire varan of your season back as soon as it's revealed, or to use an action token straight after a reveal.
+
+69
+00:06:28,853 --> 00:06:32,231
+When both players are out of tokens, the fire fights back.
+
+70
+00:06:32,781 --> 00:06:37,760
+Add up the fire values of every clearing card with Onibi or a fire token on it.
+
+71
+00:06:37,880 --> 00:06:44,820
+Each player compares that with their own water: their personal line, their forest, and whatever is left in the help line.
+
+72
+00:06:44,940 --> 00:06:56,127
+If the fire is strictly higher, you add one fire varan of your season to the discard pile for every burning card. When the discard pile is shuffled back in, those varans return to haunt you.
+
+73
+00:06:56,247 --> 00:07:04,927
+Then the fire spreads. Each card next to Onibi gets a fire token, if it doesn't have one. At the edge, it spreads to the far end instead.
+
+74
+00:07:05,048 --> 00:07:13,399
+Finally, everyone takes back their tokens, and both personal lines and the help line go to the discard pile. Then the next round begins.
+
+75
+00:07:14,199 --> 00:07:16,360
+So what makes Living Forest Duel tick?
+
+76
+00:07:16,910 --> 00:07:22,721
+Every reveal is a gamble. More cards mean more elements, but also more solitary symbols.
+
+77
+00:07:22,841 --> 00:07:28,108
+Every action drains the shared help line, so taking what you need takes it away from your opponent.
+
+78
+00:07:28,228 --> 00:07:36,801
+And the four ways to win pull you in different directions: fight the fire, flood the recruitment line, grow your forest, or chase your rival with Onibi.
+
+79
+00:07:37,252 --> 00:07:40,738
+Watch your opponent, pick your moment, and save the forest first.
+
