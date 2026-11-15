@@ -6,13 +6,15 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { serve, resilientRenderer, ROOT } from './browser.mjs';
 
-const OUT = path.join(ROOT, 'build', 'validation');
+// FILM=<name> validates the alternate cut in data/films/<name>/ into build/<name>/validation
+const FILM = process.env.FILM || '';
+const OUT = path.join(ROOT, 'build', FILM, 'validation');
 fs.mkdirSync(path.join(OUT, 'frames'), { recursive: true });
-const tl = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'timeline.resolved.json'), 'utf8'));
+const tl = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', ...(FILM ? ['films', FILM] : []), 'timeline.resolved.json'), 'utf8'));
 const D = tl.meta.durationSec;
 
 const srv = await serve();
-const r = await resilientRenderer(srv, { quality: 96 });
+const r = await resilientRenderer(srv, { quality: 96, query: FILM ? `?film=${FILM}` : '' });
 try {
   // (A) dense manifests
   const dense = [];

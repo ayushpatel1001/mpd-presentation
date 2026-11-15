@@ -151,10 +151,14 @@ def build_music(tl):
                 return s
         return sections[-1]
 
-    act_downbeats = {16, 32, 52, 64, 80}
-    drop_bars = {15, 31, 47, 63, 79}
+    # bar count and the outro's final chord follow the film length; shorter cuts can
+    # place their own cymbal downbeats / half-bar drops in music.downbeats / music.drops
+    n_bars = round(meta["durationSec"] / bar)
+    outro = next((s["bars"][0] for s in sections if s["name"] == "outro"), n_bars - 4)
+    act_downbeats = set(music.get("downbeats", [16, 32, 52, 64, 80]))
+    drop_bars = set(music.get("drops", [15, 31, 47, 63, 79]))
 
-    for b in range(96):
+    for b in range(n_bars):
         s = section_at(b)
         layers, energy = set(s["layers"]), s["energy"]
         chord = CHORDS[prog[(b // 2) % 4]]
@@ -178,7 +182,7 @@ def build_music(tl):
             sig = np.vstack([hp(lp(sig[0], fc), 140), hp(lp(sig[1], fc), 140)])
             e = env_adsr(n, 0.55, 1.5, 0.82, 1.4)
             pad.add(sig * e, t_bar, gain=0.055 if not dark else 0.06)
-        if b == 92:
+        if b == outro:
             # final open D-major chord, long and soft
             dur = 4 * bar + 3.5
             n = int(dur * SR)
@@ -196,8 +200,8 @@ def build_music(tl):
 
         # ---- sub drone
         if "sub" in layers and b % 2 == 0:
-            root = 38 if b >= 92 else chord["root"]
-            dur = (4 if b >= 92 else 2) * bar + 0.8
+            root = 38 if b >= outro else chord["root"]
+            dur = (4 if b >= outro else 2) * bar + 0.8
             n = int(dur * SR)
             v = sine(midi(root + 12 if root < 33 else root), n)
             bass.add(v * env_adsr(n, 0.4, 2.0, 0.9, 0.8), t_bar, gain=0.09)
@@ -323,7 +327,7 @@ def build_music(tl):
     low = np.vstack([lp(mix[0], 90), lp(mix[1], 90)])
     mix = mix - (1 - db(-4)) * low
 
-    # fade the tail to silence by 180 s
+    # fade the tail to silence by the end of the film
     n180 = int(meta["durationSec"] * SR)
     fade = np.ones(mix.shape[1])
     i0 = int((meta["durationSec"] - 3.0) * SR)
@@ -524,7 +528,7 @@ def write(path, x):
     wavfile.write(path, SR, x.T.astype(np.float32))
 
 
-def loudnorm(src, dst, lufs=-14.0, tp=-1.6):
+def loudnorm(src, dst, dur, lufs=-14.0, tp=-1.6):
     probe = subprocess.run(["ffmpeg", "-hide_banner", "-i", src, "-af",
                             f"loudnorm=I={lufs}:TP={tp}:LRA=11:print_format=json", "-f", "null", "-"],
                            capture_output=True, text=True).stderr
@@ -532,7 +536,7 @@ def loudnorm(src, dst, lufs=-14.0, tp=-1.6):
     af = (f"loudnorm=I={lufs}:TP={tp}:LRA=11:measured_I={js['input_i']}:measured_TP={js['input_tp']}:"
           f"measured_LRA={js['input_lra']}:measured_thresh={js['input_thresh']}:offset={js['target_offset']}:"
           f"linear=true,aresample=48000")
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-af", af, "-t", "180", "-c:a", "pcm_s24le", dst],
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-af", af, "-t", str(dur), "-c:a", "pcm_s24le", dst],
                    check=True)
 
 
@@ -558,7 +562,7 @@ def main():
         x = np.tanh(x * 1.1) / 1.1
         tmp = os.path.join(OUT, f"_pre_{name}.wav")
         write(tmp, x)
-        loudnorm(tmp, os.path.join(OUT, f"mix_{name}.wav"))
+        loudnorm(tmp, os.path.join(OUT, f"mix_{name}.wav"), tl["meta"]["durationSec"])
         os.remove(tmp)
         print(f"wrote mix_{name}.wav")
 

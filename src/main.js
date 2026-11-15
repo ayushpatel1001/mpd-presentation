@@ -144,7 +144,8 @@ async function boot() {
     if ((S.modelLabels ?? 0) > 0.5) drawModelLabels(hudCtx, labels.filter((l) => !opts.labels || opts.labels.includes(l.anchor)), screen, tokens);
     return { manifest, shot: cam.shot };
   };
-  window.__debug = { world, hud, THREE };
+  window.__debug = { world, hud, THREE, anchors };
+  window.filmDuration = timeline.meta.durationSec;
   window.ready = true;
 }
 

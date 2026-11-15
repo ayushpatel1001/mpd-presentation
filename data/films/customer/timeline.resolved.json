@@ -1,0 +1,4276 @@
+{
+  "meta": {
+    "title": "MPD Industries - Resins You Can Count On",
+    "logline": "A broad specialty-resin range, bulk stock on site, batch-consistent quality and a lower-carbon plant: MPD Industries as a supplier business customers can plan around.",
+    "durationSec": 103.125,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "bpm": 128,
+    "beatSec": 0.46875,
+    "barSec": 1.875
+  },
+  "acts": [
+    {
+      "id": "act1",
+      "n": 1,
+      "title": "Resins You Can Count On",
+      "start": 0,
+      "end": 15.0,
+      "eyebrow": "01",
+      "label": "UJJAIN · RESINS YOU CAN COUNT ON"
+    },
+    {
+      "id": "act2",
+      "n": 2,
+      "title": "Product Range",
+      "start": 15.0,
+      "end": 39.375,
+      "eyebrow": "02",
+      "label": "ONE SUPPLIER · A BROAD RANGE"
+    },
+    {
+      "id": "act3",
+      "n": 3,
+      "title": "Supply Security",
+      "start": 39.375,
+      "end": 58.125,
+      "eyebrow": "03",
+      "label": "SUPPLY YOU CAN PLAN AROUND"
+    },
+    {
+      "id": "act4",
+      "n": 4,
+      "title": "Quality",
+      "start": 58.125,
+      "end": 71.25,
+      "eyebrow": "04",
+      "label": "QUALITY, BATCH AFTER BATCH"
+    },
+    {
+      "id": "act5",
+      "n": 5,
+      "title": "Lower Carbon",
+      "start": 71.25,
+      "end": 84.375,
+      "eyebrow": "05",
+      "label": "LOWER-CARBON RESIN"
+    },
+    {
+      "id": "act6",
+      "n": 6,
+      "title": "Why MPD",
+      "start": 84.375,
+      "end": 103.125,
+      "eyebrow": "06",
+      "label": "WHY MPD"
+    }
+  ],
+  "camera": [
+    {
+      "id": "a1_blueprint",
+      "start": 0,
+      "end": 2.2,
+      "target": [
+        [
+          -3,
+          0,
+          2
+        ],
+        [
+          -3,
+          0,
+          2
+        ]
+      ],
+      "radius": [
+        430,
+        410
+      ],
+      "elev": [
+        89,
+        87
+      ],
+      "azim": [
+        -6,
+        -9
+      ],
+      "fov": [
+        30,
+        30
+      ],
+      "aperture": [
+        0,
+        0
+      ],
+      "ease": "linear",
+      "blendIn": 0
+    },
+    {
+      "id": "a1_descend",
+      "start": 2.2,
+      "end": 6.4,
+      "target": [
+        [
+          -3,
+          0,
+          2
+        ],
+        [
+          -3,
+          0,
+          2
+        ]
+      ],
+      "radius": [
+        410,
+        215
+      ],
+      "elev": [
+        87,
+        38
+      ],
+      "azim": [
+        -9,
+        -36
+      ],
+      "fov": [
+        30,
+        34
+      ],
+      "aperture": [
+        0,
+        0.25
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true
+    },
+    {
+      "id": "a1_orbit",
+      "start": 6.4,
+      "end": 12.6,
+      "target": [
+        [
+          -3,
+          0,
+          2
+        ],
+        [
+          -6,
+          0,
+          -4
+        ]
+      ],
+      "radius": [
+        215,
+        180
+      ],
+      "elev": [
+        38,
+        33
+      ],
+      "azim": [
+        -36,
+        -14
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.25,
+        0.3
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.6
+    },
+    {
+      "id": "a1_push",
+      "start": 12.6,
+      "end": 15.2,
+      "target": [
+        [
+          -6,
+          0,
+          -4
+        ],
+        [
+          6.1,
+          8,
+          -17.6
+        ]
+      ],
+      "radius": [
+        180,
+        60
+      ],
+      "elev": [
+        33,
+        36
+      ],
+      "azim": [
+        -14,
+        -50
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.3,
+        0.45
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.5,
+      "whoosh": true,
+      "whooshAt": 12.8
+    },
+    {
+      "id": "a2_hall",
+      "start": 15.2,
+      "end": 17.6,
+      "target": [
+        [
+          6.1,
+          8,
+          -17.6
+        ],
+        [
+          3.5,
+          5.5,
+          -9
+        ]
+      ],
+      "radius": [
+        60,
+        26
+      ],
+      "elev": [
+        36,
+        16
+      ],
+      "azim": [
+        -50,
+        -40
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.45,
+        0.8
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a2_hero",
+      "start": 17.6,
+      "end": 20.6,
+      "target": [
+        [
+          2.5,
+          4.8,
+          -7.4
+        ],
+        [
+          2.5,
+          4.6,
+          -7.4
+        ]
+      ],
+      "radius": [
+        15,
+        13
+      ],
+      "elev": [
+        10,
+        8
+      ],
+      "azim": [
+        -50,
+        -10
+      ],
+      "fov": [
+        34,
+        31
+      ],
+      "aperture": [
+        0.9,
+        1.1
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5,
+      "whoosh": true
+    },
+    {
+      "id": "a2_crane",
+      "start": 20.6,
+      "end": 23.6,
+      "target": [
+        [
+          4.0,
+          6.5,
+          -31.8
+        ],
+        [
+          4.5,
+          8.5,
+          -31.6
+        ]
+      ],
+      "radius": [
+        13,
+        12
+      ],
+      "elev": [
+        6,
+        10
+      ],
+      "azim": [
+        -78,
+        -70
+      ],
+      "fov": [
+        58,
+        54
+      ],
+      "aperture": [
+        0.2,
+        0.3
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.4,
+      "whoosh": true
+    },
+    {
+      "id": "a2_p2",
+      "start": 23.6,
+      "end": 25.8,
+      "target": [
+        [
+          29.5,
+          5,
+          -27
+        ],
+        [
+          29.5,
+          5,
+          -27
+        ]
+      ],
+      "radius": [
+        70,
+        44
+      ],
+      "elev": [
+        50,
+        40
+      ],
+      "azim": [
+        -20,
+        20
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.3,
+        0.6
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.2,
+      "whoosh": true,
+      "whooshAt": 23.7
+    },
+    {
+      "id": "a2_flaker",
+      "start": 25.8,
+      "end": 29.0,
+      "target": [
+        [
+          26,
+          1.8,
+          -11.5
+        ],
+        [
+          27,
+          1.6,
+          -8.5
+        ]
+      ],
+      "radius": [
+        11,
+        8.5
+      ],
+      "elev": [
+        26,
+        18
+      ],
+      "azim": [
+        -20,
+        10
+      ],
+      "fov": [
+        34,
+        32
+      ],
+      "aperture": [
+        0.8,
+        1.0
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5,
+      "whoosh": true
+    },
+    {
+      "id": "a2_pellet",
+      "start": 29.0,
+      "end": 32.0,
+      "target": [
+        [
+          27,
+          1.6,
+          -8.5
+        ],
+        [
+          33.4,
+          1.4,
+          -11.5
+        ]
+      ],
+      "radius": [
+        8.5,
+        9.5
+      ],
+      "elev": [
+        18,
+        22
+      ],
+      "azim": [
+        10,
+        40
+      ],
+      "fov": [
+        32,
+        33
+      ],
+      "aperture": [
+        1.0,
+        0.9
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a2_wide",
+      "start": 32.0,
+      "end": 37.6,
+      "target": [
+        [
+          33.4,
+          1.4,
+          -11.5
+        ],
+        [
+          29.5,
+          5,
+          -24
+        ]
+      ],
+      "radius": [
+        9.5,
+        52
+      ],
+      "elev": [
+        22,
+        42
+      ],
+      "azim": [
+        40,
+        70
+      ],
+      "fov": [
+        33,
+        34
+      ],
+      "aperture": [
+        0.9,
+        0.45
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5,
+      "whoosh": true,
+      "whooshAt": 32.1
+    },
+    {
+      "id": "a3_towh",
+      "start": 37.6,
+      "end": 40.4,
+      "target": [
+        [
+          29.5,
+          5,
+          -24
+        ],
+        [
+          -26,
+          3,
+          -17.6
+        ]
+      ],
+      "radius": [
+        52,
+        80
+      ],
+      "elev": [
+        42,
+        44
+      ],
+      "azim": [
+        70,
+        35
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.45,
+        0.4
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 37.7
+    },
+    {
+      "id": "a3_wh",
+      "start": 40.4,
+      "end": 42.6,
+      "target": [
+        [
+          -26,
+          3,
+          -17.6
+        ],
+        [
+          -23,
+          3,
+          -28
+        ]
+      ],
+      "radius": [
+        80,
+        58
+      ],
+      "elev": [
+        44,
+        40
+      ],
+      "azim": [
+        35,
+        70
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.4,
+        0.5
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a3_racks",
+      "start": 42.6,
+      "end": 44.6,
+      "target": [
+        [
+          -22,
+          4,
+          -36.5
+        ],
+        [
+          -22,
+          3.5,
+          -34
+        ]
+      ],
+      "radius": [
+        19,
+        16
+      ],
+      "elev": [
+        17,
+        12
+      ],
+      "azim": [
+        80,
+        100
+      ],
+      "fov": [
+        46,
+        44
+      ],
+      "aperture": [
+        0.6,
+        0.7
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.4,
+      "whoosh": true
+    },
+    {
+      "id": "a3_topeso",
+      "start": 44.6,
+      "end": 46.6,
+      "target": [
+        [
+          -30,
+          2,
+          20
+        ],
+        [
+          -41,
+          -1,
+          68
+        ]
+      ],
+      "radius": [
+        95,
+        70
+      ],
+      "elev": [
+        52,
+        46
+      ],
+      "azim": [
+        20,
+        -10
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.3,
+        0.4
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.2,
+      "whoosh": true,
+      "whooshAt": 44.7
+    },
+    {
+      "id": "a3_peso",
+      "start": 46.6,
+      "end": 49.6,
+      "target": [
+        [
+          -41,
+          -1,
+          68
+        ],
+        [
+          -41.6,
+          -2,
+          67.5
+        ]
+      ],
+      "radius": [
+        70,
+        26
+      ],
+      "elev": [
+        46,
+        16
+      ],
+      "azim": [
+        -10,
+        -36
+      ],
+      "fov": [
+        34,
+        36
+      ],
+      "aperture": [
+        0.4,
+        0.7
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4
+    },
+    {
+      "id": "a3_rise",
+      "start": 49.6,
+      "end": 51.6,
+      "target": [
+        [
+          -41.6,
+          -2,
+          67.5
+        ],
+        [
+          -64,
+          2,
+          -24
+        ]
+      ],
+      "radius": [
+        26,
+        110
+      ],
+      "elev": [
+        16,
+        48
+      ],
+      "azim": [
+        -36,
+        190
+      ],
+      "fov": [
+        36,
+        34
+      ],
+      "aperture": [
+        0.7,
+        0.3
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.3,
+      "whoosh": true,
+      "whooshAt": 49.7
+    },
+    {
+      "id": "a3_fg",
+      "start": 51.6,
+      "end": 54.2,
+      "target": [
+        [
+          -64,
+          2,
+          -24
+        ],
+        [
+          -64,
+          2,
+          -26
+        ]
+      ],
+      "radius": [
+        110,
+        44
+      ],
+      "elev": [
+        48,
+        30
+      ],
+      "azim": [
+        190,
+        160
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.3,
+        0.5
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4
+    },
+    {
+      "id": "a3_gate",
+      "start": 54.2,
+      "end": 58.4,
+      "target": [
+        [
+          -64,
+          2,
+          -26
+        ],
+        [
+          -49.9,
+          4.5,
+          -71.8
+        ]
+      ],
+      "radius": [
+        44,
+        32
+      ],
+      "elev": [
+        30,
+        12
+      ],
+      "azim": [
+        160,
+        191
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.5,
+        0.4
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 54.3
+    },
+    {
+      "id": "a4_fly",
+      "start": 58.4,
+      "end": 60.6,
+      "target": [
+        [
+          -49.9,
+          4.5,
+          -71.8
+        ],
+        [
+          6.1,
+          6,
+          -44
+        ]
+      ],
+      "radius": [
+        32,
+        40
+      ],
+      "elev": [
+        12,
+        20
+      ],
+      "azim": [
+        191,
+        145
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.4,
+        0.5
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 58.5
+    },
+    {
+      "id": "a4_cut",
+      "start": 60.6,
+      "end": 66.6,
+      "target": [
+        [
+          6.1,
+          6,
+          -44
+        ],
+        [
+          6.1,
+          6.5,
+          -44
+        ]
+      ],
+      "radius": [
+        32,
+        27
+      ],
+      "elev": [
+        16,
+        14
+      ],
+      "azim": [
+        150,
+        190
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.5,
+        0.7
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a4_out",
+      "start": 66.6,
+      "end": 71.4,
+      "target": [
+        [
+          6.1,
+          6.5,
+          -44
+        ],
+        [
+          6.1,
+          6,
+          -44
+        ]
+      ],
+      "radius": [
+        27,
+        60
+      ],
+      "elev": [
+        14,
+        36
+      ],
+      "azim": [
+        190,
+        215
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.7,
+        0.4
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a5_fly",
+      "start": 71.4,
+      "end": 73.6,
+      "target": [
+        [
+          6.1,
+          6,
+          -44
+        ],
+        [
+          38.1,
+          3,
+          62.9
+        ]
+      ],
+      "radius": [
+        60,
+        72
+      ],
+      "elev": [
+        36,
+        34
+      ],
+      "azim": [
+        215,
+        160
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.4,
+        0.35
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 71.5
+    },
+    {
+      "id": "a5_boiler",
+      "start": 73.6,
+      "end": 77.2,
+      "target": [
+        [
+          38.1,
+          3,
+          62.9
+        ],
+        [
+          38.6,
+          4,
+          60.9
+        ]
+      ],
+      "radius": [
+        72,
+        46
+      ],
+      "elev": [
+        34,
+        26
+      ],
+      "azim": [
+        160,
+        140
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.35,
+        0.6
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a5_solar",
+      "start": 77.2,
+      "end": 79.6,
+      "target": [
+        [
+          38.6,
+          4,
+          60.9
+        ],
+        [
+          15,
+          0,
+          20
+        ]
+      ],
+      "radius": [
+        46,
+        150
+      ],
+      "elev": [
+        26,
+        55
+      ],
+      "azim": [
+        140,
+        70
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.6,
+        0.25
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 77.3
+    },
+    {
+      "id": "a5_etp",
+      "start": 79.6,
+      "end": 82.6,
+      "target": [
+        [
+          15,
+          0,
+          20
+        ],
+        [
+          -8.5,
+          2,
+          64.5
+        ]
+      ],
+      "radius": [
+        150,
+        30
+      ],
+      "elev": [
+        55,
+        34
+      ],
+      "azim": [
+        70,
+        20
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.25,
+        0.65
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 79.7
+    },
+    {
+      "id": "a5_wide",
+      "start": 82.6,
+      "end": 85.2,
+      "target": [
+        [
+          -8.5,
+          2,
+          64.5
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "radius": [
+        30,
+        205
+      ],
+      "elev": [
+        34,
+        50
+      ],
+      "azim": [
+        20,
+        20
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.65,
+        0.25
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 82.7
+    },
+    {
+      "id": "a6_orbit",
+      "start": 85.2,
+      "end": 91.0,
+      "target": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          -3,
+          0,
+          2
+        ]
+      ],
+      "radius": [
+        205,
+        190
+      ],
+      "elev": [
+        50,
+        44
+      ],
+      "azim": [
+        20,
+        80
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.25,
+        0.3
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.6
+    },
+    {
+      "id": "a6_gate",
+      "start": 91.0,
+      "end": 94.4,
+      "target": [
+        [
+          -3,
+          0,
+          2
+        ],
+        [
+          22.85,
+          4.5,
+          -85.9
+        ]
+      ],
+      "radius": [
+        190,
+        30
+      ],
+      "elev": [
+        44,
+        12
+      ],
+      "azim": [
+        80,
+        191
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.3,
+        0.4
+      ],
+      "ease": "inOutCubic",
+      "blendIn": 0.4,
+      "whoosh": true,
+      "whooshAt": 91.1
+    },
+    {
+      "id": "a6_sign",
+      "start": 94.4,
+      "end": 97.0,
+      "target": [
+        [
+          22.85,
+          4.5,
+          -85.9
+        ],
+        [
+          22.85,
+          5,
+          -85.9
+        ]
+      ],
+      "radius": [
+        30,
+        25
+      ],
+      "elev": [
+        12,
+        10
+      ],
+      "azim": [
+        191,
+        186
+      ],
+      "fov": [
+        34,
+        34
+      ],
+      "aperture": [
+        0.4,
+        0.5
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.5
+    },
+    {
+      "id": "a6_rise",
+      "start": 97.0,
+      "end": 103.125,
+      "target": [
+        [
+          22.85,
+          4.5,
+          -85.9
+        ],
+        [
+          -3,
+          0,
+          2
+        ]
+      ],
+      "radius": [
+        30,
+        236
+      ],
+      "elev": [
+        12,
+        40
+      ],
+      "azim": [
+        191,
+        160
+      ],
+      "fov": [
+        34,
+        33
+      ],
+      "aperture": [
+        0.4,
+        1.2
+      ],
+      "ease": "inOutSine",
+      "blendIn": 0.8
+    }
+  ],
+  "sceneStates": {
+    "blueprint": [
+      [
+        0,
+        1
+      ],
+      [
+        2.4,
+        1
+      ],
+      [
+        6.0,
+        0
+      ]
+    ],
+    "buildingsRise": [
+      [
+        0,
+        0
+      ],
+      [
+        2.0,
+        0
+      ],
+      [
+        6.2,
+        1
+      ]
+    ],
+    "siteDim": [
+      [
+        0,
+        0.55
+      ],
+      [
+        2.0,
+        0.55
+      ],
+      [
+        3.4,
+        0
+      ]
+    ],
+    "plant1Cutaway": [
+      [
+        13.6,
+        0
+      ],
+      [
+        15.0,
+        1
+      ],
+      [
+        23.8,
+        1
+      ],
+      [
+        25.0,
+        0
+      ]
+    ],
+    "heroReactorFill": [
+      [
+        17.4,
+        0.15
+      ],
+      [
+        20.6,
+        0.75
+      ]
+    ],
+    "heroReactorHeat": [
+      [
+        17.0,
+        0
+      ],
+      [
+        18.4,
+        1
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        23.5,
+        0.2
+      ]
+    ],
+    "plant2Cutaway": [
+      [
+        23.8,
+        0
+      ],
+      [
+        25.2,
+        1
+      ],
+      [
+        37.0,
+        1
+      ],
+      [
+        38.2,
+        0
+      ]
+    ],
+    "finishingRun": [
+      [
+        24.0,
+        0
+      ],
+      [
+        25.6,
+        1
+      ],
+      [
+        37,
+        1
+      ],
+      [
+        38.4,
+        0.3
+      ]
+    ],
+    "wh1Cutaway": [
+      [
+        38.8,
+        0
+      ],
+      [
+        40.2,
+        1
+      ],
+      [
+        44.0,
+        1
+      ],
+      [
+        45.2,
+        0
+      ]
+    ],
+    "pesoXray": [
+      [
+        45.4,
+        0
+      ],
+      [
+        46.8,
+        1
+      ],
+      [
+        49.2,
+        1
+      ],
+      [
+        50.4,
+        0
+      ]
+    ],
+    "pesoFill": [
+      [
+        46.6,
+        0.2
+      ],
+      [
+        49.4,
+        0.85
+      ]
+    ],
+    "flowSolvent": [
+      [
+        46.8,
+        0
+      ],
+      [
+        49.0,
+        1
+      ],
+      [
+        50,
+        1
+      ],
+      [
+        51,
+        0.35
+      ]
+    ],
+    "flowResin": [
+      [
+        50.8,
+        0
+      ],
+      [
+        53.6,
+        1
+      ],
+      [
+        57.6,
+        1
+      ],
+      [
+        58.6,
+        0.35
+      ]
+    ],
+    "tankGradeColors": [
+      [
+        50.4,
+        0
+      ],
+      [
+        52.0,
+        1
+      ],
+      [
+        57.0,
+        1
+      ],
+      [
+        58.2,
+        0
+      ]
+    ],
+    "qaCutaway": [
+      [
+        60.0,
+        0
+      ],
+      [
+        61.4,
+        1
+      ],
+      [
+        69.4,
+        1
+      ],
+      [
+        70.8,
+        0
+      ]
+    ],
+    "boilerCutaway": [
+      [
+        73.8,
+        0
+      ],
+      [
+        75.0,
+        1
+      ],
+      [
+        76.6,
+        1
+      ],
+      [
+        77.6,
+        0
+      ]
+    ],
+    "utilityGlow": [
+      [
+        71.4,
+        0
+      ],
+      [
+        73.4,
+        1
+      ],
+      [
+        85,
+        1
+      ],
+      [
+        88,
+        0.5
+      ]
+    ],
+    "flowThermic": [
+      [
+        72.0,
+        0
+      ],
+      [
+        75.0,
+        1
+      ]
+    ],
+    "flowCooling": [
+      [
+        76.0,
+        0
+      ],
+      [
+        79.0,
+        1
+      ]
+    ],
+    "flowNitrogen": [
+      [
+        77.0,
+        0
+      ],
+      [
+        80.0,
+        1
+      ]
+    ],
+    "flowEffluent": [
+      [
+        79.4,
+        0
+      ],
+      [
+        81.8,
+        1
+      ]
+    ],
+    "flowsGlobalDim": [
+      [
+        0,
+        1
+      ],
+      [
+        84.0,
+        1
+      ],
+      [
+        87.0,
+        0.55
+      ]
+    ],
+    "cardsBackdrop": [
+      [
+        85.4,
+        0
+      ],
+      [
+        86.6,
+        1
+      ],
+      [
+        91.2,
+        1
+      ],
+      [
+        92.2,
+        0
+      ]
+    ],
+    "fadeToBlack": [
+      [
+        0,
+        1
+      ],
+      [
+        0.4,
+        0
+      ],
+      [
+        102.425,
+        0
+      ],
+      [
+        103.125,
+        1
+      ]
+    ]
+  },
+  "overlays": [
+    {
+      "id": "logo_card",
+      "type": "logoCard",
+      "in": 0.35,
+      "out": 3.6,
+      "sfx": "sting",
+      "props": {
+        "eyebrow": "UJJAIN PLANT · SPECIALTY RESINS",
+        "tagline": "WE INNOVATE. WE SERVE."
+      }
+    },
+    {
+      "id": "logo_bug",
+      "type": "logoBug",
+      "in": 3.65,
+      "out": 95.6,
+      "sfx": null
+    },
+    {
+      "id": "act1_title",
+      "type": "actTitle",
+      "in": 4.2,
+      "out": 12.4,
+      "sfx": "click",
+      "act": "act1"
+    },
+    {
+      "id": "act2_title",
+      "type": "actTitle",
+      "in": 15.2,
+      "out": 37.4,
+      "sfx": "click",
+      "act": "act2"
+    },
+    {
+      "id": "act3_title",
+      "type": "actTitle",
+      "in": 39.6,
+      "out": 57.6,
+      "sfx": "click",
+      "act": "act3"
+    },
+    {
+      "id": "act4_title",
+      "type": "actTitle",
+      "in": 58.6,
+      "out": 70.6,
+      "sfx": "click",
+      "act": "act4"
+    },
+    {
+      "id": "act5_title",
+      "type": "actTitle",
+      "in": 71.6,
+      "out": 83.8,
+      "sfx": "click",
+      "act": "act5"
+    },
+    {
+      "id": "act6_title",
+      "type": "actTitle",
+      "in": 85.0,
+      "out": 95.0,
+      "sfx": "click",
+      "act": "act6"
+    },
+    {
+      "id": "a1_reactors",
+      "type": "counter",
+      "in": 6.333,
+      "out": 12.4,
+      "sfx": "thump",
+      "major": true,
+      "props": {
+        "slot": "left1",
+        "value": 22,
+        "decimals": 0,
+        "prefix": "",
+        "unit": "",
+        "label": "REACTORS",
+        "sub": "2 KL → 16 KL · two plants"
+      }
+    },
+    {
+      "id": "a1_capacity",
+      "type": "counter",
+      "in": 7.993,
+      "out": 12.4,
+      "sfx": "thump",
+      "major": true,
+      "props": {
+        "slot": "left2",
+        "value": 82800,
+        "decimals": 0,
+        "prefix": "",
+        "unit": " T/yr",
+        "label": "ANNUAL CAPACITY",
+        "sub": "≈ 6,900 T a month"
+      }
+    },
+    {
+      "id": "a2_split",
+      "type": "barSplit",
+      "in": 16.659,
+      "out": 23.4,
+      "sfx": "click",
+      "props": {
+        "title": "PLANT 1 · LIQUID RESINS",
+        "color": "plant1",
+        "unit": "T/month",
+        "total": {
+          "value": 4373,
+          "label": "TONS PER MONTH",
+          "t": 21.429
+        },
+        "rows": [
+          {
+            "label": "Saturated Polyester",
+            "value": 2430,
+            "detail": "",
+            "t": 17.009
+          },
+          {
+            "label": "Alkyds",
+            "value": 1761,
+            "detail": "",
+            "t": 17.889
+          },
+          {
+            "label": "Modified Epoxy",
+            "value": 182,
+            "detail": "",
+            "t": 19.269
+          }
+        ],
+        "footer": "10 REACTORS · UP TO 16 KL EACH"
+      }
+    },
+    {
+      "id": "a2_hero",
+      "type": "callout3d",
+      "in": 17.9,
+      "out": 20.4,
+      "sfx": "click",
+      "props": {
+        "anchor": "heroReactor",
+        "title": "16 KL REACTORS",
+        "lines": [
+          "16.2 T per batch"
+        ],
+        "side": "left",
+        "dx": -250,
+        "dy": -170
+      }
+    },
+    {
+      "id": "a2_bag",
+      "type": "tag3d",
+      "in": 20.9,
+      "out": 23.4,
+      "sfx": "click",
+      "props": {
+        "anchor": "jumboBag",
+        "text": "JUMBO BAG → REACTOR CHARGING",
+        "side": "left",
+        "dx": -230,
+        "dy": -60
+      }
+    },
+    {
+      "id": "a2_matrix",
+      "type": "matrix",
+      "in": 24.413,
+      "out": 32.6,
+      "sfx": "click",
+      "props": {
+        "title": "PLANT 2 · SPECIALTY & SOLID RESINS",
+        "color": "plant2",
+        "total": {
+          "value": 2530,
+          "label": "TONS PER MONTH",
+          "t": 30.433
+        },
+        "rows": [
+          {
+            "label": "Reactive Polyamide",
+            "value": 960,
+            "detail": "",
+            "t": 24.763
+          },
+          {
+            "label": "Powder Polyester",
+            "value": 720,
+            "detail": "",
+            "t": 25.663
+          },
+          {
+            "label": "Acrylic Polyols",
+            "value": 608,
+            "detail": "",
+            "t": 27.113
+          },
+          {
+            "label": "Phenolic Resins",
+            "value": 180,
+            "detail": "",
+            "t": 28.483
+          },
+          {
+            "label": "R&D Scale-up",
+            "value": 62,
+            "detail": "",
+            "t": 29.453
+          }
+        ]
+      }
+    },
+    {
+      "id": "a2_chips",
+      "type": "chips",
+      "in": 29.403,
+      "out": 31.4,
+      "sfx": "click",
+      "props": {
+        "items": [
+          {
+            "icon": "flaker",
+            "text": "FLAKES",
+            "t": 29.433
+          },
+          {
+            "icon": "pellet",
+            "text": "PELLETS",
+            "t": 30.013
+          }
+        ]
+      }
+    },
+    {
+      "id": "a2_ladder",
+      "type": "reactorLadder",
+      "in": 31.771,
+      "out": 37.4,
+      "sfx": "click",
+      "props": {
+        "title": "CUSTOM GRADES · 2 → 16 KL",
+        "sizes": [
+          2,
+          4,
+          6,
+          10,
+          16
+        ]
+      }
+    },
+    {
+      "id": "a3_wh",
+      "type": "capacityHud",
+      "in": 41.774,
+      "out": 43.774,
+      "sfx": "thump",
+      "major": true,
+      "props": {
+        "value": "1,464",
+        "unit": "PALLETS",
+        "title": "RAW-MATERIAL STOCK",
+        "sub": "≈ 790 t on mobile compact racking",
+        "viz": "stackedBar",
+        "segUnit": "pallets",
+        "color": "steel",
+        "segments": [
+          {
+            "label": "500 kg positions",
+            "value": 1344
+          },
+          {
+            "label": "1 t positions",
+            "value": 120
+          }
+        ],
+        "detail": "Warehouse-1 · 6-level racks"
+      }
+    },
+    {
+      "id": "a3_racks_tag",
+      "type": "tag3d",
+      "in": 42.9,
+      "out": 44.4,
+      "sfx": "click",
+      "props": {
+        "anchor": "wh1Racks",
+        "text": "MOBILE COMPACT RACKING",
+        "side": "right",
+        "dx": 200,
+        "dy": -120
+      }
+    },
+    {
+      "id": "a3_peso",
+      "type": "capacityHud",
+      "in": 43.874,
+      "out": 47.384,
+      "sfx": "thump",
+      "major": true,
+      "props": {
+        "value": "600",
+        "unit": "KL",
+        "title": "SOLVENTS ON SITE",
+        "sub": "12 × 50 KL underground tanks",
+        "detail": "Xylene · Toluene · MTO · C9/C10 · Butyl glycol",
+        "viz": "tankGrid",
+        "count": 12,
+        "color": "solvent"
+      }
+    },
+    {
+      "id": "a3_peso_tag",
+      "type": "tag3d",
+      "in": 47.4,
+      "out": 49.4,
+      "sfx": null,
+      "props": {
+        "anchor": "pesoTanks",
+        "text": "UNDERGROUND · PESO TANK AREA",
+        "side": "right",
+        "dx": 210,
+        "dy": -170
+      }
+    },
+    {
+      "id": "a3_fg",
+      "type": "capacityHud",
+      "in": 47.484,
+      "out": 54.0,
+      "sfx": "thump",
+      "major": true,
+      "props": {
+        "value": "~1,045",
+        "unit": "KL",
+        "title": "FINISHED RESIN IN STOCK",
+        "sub": "22 grade-dedicated tanks",
+        "viz": "stackedBar",
+        "color": "resin",
+        "segments": [
+          {
+            "label": "Polyester ×6",
+            "value": 480
+          },
+          {
+            "label": "Alkyd ×6",
+            "value": 340
+          },
+          {
+            "label": "Other grades ×10",
+            "value": 225
+          }
+        ]
+      }
+    },
+    {
+      "id": "a3_totals",
+      "type": "storageTotals",
+      "in": 51.094,
+      "out": 57.6,
+      "sfx": "click",
+      "props": {
+        "title": "STOCK ON SITE",
+        "rows": [
+          {
+            "label": "Raw materials · Warehouse-1",
+            "value": "1,464 pallets ≈ 790 t",
+            "t": 51.194
+          },
+          {
+            "label": "Solvents · PESO underground",
+            "value": "600 KL",
+            "t": 52.114
+          },
+          {
+            "label": "Finished resin · 22 tanks",
+            "value": "~1,045 KL",
+            "t": 52.744
+          }
+        ],
+        "total": {
+          "text": "READY TO SHIP",
+          "t": 53.034
+        }
+      }
+    },
+    {
+      "id": "a3_ready",
+      "type": "statChip",
+      "in": 54.225,
+      "out": 57.6,
+      "sfx": "click",
+      "props": {
+        "slot": "leftTop",
+        "text": "SHORT LEAD TIMES · STEADY DELIVERIES"
+      }
+    },
+    {
+      "id": "a4_badges",
+      "type": "ecoBadges",
+      "in": 58.678,
+      "out": 70.4,
+      "sfx": "click",
+      "props": {
+        "fill": "#00529B",
+        "glow": "rgba(0,163,224,0.5)",
+        "items": [
+          {
+            "icon": "gauge",
+            "title": "RECIPE-DRIVEN AUTOMATION",
+            "sub": "Controlled from one central control room",
+            "t": 58.708
+          },
+          {
+            "icon": "check",
+            "title": "BATCH-TO-BATCH CONSISTENCY",
+            "sub": "Every batch matches the last",
+            "t": 61.508
+          },
+          {
+            "icon": "flask",
+            "title": "IN-HOUSE QC LAB",
+            "sub": "Every batch released before dispatch",
+            "t": 63.391
+          },
+          {
+            "icon": "spray",
+            "title": "APPLICATION LAB",
+            "sub": "Tested the way you will use it",
+            "t": 66.091
+          }
+        ]
+      }
+    },
+    {
+      "id": "a4_wet_tag",
+      "type": "tag3d",
+      "in": 63.711,
+      "out": 69.2,
+      "sfx": null,
+      "props": {
+        "anchor": "wetLab",
+        "text": "QC LAB · FUME HOODS",
+        "side": "left",
+        "dx": -230,
+        "dy": -90
+      }
+    },
+    {
+      "id": "a4_app_tag",
+      "type": "tag3d",
+      "in": 66.111,
+      "out": 69.2,
+      "sfx": null,
+      "props": {
+        "anchor": "appLab",
+        "text": "APPLICATION LAB",
+        "side": "left",
+        "dx": -230,
+        "dy": 70
+      }
+    },
+    {
+      "id": "a5_badges",
+      "type": "ecoBadges",
+      "in": 72.129,
+      "out": 83.8,
+      "sfx": "click",
+      "props": {
+        "compact": true,
+        "items": [
+          {
+            "icon": "flame",
+            "title": "AGRO-WASTE FIRED HEAT",
+            "sub": "2 × 30 lakh kcal/h thermic heaters",
+            "t": 72.209
+          },
+          {
+            "icon": "check",
+            "title": "NO COAL",
+            "sub": "Renewable biomass instead",
+            "t": 74.279
+          },
+          {
+            "icon": "sun",
+            "title": "0.7 MWp ROOFTOP SOLAR",
+            "sub": "1,257 modules across the site",
+            "t": 75.159
+          },
+          {
+            "icon": "drop",
+            "title": "50 KLD EFFLUENT TREATMENT",
+            "sub": "Treated on site",
+            "t": 78.039
+          },
+          {
+            "icon": "gauge",
+            "title": "LOWER-CARBON RESIN",
+            "sub": "For your sustainability goals",
+            "t": 80.505
+          }
+        ]
+      }
+    },
+    {
+      "id": "a5_heater_tag",
+      "type": "tag3d",
+      "in": 74.0,
+      "out": 76.8,
+      "sfx": null,
+      "props": {
+        "anchor": "heaters",
+        "text": "BIOMASS-FIRED THERMIC HEATERS",
+        "side": "left",
+        "dx": -220,
+        "dy": -150
+      }
+    },
+    {
+      "id": "a5_etp_tag",
+      "type": "tag3d",
+      "in": 80.4,
+      "out": 82.4,
+      "sfx": "click",
+      "props": {
+        "anchor": "etp",
+        "text": "50 KLD EFFLUENT TREATMENT",
+        "side": "left",
+        "dx": -220,
+        "dy": -120
+      }
+    },
+    {
+      "id": "a6_cards",
+      "type": "partnerCards",
+      "in": 84.958,
+      "out": 91.8,
+      "sfx": "click",
+      "props": {
+        "items": [
+          {
+            "n": "01",
+            "title": "Reliable Supply",
+            "body": "Raw materials, solvents and finished resin stocked on site for steady deliveries.",
+            "t": 84.958
+          },
+          {
+            "n": "02",
+            "title": "Consistent Quality",
+            "body": "Recipe-driven batches, each released by our QC lab to your specification.",
+            "t": 86.428
+          },
+          {
+            "n": "03",
+            "title": "Technical Support",
+            "body": "Application-lab testing and custom grades developed with your team.",
+            "t": 87.948
+          }
+        ]
+      }
+    },
+    {
+      "id": "a6_endcard",
+      "type": "logoCard",
+      "in": 96.0,
+      "out": 104.125,
+      "sfx": "sting",
+      "props": {
+        "eyebrow": "SPECIALTY RESINS · MADE IN UJJAIN",
+        "tagline": "WE INNOVATE. WE SERVE."
+      }
+    },
+    {
+      "id": "captions",
+      "type": "captions",
+      "in": 0.0,
+      "out": 103.125,
+      "sfx": null,
+      "props": {
+        "maxChars": 58,
+        "maxRows": 2
+      }
+    }
+  ],
+  "narration": [
+    {
+      "id": "c1_l1",
+      "start": 0.9375,
+      "end": 3.2375,
+      "text": "Resins your production can count on."
+    },
+    {
+      "id": "c1_l2",
+      "start": 4.45312,
+      "end": 11.57313,
+      "text": "MPD Industries, Ujjain: 22 reactors, nearly 83,000 tons a year, built to keep your lines running."
+    },
+    {
+      "id": "c2_l1",
+      "start": 15.46875,
+      "end": 22.58875,
+      "text": "Plant 1 makes saturated polyester, alkyds and modified epoxy, in reactors up to 16 KL."
+    },
+    {
+      "id": "c2_l2",
+      "start": 23.20312,
+      "end": 30.75313,
+      "text": "Plant 2 adds reactive polyamides, powder polyesters, acrylic polyols and phenolics, as flakes or pellets."
+    },
+    {
+      "id": "c2_l3",
+      "start": 31.64062,
+      "end": 37.06063,
+      "text": "Need a custom grade? We develop it with you, from 2 KL trials to full batches."
+    },
+    {
+      "id": "c3_l1",
+      "start": 39.84375,
+      "end": 46.66375,
+      "text": "And supply you can plan around: raw materials stocked in bulk, and 600 KL of solvents underground."
+    },
+    {
+      "id": "c3_l2",
+      "start": 47.34375,
+      "end": 53.58375,
+      "text": "Over 1,000 KL of finished resin waits in 22 grade-dedicated tanks, ready to ship."
+    },
+    {
+      "id": "c3_l3",
+      "start": 54.375,
+      "end": 56.785,
+      "text": "Short lead times. Steady deliveries."
+    },
+    {
+      "id": "c4_l1",
+      "start": 58.82812,
+      "end": 62.66813,
+      "text": "Recipe-driven automation makes every batch match the last."
+    },
+    {
+      "id": "c4_l2",
+      "start": 63.28125,
+      "end": 68.89125,
+      "text": "Our QC lab releases each one, and our application lab tests it the way you will use it."
+    },
+    {
+      "id": "c5_l1",
+      "start": 71.71875,
+      "end": 79.86875,
+      "text": "Heat from agro-waste biomass, not coal. 0.7 MW of rooftop solar. Effluent treated on site."
+    },
+    {
+      "id": "c5_l2",
+      "start": 80.625,
+      "end": 83.495,
+      "text": "Lower-carbon resin for your sustainability goals."
+    },
+    {
+      "id": "c6_l1",
+      "start": 85.07812,
+      "end": 90.88813,
+      "text": "Reliable supply, consistent quality, and technical support from people who know your process."
+    },
+    {
+      "id": "c6_l2",
+      "start": 96.5625,
+      "end": 100.2425,
+      "text": "MPD Industries. We innovate. We serve."
+    }
+  ],
+  "captions": [
+    {
+      "line": "c1_l1",
+      "words": [
+        {
+          "text": "Resins",
+          "start": 0.938,
+          "end": 1.547
+        },
+        {
+          "text": "your",
+          "start": 1.547,
+          "end": 1.797
+        },
+        {
+          "text": "production",
+          "start": 1.797,
+          "end": 2.407
+        },
+        {
+          "text": "can",
+          "start": 2.407,
+          "end": 2.578
+        },
+        {
+          "text": "count",
+          "start": 2.578,
+          "end": 2.948
+        },
+        {
+          "text": "on.",
+          "start": 2.948,
+          "end": 3.228
+        }
+      ],
+      "start": 0.818,
+      "end": 3.778,
+      "text": "Resins your production can count on."
+    },
+    {
+      "line": "c1_l2",
+      "words": [
+        {
+          "text": "MPD",
+          "start": 4.453,
+          "end": 5.113
+        },
+        {
+          "text": "Industries,",
+          "start": 5.113,
+          "end": 5.663
+        },
+        {
+          "text": "Ujjain:",
+          "start": 5.663,
+          "end": 6.153
+        },
+        {
+          "text": "22",
+          "start": 6.453,
+          "end": 6.973
+        },
+        {
+          "text": "reactors,",
+          "start": 6.973,
+          "end": 7.603
+        },
+        {
+          "text": "nearly",
+          "start": 7.693,
+          "end": 8.113
+        },
+        {
+          "text": "83,000",
+          "start": 8.113,
+          "end": 9.073
+        },
+        {
+          "text": "tons",
+          "start": 9.073,
+          "end": 9.373
+        },
+        {
+          "text": "a",
+          "start": 9.373,
+          "end": 9.403
+        },
+        {
+          "text": "year,",
+          "start": 9.403,
+          "end": 9.663
+        },
+        {
+          "text": "built",
+          "start": 10.013,
+          "end": 10.293
+        },
+        {
+          "text": "to",
+          "start": 10.293,
+          "end": 10.413
+        },
+        {
+          "text": "keep",
+          "start": 10.413,
+          "end": 10.683
+        },
+        {
+          "text": "your",
+          "start": 10.683,
+          "end": 10.783
+        },
+        {
+          "text": "lines",
+          "start": 10.783,
+          "end": 11.133
+        },
+        {
+          "text": "running.",
+          "start": 11.133,
+          "end": 11.563
+        }
+      ],
+      "start": 4.333,
+      "end": 12.113,
+      "text": "MPD Industries, Ujjain: 22 reactors, nearly 83,000 tons a year, built to keep your lines running."
+    },
+    {
+      "line": "c2_l1",
+      "words": [
+        {
+          "text": "Plant",
+          "start": 15.469,
+          "end": 15.829
+        },
+        {
+          "text": "1",
+          "start": 15.829,
+          "end": 16.239
+        },
+        {
+          "text": "makes",
+          "start": 16.239,
+          "end": 16.539
+        },
+        {
+          "text": "saturated",
+          "start": 16.539,
+          "end": 17.109
+        },
+        {
+          "text": "polyester,",
+          "start": 17.109,
+          "end": 17.829
+        },
+        {
+          "text": "alkyds",
+          "start": 17.989,
+          "end": 18.719
+        },
+        {
+          "text": "and",
+          "start": 18.719,
+          "end": 18.849
+        },
+        {
+          "text": "modified",
+          "start": 18.849,
+          "end": 19.369
+        },
+        {
+          "text": "epoxy,",
+          "start": 19.369,
+          "end": 19.919
+        },
+        {
+          "text": "in",
+          "start": 20.169,
+          "end": 20.259
+        },
+        {
+          "text": "reactors",
+          "start": 20.259,
+          "end": 20.889
+        },
+        {
+          "text": "up",
+          "start": 20.889,
+          "end": 21.029
+        },
+        {
+          "text": "to",
+          "start": 21.029,
+          "end": 21.129
+        },
+        {
+          "text": "16 KL.",
+          "start": 21.129,
+          "end": 22.469
+        }
+      ],
+      "start": 15.349,
+      "end": 23.019,
+      "text": "Plant 1 makes saturated polyester, alkyds and modified epoxy, in reactors up to 16 KL."
+    },
+    {
+      "line": "c2_l2",
+      "words": [
+        {
+          "text": "Plant",
+          "start": 23.203,
+          "end": 23.553
+        },
+        {
+          "text": "2",
+          "start": 23.553,
+          "end": 24.013
+        },
+        {
+          "text": "adds",
+          "start": 24.013,
+          "end": 24.333
+        },
+        {
+          "text": "reactive",
+          "start": 24.333,
+          "end": 24.863
+        },
+        {
+          "text": "polyamides,",
+          "start": 24.863,
+          "end": 25.763
+        },
+        {
+          "text": "powder",
+          "start": 25.763,
+          "end": 26.223
+        },
+        {
+          "text": "polyesters,",
+          "start": 26.223,
+          "end": 27.033
+        }
+      ],
+      "start": 23.083,
+      "end": 27.083,
+      "text": "Plant 2 adds reactive polyamides, powder polyesters,"
+    },
+    {
+      "line": "c2_l2",
+      "words": [
+        {
+          "text": "acrylic",
+          "start": 27.213,
+          "end": 27.613
+        },
+        {
+          "text": "polyols",
+          "start": 27.613,
+          "end": 28.393
+        },
+        {
+          "text": "and",
+          "start": 28.393,
+          "end": 28.583
+        },
+        {
+          "text": "phenolics,",
+          "start": 28.583,
+          "end": 29.213
+        },
+        {
+          "text": "as",
+          "start": 29.373,
+          "end": 29.553
+        },
+        {
+          "text": "flakes",
+          "start": 29.553,
+          "end": 29.983
+        },
+        {
+          "text": "or",
+          "start": 29.983,
+          "end": 30.133
+        },
+        {
+          "text": "pellets.",
+          "start": 30.133,
+          "end": 30.623
+        }
+      ],
+      "start": 27.093,
+      "end": 31.173,
+      "text": "acrylic polyols and phenolics, as flakes or pellets."
+    },
+    {
+      "line": "c2_l3",
+      "words": [
+        {
+          "text": "Need",
+          "start": 31.641,
+          "end": 31.901
+        },
+        {
+          "text": "a",
+          "start": 31.901,
+          "end": 31.971
+        },
+        {
+          "text": "custom",
+          "start": 31.971,
+          "end": 32.441
+        },
+        {
+          "text": "grade?",
+          "start": 32.441,
+          "end": 32.901
+        },
+        {
+          "text": "We",
+          "start": 33.161,
+          "end": 33.321
+        },
+        {
+          "text": "develop",
+          "start": 33.321,
+          "end": 33.711
+        },
+        {
+          "text": "it",
+          "start": 33.711,
+          "end": 33.811
+        },
+        {
+          "text": "with",
+          "start": 33.811,
+          "end": 34.071
+        },
+        {
+          "text": "you,",
+          "start": 34.071,
+          "end": 34.311
+        },
+        {
+          "text": "from",
+          "start": 34.461,
+          "end": 34.701
+        },
+        {
+          "text": "2 KL",
+          "start": 34.701,
+          "end": 35.431
+        },
+        {
+          "text": "trials",
+          "start": 35.431,
+          "end": 35.991
+        },
+        {
+          "text": "to",
+          "start": 35.991,
+          "end": 36.111
+        },
+        {
+          "text": "full",
+          "start": 36.111,
+          "end": 36.421
+        },
+        {
+          "text": "batches.",
+          "start": 36.421,
+          "end": 36.931
+        }
+      ],
+      "start": 31.521,
+      "end": 37.481,
+      "text": "Need a custom grade? We develop it with you, from 2 KL trials to full batches."
+    },
+    {
+      "line": "c3_l1",
+      "words": [
+        {
+          "text": "And",
+          "start": 39.844,
+          "end": 40.014
+        },
+        {
+          "text": "supply",
+          "start": 40.014,
+          "end": 40.524
+        },
+        {
+          "text": "you",
+          "start": 40.524,
+          "end": 40.684
+        },
+        {
+          "text": "can",
+          "start": 40.684,
+          "end": 40.864
+        },
+        {
+          "text": "plan",
+          "start": 40.864,
+          "end": 41.184
+        },
+        {
+          "text": "around:",
+          "start": 41.184,
+          "end": 41.634
+        },
+        {
+          "text": "raw",
+          "start": 41.874,
+          "end": 42.134
+        },
+        {
+          "text": "materials",
+          "start": 42.134,
+          "end": 42.734
+        },
+        {
+          "text": "stocked",
+          "start": 42.734,
+          "end": 43.164
+        },
+        {
+          "text": "in",
+          "start": 43.164,
+          "end": 43.284
+        },
+        {
+          "text": "bulk,",
+          "start": 43.284,
+          "end": 43.624
+        },
+        {
+          "text": "and",
+          "start": 43.624,
+          "end": 43.994
+        },
+        {
+          "text": "600 KL",
+          "start": 43.994,
+          "end": 45.304
+        },
+        {
+          "text": "of",
+          "start": 45.304,
+          "end": 45.374
+        },
+        {
+          "text": "solvents",
+          "start": 45.374,
+          "end": 45.924
+        },
+        {
+          "text": "underground.",
+          "start": 45.924,
+          "end": 46.554
+        }
+      ],
+      "start": 39.724,
+      "end": 47.104,
+      "text": "And supply you can plan around: raw materials stocked in bulk, and 600 KL of solvents underground."
+    },
+    {
+      "line": "c3_l2",
+      "words": [
+        {
+          "text": "Over",
+          "start": 47.344,
+          "end": 47.604
+        },
+        {
+          "text": "1,000 KL",
+          "start": 47.604,
+          "end": 49.204
+        },
+        {
+          "text": "of",
+          "start": 49.204,
+          "end": 49.284
+        },
+        {
+          "text": "finished",
+          "start": 49.284,
+          "end": 49.714
+        },
+        {
+          "text": "resin",
+          "start": 49.714,
+          "end": 50.074
+        },
+        {
+          "text": "waits",
+          "start": 50.184,
+          "end": 50.434
+        },
+        {
+          "text": "in",
+          "start": 50.434,
+          "end": 50.594
+        },
+        {
+          "text": "22",
+          "start": 50.594,
+          "end": 51.294
+        },
+        {
+          "text": "grade-dedicated",
+          "start": 51.294,
+          "end": 52.214
+        },
+        {
+          "text": "tanks,",
+          "start": 52.214,
+          "end": 52.624
+        },
+        {
+          "text": "ready",
+          "start": 52.844,
+          "end": 53.074
+        },
+        {
+          "text": "to",
+          "start": 53.074,
+          "end": 53.134
+        },
+        {
+          "text": "ship.",
+          "start": 53.134,
+          "end": 53.574
+        }
+      ],
+      "start": 47.224,
+      "end": 54.124,
+      "text": "Over 1,000 KL of finished resin waits in 22 grade-dedicated tanks, ready to ship."
+    },
+    {
+      "line": "c3_l3",
+      "words": [
+        {
+          "text": "Short",
+          "start": 54.375,
+          "end": 54.725
+        },
+        {
+          "text": "lead",
+          "start": 54.725,
+          "end": 54.975
+        },
+        {
+          "text": "times.",
+          "start": 54.975,
+          "end": 55.455
+        },
+        {
+          "text": "Steady",
+          "start": 55.655,
+          "end": 56.075
+        },
+        {
+          "text": "deliveries.",
+          "start": 56.075,
+          "end": 56.645
+        }
+      ],
+      "start": 54.255,
+      "end": 57.195,
+      "text": "Short lead times. Steady deliveries."
+    },
+    {
+      "line": "c4_l1",
+      "words": [
+        {
+          "text": "Recipe-driven",
+          "start": 58.828,
+          "end": 59.728
+        },
+        {
+          "text": "automation",
+          "start": 59.728,
+          "end": 60.438
+        },
+        {
+          "text": "makes",
+          "start": 60.518,
+          "end": 60.778
+        },
+        {
+          "text": "every",
+          "start": 60.778,
+          "end": 61.188
+        },
+        {
+          "text": "batch",
+          "start": 61.188,
+          "end": 61.628
+        },
+        {
+          "text": "match",
+          "start": 61.628,
+          "end": 61.998
+        },
+        {
+          "text": "the",
+          "start": 61.998,
+          "end": 62.068
+        },
+        {
+          "text": "last.",
+          "start": 62.068,
+          "end": 62.558
+        }
+      ],
+      "start": 58.708,
+      "end": 63.108,
+      "text": "Recipe-driven automation makes every batch match the last."
+    },
+    {
+      "line": "c4_l2",
+      "words": [
+        {
+          "text": "Our",
+          "start": 63.281,
+          "end": 63.511
+        },
+        {
+          "text": "QC",
+          "start": 63.511,
+          "end": 64.031
+        },
+        {
+          "text": "lab",
+          "start": 64.031,
+          "end": 64.421
+        },
+        {
+          "text": "releases",
+          "start": 64.421,
+          "end": 64.951
+        },
+        {
+          "text": "each",
+          "start": 65.071,
+          "end": 65.271
+        },
+        {
+          "text": "one,",
+          "start": 65.271,
+          "end": 65.711
+        },
+        {
+          "text": "and",
+          "start": 65.921,
+          "end": 66.131
+        },
+        {
+          "text": "our",
+          "start": 66.131,
+          "end": 66.211
+        },
+        {
+          "text": "application",
+          "start": 66.211,
+          "end": 66.861
+        },
+        {
+          "text": "lab",
+          "start": 66.861,
+          "end": 67.181
+        },
+        {
+          "text": "tests",
+          "start": 67.181,
+          "end": 67.611
+        },
+        {
+          "text": "it",
+          "start": 67.611,
+          "end": 67.741
+        },
+        {
+          "text": "the",
+          "start": 67.741,
+          "end": 67.801
+        },
+        {
+          "text": "way",
+          "start": 67.801,
+          "end": 67.951
+        },
+        {
+          "text": "you",
+          "start": 67.951,
+          "end": 68.231
+        },
+        {
+          "text": "will",
+          "start": 68.231,
+          "end": 68.411
+        },
+        {
+          "text": "use",
+          "start": 68.411,
+          "end": 68.701
+        },
+        {
+          "text": "it.",
+          "start": 68.701,
+          "end": 68.881
+        }
+      ],
+      "start": 63.161,
+      "end": 69.431,
+      "text": "Our QC lab releases each one, and our application lab tests it the way you will use it."
+    },
+    {
+      "line": "c5_l1",
+      "words": [
+        {
+          "text": "Heat",
+          "start": 71.719,
+          "end": 72.059
+        },
+        {
+          "text": "from",
+          "start": 72.059,
+          "end": 72.329
+        },
+        {
+          "text": "agro-waste",
+          "start": 72.329,
+          "end": 73.219
+        },
+        {
+          "text": "biomass,",
+          "start": 73.219,
+          "end": 74.029
+        },
+        {
+          "text": "not",
+          "start": 74.159,
+          "end": 74.399
+        },
+        {
+          "text": "coal.",
+          "start": 74.399,
+          "end": 74.829
+        },
+        {
+          "text": "0.7 MW",
+          "start": 75.279,
+          "end": 76.549
+        },
+        {
+          "text": "of",
+          "start": 76.549,
+          "end": 76.709
+        },
+        {
+          "text": "rooftop",
+          "start": 76.709,
+          "end": 77.249
+        },
+        {
+          "text": "solar.",
+          "start": 77.249,
+          "end": 77.739
+        },
+        {
+          "text": "Effluent",
+          "start": 78.159,
+          "end": 78.599
+        },
+        {
+          "text": "treated",
+          "start": 78.599,
+          "end": 79.089
+        },
+        {
+          "text": "on",
+          "start": 79.089,
+          "end": 79.369
+        },
+        {
+          "text": "site.",
+          "start": 79.369,
+          "end": 79.859
+        }
+      ],
+      "start": 71.599,
+      "end": 80.409,
+      "text": "Heat from agro-waste biomass, not coal. 0.7 MW of rooftop solar. Effluent treated on site."
+    },
+    {
+      "line": "c5_l2",
+      "words": [
+        {
+          "text": "Lower-carbon",
+          "start": 80.625,
+          "end": 81.405
+        },
+        {
+          "text": "resin",
+          "start": 81.405,
+          "end": 81.875
+        },
+        {
+          "text": "for",
+          "start": 81.875,
+          "end": 82.025
+        },
+        {
+          "text": "your",
+          "start": 82.025,
+          "end": 82.205
+        },
+        {
+          "text": "sustainability",
+          "start": 82.205,
+          "end": 82.935
+        },
+        {
+          "text": "goals.",
+          "start": 82.935,
+          "end": 83.355
+        }
+      ],
+      "start": 80.505,
+      "end": 83.905,
+      "text": "Lower-carbon resin for your sustainability goals."
+    },
+    {
+      "line": "c6_l1",
+      "words": [
+        {
+          "text": "Reliable",
+          "start": 85.078,
+          "end": 85.718
+        },
+        {
+          "text": "supply,",
+          "start": 85.718,
+          "end": 86.328
+        },
+        {
+          "text": "consistent",
+          "start": 86.548,
+          "end": 87.178
+        },
+        {
+          "text": "quality,",
+          "start": 87.178,
+          "end": 87.678
+        },
+        {
+          "text": "and",
+          "start": 87.678,
+          "end": 88.068
+        },
+        {
+          "text": "technical",
+          "start": 88.068,
+          "end": 88.508
+        },
+        {
+          "text": "support",
+          "start": 88.508,
+          "end": 88.968
+        },
+        {
+          "text": "from",
+          "start": 88.968,
+          "end": 89.128
+        },
+        {
+          "text": "people",
+          "start": 89.128,
+          "end": 89.468
+        },
+        {
+          "text": "who",
+          "start": 89.468,
+          "end": 89.648
+        },
+        {
+          "text": "know",
+          "start": 89.648,
+          "end": 89.998
+        },
+        {
+          "text": "your",
+          "start": 89.998,
+          "end": 90.138
+        },
+        {
+          "text": "process.",
+          "start": 90.138,
+          "end": 90.748
+        }
+      ],
+      "start": 84.958,
+      "end": 91.298,
+      "text": "Reliable supply, consistent quality, and technical support from people who know your process."
+    },
+    {
+      "line": "c6_l2",
+      "words": [
+        {
+          "text": "MPD",
+          "start": 96.562,
+          "end": 97.353
+        },
+        {
+          "text": "Industries.",
+          "start": 97.353,
+          "end": 98.013
+        },
+        {
+          "text": "We",
+          "start": 98.302,
+          "end": 98.562
+        },
+        {
+          "text": "innovate.",
+          "start": 98.562,
+          "end": 99.062
+        },
+        {
+          "text": "We",
+          "start": 99.433,
+          "end": 99.632
+        },
+        {
+          "text": "serve.",
+          "start": 99.632,
+          "end": 100.103
+        }
+      ],
+      "start": 96.442,
+      "end": 100.653,
+      "text": "MPD Industries. We innovate. We serve."
+    }
+  ],
+  "sfx": [
+    {
+      "type": "swoosh",
+      "at": 0.22999999999999998,
+      "src": "logo_card"
+    },
+    {
+      "type": "sting",
+      "at": 0.35,
+      "src": "logo_card"
+    },
+    {
+      "type": "rise_build",
+      "at": 2.0,
+      "dur": 4.2
+    },
+    {
+      "type": "whoosh",
+      "at": 2.2,
+      "src": "a1_descend"
+    },
+    {
+      "type": "click",
+      "at": 4.2,
+      "src": "act1_title"
+    },
+    {
+      "type": "thump",
+      "at": 6.333,
+      "src": "a1_reactors"
+    },
+    {
+      "type": "ticks",
+      "at": 6.4830000000000005,
+      "dur": 1.35,
+      "src": "a1_reactors"
+    },
+    {
+      "type": "thump",
+      "at": 7.993,
+      "src": "a1_capacity"
+    },
+    {
+      "type": "ticks",
+      "at": 8.143,
+      "dur": 1.35,
+      "src": "a1_capacity"
+    },
+    {
+      "type": "whoosh",
+      "at": 12.8,
+      "src": "a1_push"
+    },
+    {
+      "type": "riser",
+      "at": 13.125,
+      "dur": 1.875
+    },
+    {
+      "type": "impact",
+      "at": 15.0
+    },
+    {
+      "type": "click",
+      "at": 15.2,
+      "src": "act2_title"
+    },
+    {
+      "type": "swoosh",
+      "at": 16.538999999999998,
+      "src": "a2_split"
+    },
+    {
+      "type": "click",
+      "at": 16.659,
+      "src": "a2_split"
+    },
+    {
+      "type": "click",
+      "at": 17.009,
+      "src": "a2_split"
+    },
+    {
+      "type": "whoosh",
+      "at": 17.6,
+      "src": "a2_hero"
+    },
+    {
+      "type": "click",
+      "at": 17.889,
+      "src": "a2_split"
+    },
+    {
+      "type": "click",
+      "at": 17.9,
+      "src": "a2_hero"
+    },
+    {
+      "type": "click",
+      "at": 19.269,
+      "src": "a2_split"
+    },
+    {
+      "type": "whoosh",
+      "at": 20.6,
+      "src": "a2_crane"
+    },
+    {
+      "type": "click",
+      "at": 20.9,
+      "src": "a2_bag"
+    },
+    {
+      "type": "thump",
+      "at": 21.429,
+      "src": "a2_split.total"
+    },
+    {
+      "type": "whoosh",
+      "at": 23.7,
+      "src": "a2_p2"
+    },
+    {
+      "type": "swoosh",
+      "at": 24.293,
+      "src": "a2_matrix"
+    },
+    {
+      "type": "click",
+      "at": 24.413,
+      "src": "a2_matrix"
+    },
+    {
+      "type": "click",
+      "at": 24.763,
+      "src": "a2_matrix"
+    },
+    {
+      "type": "click",
+      "at": 25.663,
+      "src": "a2_matrix"
+    },
+    {
+      "type": "whoosh",
+      "at": 25.8,
+      "src": "a2_flaker"
+    },
+    {
+      "type": "click",
+      "at": 27.113,
+      "src": "a2_matrix"
+    },
+    {
+      "type": "click",
+      "at": 28.483,
+      "src": "a2_matrix"
+    },
+    {
+      "type": "click",
+      "at": 29.403,
+      "src": "a2_chips"
+    },
+    {
+      "type": "click",
+      "at": 29.453,
+      "src": "a2_matrix"
+    },
+    {
+      "type": "click",
+      "at": 30.013,
+      "src": "a2_chips"
+    },
+    {
+      "type": "thump",
+      "at": 30.433,
+      "src": "a2_matrix.total"
+    },
+    {
+      "type": "click",
+      "at": 31.771,
+      "src": "a2_ladder"
+    },
+    {
+      "type": "whoosh",
+      "at": 32.1,
+      "src": "a2_wide"
+    },
+    {
+      "type": "riser",
+      "at": 37.5,
+      "dur": 1.875
+    },
+    {
+      "type": "whoosh",
+      "at": 37.7,
+      "src": "a3_towh"
+    },
+    {
+      "type": "impact",
+      "at": 39.375
+    },
+    {
+      "type": "click",
+      "at": 39.6,
+      "src": "act3_title"
+    },
+    {
+      "type": "swoosh",
+      "at": 41.654,
+      "src": "a3_wh"
+    },
+    {
+      "type": "thump",
+      "at": 41.774,
+      "src": "a3_wh"
+    },
+    {
+      "type": "whoosh",
+      "at": 42.6,
+      "src": "a3_racks"
+    },
+    {
+      "type": "click",
+      "at": 42.9,
+      "src": "a3_racks_tag"
+    },
+    {
+      "type": "swoosh",
+      "at": 43.754000000000005,
+      "src": "a3_peso"
+    },
+    {
+      "type": "thump",
+      "at": 43.874,
+      "src": "a3_peso"
+    },
+    {
+      "type": "whoosh",
+      "at": 44.7,
+      "src": "a3_topeso"
+    },
+    {
+      "type": "hiss",
+      "at": 45.6,
+      "dur": 2.0
+    },
+    {
+      "type": "swoosh",
+      "at": 47.364000000000004,
+      "src": "a3_fg"
+    },
+    {
+      "type": "thump",
+      "at": 47.484,
+      "src": "a3_fg"
+    },
+    {
+      "type": "whoosh",
+      "at": 49.7,
+      "src": "a3_rise"
+    },
+    {
+      "type": "click",
+      "at": 51.094,
+      "src": "a3_totals"
+    },
+    {
+      "type": "click",
+      "at": 51.194,
+      "src": "a3_totals"
+    },
+    {
+      "type": "click",
+      "at": 52.114,
+      "src": "a3_totals"
+    },
+    {
+      "type": "click",
+      "at": 52.744,
+      "src": "a3_totals"
+    },
+    {
+      "type": "thump",
+      "at": 53.034,
+      "src": "a3_totals.total"
+    },
+    {
+      "type": "click",
+      "at": 54.225,
+      "src": "a3_ready"
+    },
+    {
+      "type": "whoosh",
+      "at": 54.3,
+      "src": "a3_gate"
+    },
+    {
+      "type": "riser",
+      "at": 56.25,
+      "dur": 1.875
+    },
+    {
+      "type": "impact",
+      "at": 58.125
+    },
+    {
+      "type": "whoosh",
+      "at": 58.5,
+      "src": "a4_fly"
+    },
+    {
+      "type": "click",
+      "at": 58.6,
+      "src": "act4_title"
+    },
+    {
+      "type": "click",
+      "at": 58.678,
+      "src": "a4_badges"
+    },
+    {
+      "type": "click",
+      "at": 61.508,
+      "src": "a4_badges"
+    },
+    {
+      "type": "click",
+      "at": 63.391,
+      "src": "a4_badges"
+    },
+    {
+      "type": "click",
+      "at": 66.091,
+      "src": "a4_badges"
+    },
+    {
+      "type": "riser",
+      "at": 69.375,
+      "dur": 1.875
+    },
+    {
+      "type": "impact",
+      "at": 71.25
+    },
+    {
+      "type": "whoosh",
+      "at": 71.5,
+      "src": "a5_fly"
+    },
+    {
+      "type": "click",
+      "at": 71.6,
+      "src": "act5_title"
+    },
+    {
+      "type": "click",
+      "at": 72.129,
+      "src": "a5_badges"
+    },
+    {
+      "type": "steam",
+      "at": 73.0,
+      "dur": 2.0
+    },
+    {
+      "type": "click",
+      "at": 74.279,
+      "src": "a5_badges"
+    },
+    {
+      "type": "click",
+      "at": 75.159,
+      "src": "a5_badges"
+    },
+    {
+      "type": "whoosh",
+      "at": 77.3,
+      "src": "a5_solar"
+    },
+    {
+      "type": "click",
+      "at": 78.039,
+      "src": "a5_badges"
+    },
+    {
+      "type": "whoosh",
+      "at": 79.7,
+      "src": "a5_etp"
+    },
+    {
+      "type": "click",
+      "at": 80.4,
+      "src": "a5_etp_tag"
+    },
+    {
+      "type": "click",
+      "at": 80.505,
+      "src": "a5_badges"
+    },
+    {
+      "type": "riser",
+      "at": 82.5,
+      "dur": 1.875
+    },
+    {
+      "type": "whoosh",
+      "at": 82.7,
+      "src": "a5_wide"
+    },
+    {
+      "type": "impact",
+      "at": 84.375
+    },
+    {
+      "type": "swoosh",
+      "at": 84.838,
+      "src": "a6_cards"
+    },
+    {
+      "type": "click",
+      "at": 84.958,
+      "src": "a6_cards"
+    },
+    {
+      "type": "click",
+      "at": 85.0,
+      "src": "act6_title"
+    },
+    {
+      "type": "click",
+      "at": 86.428,
+      "src": "a6_cards"
+    },
+    {
+      "type": "click",
+      "at": 87.948,
+      "src": "a6_cards"
+    },
+    {
+      "type": "whoosh",
+      "at": 91.1,
+      "src": "a6_gate"
+    },
+    {
+      "type": "swoosh",
+      "at": 95.88,
+      "src": "a6_endcard"
+    },
+    {
+      "type": "sting",
+      "at": 96.0,
+      "src": "a6_endcard"
+    }
+  ],
+  "music": {
+    "$comment": "Procedural score, 128 BPM, 55 bars. Downbeat cymbals and half-bar drops land on the act changes.",
+    "key": "D major",
+    "progression": [
+      "Bm",
+      "G",
+      "D",
+      "A"
+    ],
+    "downbeats": [
+      8,
+      21,
+      31,
+      38,
+      45
+    ],
+    "drops": [
+      7,
+      20,
+      30,
+      37,
+      44
+    ],
+    "sections": [
+      {
+        "bars": [
+          0,
+          2
+        ],
+        "name": "logo",
+        "layers": [
+          "pad",
+          "sub",
+          "shimmer"
+        ],
+        "energy": 0.35
+      },
+      {
+        "bars": [
+          2,
+          4
+        ],
+        "name": "aerial",
+        "layers": [
+          "pad",
+          "sub",
+          "arp_filtered",
+          "kick_soft"
+        ],
+        "energy": 0.55
+      },
+      {
+        "bars": [
+          4,
+          8
+        ],
+        "name": "stats",
+        "layers": [
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "hats"
+        ],
+        "energy": 0.68
+      },
+      {
+        "bars": [
+          8,
+          21
+        ],
+        "name": "range",
+        "layers": [
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "clap",
+          "hats",
+          "lead"
+        ],
+        "energy": 0.8
+      },
+      {
+        "bars": [
+          21,
+          31
+        ],
+        "name": "supply",
+        "layers": [
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "clap",
+          "hats"
+        ],
+        "energy": 0.82
+      },
+      {
+        "bars": [
+          31,
+          38
+        ],
+        "name": "quality",
+        "layers": [
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "hats",
+          "shimmer"
+        ],
+        "energy": 0.74
+      },
+      {
+        "bars": [
+          38,
+          45
+        ],
+        "name": "green",
+        "layers": [
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "clap",
+          "hats",
+          "shimmer"
+        ],
+        "energy": 0.84
+      },
+      {
+        "bars": [
+          45,
+          51
+        ],
+        "name": "why",
+        "layers": [
+          "pad",
+          "bass",
+          "arp",
+          "kick",
+          "clap",
+          "hats",
+          "lead",
+          "shimmer"
+        ],
+        "energy": 0.88
+      },
+      {
+        "bars": [
+          51,
+          55
+        ],
+        "name": "outro",
+        "layers": [
+          "pad_final",
+          "sub",
+          "shimmer"
+        ],
+        "energy": 0.4
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "ctx": "a1_reactors.in",
+      "line": "c1_l2",
+      "word": "22",
+      "wordStart": 6.453,
+      "offset": -0.12,
+      "cue": 6.333
+    },
+    {
+      "ctx": "a1_capacity.in",
+      "line": "c1_l2",
+      "word": "83,000",
+      "wordStart": 8.113,
+      "offset": -0.12,
+      "cue": 7.993
+    },
+    {
+      "ctx": "a2_split.in",
+      "line": "c2_l1",
+      "word": "polyester",
+      "wordStart": 17.109,
+      "offset": -0.45,
+      "cue": 16.659
+    },
+    {
+      "ctx": "a2_split.total",
+      "line": "c2_l1",
+      "word": "16 KL",
+      "wordStart": 21.129,
+      "offset": 0.3,
+      "cue": 21.429
+    },
+    {
+      "ctx": "a2_split.rows[0]",
+      "line": "c2_l1",
+      "word": "polyester",
+      "wordStart": 17.109,
+      "offset": -0.1,
+      "cue": 17.009
+    },
+    {
+      "ctx": "a2_split.rows[1]",
+      "line": "c2_l1",
+      "word": "alkyds",
+      "wordStart": 17.989,
+      "offset": -0.1,
+      "cue": 17.889
+    },
+    {
+      "ctx": "a2_split.rows[2]",
+      "line": "c2_l1",
+      "word": "epoxy",
+      "wordStart": 19.369,
+      "offset": -0.1,
+      "cue": 19.269
+    },
+    {
+      "ctx": "a2_matrix.in",
+      "line": "c2_l2",
+      "word": "polyamides,",
+      "wordStart": 24.863,
+      "offset": -0.45,
+      "cue": 24.413
+    },
+    {
+      "ctx": "a2_matrix.total",
+      "line": "c2_l2",
+      "word": "pellets.",
+      "wordStart": 30.133,
+      "offset": 0.3,
+      "cue": 30.433
+    },
+    {
+      "ctx": "a2_matrix.rows[0]",
+      "line": "c2_l2",
+      "word": "polyamides,",
+      "wordStart": 24.863,
+      "offset": -0.1,
+      "cue": 24.763
+    },
+    {
+      "ctx": "a2_matrix.rows[1]",
+      "line": "c2_l2",
+      "word": "powder",
+      "wordStart": 25.763,
+      "offset": -0.1,
+      "cue": 25.663
+    },
+    {
+      "ctx": "a2_matrix.rows[2]",
+      "line": "c2_l2",
+      "word": "acrylic",
+      "wordStart": 27.213,
+      "offset": -0.1,
+      "cue": 27.113
+    },
+    {
+      "ctx": "a2_matrix.rows[3]",
+      "line": "c2_l2",
+      "word": "phenolics,",
+      "wordStart": 28.583,
+      "offset": -0.1,
+      "cue": 28.483
+    },
+    {
+      "ctx": "a2_matrix.rows[4]",
+      "line": "c2_l2",
+      "word": "flakes",
+      "wordStart": 29.553,
+      "offset": -0.1,
+      "cue": 29.453
+    },
+    {
+      "ctx": "a2_chips.in",
+      "line": "c2_l2",
+      "word": "flakes",
+      "wordStart": 29.553,
+      "offset": -0.15,
+      "cue": 29.403
+    },
+    {
+      "ctx": "a2_chips.items[0]",
+      "line": "c2_l2",
+      "word": "flakes",
+      "wordStart": 29.553,
+      "offset": -0.12,
+      "cue": 29.433
+    },
+    {
+      "ctx": "a2_chips.items[1]",
+      "line": "c2_l2",
+      "word": "pellets.",
+      "wordStart": 30.133,
+      "offset": -0.12,
+      "cue": 30.013
+    },
+    {
+      "ctx": "a2_ladder.in",
+      "line": "c2_l3",
+      "word": "custom",
+      "wordStart": 31.971,
+      "offset": -0.2,
+      "cue": 31.771
+    },
+    {
+      "ctx": "a3_wh.in",
+      "line": "c3_l1",
+      "word": "raw",
+      "wordStart": 41.874,
+      "offset": -0.1,
+      "cue": 41.774
+    },
+    {
+      "ctx": "a3_peso.in",
+      "line": "c3_l1",
+      "word": "600 KL",
+      "wordStart": 43.994,
+      "offset": -0.12,
+      "cue": 43.874
+    },
+    {
+      "ctx": "a3_fg.in",
+      "line": "c3_l2",
+      "word": "1,000 KL",
+      "wordStart": 47.604,
+      "offset": -0.12,
+      "cue": 47.484
+    },
+    {
+      "ctx": "a3_totals.in",
+      "line": "c3_l2",
+      "word": "grade-dedicated",
+      "wordStart": 51.294,
+      "offset": -0.2,
+      "cue": 51.094
+    },
+    {
+      "ctx": "a3_totals.rows[0]",
+      "line": "c3_l2",
+      "word": "grade-dedicated",
+      "wordStart": 51.294,
+      "offset": -0.1,
+      "cue": 51.194
+    },
+    {
+      "ctx": "a3_totals.rows[1]",
+      "line": "c3_l2",
+      "word": "tanks,",
+      "wordStart": 52.214,
+      "offset": -0.1,
+      "cue": 52.114
+    },
+    {
+      "ctx": "a3_totals.rows[2]",
+      "line": "c3_l2",
+      "word": "ready",
+      "wordStart": 52.844,
+      "offset": -0.1,
+      "cue": 52.744
+    },
+    {
+      "ctx": "a3_totals.total",
+      "line": "c3_l2",
+      "word": "ship.",
+      "wordStart": 53.134,
+      "offset": -0.1,
+      "cue": 53.034
+    },
+    {
+      "ctx": "a3_ready.in",
+      "line": "c3_l3",
+      "word": "Short",
+      "wordStart": 54.375,
+      "offset": -0.15,
+      "cue": 54.225
+    },
+    {
+      "ctx": "a4_badges.in",
+      "line": "c4_l1",
+      "word": "Recipe-driven",
+      "wordStart": 58.828,
+      "offset": -0.15,
+      "cue": 58.678
+    },
+    {
+      "ctx": "a4_badges.items[0]",
+      "line": "c4_l1",
+      "word": "Recipe-driven",
+      "wordStart": 58.828,
+      "offset": -0.12,
+      "cue": 58.708
+    },
+    {
+      "ctx": "a4_badges.items[1]",
+      "line": "c4_l1",
+      "word": "match",
+      "wordStart": 61.628,
+      "offset": -0.12,
+      "cue": 61.508
+    },
+    {
+      "ctx": "a4_badges.items[2]",
+      "line": "c4_l2",
+      "word": "QC",
+      "wordStart": 63.511,
+      "offset": -0.12,
+      "cue": 63.391
+    },
+    {
+      "ctx": "a4_badges.items[3]",
+      "line": "c4_l2",
+      "word": "application",
+      "wordStart": 66.211,
+      "offset": -0.12,
+      "cue": 66.091
+    },
+    {
+      "ctx": "a4_wet_tag.in",
+      "line": "c4_l2",
+      "word": "QC",
+      "wordStart": 63.511,
+      "offset": 0.2,
+      "cue": 63.711
+    },
+    {
+      "ctx": "a4_app_tag.in",
+      "line": "c4_l2",
+      "word": "application",
+      "wordStart": 66.211,
+      "offset": -0.1,
+      "cue": 66.111
+    },
+    {
+      "ctx": "a5_badges.in",
+      "line": "c5_l1",
+      "word": "agro-waste",
+      "wordStart": 72.329,
+      "offset": -0.2,
+      "cue": 72.129
+    },
+    {
+      "ctx": "a5_badges.items[0]",
+      "line": "c5_l1",
+      "word": "agro-waste",
+      "wordStart": 72.329,
+      "offset": -0.12,
+      "cue": 72.209
+    },
+    {
+      "ctx": "a5_badges.items[1]",
+      "line": "c5_l1",
+      "word": "coal.",
+      "wordStart": 74.399,
+      "offset": -0.12,
+      "cue": 74.279
+    },
+    {
+      "ctx": "a5_badges.items[2]",
+      "line": "c5_l1",
+      "word": "0.7 MW",
+      "wordStart": 75.279,
+      "offset": -0.12,
+      "cue": 75.159
+    },
+    {
+      "ctx": "a5_badges.items[3]",
+      "line": "c5_l1",
+      "word": "Effluent",
+      "wordStart": 78.159,
+      "offset": -0.12,
+      "cue": 78.039
+    },
+    {
+      "ctx": "a5_badges.items[4]",
+      "line": "c5_l2",
+      "word": "Lower-carbon",
+      "wordStart": 80.625,
+      "offset": -0.12,
+      "cue": 80.505
+    },
+    {
+      "ctx": "a6_cards.in",
+      "line": "c6_l1",
+      "word": "Reliable",
+      "wordStart": 85.078,
+      "offset": -0.12,
+      "cue": 84.958
+    },
+    {
+      "ctx": "a6_cards.items[0]",
+      "line": "c6_l1",
+      "word": "Reliable",
+      "wordStart": 85.078,
+      "offset": -0.12,
+      "cue": 84.958
+    },
+    {
+      "ctx": "a6_cards.items[1]",
+      "line": "c6_l1",
+      "word": "consistent",
+      "wordStart": 86.548,
+      "offset": -0.12,
+      "cue": 86.428
+    },
+    {
+      "ctx": "a6_cards.items[2]",
+      "line": "c6_l1",
+      "word": "technical",
+      "wordStart": 88.068,
+      "offset": -0.12,
+      "cue": 87.948
+    }
+  ]
+}

@@ -30,6 +30,7 @@ EXTRA_PRON = {
     "palletizer": "P AE L AH T AY Z ER",
     "pelletizers": "P EH L AH T AY Z ER Z",
     "phenolics": "F AH N AA L IH K S",
+    "polyamides": "P AA L IY AE M AY D Z",
     "polyols": "P AA L IY AO L Z",
     "thermic": "TH ER M IH K",
 }

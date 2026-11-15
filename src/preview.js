@@ -26,11 +26,13 @@ function startInteractivePreview() {
   if (!bar || !playBtn || !scrub || !timeEl || typeof window.renderFrame !== 'function') return;
 
   document.body.classList.add('interactive');
+  const D = window.filmDuration || 180;
+  scrub.max = String(D);
 
   const params = new URLSearchParams(location.search);
   let t = Number(params.get('t'));
   if (!Number.isFinite(t)) t = 15;
-  t = Math.min(180, Math.max(0, t));
+  t = Math.min(D, Math.max(0, t));
   let playing = params.get('play') !== '0';
   let last = performance.now();
 
@@ -65,7 +67,7 @@ function startInteractivePreview() {
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       t += dt;
-      if (t > 180) t = 0;
+      if (t > D) t = 0;
       draw();
     } else {
       last = now;

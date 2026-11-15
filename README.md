@@ -66,6 +66,29 @@ ANGLE=metal node scripts/render_frames.mjs --workers 3
 TITLE="MPD Industries – Ujjain: Built for Scale" bash scripts/encode.sh
 ```
 
+## Customer cut (`FILM=customer`)
+
+A 103-second marketing film for business buyers, shot on the updated 3D model. It presents MPD as a
+**resin supplier**, not a toll manufacturer, in six quick acts: resins you can count on (22 reactors,
+82,800 T/yr) → the product range (Plant 1 liquid resins, Plant 2 specialty and solid resins, custom
+grades from 2 KL trials) → supply you can plan around (Warehouse-1 1,464 pallets ≈ 790 t, 600 KL
+underground solvents, ~1,045 KL finished resin in 22 tanks, Gate 2 dispatch) → batch-to-batch quality
+(QC and application labs) → lower-carbon resin (agro-waste heat in the new boiler house, 0.7 MWp solar,
+50 KLD ETP) → why MPD (reliable supply, consistent quality, technical support), ending on the Gate 1 sign.
+Shots are 2–4 s and the Gemini voice is sped up by `narration.voice.tempo` (1.12, pitch kept).
+Figures follow the current model (Warehouse-1 only; 1,257 solar modules).
+
+```
+export FILM=customer
+python3 scripts/tts_gemini.py
+python3 scripts/narration.py && python3 scripts/align.py && python3 scripts/resolve_timeline.py && python3 scripts/audio.py
+ANGLE=metal node scripts/render_frames.mjs --workers 3
+TITLE="MPD Industries – Resins You Can Count On" bash scripts/encode.sh   # -> out/mpd_ujain_customer.mp4
+```
+
+Film length comes from `meta.durationSec` everywhere (audio, encode, browser preview); a short cut sets its own
+`music.downbeats` / `music.drops` bars.
+
 ## Pipeline
 
 ```

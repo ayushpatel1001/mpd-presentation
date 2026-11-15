@@ -9,7 +9,7 @@ A drop-in voice-over can replace the TTS: put `build/vo_override/<line id>.wav`
 
 Outputs:
   build/vo/<id>.wav            processed mono 48 kHz line
-  data/narration_layout.json   start/end of every line on the 180 s timeline
+  data/narration_layout.json   start/end of every line on the film's timeline
 """
 import os
 import subprocess
@@ -28,10 +28,11 @@ RAW_DIR = os.path.join(BUILD, "vo_raw")
 OVERRIDE_DIR = os.path.join(BUILD, "vo_override")
 
 
-def read_any(path):
-    """Decode any audio file to mono float32 at 48 kHz via ffmpeg."""
+def read_any(path, tempo=1.0):
+    """Decode any audio file to mono float32 at 48 kHz via ffmpeg (tempo != 1 speeds it up, pitch kept)."""
+    af = ["-af", f"atempo={tempo}"] if tempo != 1.0 else []
     raw = subprocess.run(
-        ["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
+        ["ffmpeg", "-v", "error", "-i", path, *af, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
         check=True, capture_output=True).stdout
     return np.frombuffer(raw, dtype=np.float32).copy()
 
@@ -112,7 +113,7 @@ def main():
         override = os.path.join(OVERRIDE_DIR, line["id"] + ".wav")
         if os.path.exists(override):
             source = "override"
-            x = read_any(override)
+            x = read_any(override, voice.get("tempo", 1.0))
         else:
             source = f"rhvoice:{voice['profile']}"
             raw_path = os.path.join(RAW_DIR, line["id"] + ".wav")

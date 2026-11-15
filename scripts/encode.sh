@@ -14,6 +14,7 @@ TITLE=${TITLE:-"MPD Industries – Ujjain Plant Jobwork Capabilities"}
 MAIN=$STEM.mp4
 ALT=${STEM}_music_only.mp4
 CRF=${CRF:-20}
+DUR=$(node -p "require('./data/${FILM:+films/$FILM/}timeline.resolved.json').meta.durationSec")
 
 ffmpeg -hide_banner -loglevel warning -stats -y \
   -framerate "$FPS" -i "$B/frames/f_%05d.jpg" \
@@ -21,14 +22,14 @@ ffmpeg -hide_banner -loglevel warning -stats -y \
   -map 0:v -map 1:a \
   -c:v libx264 -preset slow -crf "$CRF" -tune animation -pix_fmt yuv420p -profile:v high -level 4.1 -g 60 \
   -c:a aac -b:a 192k -ar 48000 \
-  -movflags +faststart -t 180 \
+  -movflags +faststart -t "$DUR" \
   -metadata title="$TITLE" \
   "$MAIN"
 
 ffmpeg -hide_banner -loglevel warning -y \
   -i "$MAIN" -i "$B/audio/mix_music_only.wav" \
   -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -ar 48000 \
-  -movflags +faststart -t 180 \
+  -movflags +faststart -t "$DUR" \
   -metadata title="$TITLE (music only)" \
   "$ALT"
 
