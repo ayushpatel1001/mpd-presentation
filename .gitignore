@@ -1,5 +1,34 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
 # Dependencies (restore with `npm install`)
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Scratch and logs
+*.tmp
+*.log
 
 # Rendered videos: rebuilt by scripts/encode.sh, never committed
 *.mp4
@@ -9,31 +38,17 @@ node_modules/
 
 # Heavy, regenerable build artefacts:
 # mix stems are 50-70 MB WAVs each, rebuilt by scripts/audio.py in ~1 min
-build/audio/
-# 5,400 rendered JPEG frames, rebuilt by scripts/render_frames.mjs
-build/frames/
-build/frames_*/
+# rendered JPEG frames, rebuilt by scripts/render_frames.mjs
 # validation captures + report, rebuilt by scripts/validate.mjs
-build/validation/
-# voice comparison clips from scripts/tts_gemini.py --samples
-build/vo_samples/
-
-# Logs
-build/logs/
-*.log
-
-# Secrets (copy .env.example to .env)
-.env
-.env.*
-!.env.example
-
-# Scratch / editor / OS
-*.tmp
-__pycache__/
-*.pyc
-.DS_Store
-.vscode/
-.idea/
-
-# Build artefacts
+# voice samples, investor cut, narration overrides, and preview stills
 build/
+
+# Encoder outputs over GitHub's 100 MB limit (also covered by *.mp4)
+out/*_music_only.mp4
+out/*_crf20.mp4
+out/*investor*.mp4
+
+# Playwright
+/playwright-report/
+/test-results/
+/blob-report/
